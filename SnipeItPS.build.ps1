@@ -75,7 +75,7 @@ task UpdateManifest GetVersion, {
     if ($ModuleAlias) {
         Update-Metadata -Path "$releasePath\SnipeitPS\SnipeitPS.psd1" -PropertyName AliasesToExport -Value @($ModuleAlias.Name)
     }
-    Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport ([string[]](Get-ChildItem "$releasePath\SnipeitPS\public\*.ps1").BaseName)
+    Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport ([string[]](Get-ChildItem "SnipeitPS\public\*.psm1").BaseName)
 }
 
 task GetVersion {
