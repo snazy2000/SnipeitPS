@@ -1,0 +1,59 @@
+############################################################
+#
+# See http://www.appveyor.com/docs/appveyor-yml for many more options
+#
+# Credit for a lot of this file goes to RamblingCookieMonster:
+# https://github.com/RamblingCookieMonster/PSSQLite/blob/master/appveyor.yml
+#
+############################################################
+
+# This tells AppVeyor that we need WMF 5 and PowerShell 5.0
+os: WMF 5
+
+environment:
+    # To encrypt a value in AppVeyor, go to the Account menu and choose "Encrypt data"
+
+version: 1.0.{build}
+
+# Don't rebuild when I tag a release on GitHub
+skip_tags: true
+
+# Ignore testing a commit if only the readme changed
+# Or if I include "skip-tests" in the commit message
+skip_commits:
+  message: /skip\-tests/
+  files:
+    - .github/
+    - .vscode/
+    - assets/
+    - Tools/
+    - README.md
+    - .gitattributes
+    - .gitignore
+
+# PRs, by definition, don't change anything and therefore should not increment the version
+# To be fair, this is not important, and is really just AppVeyor enabling my pedantry
+pull_requests:
+  do_not_increment_build_number: true
+
+install:
+    - ps: |
+        Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
+        Install-Module InvokeBuild -Scope CurrentUser -Force
+        Install-Module BuildHelpers -Scope CurrentUser -Force
+        Install-Module Pester -Scope CurrentUser -Force
+        Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+        $env:releasePath = "$($pwd.Path)\Release"
+
+before_build:
+    - ps: Invoke-Build -Task ShowDebug
+
+build_script:
+    - ps: Invoke-Build -Task Build
+
+# after_build:
+    # - cmd: mdspell %releasePath%\**/*.md --ignore-numbers --ignore-acronyms --report
+
+test_script:
+    - ps: Invoke-Build -Task Test
+
