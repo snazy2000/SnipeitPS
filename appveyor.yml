@@ -10,7 +10,7 @@
 # This tells AppVeyor that we need WMF 5 and PowerShell 5.0
 os: WMF 5
 
-environment:
+#environment:
     # To encrypt a value in AppVeyor, go to the Account menu and choose "Encrypt data"
 
 version: 1.0.{build}
