@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+# Gets a list of Snipe-it Assets
+
+.PARAMETER url
+URL of Snipeit system, can be set using Set-Info command
+
+.PARAMETER apiKey
+Users API Key for Snipeit, can be set using Set-Info command
+
+.EXAMPLE
+Get-Asset -url "https://assets.dip.co.uk" -token "token..." 
+
+.EXAMPLE
+Get-Asset -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.name -eq "SUPPORT23" }
+
+#>
+
 function Get-Asset()
 {
     Param( 
@@ -33,24 +51,16 @@ function New-Asset()
         [parameter(mandatory=$true)]            
         [string]$apiKey,
 
-        [string]$CPU,
-          
-        [string]$memory,
-          
-        [string]$OSDrive,
-         
-        [string]$OS
+        [hashtable] $customfields
     )
 
     $Values = @{
         "name" = $Name
         "status_id" = $status_id
         "model_id" = $model_id
-        _snipeit_cpu_2 = $CPU
-        _snipeit_memory_gb_3 = $memory
-        _snipeit_os_drive_4 = $OSDrive
-        _snipeit_os_5 = $OS
     }
+
+    $Values += $customfields
 
     $Body = $Values | ConvertTo-Json;
 
@@ -83,25 +93,16 @@ function Set-Asset()
         [parameter(mandatory=$true)]            
         [string]$apiKey,
 
-        [string]$CPU,
-          
-        [string]$memory,
-          
-        [string]$OSDrive,
-         
-        [string]$OS
+        [hashtable] $customfields
     )
 
     $Values = @{
-        "name" = $asset_name
+        "name" = $Name
         "status_id" = $status_id
         "model_id" = $model_id
-        "_snipeit_cpu_2" = $CPU
-        "_snipeit_memory_gb_3" = $memory
-        "_snipeit_os_drive_4" = $OSDrive
-        "_snipeit_os_5" = $OS
     }
 
+    $Values += $customfields
     $Body = $Values | ConvertTo-Json;
 
     $result = Invoke-Method -URi "$url/api/v1/hardware/$id" `
@@ -112,7 +113,7 @@ function Set-Asset()
     $result
 }
 
-function Checkout-Asset()
+function Set-AssetOwner()
 {
     Param( 
         [parameter(mandatory=$true)]            

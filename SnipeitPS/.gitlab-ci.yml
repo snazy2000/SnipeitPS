@@ -1,0 +1,17 @@
+stages:
+  - test
+#  - release
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+Test:
+  stage: test
+  script:
+    - powershell -Command "./build.ps1" "-Task Pester"
+#  except:
+#    - master
+#Release:
+#  stage: release
+#  script:
+#   - .\build.ps1 -Tasks 'analyze','test','release'
+#  only:
+#    - master
