@@ -1,12 +1,25 @@
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+
+before_script:
+  - Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
+  - Install-Module InvokeBuild, BuildHelpers, PSScriptAnalyzer -force -Scope CurrentUser
+  - Install-Module Pester -Force -SkipPublisherCheck -Scope CurrentUser
+  - Import-Module PSScriptAnalyzer
+  - Import-Module Pester
+
 stages:
   - test
 #  - release
-variables:
-  GIT_SSL_NO_VERIFY: "true"
-Test:
+
+ps_scriptanalyzer:
   stage: test
-  script:
-    - powershell -Command "./build.ps1" "-Task Pester"
+  script: 
+  - $res = (Invoke-ScriptAnalyzer -Path . -Severity Error).count
+  - if ($res -gt 0) { throw "$($res) Analytics failed."}
+  tags:
+  - powershell
+
 #  except:
 #    - master
 #Release:
