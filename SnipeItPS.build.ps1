@@ -134,12 +134,12 @@ task GenerateRelease CreateHelp, {
     # Copy module
     Copy-Item -Path "$BuildRoot\SnipeitPS\*" -Destination "$releasePath\SnipeitPS" -Recurse -Force
     # Copy additional files
-    #$additionalFiles = @(
-    #    "$BuildRoot\CHANGELOG.md"
+    $additionalFiles = @(
+        "$BuildRoot\CHANGELOG.md"
         #"$BuildRoot\LICENSE"
-        #"$BuildRoot\README.md"
-    #)
-    #Copy-Item -Path $additionalFiles -Destination "$releasePath\SnipeitPS" -Force
+        "$BuildRoot\README.md"
+    )
+    Copy-Item -Path $additionalFiles -Destination "$releasePath\SnipeitPS" -Force
 }
 
 # Synopsis: Update the manifest of the module
@@ -181,6 +181,40 @@ task ConvertMarkdown -Partial @ConvertMarkdown InstallPandoc, {process {
         exec { Tools\pandoc.exe $_ --standalone --from=markdown_github "--output=$2" }
     }
 }, RemoveMarkdownFiles
+# endregion
+
+# region publish
+task Deploy -If (
+    # Only deploy if the master branch changes
+    $env:APPVEYOR_REPO_BRANCH -eq 'master' -and
+    # Do not deploy if this is a pull request (because it hasn't been approved yet)
+    (-not ($env:APPVEYOR_PULL_REQUEST_NUMBER)) -and
+    # Do not deploy if the commit contains the string "skip-deploy"
+    # Meant for major/minor version publishes with a .0 build/patch version (like 2.1.0)
+    $env:APPVEYOR_REPO_COMMIT_MESSAGE -notlike '*skip-deploy*'
+) {
+    Remove-Module SnipeitPS -ErrorAction SilentlyContinue
+}, PublishToGallery
+
+task PublishToGallery {
+    assert ($env:PSGalleryAPIKey) "No key for the PSGallery"
+
+    Import-Module $releasePath\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
+    Publish-Module -Name SnipeitPS -NuGetApiKey $env:PSGalleryAPIKey
+}
+
+# Synopsis: Push with a version tag.
+task PushRelease GitStatus, GetVersion, {
+    # Done in appveyor.yml with deploy provider.
+    # This is needed, as I don't know how to athenticate (2-factor) in here.
+    exec { git checkout master }
+    $changes = exec { git status --short }
+    assert (!$changes) "Please, commit changes."
+
+    exec { git push }
+    exec { git tag -a "v$Version" -m "v$Version" }
+    exec { git push origin "v$Version" }
+}
 # endregion
 
 #region Cleaning tasks
