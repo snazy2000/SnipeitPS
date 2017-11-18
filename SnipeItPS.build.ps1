@@ -134,12 +134,12 @@ task GenerateRelease CreateHelp, {
     # Copy module
     Copy-Item -Path "$BuildRoot\SnipeitPS\*" -Destination "$releasePath\SnipeitPS" -Recurse -Force
     # Copy additional files
-    $additionalFiles = @(
-        "$BuildRoot\CHANGELOG.md"
+    #$additionalFiles = @(
+    #    "$BuildRoot\CHANGELOG.md"
         #"$BuildRoot\LICENSE"
         #"$BuildRoot\README.md"
-    )
-    Copy-Item -Path $additionalFiles -Destination "$releasePath\SnipeitPS" -Force
+    #)
+    #Copy-Item -Path $additionalFiles -Destination "$releasePath\SnipeitPS" -Force
 }
 
 # Synopsis: Update the manifest of the module
