@@ -23,3 +23,4 @@ function ConvertTo-GetParameter {
     END {
         $parameters -replace ".$"
     }
+}
