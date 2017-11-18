@@ -1,11 +1,11 @@
 
 function Get-Models()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -20,22 +20,22 @@ function Get-Models()
 function New-Model()
 {
     Param(
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$name,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$category_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$manufacturer_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$fieldset_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 

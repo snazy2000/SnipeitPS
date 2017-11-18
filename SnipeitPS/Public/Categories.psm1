@@ -1,10 +1,10 @@
 function Get-Categories()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 

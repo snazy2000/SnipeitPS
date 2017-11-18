@@ -1,10 +1,10 @@
 function Get-Component()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -17,20 +17,20 @@ function Get-Component()
 
 function New-Component()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$name,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$category_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$qty,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -52,17 +52,17 @@ function New-Component()
 
 function Update-Component()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$qty,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 

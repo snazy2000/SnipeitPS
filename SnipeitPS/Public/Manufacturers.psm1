@@ -1,10 +1,10 @@
 function Get-Manufacturers()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -17,14 +17,14 @@ function Get-Manufacturers()
 
 function New-Manufacturer()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$Name,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -40,6 +40,6 @@ function New-Manufacturer()
                   -Method POST `
                   -Body $Body `
                   -Token $apiKey
-                  
+
     $result
 }
