@@ -136,7 +136,7 @@ task GenerateRelease CreateHelp, {
     # Copy additional files
     $additionalFiles = @(
         "$BuildRoot\CHANGELOG.md"
-        #"$BuildRoot\LICENSE"
+        "$BuildRoot\LICENSE"
         "$BuildRoot\README.md"
     )
     Copy-Item -Path $additionalFiles -Destination "$releasePath\SnipeitPS" -Force
