@@ -1,10 +1,10 @@
 function Get-Component()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -17,20 +17,25 @@ function Get-Component()
 
 function New-Component()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
+    Param(
+        [parameter(mandatory=$true)]
         [string]$name,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$category_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$qty,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -42,27 +47,38 @@ function New-Component()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/components" `
-                  -Method POST `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/components"
+            Method     = 'POST'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }
 
-function Update-Component()
+function Set-Component()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
+    Param(
+        [parameter(mandatory=$true)]
         [string]$id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$qty,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -72,10 +88,16 @@ function Update-Component()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/components/$component_id" `
-                  -Method Patch `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/components/$component_id"
+            Method     = 'Patch'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }

@@ -63,7 +63,7 @@ Describe "SnipeitPS" {
         $script:manifest = Invoke-Expression (Get-Content $script:manifestFile -Raw)
 
         It "Manifest file includes the correct root module" {
-            $script:manifest.RootModule | Should Be 'SnipeitPS.psm1'
+            $script:manifest.RootModule | Should Be 'SnipeitPS'
         }
 
         It "Manifest file includes the correct guid" {

@@ -9,7 +9,7 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Asset -url "https://assets.dip.co.uk" -token "token..." 
+Get-Asset -url "https://assets.dip.co.uk" -token "token..."
 
 .EXAMPLE
 Get-Asset -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.name -eq "SUPPORT23" }
@@ -18,11 +18,11 @@ Get-Asset -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.n
 
 function Get-Asset()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -35,20 +35,25 @@ function Get-Asset()
 
 function New-Asset()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
+    Param(
+        [parameter(mandatory=$true)]
         [string]$Name,
-        
-        [parameter(mandatory=$true)]            
+
+        [parameter(mandatory=$true)]
         [string]$Status_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$Model_id,
-         
-        [parameter(mandatory=$true)]            
+
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey,
 
         [hashtable] $customfields
@@ -64,33 +69,44 @@ function New-Asset()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/hardware" `
-                  -Method POST `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/hardware"
+            Method     = 'Post'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }
 
 function Set-Asset()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
+    Param(
+        [parameter(mandatory=$true)]
         [int]$id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$Name,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$Status_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$Model_id,
-         
-        [parameter(mandatory=$true)]            
+
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey,
 
         [hashtable] $customfields
@@ -105,27 +121,38 @@ function Set-Asset()
     $Values += $customfields
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/hardware/$id" `
-                  -Method PUT `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/hardware/$id"
+            Method     = 'Put'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }
 
 function Set-AssetOwner()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
+    Param(
+        [parameter(mandatory=$true)]
         [int]$id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$user_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -135,10 +162,16 @@ function Set-AssetOwner()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -Uri "$url/api/v1/hardware/$id/checkout" `
-                      -Method POST `
-                      -Token $apiKey `
-                      -Body $Body 
+    $Parameters = @{
+            Uri        = "$url/api/v1/hardware/$id/checkout"
+            Method     = 'POST'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     return $result
 }

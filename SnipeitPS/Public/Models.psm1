@@ -1,11 +1,11 @@
 
-function Get-Models()
+function Get-Model()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -19,23 +19,28 @@ function Get-Models()
 
 function New-Model()
 {
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
     Param(
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$name,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$category_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$manufacturer_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [int]$fieldset_id,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
@@ -48,10 +53,16 @@ function New-Model()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/models" `
-                  -Method POST `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/models"
+            Method     = 'post'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }

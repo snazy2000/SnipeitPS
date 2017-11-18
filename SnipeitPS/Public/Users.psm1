@@ -9,19 +9,19 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Users -url "https://assets.dip.co.uk" -token "token..." 
+Get-Users -url "https://assets.dip.co.uk" -token "token..."
 
 .EXAMPLE
 Get-Users -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.username -eq "stephenm" }
 
 #>
-function Get-Users()
+function Get-User()
 {
-    Param( 
-        [parameter(mandatory=$true)]            
+    Param(
+        [parameter(mandatory=$true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]            
+        [parameter(mandatory=$true)]
         [string]$apiKey
     )
 
