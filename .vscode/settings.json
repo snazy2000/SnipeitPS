@@ -11,5 +11,5 @@
         "editor.acceptSuggestionOnEnter": false,
         "editor.rulers": [80],
         "editor.trimAutoWhitespace": false
-    },
+    }
 }
