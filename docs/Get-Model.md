@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Models
+# Get-Model
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-Models [-url] <String> [-apiKey] <String>
+Get-Model [-url] <String> [-apiKey] <String>
 ```
 
 ## DESCRIPTION

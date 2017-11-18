@@ -5,15 +5,15 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Manufacturers
+# Get-User
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+# Gets a list of Snipe-it Users
 
 ## SYNTAX
 
 ```
-Get-Manufacturers [-url] <String> [-apiKey] <String>
+Get-User [-url] <String> [-apiKey] <String>
 ```
 
 ## DESCRIPTION
@@ -21,17 +21,20 @@ Get-Manufacturers [-url] <String> [-apiKey] <String>
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+Get-Users -url "https://assets.dip.co.uk" -token "token..."
 ```
 
-{{ Add example description here }}
+### -------------------------- EXAMPLE 2 --------------------------
+```
+Get-Users -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.username -eq "stephenm" }
+```
 
 ## PARAMETERS
 
-### -apiKey
-{{Fill apiKey Description}}
+### -url
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -45,8 +48,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -url
-{{Fill url Description}}
+### -apiKey
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -54,7 +57,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,12 +65,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### None
-
-
 ## OUTPUTS
-
-### System.Object
 
 ## NOTES
 

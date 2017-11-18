@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Categories
+# Get-Category
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-Categories [-url] <String> [-apiKey] <String>
+Get-Category [-url] <String> [-apiKey] <String>
 ```
 
 ## DESCRIPTION
