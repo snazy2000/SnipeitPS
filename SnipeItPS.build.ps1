@@ -99,11 +99,7 @@ task TestPS5 {
 }
 
 # Synopsis: Invoke Pester Tests
-<<<<<<< HEAD
-task PesterTests, {
-=======
 task PesterTests CreateHelp, {
->>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
     try {
         $result = Invoke-Pester -PassThru -OutputFile "$BuildRoot\TestResult.xml" -OutputFormat "NUnitXml"
         if ($env:APPVEYOR_PROJECT_NAME) {
@@ -122,11 +118,6 @@ task PesterTests CreateHelp, {
 # Synopsis: Build shippable release
 task Build GenerateRelease, ConvertMarkdown, UpdateManifest
 
-<<<<<<< HEAD
-
-# Synopsis: Generate .\Release structure
-task GenerateRelease, {
-=======
 task CreateHelp {
     Import-Module platyPS -Force
     New-ExternalHelp -Path "$BuildRoot\docs" -OutputPath "$BuildRoot\SnipeitPS\en-US" -Force
@@ -135,7 +126,6 @@ task CreateHelp {
 
 # Synopsis: Generate .\Release structure
 task GenerateRelease CreateHelp, {
->>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
     # Setup
     if (-not (Test-Path "$releasePath\SnipeitPS")) {
         $null = New-Item -Path "$releasePath\SnipeitPS" -ItemType Directory
@@ -155,10 +145,6 @@ task GenerateRelease CreateHelp, {
 # Synopsis: Update the manifest of the module
 task UpdateManifest GetVersion, {
     Update-Metadata -Path "$releasePath\SnipeitPS\SnipeitPS.psd1" -PropertyName ModuleVersion -Value $script:Version
-<<<<<<< HEAD
-    # Update-Metadata -Path "$releasePath\SnipeitPS\SnipeitPS.psd1" -PropertyName FileList -Value (Get-ChildItem $releasePath\SnipeitPS -Recurse).Name
-=======
->>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
     $functionsToExport = Get-ChildItem "$BuildRoot\SnipeitPS\Public" | ForEach-Object {$_.BaseName}
     Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport $functionsToExport
 }
@@ -181,8 +167,6 @@ task GetVersion {
     $newRevision
 }
 
-<<<<<<< HEAD
-=======
 # Synopsis: Convert markdown files to HTML.
 # <http://johnmacfarlane.net/pandoc/>
 $ConvertMarkdown = @{
@@ -197,7 +181,6 @@ task ConvertMarkdown -Partial @ConvertMarkdown InstallPandoc, {process {
         exec { Tools\pandoc.exe $_ --standalone --from=markdown_github "--output=$2" }
     }
 }, RemoveMarkdownFiles
->>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
 # endregion
 
 # region publish
@@ -249,15 +232,9 @@ task RemoveGeneratedFiles {
     Remove-Item $itemsToRemove -Force -Recurse -ErrorAction 0
 }
 
-<<<<<<< HEAD
-# endregion
-
-task . ShowDebug, Clean, Test, Build, Deploy
-=======
 task RemoveMarkdownFiles {
     Remove-Item "$releasePath\SnipeitPS\*.md" -Force -ErrorAction 0
 }
 # endregion
 
 task . ShowDebug, Clean, Test, Build, Deploy
->>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f

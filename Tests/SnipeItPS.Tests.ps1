@@ -8,11 +8,7 @@ $manifestFile = "$moduleRoot\SnipeitPS.psd1"
 $changelogFile = "$projectRoot\CHANGELOG.md"
 $appveyorFile = "$projectRoot\appveyor.yml"
 $publicFunctions = "$moduleRoot\Public"
-<<<<<<< HEAD
-$privateFunctions = "$moduleRoot\Private"
-=======
-$internalFunctions = "$moduleRoot\Private"
->>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
+#$internalFunctions = "$moduleRoot\Private"
 
 Describe "SnipeitPS" {
     Context "All required tests are present" {
@@ -140,7 +136,7 @@ Describe "SnipeitPS" {
         It "Appveyor version matches manifest version" {
             $appveyorVersion -as [Version] | Should Be ( $script:manifest.ModuleVersion -as [Version] )
         }
-    }
+
 
     # The CI changes I'm testng now will render this section obsolete,
     # as it should automatically patch the module manifest file with all
@@ -202,7 +198,6 @@ Describe "SnipeitPS" {
                 throw "The following $($badLines.Count) lines contain trailing whitespace: `r`n`r`n$($badLines -join "`r`n")"
             }
         }
-    }
 
         It 'Source files all end with a newline' {
             $badFiles = @(
@@ -228,7 +223,7 @@ Describe "SnipeitPS" {
             It "Should pass $rule" {
                 If (($analysis) -and ($analysis.RuleName -contains $rule)) {
                     $analysis |
-                        Where RuleName -EQ $rule -OutVariable failures |
+                        Where-Object RuleName -EQ $rule -OutVariable failures |
                         Out-Default
                     $failures.Count | Should Be 0
                 }
