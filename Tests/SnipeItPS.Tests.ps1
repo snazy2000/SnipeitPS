@@ -8,7 +8,7 @@ $manifestFile = "$moduleRoot\SnipeitPS.psd1"
 $changelogFile = "$projectRoot\CHANGELOG.md"
 $appveyorFile = "$projectRoot\appveyor.yml"
 $publicFunctions = "$moduleRoot\Public"
-#$internalFunctions = "$moduleRoot\Private"
+$internalFunctions = "$moduleRoot\Internal"
 
 Describe "SnipeitPS" {
     Context "All required tests are present" {
@@ -31,18 +31,22 @@ Describe "SnipeitPS" {
 
         $script:manifest = $null
 
-        foreach ($line in (Get-Content $changelogFile)) {
-            if ($line -match "^\D*(?<Version>(\d+\.){1,3}\d+)") {
+        foreach ($line in (Get-Content $changelogFile))
+        {
+            if ($line -match "^\D*(?<Version>(\d+\.){1,3}\d+)")
+            {
                 $changelogVersion = $matches.Version
                 break
             }
         }
 
-        foreach ($line in (Get-Content $appveyorFile)) {
+        foreach ($line in (Get-Content $appveyorFile))
+        {
             # (?<Version>()) - non-capturing group, but named Version. This makes it
             # easy to reference the inside group later.
 
-            if ($line -match '^\D*(?<Version>(\d+\.){1,3}\d+).\{build\}') {
+            if ($line -match '^\D*(?<Version>(\d+\.){1,3}\d+).\{build\}')
+            {
                 $appveyorVersion = $matches.Version
                 break
             }
@@ -99,44 +103,11 @@ Describe "SnipeitPS" {
             $appveyorVersion               | Should Not BeNullOrEmpty
             $appveyorVersion -as [Version] | Should Not BeNullOrEmpty
         }
-    }
-
-    # The CI changes I'm testng now will render this section obsolete,
-    # as it should automatically patch the module manifest file with all
-    # exported function names.
-    # Leaving the code here for the moment while I can ensure those
-    # features are working correctly.
-
-    #
-    # Context "Function checking" {
-    #     $functionFiles = Get-ChildItem $publicFunctions -Filter *.ps1 |
-    #         Select-Object -ExpandProperty BaseName |
-    #         Where-Object { $_ -notlike "*.Tests" }
-
-    #     $internalFiles = Get-ChildItem $privateFunctions -Filter *.ps1 |
-    #         Select-Object -ExpandProperty BaseName |
-    #         Where-Object { $_ -notlike "*.Tests" }
-
-    #     #$exportedFunctions = $script:manifest.ExportedFunctions.Values.Name
-    #     $exportedFunctions = $script:manifest.FunctionsToExport
-
-    #     foreach ($f in $functionFiles) {
-    #         It "Exports $f" {
-    #             $exportedFunctions -contains $f | Should Be $true
-    #         }
-    #     }
-
-    #     foreach ($f in $internalFiles) {
-    #         It "Does not export $f" {
-    #             $exportedFunctions -contains $f | Should Be $false
-    #         }
-    #     }
-    # }
 
         It "Appveyor version matches manifest version" {
             $appveyorVersion -as [Version] | Should Be ( $script:manifest.ModuleVersion -as [Version] )
         }
-
+    }
 
     # The CI changes I'm testng now will render this section obsolete,
     # as it should automatically patch the module manifest file with all
@@ -182,34 +153,41 @@ Describe "SnipeitPS" {
 
         It 'Source files contain no trailing whitespace' {
             $badLines = @(
-                foreach ($file in $files) {
+                foreach ($file in $files)
+                {
                     $lines = [System.IO.File]::ReadAllLines($file.FullName)
                     $lineCount = $lines.Count
 
-                    for ($i = 0; $i -lt $lineCount; $i++) {
-                        if ($lines[$i] -match '\s+$') {
+                    for ($i = 0; $i -lt $lineCount; $i++)
+                    {
+                        if ($lines[$i] -match '\s+$')
+                        {
                             'File: {0}, Line: {1}' -f $file.FullName, ($i + 1)
                         }
                     }
                 }
             )
 
-            if ($badLines.Count -gt 0) {
+            if ($badLines.Count -gt 0)
+            {
                 throw "The following $($badLines.Count) lines contain trailing whitespace: `r`n`r`n$($badLines -join "`r`n")"
             }
         }
 
         It 'Source files all end with a newline' {
             $badFiles = @(
-                foreach ($file in $files) {
+                foreach ($file in $files)
+                {
                     $string = [System.IO.File]::ReadAllText($file.FullName)
-                    if ($string.Length -gt 0 -and $string[-1] -ne "`n") {
+                    if ($string.Length -gt 0 -and $string[-1] -ne "`n")
+                    {
                         $file.FullName
                     }
                 }
             )
 
-            if ($badFiles.Count -gt 0) {
+            if ($badFiles.Count -gt 0)
+            {
                 throw "The following files do not end with a newline: `r`n`r`n$($badFiles -join "`r`n")"
             }
         }
@@ -219,9 +197,11 @@ Describe "SnipeitPS" {
         $analysis = Invoke-ScriptAnalyzer -Path "$moduleRoot" -Recurse
         $scriptAnalyzerRules = Get-ScriptAnalyzerRule
 
-        forEach ($rule in $scriptAnalyzerRules) {
+        forEach ($rule in $scriptAnalyzerRules)
+        {
             It "Should pass $rule" {
-                If (($analysis) -and ($analysis.RuleName -contains $rule)) {
+                If (($analysis) -and ($analysis.RuleName -contains $rule))
+                {
                     $analysis |
                         Where-Object RuleName -EQ $rule -OutVariable failures |
                         Out-Default
