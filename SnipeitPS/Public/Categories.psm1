@@ -1,4 +1,4 @@
-function Get-Categories()
+function Get-Category()
 {
     Param(
         [parameter(mandatory=$true)]

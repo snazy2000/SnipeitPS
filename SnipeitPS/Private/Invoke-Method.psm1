@@ -19,7 +19,11 @@
         [ValidateNotNullOrEmpty()]
         [string]$Body,
 
-        [string] $Token
+        [string] $Token,
+
+        # GET Parameters
+        [Hashtable]$GetParameters
+
     )
 
     BEGIN {
@@ -38,6 +42,14 @@
     }
 
     Process {
+        if ($GetParameters -and ($URi -notlike "*\?*")) 
+        {
+            Write-Debug "Using `$GetParameters: $($GetParameters | Out-String)"
+            [string]$URI += (ConvertTo-GetParameter $GetParameters)
+            # Prevent recursive appends
+            $GetParameters = $null
+        }
+
         # set mandatory parameters
         $splatParameters = @{
             Uri             = $URi

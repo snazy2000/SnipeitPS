@@ -99,7 +99,11 @@ task TestPS5 {
 }
 
 # Synopsis: Invoke Pester Tests
+<<<<<<< HEAD
 task PesterTests, {
+=======
+task PesterTests CreateHelp, {
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
     try {
         $result = Invoke-Pester -PassThru -OutputFile "$BuildRoot\TestResult.xml" -OutputFormat "NUnitXml"
         if ($env:APPVEYOR_PROJECT_NAME) {
@@ -118,9 +122,20 @@ task PesterTests, {
 # Synopsis: Build shippable release
 task Build GenerateRelease, ConvertMarkdown, UpdateManifest
 
+<<<<<<< HEAD
 
 # Synopsis: Generate .\Release structure
 task GenerateRelease, {
+=======
+task CreateHelp {
+    Import-Module platyPS -Force
+    New-ExternalHelp -Path "$BuildRoot\docs" -OutputPath "$BuildRoot\SnipeitPS\en-US" -Force
+    Remove-Module SnipeitPS, platyPS
+}
+
+# Synopsis: Generate .\Release structure
+task GenerateRelease CreateHelp, {
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
     # Setup
     if (-not (Test-Path "$releasePath\SnipeitPS")) {
         $null = New-Item -Path "$releasePath\SnipeitPS" -ItemType Directory
@@ -140,7 +155,10 @@ task GenerateRelease, {
 # Synopsis: Update the manifest of the module
 task UpdateManifest GetVersion, {
     Update-Metadata -Path "$releasePath\SnipeitPS\SnipeitPS.psd1" -PropertyName ModuleVersion -Value $script:Version
+<<<<<<< HEAD
     # Update-Metadata -Path "$releasePath\SnipeitPS\SnipeitPS.psd1" -PropertyName FileList -Value (Get-ChildItem $releasePath\SnipeitPS -Recurse).Name
+=======
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
     $functionsToExport = Get-ChildItem "$BuildRoot\SnipeitPS\Public" | ForEach-Object {$_.BaseName}
     Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport $functionsToExport
 }
@@ -163,8 +181,58 @@ task GetVersion {
     $newRevision
 }
 
+<<<<<<< HEAD
+=======
+# Synopsis: Convert markdown files to HTML.
+# <http://johnmacfarlane.net/pandoc/>
+$ConvertMarkdown = @{
+    Inputs  = { Get-ChildItem "$releasePath\SnipeitPS\*.md" -Recurse }
+    Outputs = {process {
+            [System.IO.Path]::ChangeExtension($_, 'htm')
+        }
+    }
+}
+# Synopsis: Converts *.md and *.markdown files to *.htm
+task ConvertMarkdown -Partial @ConvertMarkdown InstallPandoc, {process {
+        exec { Tools\pandoc.exe $_ --standalone --from=markdown_github "--output=$2" }
+    }
+}, RemoveMarkdownFiles
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
 # endregion
 
+# region publish
+task Deploy -If (
+    # Only deploy if the master branch changes
+    $env:APPVEYOR_REPO_BRANCH -eq 'master' -and
+    # Do not deploy if this is a pull request (because it hasn't been approved yet)
+    (-not ($env:APPVEYOR_PULL_REQUEST_NUMBER)) -and
+    # Do not deploy if the commit contains the string "skip-deploy"
+    # Meant for major/minor version publishes with a .0 build/patch version (like 2.1.0)
+    $env:APPVEYOR_REPO_COMMIT_MESSAGE -notlike '*skip-deploy*'
+) {
+    Remove-Module SnipeitPS -ErrorAction SilentlyContinue
+}, PublishToGallery
+
+task PublishToGallery {
+    assert ($env:PSGalleryAPIKey) "No key for the PSGallery"
+
+    Import-Module $releasePath\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
+    Publish-Module -Name SnipeitPS -NuGetApiKey $env:PSGalleryAPIKey
+}
+
+# Synopsis: Push with a version tag.
+task PushRelease GitStatus, GetVersion, {
+    # Done in appveyor.yml with deploy provider.
+    # This is needed, as I don't know how to athenticate (2-factor) in here.
+    exec { git checkout master }
+    $changes = exec { git status --short }
+    assert (!$changes) "Please, commit changes."
+
+    exec { git push }
+    exec { git tag -a "v$Version" -m "v$Version" }
+    exec { git push origin "v$Version" }
+}
+# endregion
 
 
 #region Cleaning tasks
@@ -176,10 +244,20 @@ task RemoveGeneratedFiles {
         'Release'
         '*.htm'
         'TestResult.xml'
+        'SnipeitPS\en-US\*'
     )
     Remove-Item $itemsToRemove -Force -Recurse -ErrorAction 0
 }
 
+<<<<<<< HEAD
 # endregion
 
 task . ShowDebug, Clean, Test, Build, Deploy
+=======
+task RemoveMarkdownFiles {
+    Remove-Item "$releasePath\SnipeitPS\*.md" -Force -ErrorAction 0
+}
+# endregion
+
+task . ShowDebug, Clean, Test, Build, Deploy
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f

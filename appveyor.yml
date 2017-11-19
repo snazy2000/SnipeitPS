@@ -10,8 +10,9 @@
 # This tells AppVeyor that we need WMF 5 and PowerShell 5.0
 os: WMF 5
 
-#environment:
-    # To encrypt a value in AppVeyor, go to the Account menu and choose "Encrypt data"
+environment:
+  PSGalleryAPIKey:
+    secure: UdM6qhf5B0G8liHhUrwWERCZr44iSqmg4jUq0lwlTjZs4KyeoiwnBzdej0phqIAm
 
 version: 1.0.{build}
 
@@ -41,6 +42,7 @@ install:
         Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
         Install-Module InvokeBuild -Scope CurrentUser -Force
         Install-Module BuildHelpers -Scope CurrentUser -Force
+        Install-Module platyPS -Scope CurrentUser -Force
         Install-Module Pester -Scope CurrentUser -Force
         Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
         $env:releasePath = "$($pwd.Path)\Release"
@@ -57,3 +59,17 @@ build_script:
 test_script:
     - ps: Invoke-Build -Task Test
 
+before_deploy:
+    - ps: Invoke-Build -Task Deploy
+
+deploy:
+    provider: GitHub
+    release: v$(appveyor_build_version)
+    description: ''
+    auth_token:
+        secure: m72Ke3nJcSxZkc36UwRIw+q0NtNvERfQYHZUBNDvLP/kjW+mWmVueR6tmgBujyBM
+    draft: false
+    prerelease: false
+    on:
+        branch: master                  # release from master branch only
+        appveyor_repo_tag: false        # deploy on tag push only

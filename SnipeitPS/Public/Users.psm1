@@ -15,7 +15,7 @@ Get-Users -url "https://assets.dip.co.uk" -token "token..."
 Get-Users -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.username -eq "stephenm" }
 
 #>
-function Get-Users()
+function Get-User()
 {
     Param(
         [parameter(mandatory=$true)]

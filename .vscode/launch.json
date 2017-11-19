@@ -1,6 +1,17 @@
 {
     "version": "0.2.0",
+<<<<<<< HEAD
     "configurations": [{
+=======
+    "configurations": [
+        {
+            "type": "PowerShell",
+            "request": "launch",
+            "name": "PowerShell Interactive Session",
+            "cwd": "${workspaceRoot}"
+        },
+        {
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f
             "type": "PowerShell",
             "request": "launch",
             "name": "PowerShell Pester Tests",
@@ -15,6 +26,7 @@
             "script": "${file}",
             "args": [],
             "cwd": "${file}"
+<<<<<<< HEAD
         },
         {
             "type": "PowerShell",
@@ -31,3 +43,8 @@
         }
     ]
 }
+=======
+        }
+    ]
+}
+>>>>>>> 13ec3a62ac71275ec2bbe0bbf993130e9f53589f

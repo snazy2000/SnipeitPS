@@ -17,6 +17,11 @@ function Get-Component()
 
 function New-Component()
 {
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
     Param(
         [parameter(mandatory=$true)]
         [string]$name,
@@ -42,16 +47,27 @@ function New-Component()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/components" `
-                  -Method POST `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/components"
+            Method     = 'POST'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }
 
-function Update-Component()
+function Set-Component()
 {
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
     Param(
         [parameter(mandatory=$true)]
         [string]$id,
@@ -72,10 +88,16 @@ function Update-Component()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/components/$component_id" `
-                  -Method Patch `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/components/$component_id"
+            Method     = 'Patch'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }

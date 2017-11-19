@@ -1,5 +1,5 @@
 
-function Get-Models()
+function Get-Model()
 {
     Param(
         [parameter(mandatory=$true)]
@@ -19,6 +19,11 @@ function Get-Models()
 
 function New-Model()
 {
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
     Param(
         [parameter(mandatory=$true)]
         [string]$name,
@@ -48,10 +53,16 @@ function New-Model()
 
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/models" `
-                  -Method POST `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/models"
+            Method     = 'post'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }

@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/dvuw4ggx543nx3h7?svg=true)](https://ci.appveyor.com/project/snazy2000/snipeitps)

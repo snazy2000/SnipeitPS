@@ -1,4 +1,4 @@
-function Get-Manufacturers()
+function Get-Manufacturer()
 {
     Param(
         [parameter(mandatory=$true)]
@@ -17,6 +17,11 @@ function Get-Manufacturers()
 
 function New-Manufacturer()
 {
+    [CmdletBinding(
+        SupportsShouldProcess=$true,
+        ConfirmImpact="High"
+    )]
+
     Param(
         [parameter(mandatory=$true)]
         [string]$Name,
@@ -36,10 +41,16 @@ function New-Manufacturer()
     #Convert Values to JSON format
     $Body = $Values | ConvertTo-Json;
 
-    $result = Invoke-Method -URi "$url/api/v1/manufacturers" `
-                  -Method POST `
-                  -Body $Body `
-                  -Token $apiKey
+    $Parameters = @{
+            Uri        = "$url/api/v1/manufacturers"
+            Method     = 'post'
+            Body       = $Body
+            Token      = $apiKey
+        }
+
+    If ($PSCmdlet.ShouldProcess()) {
+        $result = Invoke-Method @Parameters
+    }
 
     $result
 }
