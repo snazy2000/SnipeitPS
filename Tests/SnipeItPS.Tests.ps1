@@ -8,7 +8,6 @@ $manifestFile = "$moduleRoot\SnipeitPS.psd1"
 $changelogFile = "$projectRoot\CHANGELOG.md"
 $appveyorFile = "$projectRoot\appveyor.yml"
 $publicFunctions = "$moduleRoot\Public"
-$internalFunctions = "$moduleRoot\Internal"
 
 Describe "SnipeitPS" {
     Context "All required tests are present" {
