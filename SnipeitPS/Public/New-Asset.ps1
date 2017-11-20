@@ -68,7 +68,10 @@ function New-Asset()
         "model_id"  = $model_id
     }
 
-    $Values += $customfields
+    if ($customfields)
+    {
+        $Values += $customfields
+    }
 
     $Body = $Values | ConvertTo-Json;
 
@@ -79,7 +82,7 @@ function New-Asset()
         Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess())
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
     {
         $result = Invoke-Method @Parameters
     }

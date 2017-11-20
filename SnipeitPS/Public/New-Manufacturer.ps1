@@ -51,7 +51,7 @@ function New-Manufacturer()
         Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess())
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
     {
         $result = Invoke-Method @Parameters
     }

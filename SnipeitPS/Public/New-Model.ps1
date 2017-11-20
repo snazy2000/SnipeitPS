@@ -70,7 +70,7 @@ function New-Model()
         Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess())
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
     {
         $result = Invoke-Method @Parameters
     }
