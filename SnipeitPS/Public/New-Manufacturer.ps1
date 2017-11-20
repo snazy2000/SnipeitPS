@@ -1,3 +1,23 @@
+<#
+    .SYNOPSIS
+    Add a new Manufacturer to Snipe-it asset system
+
+    .DESCRIPTION
+    Long description
+
+    .PARAMETER Name
+    Name of the Manufacturer
+
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-Info command
+
+    .PARAMETER apiKey
+    Users API Key for Snipeit, can be set using Set-Info command
+
+    .EXAMPLE
+    New-Manufacturer -name "HP"
+#>
+
 function New-Manufacturer()
 {
     [CmdletBinding(

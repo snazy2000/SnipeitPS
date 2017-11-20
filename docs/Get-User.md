@@ -23,12 +23,12 @@ Get-User [-url] <String> [-apiKey] <String>
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-Users -url "https://assets.dip.co.uk" -token "token..."
+Get-User -url "https://assets.example.com" -token "token..."
 ```
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-Users -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.username -eq "stephenm" }
+Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.username -eq "stephenm" }
 ```
 
 ## PARAMETERS

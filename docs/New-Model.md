@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-Model
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Add a new Model to Snipe-it asset system
 
 ## SYNTAX
 
@@ -18,29 +18,102 @@ New-Model [-name] <String> [-category_id] <Int32> [-manufacturer_id] <Int32> [-f
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Long description
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -name
+Name of the Asset Model
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -category_id
+Category ID that the asset belongs to this can be got using Get-Category
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manufacturer_id
+Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -fieldset_id
+Fieldset ID that the asset uses (Custom fields)
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,91 +135,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-{{Fill apiKey Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -category_id
-{{Fill category_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -fieldset_id
-{{Fill fieldset_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-{{Fill manufacturer_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-{{Fill name Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -url
-{{Fill url Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -154,12 +152,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### None
-
-
 ## OUTPUTS
-
-### System.Object
 
 ## NOTES
 

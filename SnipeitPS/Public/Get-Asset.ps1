@@ -9,10 +9,10 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Asset -url "https://assets.dip.co.uk" -token "token..."
+Get-Asset -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-Asset -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.name -eq "SUPPORT23" }
+Get-Asset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MyMachine" }
 
 #>
 
@@ -26,9 +26,13 @@ function Get-Asset()
         [string]$apiKey
     )
 
-    $result = Invoke-Method -URi "$url/api/v1/hardware" `
-                  -Method GET `
-                  -Token $apiKey
+    $Parameters = @{
+        Uri           = "$url/api/v1/hardware"
+        Method        = 'Get'
+        Token         = $apiKey
+    }
+
+    $result = Invoke-Method @Parameters
 
     $result
 }
