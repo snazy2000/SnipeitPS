@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Model
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+# Gets a list of Snipe-it Models
 
 ## SYNTAX
 
@@ -21,17 +21,20 @@ Get-Model [-url] <String> [-apiKey] <String>
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+Get-Models -url "https://assets.example.com" -token "token..."
 ```
 
-{{ Add example description here }}
+### -------------------------- EXAMPLE 2 --------------------------
+```
+Get-Models -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "DL380" }
+```
 
 ## PARAMETERS
 
-### -apiKey
-{{Fill apiKey Description}}
+### -url
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -45,8 +48,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -url
-{{Fill url Description}}
+### -apiKey
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -54,7 +57,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,12 +65,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### None
-
-
 ## OUTPUTS
-
-### System.Object
 
 ## NOTES
 

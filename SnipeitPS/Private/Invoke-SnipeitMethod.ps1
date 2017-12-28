@@ -1,4 +1,4 @@
-﻿function Invoke-Method {
+﻿function Invoke-SnipeitMethod {
     <#
     .SYNOPSIS
     Extracted invokation of the REST method to own function.
@@ -42,7 +42,7 @@
     }
 
     Process {
-        if ($GetParameters -and ($URi -notlike "*\?*")) 
+        if ($GetParameters -and ($URi -notlike "*\?*"))
         {
             Write-Debug "Using `$GetParameters: $($GetParameters | Out-String)"
             [string]$URI += (ConvertTo-GetParameter $GetParameters)
@@ -86,7 +86,7 @@
 
                 # API returned a Content: lets work wit it
                 $response = ConvertFrom-Json -InputObject $webResponse.Content
-                
+
                 if ($response.status -eq "error") {
                     Write-Verbose "[$($MyInvocation.MyCommand.Name)] An error response was received from; resolving"
                     # This could be handled nicely in an function such as:
@@ -95,14 +95,14 @@
                 }
                 else {
                     $result = $response
-                    if (($response) -and ($response | Get-Member -Name payload)) 
+                    if (($response) -and ($response | Get-Member -Name payload))
                     {
                         $result = $response.payload
                     }
                     elseif (($response) -and ($response | Get-Member -Name rows)) {
                         $result = $response.rows
                     }
-                        
+
                     $result
                 }
             }
@@ -111,7 +111,7 @@
                 # This could be wanted behavior of the API
                 Write-Verbose "[$($MyInvocation.MyCommand.Name)] No content was returned from."
             }
-            
+
         }
         else {
             Write-Verbose "[$($MyInvocation.MyCommand.Name)] No Web result object was returned from. This is unusual!"

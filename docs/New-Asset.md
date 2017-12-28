@@ -8,46 +8,49 @@ schema: 2.0.0
 # New-Asset
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Add a new Asset to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-Asset [-Name] <String> [-Status_id] <String> [-Model_id] <String> [-url] <String> [-apiKey] <String>
- [[-customfields] <Hashtable>] [-WhatIf] [-Confirm]
+New-Asset [[-tag] <String>] [-Name] <String> [-Status_id] <String> [-Model_id] <String> [-url] <String>
+ [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Long description
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+New-Asset -status_id 1 -model_id 1 -name "Machine1"
 ```
 
-{{ Add example description here }}
+### -------------------------- EXAMPLE 2 --------------------------
+```
+New-Asset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+```
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -tag
+Asset Tag for the Asset
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases: 
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Model_id
-{{Fill Model_id Description}}
+### -Name
+Name of the Asset
 
 ```yaml
 Type: String
@@ -61,8 +64,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-{{Fill Name Description}}
+### -Status_id
+Status ID of the asset, this can be got using Get-Status
 
 ```yaml
 Type: String
@@ -70,14 +73,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status_id
-{{Fill Status_id Description}}
+### -Model_id
+Model ID of the asset, this can be got using Get-Model
 
 ```yaml
 Type: String
@@ -85,7 +88,52 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -customfields
+Hastable of custom fields and extra fields that need passing through to Snipeit
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,46 +155,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-{{Fill apiKey Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -customfields
-{{Fill customfields Description}}
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -url
-{{Fill url Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -154,12 +172,7 @@ Accept wildcard characters: False
 
 ## INPUTS
 
-### None
-
-
 ## OUTPUTS
-
-### System.Object
 
 ## NOTES
 

@@ -217,6 +217,7 @@ task PushRelease GitStatus, GetVersion, {
 }
 # endregion
 
+
 #region Cleaning tasks
 task Clean RemoveGeneratedFiles
 

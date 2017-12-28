@@ -23,12 +23,12 @@ Get-Asset [-url] <String> [-apiKey] <String>
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-Asset -url "https://assets.dip.co.uk" -token "token..."
+Get-Asset -url "https://assets.example.com" -token "token..."
 ```
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-Asset -url "https://assets.dip.co.uk" -token "token..." | Where-Object {$_.name -eq "SUPPORT23" }
+Get-Asset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MyMachine" }
 ```
 
 ## PARAMETERS
