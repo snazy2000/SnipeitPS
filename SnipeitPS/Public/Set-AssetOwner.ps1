@@ -34,7 +34,7 @@ function Set-AssetOwner()
 
     If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
     {
-        $result = Invoke-Method @Parameters
+        $result = Invoke-SnipeitMethod @Parameters
     }
 
     return $result

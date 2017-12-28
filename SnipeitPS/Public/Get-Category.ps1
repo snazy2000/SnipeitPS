@@ -32,7 +32,7 @@ function Get-Category()
         Token         = $apiKey
     }
 
-    $result = Invoke-Method @Parameters
+    $result = Invoke-SnipeitMethod @Parameters
 
     $result
 }

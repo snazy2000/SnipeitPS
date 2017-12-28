@@ -68,7 +68,7 @@ function New-Component()
 
     If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
     {
-        $result = Invoke-Method @Parameters
+        $result = Invoke-SnipeitMethod @Parameters
     }
 
     $result

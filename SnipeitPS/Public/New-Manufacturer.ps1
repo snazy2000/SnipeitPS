@@ -53,7 +53,7 @@ function New-Manufacturer()
 
     If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
     {
-        $result = Invoke-Method @Parameters
+        $result = Invoke-SnipeitMethod @Parameters
     }
 
     $result

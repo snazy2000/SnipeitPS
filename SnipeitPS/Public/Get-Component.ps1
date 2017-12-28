@@ -32,7 +32,7 @@ function Get-Component()
         Token         = $apiKey
     }
 
-    $result = Invoke-Method @Parameters
+    $result = Invoke-SnipeitMethod @Parameters
 
     $result
 }
