@@ -62,10 +62,14 @@ function New-Asset()
     )
 
     $Values = @{
-        "asset_tag" = $tag
         "name"      = $Name
         "status_id" = $status_id
         "model_id"  = $model_id
+    }
+
+    if ($PSBoundParameters.ContainsKey('tag'))
+    {
+        $Values += @{"asset_tag" = $tag}
     }
 
     if ($customfields)
