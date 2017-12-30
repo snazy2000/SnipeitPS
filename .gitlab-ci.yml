@@ -1,6 +1,7 @@
 variables:
   GIT_SSL_NO_VERIFY: "true"
-
+  ErrorActionPreference: STOP
+  
 before_script:
   - Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
   - Install-Module InvokeBuild, BuildHelpers, PSScriptAnalyzer -force -Scope CurrentUser
