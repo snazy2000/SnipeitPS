@@ -76,7 +76,7 @@ function Release
     Write-Output "New version : $version"
 
     Update-Metadata -Path "$releasePath\SnipeitPS\SnipeitPS.psd1" -PropertyName ModuleVersion -Value $version
-    $functionsToExport = Get-ChildItem "$BuildRoot\SnipeitPS\SnipeitPS\Public" | ForEach-Object {$_.BaseName}
+    $functionsToExport = Get-ChildItem "$BuildRoot\SnipeitPS\Public" | ForEach-Object {$_.BaseName}
     Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport $functionsToExport
 
     Remove-Module SnipeitPS
