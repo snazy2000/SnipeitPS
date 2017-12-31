@@ -17,5 +17,5 @@ Release:
   stage: release
  script:
    - .\build.ps1 -Tasks 'test', 'release'
-  only:
-    - master
+ only:
+   - master
