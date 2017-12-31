@@ -79,7 +79,7 @@ function Release
     $functionsToExport = Get-ChildItem "$BuildRoot\SnipeitPS\Public" | ForEach-Object {$_.BaseName}
     Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport $functionsToExport
 
-    Remove-Module SnipeitPS
+    #Remove-Module SnipeitPS
     Import-Module $env:CI_PROJECT_DIR\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
     Publish-Module -Name SnipeitPS -Repository InternalPowerShellModules -NuGetApiKey 123456789
 }
