@@ -1,22 +1,18 @@
 stages:
   - test
   - release
-
 variables:
   GIT_SSL_NO_VERIFY: "true"
   ErrorActionPreference: STOP
-
 Test:
   stage: test
   script:
    - .\build.ps1 -Tasks 'test'
   except:
     - master
-
 Release:
   stage: release
- script:
+  script:
    - .\build.ps1 -Tasks 'test','release'
   only:
     - master
-
