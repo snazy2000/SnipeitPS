@@ -80,7 +80,7 @@ function Release
     Set-ModuleFunctions -Name "$releasePath\SnipeitPS\SnipeitPS.psd1" -FunctionsToExport $functionsToExport
 
     #Remove-Module SnipeitPS
-    Import-Module $env:CI_PROJECT_DIR\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
+    Import-Module $env:CI_PROJECT_DIR\SnipeitPS\SnipeitPS.psd1 -force -ErrorAction Stop
     Publish-Module -Name SnipeitPS -Repository InternalPowerShellModules -NuGetApiKey 123456789
 }
 
