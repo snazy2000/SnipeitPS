@@ -9,7 +9,7 @@ variables:
 Test:
   stage: test
   script:
-   - .\build.ps1 -Tasks 'analyze','test'
+   - .\build.ps1 -Tasks 'test'
   except:
     - master
 

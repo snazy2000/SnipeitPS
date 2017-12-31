@@ -14,26 +14,13 @@ function Install-Dependency([string] $Name)
     }
 }
 
-function Analyze-Scripts
-{
-    param(
-        [string]$Path = "$PSScriptRoot\SnipeitPS\"
-    )
-    $result = Invoke-ScriptAnalyzer -Path $Path -Severity @('Error', 'Warning') -Recurse
-    if ($result) {
-       $result | Format-Table
-       Write-Error -Message "$($result.SuggestedCorrections.Count) linting errors or warnings were found. The build cannot continue."
-       EXIT 1
-    }
-}
-
 function Run-Tests
 {
     param(
         [string]$Path = "$PSScriptRoot\SnipeitPS"
     )
 
-    $results = Invoke-Pester -Path $Path -PassThru
+    $results = Invoke-Pester -PassThru
     if($results.FailedCount -gt 0) {
        Write-Output "  > $($results.FailedCount) tests failed. The build cannot continue."
        foreach($result in $($results.TestResult | Where {$_.Passed -eq $false} | Select-Object -Property Describe,Context,Name,Passed,Time)){
@@ -47,12 +34,8 @@ function Run-Tests
 foreach($task in $Tasks){
     switch($task)
     {
-        "analyze" {
-            Install-Dependency -Name "PSScriptAnalyzer"
-            Write-Output "Analyzing Scripts..."
-            Analyze-Scripts
-        }
         "test" {
+            Install-Dependency -Name "PSScriptAnalyzer"
             Install-Dependency -Name "Pester"
             Write-Output "Running Pester Tests..."
             Run-Tests
