@@ -19,3 +19,4 @@ Release:
    - .\build.ps1 -Tasks 'test','release'
   only:
     - master
+
