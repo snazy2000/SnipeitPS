@@ -4,7 +4,7 @@ variables:
   
 before_script:
   - Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
-  - Install-Module InvokeBuild, BuildHelpers, PSScriptAnalyzer -force
+  - Install-Module InvokeBuild, BuildHelpers, PSScriptAnalyzer -force -AllowClobber
   - Install-Module Pester -Force -SkipPublisherCheck 
   - Import-Module PSScriptAnalyzer
 
