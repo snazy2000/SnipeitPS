@@ -1,6 +1,6 @@
 stages:
   - test
-#  - release
+  - release
 
 variables:
   GIT_SSL_NO_VERIFY: "true"
@@ -13,9 +13,9 @@ Test:
   except:
     - master
 
-#Release:
-#  stage: release
-# script:
-#   - .\build.ps1 -Tasks 'analyze','test','release'
-#  only:
-#    - master
+Release:
+  stage: release
+ script:
+   - .\build.ps1 -Tasks 'test','release'
+  only:
+    - master

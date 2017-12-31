@@ -40,5 +40,17 @@ foreach($task in $Tasks){
             Write-Output "Running Pester Tests..."
             Run-Tests
         }
+        "release" {
+            Register-PSRepository  -Name InternalPowerShellModules `
+            -SourceLocation  http://192.168.1.155:81/nuget/DIPowerShell `
+            -PackageManagementProvider NuGet  `
+            -PublishLocation http://192.168.1.155:81/nuget/DIPowerShell  `
+            -InstallationPolicy Trusted
+
+            Write-Output "Registerting Module"
+
+            Import-Module $env:CI_PROJECT_PATH\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
+            Publish-Module -Name SnipeitPS -Repository InternalPowerShellModules -NuGetApiKey 123456789
+        }
     }
 }
