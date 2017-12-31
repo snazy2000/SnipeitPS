@@ -1,29 +1,21 @@
-variables:
-  GIT_SSL_NO_VERIFY: "true"
-
-before_script:
-  - Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
-  - Install-Module InvokeBuild, BuildHelpers, PSScriptAnalyzer -force -Scope CurrentUser
-  - Install-Module Pester -Force -SkipPublisherCheck -Scope CurrentUser
-  - Import-Module PSScriptAnalyzer -Scope CurrentUser
-
 stages:
   - test
 #  - release
 
-ps_scriptanalyzer:
-  stage: test
-  script: 
-  - $res = (Invoke-ScriptAnalyzer -Path . -Severity Error).count
-  - if ($res -gt 0) { throw "$($res) Analytics failed."}
-  tags:
-  - powershell
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+  ErrorActionPreference: STOP
 
-#  except:
-#    - master
+Test:
+  stage: test
+  script:
+   - .\build.ps1 -Tasks 'analyze','test'
+  except:
+    - master
+
 #Release:
 #  stage: release
-#  script:
+# script:
 #   - .\build.ps1 -Tasks 'analyze','test','release'
 #  only:
 #    - master
