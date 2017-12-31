@@ -49,7 +49,7 @@ foreach($task in $Tasks){
 
             Write-Output "Registerting Module"
 
-            Import-Module $env:CI_PROJECT_PATH\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
+            Import-Module $env:CI_PROJECT_DIR\SnipeitPS\SnipeitPS.psd1 -ErrorAction Stop
             Publish-Module -Name SnipeitPS -Repository InternalPowerShellModules -NuGetApiKey 123456789
         }
     }
