@@ -2,7 +2,7 @@ function Set-Component()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "High"
+        ConfirmImpact = "Medium"
     )]
 
     Param(

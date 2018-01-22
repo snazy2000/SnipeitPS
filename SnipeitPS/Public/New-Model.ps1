@@ -31,7 +31,7 @@ function New-Model()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "High"
+        ConfirmImpact = "Low"
     )]
 
     Param(

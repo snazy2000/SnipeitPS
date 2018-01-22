@@ -37,7 +37,7 @@ function New-Asset()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "High"
+        ConfirmImpact = "Low"
     )]
 
     Param(

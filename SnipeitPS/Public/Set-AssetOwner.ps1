@@ -2,7 +2,7 @@ function Set-AssetOwner()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "High"
+        ConfirmImpact = "Medium"
     )]
 
     Param(

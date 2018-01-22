@@ -106,6 +106,9 @@
                     $result
                 }
             }
+            elseif ($webResponse.StatusCode -eq "Unauthorized") {
+                Write-Error "[$($MyInvocation.MyCommand.Name)] You are not Authorized to access the resource, check your token is correct"
+            }
             else {
                 # No content, although statusCode < 400
                 # This could be wanted behavior of the API
