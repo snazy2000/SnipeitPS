@@ -27,8 +27,7 @@
     New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 #>
 
-function New-Model()
-{
+function New-Location() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -38,14 +37,15 @@ function New-Model()
         [parameter(mandatory = $true)]
         [string]$name,
 
-        [parameter(mandatory = $true)]
-        [int]$category_id,
+        [string]$address,
 
-        [parameter(mandatory = $true)]
-        [int]$manufacturer_id,
+        [string]$address2,
 
-        [parameter(mandatory = $true)]
-        [int]$fieldset_id,
+        [string]$state,
+
+        [string]$country,
+
+        [string]$zip,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -55,23 +55,24 @@ function New-Model()
     )
 
     $Values = @{
-        name            = $name
-        category_id     = $category_id
-        manufacturer_id = $manufacturer_id
-        fieldset_id     = $fieldset_id
+        name     = $name
+        address  = $address
+        address2 = $address2
+        state    = $state
+        country  = $country
+        zip      = $zip
     }
 
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
-        Uri    = "$url/api/v1/models"
+        Uri    = "$url/api/v1/locations"
         Method = 'post'
         Body   = $Body
         Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 

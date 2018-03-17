@@ -22,7 +22,7 @@ function New-Manufacturer()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "High"
+        ConfirmImpact = "Low"
     )]
 
     Param(

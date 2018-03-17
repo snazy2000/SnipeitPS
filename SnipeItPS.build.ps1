@@ -56,6 +56,7 @@ task InstallPandoc -If (-not (Test-Path Tools\pandoc.exe)) {
 
     # Get latest bits
     $latestRelease = "https://github.com/jgm/pandoc/releases/download/1.19.2.1/pandoc-1.19.2.1-windows.msi"
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Invoke-WebRequest -Uri $latestRelease -OutFile "$($env:temp)\pandoc.msi"
 
     # Extract bits

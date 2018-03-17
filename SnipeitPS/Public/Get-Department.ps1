@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Assets
+# Gets a list of Snipe-it Departments
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
@@ -9,14 +9,14 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Asset -url "https://assets.example.com" -token "token..."
+Get-Department -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-Asset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MyMachine" }
+Get-Department -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Department1" }
 
 #>
 
-function Get-Asset()
+function Get-Department()
 {
     Param(
         [parameter(mandatory=$true)]
@@ -27,11 +27,8 @@ function Get-Asset()
     )
 
     $Parameters = @{
-        Uri           = "$url/api/v1/hardware"
+        Uri           = "$url/api/v1/departments"
         Method        = 'Get'
-        GetParameters = @{
-            limit  = 9999
-        }
         Token         = $apiKey
     }
 
@@ -39,9 +36,4 @@ function Get-Asset()
 
     $result
 }
-
-
-
-
-
 

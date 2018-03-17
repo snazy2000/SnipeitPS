@@ -27,7 +27,7 @@
     General notes
 #>
 
-function New-Component()
+function New-Department()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -38,11 +38,11 @@ function New-Component()
         [parameter(mandatory = $true)]
         [string]$name,
 
-        [parameter(mandatory = $true)]
-        [string]$category_id,
+        [string]$company_id,
 
-        [parameter(mandatory = $true)]
-        [string]$qty,
+        [string]$location_id,
+
+        [string]$manager_id,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -53,14 +53,15 @@ function New-Component()
 
     $Values = @{
         "name"        = $name
-        "category_id" = $category_id
-        "qty"         = $qty
+        "company_id"  = $company_id
+        "location_id" = $location_id
+        "manager_id"  = $manager_id
     }
 
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
-        Uri    = "$url/api/v1/components"
+        Uri    = "$url/api/v1/departments"
         Method = 'POST'
         Body   = $Body
         Token  = $apiKey
