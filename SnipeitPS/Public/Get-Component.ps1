@@ -19,6 +19,8 @@ Get-Component -url "https://assets.example.com" -token "token..." | Where-Object
 function Get-Component()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 
@@ -30,6 +32,10 @@ function Get-Component()
         Uri           = "$url/api/v1/components"
         Method        = 'Get'
         Token         = $apiKey
+        GetParameters = @{
+            search = $search
+            limit  = 999
+        }
     }
 
     $result = Invoke-SnipeitMethod @Parameters

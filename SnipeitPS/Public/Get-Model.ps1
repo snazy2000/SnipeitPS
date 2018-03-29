@@ -19,6 +19,8 @@ Get-Models -url "https://assets.example.com" -token "token..." | Where-Object {$
 function Get-Model()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -30,6 +32,10 @@ function Get-Model()
         Uri           = "$url/api/v1/models"
         Method        = 'Get'
         Token         = $apiKey
+        GetParameters = @{
+            search = $search
+            limit  = 999
+        }
     }
 
     $result = Invoke-SnipeitMethod @Parameters

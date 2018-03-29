@@ -17,7 +17,7 @@
     .PARAMETER userName
     Parameter description
 
-    .PARAMETER jobTitle
+    .PARAMETER jobtitle
     Parameter description
 
     .PARAMETER email
@@ -76,7 +76,7 @@ function Set-User() {
 
         [string]$userName,
 
-        [string]$jobTitle,
+        [string]$jobtitle,
 
         [string]$email,
 
@@ -105,13 +105,13 @@ function Set-User() {
 
     $Values = @{}
 
-    $exclude = @('id', 'url', 'apiKey')
-    $excludeRegex = [string]::Join('|', $exclude) # create the regex
+    #$exclude = @('id', 'url', 'apiKey')
+    #$excludeRegex = [string]::Join('|', $exclude) # create the regex
 
     foreach ($psbp in $PSBoundParameters.GetEnumerator()) {
-        if ($psbp.Key -notmatch $excludeRegex) {
+        #if ($psbp.Key -notmatch $excludeRegex) {
             $Values.Add($psbp.Key, $psbp.Value)
-        }
+        #}
     }
 
     $Body = $Values | ConvertTo-Json;

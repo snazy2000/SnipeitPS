@@ -19,6 +19,8 @@ Get-Status -url "https://assets.example.com" -token "token..." | Where-Object {$
 function Get-Status()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 
@@ -30,6 +32,10 @@ function Get-Status()
         Uri           = "$url/api/v1/statuslabels"
         Method        = 'Get'
         Token         = $apiKey
+        GetParameters = @{
+            search = $search
+            limit  = 999
+        }
     }
 
     $result = Invoke-SnipeitMethod @Parameters

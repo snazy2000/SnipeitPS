@@ -19,6 +19,8 @@ Get-Location -url "https://assets.example.com" -token "token..." | Where-Object 
 function Get-Location()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 
@@ -30,6 +32,10 @@ function Get-Location()
         Uri           = "$url/api/v1/locations"
         Method        = 'Get'
         Token         = $apiKey
+        GetParameters = @{
+            search = $search
+            limit  = 999
+        }
     }
 
     $result = Invoke-SnipeitMethod @Parameters
