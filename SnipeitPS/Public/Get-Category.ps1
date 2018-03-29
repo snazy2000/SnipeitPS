@@ -19,6 +19,8 @@ Get-Category -url "https://assets.example.com" -token "token..." | Where-Object 
 function Get-Category()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 

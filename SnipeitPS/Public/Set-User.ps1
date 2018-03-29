@@ -116,7 +116,6 @@ function Set-User() {
 
     $Body = $Values | ConvertTo-Json;
 
-    $Body
     $Parameters = @{
         Uri    = "$url/api/v1/users/$id"
         Method = 'PATCH'
