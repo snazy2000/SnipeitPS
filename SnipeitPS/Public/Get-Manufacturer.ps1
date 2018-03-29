@@ -19,6 +19,8 @@ Get-Manufacturer -url "https://assets.example.com" -token "token..." | Where-Obj
 function Get-Manufacturer()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 
@@ -30,6 +32,10 @@ function Get-Manufacturer()
         Uri           = "$url/api/v1/manufacturers"
         Method        = 'Get'
         Token         = $apiKey
+        GetParameters = @{
+            search = $search
+            limit  = 999
+        }
     }
 
     $result = Invoke-SnipeitMethod @Parameters

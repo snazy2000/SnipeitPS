@@ -18,6 +18,8 @@ Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.
 function Get-User()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 
@@ -29,6 +31,7 @@ function Get-User()
         Uri           = "$url/api/v1/users"
         Method        = 'Get'
         GetParameters = @{
+            search = $search
             limit  = 999
         }
         Token         = $apiKey

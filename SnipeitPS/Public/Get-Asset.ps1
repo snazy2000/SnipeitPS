@@ -19,6 +19,8 @@ Get-Asset -url "https://assets.example.com" -token "token..." | Where-Object {$_
 function Get-Asset()
 {
     Param(
+        [string]$search,
+
         [parameter(mandatory=$true)]
         [string]$url,
 
@@ -30,7 +32,8 @@ function Get-Asset()
         Uri           = "$url/api/v1/hardware"
         Method        = 'Get'
         GetParameters = @{
-            limit  = 9999
+            search = $search
+            limit  = 999
         }
         Token         = $apiKey
     }

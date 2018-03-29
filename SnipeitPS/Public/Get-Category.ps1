@@ -30,6 +30,10 @@ function Get-Category()
         Uri           = "$url/api/v1/categories"
         Method        = 'Get'
         Token         = $apiKey
+        GetParameters = @{
+            search = $search
+            limit  = 999
+        }
     }
 
     $result = Invoke-SnipeitMethod @Parameters
