@@ -15,25 +15,49 @@ Get-User -url "https://assets.example.com" -token "token..."
 Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.username -eq "stephenm" }
 
 #>
-function Get-User()
-{
+function Get-User() {
     Param(
         [string]$search,
 
-        [parameter(mandatory=$true)]
+        [int]$company_id,
+
+        [int]$location_id,
+
+        [int]$group_id,
+
+        [int]$department_id,
+
+        [ValidateSet("asc", "desc")]
+        [string]$order = "desc",
+
+        [int]$limit = 50,
+
+        [int]$offset,
+
+        [parameter(mandatory = $true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]
+        [parameter(mandatory = $true)]
         [string]$apiKey
     )
+
+    $SearchParameter = @{
+        sort   = $sort
+        order  = $order
+        limit  = $limit
+        offset = $offset
+    }
+
+    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
+    if ($PSBoundParameters.ContainsKey('company_id')) { $SearchParameter.Add("company_id", $company_id) }
+    if ($PSBoundParameters.ContainsKey('location_id')) { $SearchParameter.Add("location_id", $location_id) }
+    if ($PSBoundParameters.ContainsKey('group_id')) { $SearchParameter.Add("group_id", $group_id) }
+    if ($PSBoundParameters.ContainsKey('department_id')) { $SearchParameter.Add("department_id", $department_id) }
 
     $Parameters = @{
         Uri           = "$url/api/v1/users"
         Method        = 'Get'
-        GetParameters = @{
-            search = $search
-            limit  = 999
-        }
+        GetParameters = $SearchParameter
         Token         = $apiKey
     }
 

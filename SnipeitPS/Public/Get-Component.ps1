@@ -16,26 +16,44 @@ Get-Component -url "https://assets.example.com" -token "token..." | Where-Object
 
 #>
 
-function Get-Component()
-{
+function Get-Component() {
     Param(
         [string]$search,
 
-        [parameter(mandatory=$true)]
+        [int]$category_id,
+
+        [int]$company_id,
+
+        [ValidateSet("asc", "desc")]
+        [string]$order = "desc",
+
+        [int]$limit = 50,
+
+        [int]$offset,
+
+        [parameter(mandatory = $true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]
+        [parameter(mandatory = $true)]
         [string]$apiKey
     )
+
+    $SearchParameter = @{
+        sort   = $sort
+        order  = $order
+        limit  = $limit
+        offset = $offset
+    }
+
+    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
+    if ($PSBoundParameters.ContainsKey('category_id')) { $SearchParameter.Add("category_id", $category_id) }
+    if ($PSBoundParameters.ContainsKey('company_id')) { $SearchParameter.Add("company_id", $company_id) }
 
     $Parameters = @{
         Uri           = "$url/api/v1/components"
         Method        = 'Get'
         Token         = $apiKey
-        GetParameters = @{
-            search = $search
-            limit  = 999
-        }
+        GetParameters = $SearchParameter
     }
 
     $result = Invoke-SnipeitMethod @Parameters

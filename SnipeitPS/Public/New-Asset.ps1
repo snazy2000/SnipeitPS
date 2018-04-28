@@ -47,10 +47,10 @@ function New-Asset()
         [string]$Name,
 
         [parameter(mandatory = $true)]
-        [string]$Status_id,
+        [int]$Status_id,
 
         [parameter(mandatory = $true)]
-        [string]$Model_id,
+        [int]$Model_id,
 
         [parameter(mandatory = $true)]
         [string]$url,
