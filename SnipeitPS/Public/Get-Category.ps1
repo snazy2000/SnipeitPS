@@ -21,21 +21,34 @@ function Get-Category()
     Param(
         [string]$search,
 
-        [parameter(mandatory=$true)]
+        [ValidateSet("asc", "desc")]
+        [string]$order = "desc",
+
+        [int]$limit = 50,
+
+        [int]$offset,
+
+        [parameter(mandatory = $true)]
         [string]$url,
 
-        [parameter(mandatory=$true)]
+        [parameter(mandatory = $true)]
         [string]$apiKey
     )
+
+    $SearchParameter = @{
+        sort   = $sort
+        order  = $order
+        limit  = $limit
+        offset = $offset
+    }
+
+    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
 
     $Parameters = @{
         Uri           = "$url/api/v1/categories"
         Method        = 'Get'
         Token         = $apiKey
-        GetParameters = @{
-            search = $search
-            limit  = 999
-        }
+        GetParameters = $SearchParameter
     }
 
     $result = Invoke-SnipeitMethod @Parameters
