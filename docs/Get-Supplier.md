@@ -5,15 +5,15 @@ online version: http://go.microsoft.com/fwlink/?LinkId=821589
 schema: 2.0.0
 ---
 
-# Get-Manufacturer
+# Get-Supplier
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Manufacturers
+# Gets a list of Snipe-it Suppliers
 
 ## SYNTAX
 
 ```
-Get-Manufacturer [[-search] <String>] [-url] <String> [-apiKey] <String>
+Get-Supplier [[-search] <String>] [-url] <String> [-apiKey] <String>
 ```
 
 ## DESCRIPTION
@@ -23,12 +23,12 @@ Get-Manufacturer [[-search] <String>] [-url] <String> [-apiKey] <String>
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-Manufacturer -url "https://assets.example.com" -token "token..."
+Get-Supplier -url "https://assets.example.com" -token "token..."
 ```
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-Manufacturer -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "HP" }
+Get-Supplier -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MySupplier" }
 ```
 
 ## PARAMETERS

@@ -1,19 +1,19 @@
 ---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeItPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version: 
 schema: 2.0.0
 ---
 
-# Get-Manufacturer
+# Get-Department
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Manufacturers
+# Gets a list of Snipe-it Departments
 
 ## SYNTAX
 
 ```
-Get-Manufacturer [[-search] <String>] [-url] <String> [-apiKey] <String>
+Get-Department [[-search] <String>] [-url] <String> [-apiKey] <String>
 ```
 
 ## DESCRIPTION
@@ -23,12 +23,12 @@ Get-Manufacturer [[-search] <String>] [-url] <String> [-apiKey] <String>
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-Manufacturer -url "https://assets.example.com" -token "token..."
+Get-Department -url "https://assets.example.com" -token "token..."
 ```
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-Manufacturer -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "HP" }
+Get-Department -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Department1" }
 ```
 
 ## PARAMETERS

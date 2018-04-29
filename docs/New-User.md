@@ -1,43 +1,83 @@
 ---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeItPS
-online version: 
+online version: http://go.microsoft.com/fwlink/?LinkId=821589
 schema: 2.0.0
 ---
 
-# Get-Asset
+# New-User
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Assets
+Short description
 
 ## SYNTAX
 
 ```
-Get-Asset [[-search] <String>] [[-order_number] <Int32>] [[-model_id] <Int32>] [[-category_id] <Int32>]
- [[-manufacturer_id] <Int32>] [[-company_id] <Int32>] [[-location_id] <Int32>] [[-status] <String>]
- [[-status_id] <Int32>] [[-sort] <String>] [[-order] <String>] [[-limit] <Int32>] [[-offset] <Int32>]
- [-url] <String> [-apiKey] <String>
+New-User [-firstName] <String> [-lastName] <String> [-userName] <String> [[-jobTitle] <String>]
+ [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
+ [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>] [[-ldap_user] <Boolean>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Long description
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-Asset -url "https://assets.example.com" -token "token..."
-```
-
-### -------------------------- EXAMPLE 2 --------------------------
-```
-Get-Asset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MyMachine" }
+An example
 ```
 
 ## PARAMETERS
 
-### -search
-{{Fill search Description}}
+### -firstName
+Parameter description
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -lastName
+Parameter description
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -userName
+Parameter description
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -jobTitle
+Parameter description
 
 ```yaml
 Type: String
@@ -45,89 +85,44 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order_number
-{{Fill order_number Description}}
+### -email
+Parameter description
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 2
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -model_id
-{{Fill model_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -category_id
-{{Fill category_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-{{Fill manufacturer_id Description}}
-
-```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: 5
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{Fill company_id Description}}
+### -phone
+Parameter description
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: 6
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -location_id
-{{Fill location_id Description}}
+### -company_id
+Parameter description
 
 ```yaml
 Type: Int32
@@ -141,23 +136,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -status
-{{Fill status Description}}
+### -location_id
+Parameter description
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: 8
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -status_id
-{{Fill status_id Description}}
+### -department_id
+Parameter description
 
 ```yaml
 Type: Int32
@@ -171,23 +166,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -sort
-{{Fill sort Description}}
+### -manager_id
+Parameter description
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: 10
-Default value: Created_at
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{Fill order Description}}
+### -employee_num
+Parameter description
 
 ```yaml
 Type: String
@@ -196,43 +191,43 @@ Aliases:
 
 Required: False
 Position: 11
-Default value: Desc
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -limit
-{{Fill limit Description}}
+### -ldap_user
+Parameter description
 
 ```yaml
-Type: Int32
+Type: Boolean
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: 12
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-{{Fill offset Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 13
-Default value: 0
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+Parameter description
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Parameter description
 
 ```yaml
 Type: String
@@ -246,26 +241,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
-Required: True
-Position: 15
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ## OUTPUTS
 
 ## NOTES
+General notes
 
 ## RELATED LINKS
 
