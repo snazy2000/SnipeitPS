@@ -1,7 +1,7 @@
 ---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeItPS
-online version: 
+online version: http://go.microsoft.com/fwlink/?LinkId=821589
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Add a new Asset to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-Asset [[-tag] <String>] [-Name] <String> [-Status_id] <String> [-Model_id] <String> [-url] <String>
- [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm]
+New-Asset [[-tag] <String>] [-Name] <String> [-Status_id] <Int32> [-Model_id] <Int32> [-url] <String>
+ [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,13 +68,13 @@ Accept wildcard characters: False
 Status ID of the asset, this can be got using Get-Status
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: 3
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -83,13 +83,13 @@ Accept wildcard characters: False
 Model ID of the asset, this can be got using Get-Model
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases: 
 
 Required: True
 Position: 4
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -169,6 +169,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

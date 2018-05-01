@@ -5,42 +5,115 @@ online version: http://go.microsoft.com/fwlink/?LinkId=821589
 schema: 2.0.0
 ---
 
-# Set-AssetOwner
+# New-Department
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Short description
 
 ## SYNTAX
 
 ```
-Set-AssetOwner [-id] <Int32> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-Department [-name] <String> [[-company_id] <String>] [[-location_id] <String>] [[-manager_id] <String>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Long description
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+An example
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -name
+Parameter description
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -company_id
+{{Fill company_id Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
-Position: Named
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+{{Fill location_id Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manager_id
+{{Fill manager_id Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+Parameter description
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Parameter description
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,77 +135,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-{{Fill apiKey Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -assigned_id
-{{Fill assigned_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -checkout_to_type
-{{Fill checkout_to_type Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: location, asset, user
+Aliases: cf
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-{{Fill id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -url
-{{Fill url Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,13 +155,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
-
 ## NOTES
+General notes
 
 ## RELATED LINKS
 

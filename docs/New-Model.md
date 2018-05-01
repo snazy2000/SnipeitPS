@@ -1,7 +1,7 @@
 ---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeItPS
-online version: 
+online version: http://go.microsoft.com/fwlink/?LinkId=821589
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Add a new Model to Snipe-it asset system
 
 ```
 New-Model [-name] <String> [-category_id] <Int32> [-manufacturer_id] <Int32> [-fieldset_id] <Int32>
- [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,6 +149,9 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

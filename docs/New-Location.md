@@ -5,16 +5,17 @@ online version: http://go.microsoft.com/fwlink/?LinkId=821589
 schema: 2.0.0
 ---
 
-# Set-Asset
+# New-Location
 
 ## SYNOPSIS
-Update a Asset in the Snipe-it asset system
+Add a new Model to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Set-Asset [-id] <Int32> [-Name] <String> [-Status_id] <String> [-Model_id] <String> [-url] <String>
- [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-Location [-name] <String> [[-address] <String>] [[-address2] <String>] [[-state] <String>]
+ [[-country] <String>] [[-zip] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,33 +25,13 @@ Long description
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1"
-```
-
-### -------------------------- EXAMPLE 2 --------------------------
-```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 ```
 
 ## PARAMETERS
 
-### -id
-ID of the Asset
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the Asset
+### -name
+Name of the Asset Model
 
 ```yaml
 Type: String
@@ -58,37 +39,82 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -address
+{{Fill address Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status_id
-Status ID of the asset, this can be got using Get-Status
+### -address2
+{{Fill address2 Description}}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Model_id
-Model ID of the asset, this can be got using Get-Model
+### -state
+{{Fill state Description}}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -country
+{{Fill country Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -zip
+{{Fill zip Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -103,7 +129,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 5
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -118,22 +144,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -customfields
-Hastable of custom fields and extra fields that need passing through to Snipeit
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
