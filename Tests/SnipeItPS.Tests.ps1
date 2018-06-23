@@ -193,7 +193,7 @@ Describe "SnipeitPS" {
     }
 
     Context 'PSScriptAnalyzer Rules' {
-        $analysis = Invoke-ScriptAnalyzer -Path "$moduleRoot" -Recurse
+        $analysis = Invoke-ScriptAnalyzer -Path "$moduleRoot" -Recurse -Settings "$projectRoot\PSScriptAnalyzerSettings.psd1"
         $scriptAnalyzerRules = Get-ScriptAnalyzerRule
 
         forEach ($rule in $scriptAnalyzerRules)

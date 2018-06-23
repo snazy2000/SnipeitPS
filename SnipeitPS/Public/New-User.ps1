@@ -70,6 +70,8 @@ function New-User() {
         [parameter(mandatory = $true)]
         [string]$userName,
 
+        [string]$password,
+
         [string]$jobTitle,
 
         [string]$email,
