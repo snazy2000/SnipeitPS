@@ -1,6 +1,6 @@
 <#
     .SYNOPSIS
-    Add a new Model to Snipe-it asset system
+    Updates a Model within the Snipe-it asset system
 
     .DESCRIPTION
     Long description
@@ -8,11 +8,17 @@
     .PARAMETER name
     Name of the Asset Model
 
+    .PARAMETER model_number
+    Part or model number of the model
+
     .PARAMETER category_id
     Category ID that the asset belongs to this can be got using Get-Category
 
     .PARAMETER manufacturer_id
     Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
+
+    .PARAMETER eol
+    Number of months until this model's assets are considered EOL
 
     .PARAMETER fieldset_id
     Fieldset ID that the asset uses (Custom fields)
@@ -27,11 +33,10 @@
     New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 #>
 
-function New-Model()
-{
+function Set-Model() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "Low"
+        ConfirmImpact = "Medium"
     )]
 
     Param(
@@ -72,13 +77,12 @@ function New-Model()
 
     $Parameters = @{
         Uri    = "$url/api/v1/models"
-        Method = 'post'
+        Method = 'put'
         Body   = $Body
         Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 
