@@ -53,12 +53,12 @@ function New-AssetMaintenance() {
         [string]$title,
 
         [parameter(mandatory = $true)]
-        [string]$startDate,
+        [datetime]$startDate,
 
         [parameter(mandatory = $false)]
-        [string]$completionDate,
+        [datetime]$completionDate,
 
-        [switch]$is_warranty = $false,
+        [switch]$is_warranty=$false,
 
         [decimal]$cost,
 
@@ -76,11 +76,11 @@ function New-AssetMaintenance() {
         "supplier_id"            = $supplier_id
         "asset_maintenance_type" = $asset_maintenance_type
         "title"                  = $title
-        "start_date"             = $startDate
-        "is_warranty"            = $is_warranty
+        "start_date"             = $startDate.ToString("yyyy-MM-dd")
+        "is_warranty"            = [Bool]::Parse($is_warranty)
     }
 
-    if ($PSBoundParameters.ContainsKey('completionDate')) { $Values.Add("completion_date", $completionDate) }
+    if ($PSBoundParameters.ContainsKey('completionDate')) { $Values.Add("completion_date", $completionDate.ToString("yyyy-MM-dd")) }
     if ($PSBoundParameters.ContainsKey('cost')) { $Values.Add("cost", $cost) }
     if ($PSBoundParameters.ContainsKey('notes')) { $Values.Add("notes", $notes) }
 
