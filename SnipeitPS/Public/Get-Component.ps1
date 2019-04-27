@@ -24,8 +24,13 @@ function Get-Component() {
 
         [int]$company_id,
 
+        [int]$location_id,
+
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
+
+        [ValidateSet('id', 'name', 'min_amt', 'order_number', 'serial', 'purchase_date', 'purchase_cost', 'company', 'category', 'qty', 'location', 'image', 'created_at')]
+        [string]$sort = "created_at",
 
         [int]$limit = 50,
 
@@ -38,16 +43,7 @@ function Get-Component() {
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort   = $sort
-        order  = $order
-        limit  = $limit
-        offset = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
-    if ($PSBoundParameters.ContainsKey('category_id')) { $SearchParameter.Add("category_id", $category_id) }
-    if ($PSBoundParameters.ContainsKey('company_id')) { $SearchParameter.Add("company_id", $company_id) }
+    $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/components"

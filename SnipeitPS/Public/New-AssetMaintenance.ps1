@@ -58,7 +58,7 @@ function New-AssetMaintenance() {
         [parameter(mandatory = $false)]
         [datetime]$completionDate,
 
-        [switch]$is_warranty=$false,
+        [bool]$is_warranty = $false,
 
         [decimal]$cost,
 
@@ -71,18 +71,15 @@ function New-AssetMaintenance() {
         [string]$apiKey
     )
 
-    $Values = @{
-        "asset_id"               = $asset_id
-        "supplier_id"            = $supplier_id
-        "asset_maintenance_type" = $asset_maintenance_type
-        "title"                  = $title
-        "start_date"             = $startDate.ToString("yyyy-MM-dd")
-        "is_warranty"            = [Bool]::Parse($is_warranty)
+    $Values = . Get-ParameterValue
+
+    if ($values['start_date']) {
+        $values['start_date'] = $values['start_date'].ToString("yyyy-MM-dd")
     }
 
-    if ($PSBoundParameters.ContainsKey('completionDate')) { $Values.Add("completion_date", $completionDate.ToString("yyyy-MM-dd")) }
-    if ($PSBoundParameters.ContainsKey('cost')) { $Values.Add("cost", $cost) }
-    if ($PSBoundParameters.ContainsKey('notes')) { $Values.Add("notes", $notes) }
+    if ($values['completionDate']) {
+        $values['completionDate'] = $values['completionDate'].ToString("yyyy-MM-dd")
+    }
 
     $Body = $Values | ConvertTo-Json;
 

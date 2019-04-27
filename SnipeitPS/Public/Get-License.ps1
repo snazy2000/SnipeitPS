@@ -32,7 +32,7 @@ function Get-License() {
 
         [string]$license_name,
 
-        [string]$license_email,
+        [mailaddress]$license_email,
 
         [int]$manufacturer_id,
 
@@ -40,8 +40,13 @@ function Get-License() {
 
         [int]$depreciation_id,
 
+        [int]$category_id,
+
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
+
+        [ValidateSet('id', 'name', 'purchase_cost', 'expiration_date', 'purchase_order', 'order_number', 'notes', 'purchase_date', 'serial', 'company', 'category', 'license_name', 'license_email', 'free_seats_count', 'seats', 'manufacturer', 'supplier')]
+        [string]$sort = "created_at",
 
         [int]$limit = 50,
 
@@ -54,24 +59,7 @@ function Get-License() {
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort   = $sort
-        order  = $order
-        limit  = $limit
-        offset = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
-    if ($PSBoundParameters.ContainsKey('name')) { $SearchParameter.Add("name", $name) }
-    if ($PSBoundParameters.ContainsKey('company_id')) { $SearchParameter.Add("company_id", $company_id) }
-    if ($PSBoundParameters.ContainsKey('product_key')) { $SearchParameter.Add("product_key", $product_key) }
-    if ($PSBoundParameters.ContainsKey('order_number')) { $SearchParameter.Add("order_number", $order_number) }
-    if ($PSBoundParameters.ContainsKey('purchase_order')) { $SearchParameter.Add("purchase_order", $purchase_order) }
-    if ($PSBoundParameters.ContainsKey('license_name')) { $SearchParameter.Add("license_name", $license_name) }
-    if ($PSBoundParameters.ContainsKey('license_email')) { $SearchParameter.Add("license_email", $license_email) }
-    if ($PSBoundParameters.ContainsKey('manufacturer_id')) { $SearchParameter.Add("manufacturer_id", $manufacturer_id) }
-    if ($PSBoundParameters.ContainsKey('supplier_id')) { $SearchParameter.Add("supplier_id", $supplier_id) }
-    if ($PSBoundParameters.ContainsKey('depreciation_id')) { $SearchParameter.Add("depreciation_id", $depreciation_id) }
+    $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/licenses"

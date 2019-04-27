@@ -51,7 +51,10 @@ Users API Key for Snipeit, can be set using Set-Info command
 Get-Asset -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-Asset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MyMachine" }
+Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token..."
+
+.EXAMPLE
+Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token..."
 #>
 function Get-Asset() {
     Param(
@@ -68,6 +71,10 @@ function Get-Asset() {
         [int]$company_id,
 
         [int]$location_id,
+
+        [int]$depreciation_id,
+
+        [bool]$requestable = $false,
 
         [string]$status,
 
@@ -89,23 +96,7 @@ function Get-Asset() {
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort    = $sort
-        order   = $order
-        limit   = $limit
-        offset  = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
-    if ($PSBoundParameters.ContainsKey('order_number')) { $SearchParameter.Add("order_number", $order_number) }
-    if ($PSBoundParameters.ContainsKey('model_id')) { $SearchParameter.Add("model_id", $model_id) }
-    if ($PSBoundParameters.ContainsKey('category_id')) { $SearchParameter.Add("category_id", $category_id) }
-    if ($PSBoundParameters.ContainsKey('manufacturer_id')) { $SearchParameter.Add("manufacturer_id", $manufacturer_id) }
-    if ($PSBoundParameters.ContainsKey('company_id')) { $SearchParameter.Add("company_id", $company_id) }
-    if ($PSBoundParameters.ContainsKey('location_id')) { $SearchParameter.Add("location_id", $location_id) }
-    if ($PSBoundParameters.ContainsKey('status_id')) { $SearchParameter.Add("status_id", $order_number) }
-    if ($PSBoundParameters.ContainsKey('status')) { $SearchParameter.Add("status", $order_number) }
-    if ($PSBoundParameters.ContainsKey('order_number')) { $SearchParameter.Add("order_number", $order_number) }
+    $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/hardware"
