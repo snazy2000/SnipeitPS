@@ -41,18 +41,7 @@ function Get-User() {
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort   = $sort
-        order  = $order
-        limit  = $limit
-        offset = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
-    if ($PSBoundParameters.ContainsKey('company_id')) { $SearchParameter.Add("company_id", $company_id) }
-    if ($PSBoundParameters.ContainsKey('location_id')) { $SearchParameter.Add("location_id", $location_id) }
-    if ($PSBoundParameters.ContainsKey('group_id')) { $SearchParameter.Add("group_id", $group_id) }
-    if ($PSBoundParameters.ContainsKey('department_id')) { $SearchParameter.Add("department_id", $department_id) }
+     $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/users"

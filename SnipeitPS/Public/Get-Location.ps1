@@ -35,14 +35,7 @@ function Get-Location()
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort   = $sort
-        order  = $order
-        limit  = $limit
-        offset = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
+    $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/locations"

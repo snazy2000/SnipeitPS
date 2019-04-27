@@ -35,6 +35,8 @@ function New-CustomField()
 
         [string]$Format = "ANY",
 
+        [bool]$field_encrypted,
+
         [string]$CustomFormat,
 
         [parameter(mandatory = $true)]
@@ -44,14 +46,7 @@ function New-CustomField()
         [string]$apiKey
     )
 
-
-    $Values = @{
-        "name" = $Name
-        "help_text" = $HelpText
-        "element" = $Element
-        "format" = $Format
-        "custom_format" = $CustomFormat
-    }
+    $Values = . Get-ParameterValue
 
     #Convert Values to JSON format
     $Body = $Values | ConvertTo-Json;

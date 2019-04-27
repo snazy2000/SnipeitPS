@@ -57,15 +57,7 @@ function Get-AssetMaintenance() {
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort   = $sort
-        order  = $order
-        limit  = $limit
-        offset = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
-    if ($PSBoundParameters.ContainsKey('asset_id')) { $SearchParameter.Add("asset_id", $asset_id) }
+    $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/maintenances"

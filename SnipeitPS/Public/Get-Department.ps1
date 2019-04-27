@@ -28,6 +28,9 @@ function Get-Department()
 
         [int]$offset,
 
+        [ValidateSet('id', 'name', 'image', 'users_count', 'created_at')]
+        [string]$sort = "created_at",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -35,14 +38,7 @@ function Get-Department()
         [string]$apiKey
     )
 
-    $SearchParameter = @{
-        sort   = $sort
-        order  = $order
-        limit  = $limit
-        offset = $offset
-    }
-
-    if ($PSBoundParameters.ContainsKey('search')) { $SearchParameter.Add("search", $search) }
+    $SearchParameter = . Get-ParameterValue
 
     $Parameters = @{
         Uri           = "$url/api/v1/departments"

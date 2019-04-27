@@ -47,6 +47,10 @@ function New-Location() {
 
         [string]$zip,
 
+        [int]$manager_id,
+
+        [string]$ldap_ou,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -54,14 +58,7 @@ function New-Location() {
         [string]$apiKey
     )
 
-    $Values = @{
-        name     = $name
-        address  = $address
-        address2 = $address2
-        state    = $state
-        country  = $country
-        zip      = $zip
-    }
+    $Values = . Get-ParameterValue
 
     $Body = $Values | ConvertTo-Json;
 

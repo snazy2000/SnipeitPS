@@ -1,33 +1,5 @@
-<#
-    .SYNOPSIS
-    Short description
 
-    .DESCRIPTION
-    Long description
-
-    .PARAMETER name
-    Parameter description
-
-    .PARAMETER category_id
-    Parameter description
-
-    .PARAMETER qty
-    Parameter description
-
-    .PARAMETER url
-    Parameter description
-
-    .PARAMETER apiKey
-    Parameter description
-
-    .EXAMPLE
-    An example
-
-    .NOTES
-    General notes
-#>
-
-function New-Component() {
+function Set-Accessory() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -35,21 +7,32 @@ function New-Component() {
 
     Param(
         [parameter(mandatory = $true)]
+        [int]$id,
+
+        [ValidateLength(3, 255)]
         [string]$name,
 
-        [parameter(mandatory = $true)]
+        [int]$qty,
+
+        [ValidateRange(1, [int]::MaxValue)]
         [int]$category_id,
 
-        [parameter(mandatory = $true)]
-        [string]$qty,
-
+        [ValidateRange(1, [int]::MaxValue)]
         [int]$company_id,
 
-        [int]$location_id,
+        [ValidateRange(1, [int]::MaxValue)]
+        [int]$manufacturer_id,
+
+        [string]$order_number,
+
+        [float]$purchase_cost,
 
         [datetime]$purchase_date,
 
-        [float]$purchase_cost,
+        [bool]$requestable,
+
+        [ValidateRange(1, [int]::MaxValue)]
+        [int]$supplier_id,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -67,7 +50,7 @@ function New-Component() {
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
-        Uri    = "$url/api/v1/components"
+        Uri    = "$url/api/v1/accessories/$id"
         Method = 'POST'
         Body   = $Body
         Token  = $apiKey

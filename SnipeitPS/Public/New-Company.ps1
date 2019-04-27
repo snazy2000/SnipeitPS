@@ -39,9 +39,7 @@ function New-Company()
         [string]$apiKey
     )
 
-    $Values = @{
-        "name"  = $name
-    }
+    $Values = . Get-ParameterValue
 
     $Body = $Values | ConvertTo-Json;
 

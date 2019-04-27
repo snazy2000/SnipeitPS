@@ -27,8 +27,7 @@
     General notes
 #>
 
-function New-Department()
-{
+function New-Department() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -38,11 +37,13 @@ function New-Department()
         [parameter(mandatory = $true)]
         [string]$name,
 
-        [string]$company_id,
+        [int]$company_id,
 
-        [string]$location_id,
+        [int]$location_id,
 
-        [string]$manager_id,
+        [int]$manager_id,
+
+        [string]$notes,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -51,12 +52,7 @@ function New-Department()
         [string]$apiKey
     )
 
-    $Values = @{
-        "name"        = $name
-        "company_id"  = $company_id
-        "location_id" = $location_id
-        "manager_id"  = $manager_id
-    }
+    $Values = . Get-ParameterValue
 
     $Body = $Values | ConvertTo-Json;
 
@@ -67,8 +63,7 @@ function New-Department()
         Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 
