@@ -73,8 +73,8 @@ function New-AssetMaintenance() {
 
     $Values = . Get-ParameterValue
 
-    if ($values['start_date']) {
-        $values['start_date'] = $values['start_date'].ToString("yyyy-MM-dd")
+    if ($values['startdate']) {
+        $values['startdate'] = $values['start_date'].ToString("yyyy-MM-dd")
     }
 
     if ($values['completionDate']) {
