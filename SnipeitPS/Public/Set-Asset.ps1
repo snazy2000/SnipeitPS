@@ -44,10 +44,13 @@ function Set-Asset()
         [parameter(mandatory = $true)]
         [int]$id,
 
+        [parameter(mandatory = $true)]
         [string]$Name,
 
+        [parameter(mandatory = $true)]
         [string]$Status_id,
 
+        [parameter(mandatory = $true)]
         [string]$Model_id,
 
         [parameter(mandatory = $true)]
