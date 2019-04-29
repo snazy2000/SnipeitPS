@@ -16,7 +16,7 @@ Get-Location -url "https://assets.example.com" -token "token..." | Where-Object 
 
 #>
 
-function Get-Location()
+function Get-SnipeitLocation()
 {
     Param(
         [string]$search,
