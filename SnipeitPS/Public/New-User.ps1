@@ -117,6 +117,7 @@ function New-User() {
     if ($ldap_user -eq $false) {
         $ldap = @{
             password    = $password
+            password_confirmation = $password
             ldap_import = 0
         }
         $Values += $ldap
