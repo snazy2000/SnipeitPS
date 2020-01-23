@@ -5,7 +5,6 @@
     Long description
     .PARAMETER ID
     Unique ID For Asset to be removed
-    
     .EXAMPLE
     Remove-Asset -ID 44 -url $url -apiKey $secret -Verbose
 #>
@@ -31,7 +30,7 @@ function Remove-Asset ()
         "ID"      = $Name
     }
     
-    $Body = $Values | ConvertTo-Json;
+    $Body = $Values | ConvertTo-Json
 
     $Parameters = @{
         Uri    = "$url/api/v1/hardware/$ID"
