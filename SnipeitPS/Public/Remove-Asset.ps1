@@ -29,7 +29,7 @@ function Remove-Asset ()
     $Values = @{
         "ID"      = $Name
     }
- 
+
     $Body = $Values | ConvertTo-Json
 
     $Parameters = @{
