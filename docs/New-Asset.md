@@ -29,7 +29,7 @@ New-Asset -status_id 1 -model_id 1 -name "Machine1"
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-New-Asset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+New-Asset -status_id 1 -model_id 1 -name "Machine1" -customfields = @{ "_snipeit_os_5" = "Windows 10 Pro" }
 ```
 
 ## PARAMETERS
