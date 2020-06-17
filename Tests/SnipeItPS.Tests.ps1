@@ -4,7 +4,6 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $projectRoot = Split-Path -Parent $here
 $moduleRoot = "$projectRoot\SnipeitPS"
 
-$manifestFile = "$moduleRoot\SnipeitPS.psd1"
 $changelogFile = "$projectRoot\CHANGELOG.md"
 $appveyorFile = "$projectRoot\appveyor.yml"
 $publicFunctions = "$moduleRoot\Public"
@@ -53,7 +52,7 @@ Describe "SnipeitPS" {
 
         It "Includes a valid manifest file" {
             {
-                $script:manifest = Test-ModuleManifest -Path $script:manifestFile -ErrorAction Stop -WarningAction SilentlyContinue
+                $script:manifest = Test-ModuleManifest -Path "$moduleRoot\SnipeitPS.psd1" -ErrorAction Stop -WarningAction SilentlyContinue
             } | Should -Not Throw
         }
 
@@ -63,7 +62,7 @@ Describe "SnipeitPS" {
         # As a temp workaround, we'll just read the manifest as a raw hashtable.
         # Credit to this workaround comes from here:
         # https://psescape.azurewebsites.net/pester-testing-your-module-manifest/
-        $script:manifest = Invoke-Expression (Get-Content $script:manifestFile -Raw)
+        $script:manifest = Invoke-Expression (Get-Content "$moduleRoot\SnipeitPS.psd1" -Raw)
 
         It "Manifest file includes the correct root module" {
             $script:manifest.RootModule | Should -Be 'SnipeitPS'
