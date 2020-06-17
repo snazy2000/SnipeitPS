@@ -4,7 +4,7 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $projectRoot = Split-Path -Parent $here
 $moduleRoot = "$projectRoot\SnipeitPS"
 
-$manifestFile = "$moduleRoot\SnipeitPS.psd1"
+$script:manifestFile = "$moduleRoot\SnipeitPS.psd1"
 $changelogFile = "$projectRoot\CHANGELOG.md"
 $appveyorFile = "$projectRoot\appveyor.yml"
 $publicFunctions = "$moduleRoot\Public"
@@ -54,7 +54,7 @@ Describe "SnipeitPS" {
         It "Includes a valid manifest file" {
             {
                 $script:manifest = Test-ModuleManifest -Path $script:manifestFile -ErrorAction Stop -WarningAction SilentlyContinue
-            } | Should Not Throw
+            } | Should -Not Throw
         }
 
         # There is a bug that prevents Test-ModuleManifest from updating correctly when the manifest file changes. See here:
@@ -66,45 +66,45 @@ Describe "SnipeitPS" {
         $script:manifest = Invoke-Expression (Get-Content $script:manifestFile -Raw)
 
         It "Manifest file includes the correct root module" {
-            $script:manifest.RootModule | Should Be 'SnipeitPS'
+            $script:manifest.RootModule | Should -Be 'SnipeitPS'
         }
 
         It "Manifest file includes the correct guid" {
-            $script:manifest.Guid | Should Be 'f86f4db4-1cb1-45c4-b7bf-6762531bfdeb'
+            $script:manifest.Guid | Should -Be 'f86f4db4-1cb1-45c4-b7bf-6762531bfdeb'
         }
 
         It "Manifest file includes a valid version" {
             # $script:manifest.Version -as [Version] | Should Not BeNullOrEmpty
-            $script:manifest.ModuleVersion -as [Version] | Should Not BeNullOrEmpty
+            $script:manifest.ModuleVersion -as [Version] | Should -Not BeNullOrEmpty
         }
 
         It "Includes a changelog file" {
-            $changelogFile | Should Exist
+            $changelogFile | Should -Exist
         }
 
         # $changelogVersion = $null
         It "Changelog includes a valid version number" {
-            $changelogVersion                | Should Not BeNullOrEmpty
-            $changelogVersion -as [Version]  | Should Not BeNullOrEmpty
+            $changelogVersion                | Should -Not BeNullOrEmpty
+            $changelogVersion -as [Version]  | Should -Not BeNullOrEmpty
         }
 
         It "Changelog version matches manifest version" {
-            $changelogVersion -as [Version] | Should Be ( $script:manifest.ModuleVersion -as [Version] )
+            $changelogVersion -as [Version] | Should -Be ( $script:manifest.ModuleVersion -as [Version] )
         }
 
         # Back to me! Pester doesn't use AppVeyor, as far as I know, and I do.
 
         It "Includes an appveyor.yml file" {
-            $appveyorFile | Should Exist
+            $appveyorFile | Should -Exist
         }
 
         It "Appveyor.yml file includes the module version" {
-            $appveyorVersion               | Should Not BeNullOrEmpty
-            $appveyorVersion -as [Version] | Should Not BeNullOrEmpty
+            $appveyorVersion               | Should -Not BeNullOrEmpty
+            $appveyorVersion -as [Version] | Should -Not BeNullOrEmpty
         }
 
         It "Appveyor version matches manifest version" {
-            $appveyorVersion -as [Version] | Should Be ( $script:manifest.ModuleVersion -as [Version] )
+            $appveyorVersion -as [Version] | Should -Be ( $script:manifest.ModuleVersion -as [Version] )
         }
     }
 
@@ -129,13 +129,13 @@ Describe "SnipeitPS" {
 
     #     foreach ($f in $functionFiles) {
     #         It "Exports $f" {
-    #             $exportedFunctions -contains $f | Should Be $true
+    #             $exportedFunctions -contains $f | Should -Be $true
     #         }
     #     }
 
     #     foreach ($f in $internalFiles) {
     #         It "Does not export $f" {
-    #             $exportedFunctions -contains $f | Should Be $false
+    #             $exportedFunctions -contains $f | Should -Be $false
     #         }
     #     }
     # }
@@ -204,7 +204,7 @@ Describe "SnipeitPS" {
                     $analysis |
                         Where-Object RuleName -EQ $rule -OutVariable failures |
                         Out-Default
-                    $failures.Count | Should Be 0
+                    $failures.Count | Should -Be 0
                 }
             }
         }
