@@ -21,7 +21,7 @@ $env:PSModulePath = "$($env:PSModulePath);$releasePath"
 Import-Module BuildHelpers
 
 # Ensure Invoke-Build works in the most strict mode.
-Set-StrictMode -Version Latest
+#Set-StrictMode -Version Latest
 
 # region debug information
 task ShowDebug {
