@@ -4,7 +4,7 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $projectRoot = Split-Path -Parent $here
 $moduleRoot = "$projectRoot\SnipeitPS"
 
-$manifestFile = "$moduleRoot\SnipeitPS.psd1"
+$script:manifestFile = "$moduleRoot\SnipeitPS.psd1"
 $changelogFile = "$projectRoot\CHANGELOG.md"
 $appveyorFile = "$projectRoot\appveyor.yml"
 $publicFunctions = "$moduleRoot\Public"
