@@ -27,7 +27,7 @@ Describe "SnipeitPS" {
         # tests goes to Dave Wyatt, the genius behind Pester.  I've just adapted them
         # slightly to match SnipeitPS.
 
-        $script:manifest = $null
+        <#$script:manifest = $null
 
         foreach ($line in (Get-Content $changelogFile))
         {
@@ -104,7 +104,7 @@ Describe "SnipeitPS" {
 
         It "Appveyor version matches manifest version" {
             $appveyorVersion -as [Version] | Should -Be ( $script:manifest.ModuleVersion -as [Version] )
-        }
+        }#>
     }
 
     # The CI changes I'm testng now will render this section obsolete,
