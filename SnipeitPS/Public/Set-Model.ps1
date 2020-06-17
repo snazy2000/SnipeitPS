@@ -31,7 +31,7 @@ function Set-Model() {
         [string]$apiKey
     )
 
-    $Values = Copy-Parameters -InputObject $PSBoundParameters
+    $Values = . Get-ParameterValue
 
     $Body = $Values | ConvertTo-Json;
 
