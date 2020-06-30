@@ -4,7 +4,7 @@
 .PARAMETER name
 Name of new category to be created
 .PARAMETER type
-Type of new category to be created (asset, accessory, consumable, component)
+Type of new category to be created (asset, accessory, consumable, component, license)
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 .PARAMETER apiKey
@@ -31,7 +31,7 @@ function New-Category()
         [string]$name,
 
         [parameter(mandatory = $true)]
-        [ValidateSet("asset", "accessory", "consumable", "component")]
+        [ValidateSet("asset", "accessory", "consumable", "component", "license")]
         [string]$category_type,
 
         [parameter(mandatory = $true)]
