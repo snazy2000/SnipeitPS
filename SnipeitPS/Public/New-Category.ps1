@@ -47,12 +47,11 @@ function New-Category()
         [switch]$checkin_email
     )
 
-    # $Values = . Get-ParameterValue
     $Values = @{
         "name"          = $name
         "category_type" = $category_type
     }
-    
+
     if ($use_default_eula) {
         $Values += @{"use_default_eula" = $true}
     }
