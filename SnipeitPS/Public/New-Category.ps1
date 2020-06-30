@@ -31,6 +31,7 @@ function New-Category()
         [string]$name,
 
         [parameter(mandatory = $true)]
+        [ValidateSet("asset", "accessory", "consumable", "component")]
         [string]$category_type,
 
         [parameter(mandatory = $true)]
