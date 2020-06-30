@@ -47,20 +47,24 @@ function New-Category()
         [switch]$checkin_email
     )
 
-    $Values = . Get-ParameterValue
-
+    # $Values = . Get-ParameterValue
+    $Values = @{
+        "name"          = $name
+        "category_type" = $category_type
+    }
+    
     if ($use_default_eula) {
-        $Values += @{"use_default_eula" = "true"}
+        $Values += @{"use_default_eula" = $true}
     }
 
     if ($require_acceptance) {
-        $Values += @{"require_acceptance" = "true"}
+        $Values += @{"require_acceptance" = $true}
     }
 
     if ($checkin_email) {
-        $Values += @{"checkin_email" = "true"}
+        $Values += @{"checkin_email" = $true}
     }
-
+    
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
