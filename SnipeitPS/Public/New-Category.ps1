@@ -16,7 +16,7 @@ If switch is present, require users to confirm acceptance of assets in this cate
 .PARAMETER checkin_email
 If switch is present, send email to user on checkin/checkout
 .EXAMPLE
-New-Category -name "Laptops" -category_type "asset" -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-Category -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 #>
 
 function New-Category()
