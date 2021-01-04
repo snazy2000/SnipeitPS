@@ -5,6 +5,9 @@
 .PARAMETER search
 A text string to search the assets data
 
+.PARAMETER asset_tag
+Specify exact asset tag to query
+
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
