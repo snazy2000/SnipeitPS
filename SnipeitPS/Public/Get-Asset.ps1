@@ -58,6 +58,9 @@ Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token...
 
 .EXAMPLE
 Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token..."
+
+.EXAMPLE
+Get-Asset -asset_tag "myAssetTag" -url "https://assets.example.com" -token "token..."
 #>
 function Get-Asset() {
     Param(
