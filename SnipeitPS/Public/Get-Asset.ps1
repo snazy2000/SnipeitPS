@@ -60,6 +60,8 @@ function Get-Asset() {
     Param(
         [string]$search,
 
+        [string]$asset_tag,
+
         [int]$order_number,
 
         [int]$model_id,
@@ -98,8 +100,17 @@ function Get-Asset() {
 
     $SearchParameter = . Get-ParameterValue
 
+    $apiuri = "$url/api/v1/hardware"
+
+    if ($asset_tag) {
+       if ( $search) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -asset_tag parameter , not both "
+       }
+       $apiuri= "$url/api/v1/hardware/bytag/$asset_tag"      
+    }
+
     $Parameters = @{
-        Uri           = "$url/api/v1/hardware"
+        Uri           = "$apiuri"
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey
