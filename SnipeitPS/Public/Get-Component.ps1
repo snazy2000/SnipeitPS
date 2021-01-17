@@ -2,6 +2,12 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Components
 
+.PARAMETER search
+A text string to search the Components data
+
+.PARAMETER id
+A id of specific Component
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -19,6 +25,8 @@ Get-Component -url "https://assets.example.com" -token "token..." | Where-Object
 function Get-Component() {
     Param(
         [string]$search,
+        
+        [string]$id,
 
         [int]$category_id,
 
@@ -45,8 +53,18 @@ function Get-Component() {
 
     $SearchParameter = . Get-ParameterValue
 
+    $apiurl = "$url/api/v1/components"
+
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+    
+    if ($id) {
+       $apiuri= "$url/api/v1/components/$id"      
+    }
+
     $Parameters = @{
-        Uri           = "$url/api/v1/components"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter

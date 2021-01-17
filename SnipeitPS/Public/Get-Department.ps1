@@ -2,6 +2,12 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Departments
 
+.PARAMETER search
+A text string to search the Departments data
+
+.PARAMETER id
+A id of specific Department
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -21,6 +27,8 @@ function Get-Department()
     Param(
         [string]$search,
 
+        [string]$id,
+
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
@@ -39,9 +47,19 @@ function Get-Department()
     )
 
     $SearchParameter = . Get-ParameterValue
+    
+    $apiurl = "$url/api/v1/departments"
+
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+    
+    if ($id) {
+       $apiuri= "$url/api/v1/departments/$id"      
+    }
 
     $Parameters = @{
-        Uri           = "$url/api/v1/departments"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter

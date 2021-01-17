@@ -2,6 +2,12 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Status Labels
 
+.PARAMETER search
+A text string to search the Status Labels data
+
+.PARAMETER id
+A id of specific Status Label
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -21,6 +27,8 @@ function Get-Status()
     Param(
         [string]$search,
 
+        [string]$id,
+
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
@@ -36,9 +44,19 @@ function Get-Status()
     )
 
     $SearchParameter = . Get-ParameterValue
+    
+    $apiurl = "$url/api/v1/statuslabels"
+
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+    
+    if ($id) {
+       $apiuri= "$url/api/v1/statuslabels/$id"      
+    }
 
     $Parameters = @{
-        Uri           = "$url/api/v1/statuslabels"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter
