@@ -52,7 +52,7 @@ function Get-Supplier()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/suppliers/$id"      
+       $apiurl= "$url/api/v1/suppliers/$id"      
     }
 
     $Parameters = @{

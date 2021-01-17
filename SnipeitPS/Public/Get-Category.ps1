@@ -52,7 +52,7 @@ function Get-Category()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/categories/$id"      
+       $apiurl= "$url/api/v1/categories/$id"      
     }
 
     $Parameters = @{

@@ -76,7 +76,7 @@ function Get-License() {
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/licenses/$id"      
+       $apiurl= "$url/api/v1/licenses/$id"      
     }
 
     $Parameters = @{

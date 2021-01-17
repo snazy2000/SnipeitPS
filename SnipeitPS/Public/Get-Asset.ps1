@@ -117,7 +117,7 @@ function Get-Asset() {
     $SearchParameter = . Get-ParameterValue
 
 
-    $apiuri = "$url/api/v1/hardware"
+    $apiurl = "$url/api/v1/hardware"
 
     if ($search -and ($asset_tag -or $asset_serial -or $id)) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
@@ -127,25 +127,25 @@ function Get-Asset() {
        if ( $search -or $asset_serial -or $asset_tag) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
-       $apiuri= "$url/api/v1/hardware/$id"      
+       $apiurl= "$url/api/v1/hardware/$id"      
     }
 
     if ($asset_tag) {
        if ( $search -or $asset_serial -or $id) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
-       $apiuri= "$url/api/v1/hardware/bytag/$asset_tag"      
+       $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"      
     }
 
     if ($asset_serial) {
        if ( $search -or $asset_tag) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of-search , -asset_tag or -asset_serial parameter"
        }
-       $apiuri= "$url/api/v1/hardware/byserial/$asset_serial"      
+       $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"      
     }
     
     $Parameters = @{
-        Uri           = "$apiuri"
+        Uri           = $apiurl
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey

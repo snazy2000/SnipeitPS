@@ -52,7 +52,7 @@ function Get-Status()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/statuslabels/$id"      
+       $apiurl= "$url/api/v1/statuslabels/$id"      
     }
 
     $Parameters = @{

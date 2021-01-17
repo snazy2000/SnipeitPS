@@ -52,7 +52,7 @@ function Get-Company()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/companies/$id"      
+       $apiurl= "$url/api/v1/companies/$id"      
     }
 
     $Parameters = @{

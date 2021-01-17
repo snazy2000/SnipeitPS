@@ -60,7 +60,7 @@ function Get-Component() {
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/components/$id"      
+       $apiurl= "$url/api/v1/components/$id"      
     }
 
     $Parameters = @{

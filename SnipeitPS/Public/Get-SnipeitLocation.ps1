@@ -52,7 +52,7 @@ function Get-SnipeitLocation()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/locations/$id"      
+       $apiurl= "$url/api/v1/locations/$id"      
     }
 
     $Parameters = @{

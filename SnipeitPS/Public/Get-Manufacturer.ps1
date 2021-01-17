@@ -52,7 +52,7 @@ function Get-Manufacturer()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/manufacturers/$id"      
+       $apiurl= "$url/api/v1/manufacturers/$id"      
     }
 
     $Parameters = @{

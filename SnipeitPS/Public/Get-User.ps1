@@ -58,7 +58,7 @@ function Get-User() {
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/users/$id"      
+       $apiurl= "$url/api/v1/users/$id"      
     }
     $Parameters = @{
         Uri           = $apiurl

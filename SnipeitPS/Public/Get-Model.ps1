@@ -27,7 +27,7 @@ function Get-Model()
     Param(
         [string]$search,
 
-        [string]$id,
+        [int]$id,
 
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
@@ -52,14 +52,14 @@ function Get-Model()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/models/$id"      
+       $apiurl= "$url/api/v1/models/id/$id"      
     }
-
+    write-host "ID $id, -- $SearchParameter"
     $Parameters = @{
         Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
-        GetParameters = $SearchParameter
+        #GetParameters = $SearchParameter
     }
 
     $result = Invoke-SnipeitMethod @Parameters

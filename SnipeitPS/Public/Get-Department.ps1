@@ -55,7 +55,7 @@ function Get-Department()
     }
     
     if ($id) {
-       $apiuri= "$url/api/v1/departments/$id"      
+       $apiurl= "$url/api/v1/departments/$id"      
     }
 
     $Parameters = @{
