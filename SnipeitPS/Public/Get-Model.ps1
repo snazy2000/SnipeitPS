@@ -54,7 +54,7 @@ function Get-Model()
     if ($id) {
        $apiurl= "$url/api/v1/models/$id"      
     }
-    write-host "ID $id, -- $SearchParameter"
+
     $Parameters = @{
         Uri           = $apiurl
         Method        = 'Get'
