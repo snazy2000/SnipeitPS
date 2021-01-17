@@ -8,6 +8,9 @@ A text string to search the assets data
 .PARAMETER asset_tag
 Specify exact asset tag to query
 
+.PARAMETER asset_serial
+Specify exact asset serial to query
+
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
@@ -68,6 +71,8 @@ function Get-Asset() {
 
         [string]$asset_tag,
 
+        [string]$asset_serial,
+
         [int]$order_number,
 
         [int]$model_id,
@@ -106,15 +111,27 @@ function Get-Asset() {
 
     $SearchParameter = . Get-ParameterValue
 
+
     $apiuri = "$url/api/v1/hardware"
 
+    if ($search -and ($asset_tag -or $asset_serial)) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search , -asset_tag or -asset_serial parameter , not both "
+    }
+
     if ($asset_tag) {
-       if ( $search) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -asset_tag parameter , not both "
+       if ( $search -or $asset_serial) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search , -asset_tag or -asset_serial parameter , not both "
        }
        $apiuri= "$url/api/v1/hardware/bytag/$asset_tag"      
     }
 
+    if ($asset_serial) {
+       if ( $search -or $asset_tag) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search , -asset_tag or -asset_serial parameter , not both "
+       }
+       $apiuri= "$url/api/v1/hardware/byserial/$asset_serial"      
+    }
+    
     $Parameters = @{
         Uri           = "$apiuri"
         Method        = 'Get'
