@@ -26,7 +26,7 @@ function Get-ParameterValue {
         # The $PSBoundParameters for the caller -- DO NOT pass this (dot-source Get-ParameterValues instead)
         $BoundParameters = $PSBoundParameters,
 
-        [string[]]$DefaultExcludeParameter = @("id", "url", "apiKey", 'Debug', 'Verbose')
+        [string[]]$DefaultExcludeParameter = @("url", "apiKey", 'Debug', 'Verbose')
     )
 
     if ($MyInvocation.Line[($MyInvocation.OffsetInLine - 1)] -ne '.') {

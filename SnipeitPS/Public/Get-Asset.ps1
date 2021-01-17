@@ -131,7 +131,7 @@ function Get-Asset() {
     }
 
     if ($asset_tag) {
-       if ( $search -or $asset_serial) {
+       if ( $search -or $asset_serial -or $id) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
        $apiuri= "$url/api/v1/hardware/bytag/$asset_tag"      
