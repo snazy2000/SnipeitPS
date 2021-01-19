@@ -59,12 +59,14 @@ function Set-Asset()
         [hashtable] $customfields
     )
 
-    $Values = @{
-        "name"      = $Name
-        "status_id" = $status_id
-        "model_id"  = $model_id
-    }
+    $Values = @{}
 
+    if ($Name) { $Values.Add('name',$Name)}
+
+    if ($status_id) { $Values.Add('status_id',$status_id)}
+
+    if ($model_id) { $Values.Add('model_id',$model_id)}
+       
     if ($customfields)
     {
         $Values += $customfields
