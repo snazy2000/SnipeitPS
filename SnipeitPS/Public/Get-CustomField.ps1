@@ -29,6 +29,7 @@ function Get-CustomField()
         Token         = $apiKey
     }
 
+
     $result = Invoke-SnipeitMethod @Parameters
 
     $result
