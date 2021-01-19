@@ -70,7 +70,7 @@ function Get-Model()
         Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
-        #GetParameters = $SearchParameter
+        GetParameters = $SearchParameter
     }
 
     if ($all) {
