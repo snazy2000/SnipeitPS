@@ -60,7 +60,7 @@ function Get-Accessory() {
         [string]$apiKey
     )
 
-    $SearchParameter = . Get-ParameterValue
+    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Parameters = @{
         Uri           = "$url/api/v1/accessories"

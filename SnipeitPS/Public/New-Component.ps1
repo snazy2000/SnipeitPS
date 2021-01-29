@@ -58,7 +58,7 @@ function New-Component() {
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($values['purchase_date']) {
         $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")

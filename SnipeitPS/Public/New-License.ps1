@@ -56,7 +56,7 @@ function New-License() {
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($values['expiration_date']) {
         $values['expiration_date'] = $values['expiration_date'].ToString("yyyy-MM-dd")

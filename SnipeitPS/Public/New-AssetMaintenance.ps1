@@ -36,7 +36,7 @@ function New-AssetMaintenance() {
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($values['start_date']) {
         $values['start_date'] = $values['start_date'].ToString("yyyy-MM-dd")
