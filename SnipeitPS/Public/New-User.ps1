@@ -107,12 +107,13 @@ function New-User() {
         company_id    = $company_id
         location_id   = $location_id
         department_id = $department_id
-        manager_id    = $manager_id
         jobtitle      = $jobTitle
         employee_num  = $employee_num
         notes         = "Imported using SnipeitPS Script"
         activated     = 1
     }
+
+    if ($manager_id) {$Values.manager_id = $manager_id}
 
     if ($ldap_user -eq $false) {
         $ldap = @{
