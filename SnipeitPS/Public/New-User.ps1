@@ -5,16 +5,22 @@
     .DESCRIPTION
     Long description
 
-    .PARAMETER firstName
+    .PARAMETER first_name
     Parameter description
 
-    .PARAMETER lastName
+    .PARAMETER last_name
     Parameter description
 
-    .PARAMETER userName
+    .PARAMETER username
     Parameter description
 
-    .PARAMETER jobTitle
+    .PARAMETER active
+    Parameter description
+
+    .PARAMETER notes
+    Parameter description
+
+    .PARAMETER jobtitle
     Parameter description
 
     .PARAMETER email
@@ -38,8 +44,8 @@
     .PARAMETER employee_num
     Parameter description
 
-    .PARAMETER ldap_user
-    Parameter description
+    .PARAMETER ldap_import
+    Mark user as import from ldap
 
     .PARAMETER url
     Parameter description
@@ -62,15 +68,19 @@ function New-User() {
 
     Param(
         [parameter(mandatory = $true)]
-        [string]$firstName,
+        [string]$first_name,
 
         [parameter(mandatory = $true)]
-        [string]$lastName,
+        [string]$last_name,
 
         [parameter(mandatory = $true)]
         [string]$username,
 
         [string]$password,
+
+        [bool]$activated = $false,
+
+        [string]$notes,
 
         [string]$jobtitle,
 
@@ -88,41 +98,22 @@ function New-User() {
 
         [string]$employee_num,
 
-        [bool]$ldap_user = $false,
+        [bool]$ldap_import = $false,
 
-        [bool]$activated = $false,
-
+        
         [parameter(mandatory = $true)]
         [string]$url,
 
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-    $Values= @{}
+    
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-    if($Values.ContainsKey('firstname')) {
-       $Values['first_name']=$Values['firstname']
-       $Values.Remove('firstname')
-    }
-    if($Values.ContainsKey('lastname')) {
-       $Values['last_name']=$Values['lastname']
-       $Values.Remove('lastname')
+        
+    if ($password ) {
+            $Values['password_confirmation'] = $password      
     }
     
-    if ($ldap_user -eq $false) {
-        $ldap = @{
-            password_confirmation = $password
-            ldap_import = 0
-        }
-        $Values += $ldap
-    }
-    else {
-        $ldap = @{
-            ldap_import = 1
-        }
-        $Values += $ldap
-    }
-
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
