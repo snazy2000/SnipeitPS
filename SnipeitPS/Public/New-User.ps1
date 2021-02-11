@@ -68,11 +68,11 @@ function New-User() {
         [string]$lastName,
 
         [parameter(mandatory = $true)]
-        [string]$userName,
+        [string]$username,
 
         [string]$password,
 
-        [string]$jobTitle,
+        [string]$jobtitle,
 
         [string]$email,
 
@@ -90,33 +90,27 @@ function New-User() {
 
         [bool]$ldap_user = $false,
 
+        [bool]$activated = $false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-
-    $Values = @{
-        first_name    = $firstName
-        last_name     = $lastName
-        username      = $userName
-
-        email         = $email
-        phone         = $phone
-        company_id    = $company_id
-        location_id   = $location_id
-        department_id = $department_id
-        manager_id    = $manager_id
-        jobtitle      = $jobTitle
-        employee_num  = $employee_num
-        notes         = "Imported using SnipeitPS Script"
-        activated     = 1
+    $Values= @{}
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    if($Values.ContainsKey('firstname')) {
+       $Values['first_name']=$Values['firstname']
+       $Values.Remove('firstname')
     }
-
+    if($Values.ContainsKey('lastname')) {
+       $Values['last_name']=$Values['lastname']
+       $Values.Remove('lastname')
+    }
+    
     if ($ldap_user -eq $false) {
         $ldap = @{
-            password    = $password
             password_confirmation = $password
             ldap_import = 0
         }
