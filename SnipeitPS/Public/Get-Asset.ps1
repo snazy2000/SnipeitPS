@@ -5,15 +5,6 @@
 .PARAMETER search
 A text string to search the assets data
 
-.PARAMETER id
-A text string to search the assets data
-
-.PARAMETER asset_tag
-Specify exact asset tag to query
-
-.PARAMETER asset_serial
-Specify exact asset serial to query
-
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
@@ -64,19 +55,10 @@ Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token...
 
 .EXAMPLE
 Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token..."
-
-.EXAMPLE
-Get-Asset -asset_tag "myAssetTag" -url "https://assets.example.com" -token "token..."
 #>
 function Get-Asset() {
     Param(
         [string]$search,
-
-        [string]$id,
-
-        [string]$asset_tag,
-
-        [string]$asset_serial,
 
         [int]$order_number,
 
@@ -116,36 +98,8 @@ function Get-Asset() {
 
     $SearchParameter = . Get-ParameterValue
 
-
-    $apiurl = "$url/api/v1/hardware"
-
-    if ($search -and ($asset_tag -or $asset_serial -or $id)) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
-    }
-
-    if ($id) {
-       if ( $search -or $asset_serial -or $asset_tag) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
-       }
-       $apiurl= "$url/api/v1/hardware/$id"      
-    }
-
-    if ($asset_tag) {
-       if ( $search -or $asset_serial -or $id) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
-       }
-       $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"      
-    }
-
-    if ($asset_serial) {
-       if ( $search -or $asset_tag) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of-search , -asset_tag or -asset_serial parameter"
-       }
-       $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"      
-    }
-    
     $Parameters = @{
-        Uri           = $apiurl
+        Uri           = "$url/api/v1/hardware"
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey
