@@ -2,6 +2,12 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Users
 
+.PARAMETER search
+A text string to search the User data
+
+.PARAMETER id
+A id of specific User
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -18,6 +24,8 @@ Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.
 function Get-User() {
     Param(
         [string]$search,
+        
+        [string]$id,
 
         [int]$company_id,
 
@@ -41,10 +49,19 @@ function Get-User() {
         [string]$apiKey
     )
 
-     $SearchParameter = . Get-ParameterValue
+    $SearchParameter = . Get-ParameterValue
+    
+    $apiurl = "$url/api/v1/users"
 
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+    
+    if ($id) {
+       $apiurl= "$url/api/v1/users/$id"      
+    }
     $Parameters = @{
-        Uri           = "$url/api/v1/users"
+        Uri           = $apiurl
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey

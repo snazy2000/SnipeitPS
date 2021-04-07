@@ -2,6 +2,12 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Licenses
 
+.PARAMETER search
+A text string to search the Licenses data
+
+.PARAMETER id
+A id of specific License
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -19,6 +25,8 @@ Get-License -url "https://assets.example.com" -token "token..." | Where-Object {
 function Get-License() {
     Param(
         [string]$search,
+
+        [string]$id,
 
         [string]$name,
 
@@ -60,9 +68,19 @@ function Get-License() {
     )
 
     $SearchParameter = . Get-ParameterValue
+    
+    $apiurl = "$url/api/v1/licenses"
+
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+    
+    if ($id) {
+       $apiurl= "$url/api/v1/licenses/$id"      
+    }
 
     $Parameters = @{
-        Uri           = "$url/api/v1/licenses"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter

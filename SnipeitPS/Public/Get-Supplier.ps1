@@ -2,6 +2,12 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Suppliers
 
+.PARAMETER search
+A text string to search the Supliers data
+
+.PARAMETER id
+A id of specific Suplier
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -21,6 +27,8 @@ function Get-Supplier()
     Param(
         [string]$search,
 
+        [string]$id,
+
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
@@ -36,9 +44,19 @@ function Get-Supplier()
     )
 
     $SearchParameter = . Get-ParameterValue
+    
+    $apiurl = "$url/api/v1/suppliers"
+
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+    
+    if ($id) {
+       $apiurl= "$url/api/v1/suppliers/$id"      
+    }
 
     $Parameters = @{
-        Uri           = "$url/api/v1/suppliers"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter
