@@ -2,12 +2,6 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Locations
 
-.PARAMETER search
-A text string to search the Locations data
-
-.PARAMETER id
-A id of specific Location
-
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -26,8 +20,6 @@ function Get-SnipeitLocation()
 {
     Param(
         [string]$search,
-        
-        [string]$id,
 
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
@@ -45,18 +37,8 @@ function Get-SnipeitLocation()
 
     $SearchParameter = . Get-ParameterValue
 
-    $apiurl = "$url/api/v1/locations"
-
-    if ($search -and $id ) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
-    }
-    
-    if ($id) {
-       $apiurl= "$url/api/v1/locations/$id"      
-    }
-
     $Parameters = @{
-        Uri           = $apiurl
+        Uri           = "$url/api/v1/locations"
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter
