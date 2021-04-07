@@ -1,22 +1,40 @@
 <#
     .SYNOPSIS
-    Add a new Model to Snipe-it asset system
+    Add a new Location to Snipe-it asset system
 
     .DESCRIPTION
     Long description
 
     .PARAMETER name
-    Name of the Asset Model
+    Name of the Location
+    
+    .PARAMETER address
+    Address line 1 of the location
+    
+    .PARAMETER address2
+    Address line 2 of the location
+    
+    .PARAMETER state
+    Address State of the location
+    
+    .PARAMETER country
+    Country of the location
+    
+    .PARAMETER zip
+    The zip code of the location
+    
+    .PARAMETER ldap_ou
+    The LDAP OU of the location
 
-    .PARAMETER category_id
-    Category ID that the asset belongs to this can be got using Get-Category
+    .PARAMETER parent_id
+    Parent location ID for the location
 
-    .PARAMETER manufacturer_id
-    Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
-
-    .PARAMETER fieldset_id
-    Fieldset ID that the asset uses (Custom fields)
-
+    .PARAMETER currency
+    Currency used at the location
+    
+    .PARAMETER manager_id
+    The manager ID of the location
+    
     .PARAMETER url
     URL of Snipeit system, can be set using Set-Info command
 
@@ -24,7 +42,7 @@
     Users API Key for Snipeit, can be set using Set-Info command
 
     .EXAMPLE
-    New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+    New-Location -name "Room 1" -address "123 Asset Street" -parent_id 14
 #>
 
 function New-Location() {
@@ -46,6 +64,8 @@ function New-Location() {
         [string]$country,
 
         [string]$zip,
+        
+        [int]$parent_id,
 
         [int]$manager_id,
 
