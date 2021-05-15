@@ -8,6 +8,15 @@ A text string to search the User data
 .PARAMETER id
 A id of specific User
 
+.PARAMETER limit
+Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
+
+.PARAMETER offset
+Offset to use
+
+.PARAMETER all
+A return all results, works with -offset and other parameters
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -42,6 +51,8 @@ function Get-User() {
 
         [int]$offset,
 
+        [switch]$all = $false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -67,7 +78,23 @@ function Get-User() {
         Token         = $apiKey
     }
 
-    $result = Invoke-SnipeitMethod @Parameters
+    if ($all) {
+        $offstart = $(if($offset){$offset} Else {0})
+        $callargs = $SearchParameter
+        $callargs.Remove('all')
 
-    $result
+        while ($true) {
+            $callargs['offset'] = $offstart
+            $callargs['limit'] = $limit         
+            $res=Get-User @callargs 
+            $res
+            if ($res.count -lt $limit) {
+                break
+            }
+            $offstart = $offstart + $limit
+        }
+    } else {
+        $result = Invoke-SnipeitMethod @Parameters
+        $result
+    }
 }

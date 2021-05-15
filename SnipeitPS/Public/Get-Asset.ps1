@@ -14,9 +14,6 @@ Specify exact asset tag to query
 .PARAMETER asset_serial
 Specify exact asset serial to query
 
-.PARAMETER all
-A return all results , works with -search and other filters
-
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
@@ -48,10 +45,13 @@ Specify the column name you wish to sort by
 Specify the order (asc or desc) you wish to order by on your sort column
 
 .PARAMETER limit
-Specify the number of results you wish to return. Defaults to 50.
+Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
 .PARAMETER offset
 Offset to use
+
+.PARAMETER all
+A return all results, works with -offset and other parameters
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
@@ -80,8 +80,6 @@ function Get-Asset() {
         [string]$asset_tag,
 
         [string]$asset_serial,
-
-        [bool]$all = $false,
 
         [int]$order_number,
 
@@ -112,6 +110,7 @@ function Get-Asset() {
 
         [int]$offset,
 
+        [switch]$all = $false,
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -124,26 +123,26 @@ function Get-Asset() {
 
     $apiurl = "$url/api/v1/hardware"
 
-    if($search -and ($asset_tag -or $asset_serial -or $id)) {
+    if ($search -and ($asset_tag -or $asset_serial -or $id)) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
     }
 
-    if($id) {
-       if( $search -or $asset_serial -or $asset_tag) {
+    if ($id) {
+       if ( $search -or $asset_serial -or $asset_tag) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
        $apiurl= "$url/api/v1/hardware/$id"     
     }
 
-    if($asset_tag) {
-       if( $search -or $asset_serial -or $id) {
+    if ($asset_tag) {
+       if ( $search -or $asset_serial -or $id) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
        $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"     
     }
 
-    if($asset_serial) {
-       if( $search -or $asset_tag) {
+    if ($asset_serial) {
+       if ( $search -or $asset_tag) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of-search , -asset_tag or -asset_serial parameter"
        }
        $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"     
@@ -156,17 +155,17 @@ function Get-Asset() {
         Token         = $apiKey
     }
 
-    if($all) {
-        $offstart = $(if($offset){$offset} Else {0})
+    if ($all) {
+        $offstart = $(if ($offset){$offset} Else {0})
         $callargs = $SearchParameter
         $callargs.Remove('all')
 
-        while($true) {
+        while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit         
             $res=Get-Asset @callargs 
             $res
-            if( $res.count -lt $limit) {
+            if ( $res.count -lt $limit) {
                 break
             }
             $offstart = $offstart + $limit
