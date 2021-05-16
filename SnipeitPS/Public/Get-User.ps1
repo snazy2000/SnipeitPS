@@ -33,7 +33,7 @@ Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.
 function Get-User() {
     Param(
         [string]$search,
-        
+
         [string]$id,
 
         [int]$company_id,
@@ -43,6 +43,10 @@ function Get-User() {
         [int]$group_id,
 
         [int]$department_id,
+
+        [string]$username,
+
+        [string]$email,
 
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
@@ -61,15 +65,15 @@ function Get-User() {
     )
 
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-    
+
     $apiurl = "$url/api/v1/users"
 
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/users/$id"      
+       $apiurl= "$url/api/v1/users/$id"
     }
     $Parameters = @{
         Uri           = $apiurl
@@ -85,8 +89,8 @@ function Get-User() {
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-User @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-User @callargs
             $res
             if ($res.count -lt $limit) {
                 break
