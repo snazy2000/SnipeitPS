@@ -25,7 +25,7 @@
     Optional Company id
 
     .PARAMETER order_number
-    Optional Order number 
+    Optional Order number
 
     .PARAMETER notes
     Optional Notes
@@ -66,7 +66,7 @@ function New-Asset()
     )]
 
     Param(
-      
+
         [parameter(mandatory = $true)]
         [int]$status_id,
 
@@ -77,6 +77,7 @@ function New-Asset()
         [string]$name,
 
         [parameter(mandatory = $false)]
+        [Alias('tag')]
         [string]$asset_tag,
 
         [parameter(mandatory = $false)]
@@ -116,7 +117,7 @@ function New-Asset()
     )
 
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-      
+
 
     if ($customfields)
     {
