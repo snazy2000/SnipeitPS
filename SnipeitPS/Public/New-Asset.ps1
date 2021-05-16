@@ -5,17 +5,42 @@
     .DESCRIPTION
     Long description
 
-    .PARAMETER Tag
-    Asset Tag for the Asset
 
-    .PARAMETER Name
-    Name of the Asset
+    .PARAMETER status_id
+    Required Status ID of the asset, this can be got using Get-Status
 
-    .PARAMETER Status_id
-    Status ID of the asset, this can be got using Get-Status
+    .PARAMETER model_id
+    Required Model ID of the asset, this can be got using Get-Model
 
-    .PARAMETER Model_id
-    Model ID of the asset, this can be got using Get-Model
+    .PARAMETER name
+    Optional Name of the Asset
+
+    .PARAMETER asset_tag
+    Asset Tag for the Asset, not required when snipe asset_tag autogeneration is on.
+
+    .PARAMETER serial
+    Optional Serial number of the Asset
+
+    .PARAMETER company_id
+    Optional Company id
+
+    .PARAMETER order_number
+    Optional Order number 
+
+    .PARAMETER notes
+    Optional Notes
+
+    .PARAMETER warranty_monhts
+    Optional Warranty lenght of the Asset in months
+
+    .PARAMETER purchase_cost
+    Optional Purchase cost of the Asset
+
+    .PARAMETER purchase_date
+    Optional Purchase cost of the Asset
+
+    .PARAMETER rtd_location_id
+    Optional Default location id for the asset
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-Info command
@@ -41,16 +66,45 @@ function New-Asset()
     )]
 
     Param(
-        [string]$tag,
+      
+        [parameter(mandatory = $true)]
+        [int]$status_id,
 
         [parameter(mandatory = $true)]
-        [string]$Name,
+        [int]$model_id,
 
-        [parameter(mandatory = $true)]
-        [int]$Status_id,
+        [parameter(mandatory = $false)]
+        [string]$name,
 
-        [parameter(mandatory = $true)]
-        [int]$Model_id,
+        [parameter(mandatory = $false)]
+        [string]$asset_tag,
+
+        [parameter(mandatory = $false)]
+        [string]$serial,
+
+        [parameter(mandatory = $false)]
+        [int]$company_id,
+
+        [parameter(mandatory = $false)]
+        [string]$order_number,
+
+        [parameter(mandatory = $false)]
+        [string]$notes,
+
+        [parameter(mandatory = $false)]
+        [int]$warranty_months,
+
+        [parameter(mandatory = $false)]
+        [string]$purchase_cost,
+
+        [parameter(mandatory = $false)]
+        [string]$purchase_date,
+
+        [parameter(mandatory = $false)]
+        [int]$supplier_id,
+
+        [parameter(mandatory = $false)]
+        [int]$rtd_location_id,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -61,16 +115,8 @@ function New-Asset()
         [hashtable] $customfields
     )
 
-    $Values = @{
-        "name"      = $Name
-        "status_id" = $status_id
-        "model_id"  = $model_id
-    }
-
-    if ($PSBoundParameters.ContainsKey('tag'))
-    {
-        $Values += @{"asset_tag" = $tag}
-    }
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+      
 
     if ($customfields)
     {
