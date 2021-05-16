@@ -46,7 +46,7 @@ function New-CustomField()
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     #Convert Values to JSON format
     $Body = $Values | ConvertTo-Json;

@@ -78,7 +78,7 @@ function New-Location() {
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Body = $Values | ConvertTo-Json;
 

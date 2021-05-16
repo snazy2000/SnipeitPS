@@ -16,7 +16,7 @@
 
     .PARAMETER Model_id
     Model ID of the asset, this can be got using Get-Model
-    
+
     .PARAMETER last_checkout
     Date the asset was last checked out
 
@@ -82,7 +82,7 @@ function Set-Asset()
         [string]$Status_id,
 
         [string]$Model_id,
-        
+
         [DateTime]$last_checkout,
 
         [int]$assigned_to,
@@ -114,7 +114,9 @@ function Set-Asset()
         [hashtable] $customfields
     )
 
-    $Values = . Get-ParameterValue
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+
+    if ($model_id) { $Values.Add('model_id',$model_id)}
 
     if ($customfields)
     {

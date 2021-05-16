@@ -62,7 +62,7 @@ function Get-Component() {
         [string]$apiKey
     )
 
-    $SearchParameter = . Get-ParameterValue
+    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $apiurl = "$url/api/v1/components"
 
