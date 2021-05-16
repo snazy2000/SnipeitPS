@@ -26,13 +26,13 @@ function Get-ParameterValue {
         $Parameters
         ,
 
-        [string[]]$DefaultExcludeParameter = @("id", "url", "apiKey", 'Debug', 'Verbose')
+        [string[]]$DefaultExcludeParameter = @("id", "url", "apiKey", 'Debug', 'Verbose','RequestType','customfields')
     )
 
     if ($MyInvocation.Line[($MyInvocation.OffsetInLine - 1)] -ne '.') {
         throw "Get-ParameterValue must be dot-sourced, like this: . Get-ParameterValues"
     }
-    
+
 
     $ParameterValues = @{}
     foreach ($parameter in $Parameters.GetEnumerator()) {
