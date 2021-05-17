@@ -72,9 +72,8 @@
             $webResponse = Invoke-WebRequest @splatParameters
         }
         catch {
-            #Write-Verbose "[$($MyInvocation.MyCommand.Name)] Failed to get an answer from the server"
-            #$webResponse = $_.Exception.Response
-            throw "[$($MyInvocation.MyCommand.Name)] Failed to get an answer from the server. $($_.Exception.Response)"
+            Write-Verbose "[$($MyInvocation.MyCommand.Name)] Failed to get an answer from the server"
+            $webResponse = $_.Exception.Response
         }
 
         Write-Debug "[$($MyInvocation.MyCommand.Name)] Executed WebRequest. Access $webResponse to see details"
