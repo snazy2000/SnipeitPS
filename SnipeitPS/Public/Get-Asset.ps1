@@ -131,21 +131,21 @@ function Get-Asset() {
        if ( $search -or $asset_serial -or $asset_tag) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
-       $apiurl= "$url/api/v1/hardware/$id"     
+       $apiurl= "$url/api/v1/hardware/$id"
     }
 
     if ($asset_tag) {
        if ( $search -or $asset_serial -or $id) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
        }
-       $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"     
+       $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"
     }
 
     if ($asset_serial) {
        if ( $search -or $asset_tag) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of-search , -asset_tag or -asset_serial parameter"
        }
-       $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"     
+       $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"
     }
 
     $Parameters = @{
@@ -162,8 +162,8 @@ function Get-Asset() {
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Asset @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Asset @callargs
             $res
             if ( $res.count -lt $limit) {
                 break
@@ -175,7 +175,7 @@ function Get-Asset() {
         $result
     }
 
-    
+
 }
 
 

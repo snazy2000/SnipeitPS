@@ -58,15 +58,15 @@ function Get-Department()
     )
 
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-    
+
     $apiurl = "$url/api/v1/departments"
 
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/departments/$id"      
+       $apiurl= "$url/api/v1/departments/$id"
     }
 
     $Parameters = @{
@@ -83,8 +83,8 @@ function Get-Department()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Department @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Department @callargs
             $res
             if ($res.count -lt $limit) {
                 break

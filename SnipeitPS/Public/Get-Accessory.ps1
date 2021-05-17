@@ -76,8 +76,8 @@ function Get-Accessory() {
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Accessory @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Accessory @callargs
             $res
             if ($res.count -lt $limit) {
                 break

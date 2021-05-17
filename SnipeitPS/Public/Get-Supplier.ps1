@@ -55,15 +55,15 @@ function Get-Supplier()
     )
 
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-    
+
     $apiurl = "$url/api/v1/suppliers"
 
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/suppliers/$id"      
+       $apiurl= "$url/api/v1/suppliers/$id"
     }
 
     $Parameters = @{
@@ -80,8 +80,8 @@ function Get-Supplier()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Supplier @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Supplier @callargs
             $res
             if ($res.count -lt $limit) {
                 break

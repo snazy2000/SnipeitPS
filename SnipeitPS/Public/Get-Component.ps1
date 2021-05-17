@@ -34,7 +34,7 @@ Get-Component -url "https://assets.example.com" -token "token..." | Where-Object
 function Get-Component() {
     Param(
         [string]$search,
-        
+
         [string]$id,
 
         [int]$category_id,
@@ -69,9 +69,9 @@ function Get-Component() {
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/components/$id"      
+       $apiurl= "$url/api/v1/components/$id"
     }
 
     $Parameters = @{
@@ -88,8 +88,8 @@ function Get-Component() {
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Component @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Component @callargs
             $res
             if ($res.count -lt $limit) {
                 break

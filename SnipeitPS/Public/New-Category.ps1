@@ -63,7 +63,7 @@ function New-Category()
     if ($checkin_email) {
         $Values += @{"checkin_email" = $true}
     }
-    
+
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{

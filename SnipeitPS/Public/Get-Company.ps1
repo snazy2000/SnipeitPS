@@ -61,9 +61,9 @@ function Get-Company()
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/companies/$id"      
+       $apiurl= "$url/api/v1/companies/$id"
     }
 
     $Parameters = @{
@@ -80,8 +80,8 @@ function Get-Company()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Company @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Company @callargs
             $res
             if ($res.count -lt $limit) {
                 break
