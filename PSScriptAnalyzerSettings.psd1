@@ -3,6 +3,7 @@
     # IncludeRules = @()
     ExcludeRules = @(
         'PSAvoidUsingUserNameAndPassWordParams',
-        'PSAvoidUsingPlainTextForPassword'
+        'PSAvoidUsingPlainTextForPassword',
+        'PSReviewUnusedParameter'
     )
 }
