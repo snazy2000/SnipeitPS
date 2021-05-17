@@ -44,7 +44,7 @@
     .EXAMPLE
     Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
 
-  
+
 #>
 function Set-SnipeitLocation() {
     [CmdletBinding(
@@ -82,7 +82,7 @@ function Set-SnipeitLocation() {
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters 
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Body = $Values | ConvertTo-Json;
 

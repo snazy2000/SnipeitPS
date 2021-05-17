@@ -55,15 +55,15 @@ function Get-Model()
     )
 
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-    
+
     $apiurl = "$url/api/v1/models"
 
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/models/$id"      
+       $apiurl= "$url/api/v1/models/$id"
     }
 
     $Parameters = @{
@@ -80,8 +80,8 @@ function Get-Model()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Model @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Model @callargs
             $res
             if ($res.count -ne $limit ) {
                 break

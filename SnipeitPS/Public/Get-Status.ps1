@@ -55,15 +55,15 @@ function Get-Status()
     )
 
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-    
+
     $apiurl = "$url/api/v1/statuslabels"
 
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/statuslabels/$id"      
+       $apiurl= "$url/api/v1/statuslabels/$id"
     }
 
     $Parameters = @{
@@ -80,8 +80,8 @@ function Get-Status()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Status @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Status @callargs
             $res
             if ($res.count -lt $limit) {
                 break

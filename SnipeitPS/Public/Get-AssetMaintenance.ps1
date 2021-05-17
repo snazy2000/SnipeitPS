@@ -78,8 +78,8 @@ function Get-AssetMaintenance() {
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-AssetMaintenance @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-AssetMaintenance @callargs
             $res
             if ($res.count -lt $limit) {
                 break

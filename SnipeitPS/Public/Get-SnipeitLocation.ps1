@@ -35,7 +35,7 @@ function Get-SnipeitLocation()
 {
     Param(
         [string]$search,
-        
+
         [string]$id,
 
         [ValidateSet("asc", "desc")]
@@ -61,9 +61,9 @@ function Get-SnipeitLocation()
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/locations/$id"      
+       $apiurl= "$url/api/v1/locations/$id"
     }
 
     $Parameters = @{
@@ -80,8 +80,8 @@ function Get-SnipeitLocation()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-SnipeitLocation @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-SnipeitLocation @callargs
             $res
             if ($res.count -lt $limit) {
                 break

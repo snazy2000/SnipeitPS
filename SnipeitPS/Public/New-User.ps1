@@ -100,20 +100,20 @@ function New-User() {
 
         [bool]$ldap_import = $false,
 
-        
+
         [parameter(mandatory = $true)]
         [string]$url,
 
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-    
+
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-        
+
     if ($password ) {
-            $Values['password_confirmation'] = $password      
+            $Values['password_confirmation'] = $password
     }
-    
+
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{

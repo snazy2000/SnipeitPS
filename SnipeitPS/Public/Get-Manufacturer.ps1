@@ -61,9 +61,9 @@ function Get-Manufacturer()
     if ($search -and $id ) {
          Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
     }
-    
+
     if ($id) {
-       $apiurl= "$url/api/v1/manufacturers/$id"      
+       $apiurl= "$url/api/v1/manufacturers/$id"
     }
 
     $Parameters = @{
@@ -80,8 +80,8 @@ function Get-Manufacturer()
 
         while ($true) {
             $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit         
-            $res=Get-Manufacturer @callargs 
+            $callargs['limit'] = $limit
+            $res=Get-Manufacturer @callargs
             $res
             if ($res.count -lt $limit) {
                 break
