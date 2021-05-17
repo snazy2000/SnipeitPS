@@ -5,16 +5,22 @@
     .DESCRIPTION
     Long description
 
-    .PARAMETER firstName
+    .PARAMETER first_name
     Parameter description
 
-    .PARAMETER lastName
+    .PARAMETER last_name
     Parameter description
 
-    .PARAMETER userName
+    .PARAMETER username
     Parameter description
 
-    .PARAMETER jobTitle
+    .PARAMETER active
+    Parameter description
+
+    .PARAMETER notes
+    Parameter description
+
+    .PARAMETER jobtitle
     Parameter description
 
     .PARAMETER email
@@ -38,8 +44,8 @@
     .PARAMETER employee_num
     Parameter description
 
-    .PARAMETER ldap_user
-    Parameter description
+    .PARAMETER ldap_import
+    Mark user as import from ldap
 
     .PARAMETER url
     Parameter description
@@ -62,17 +68,21 @@ function New-User() {
 
     Param(
         [parameter(mandatory = $true)]
-        [string]$firstName,
+        [string]$first_name,
 
         [parameter(mandatory = $true)]
-        [string]$lastName,
+        [string]$last_name,
 
         [parameter(mandatory = $true)]
-        [string]$userName,
+        [string]$username,
 
         [string]$password,
 
-        [string]$jobTitle,
+        [bool]$activated = $false,
+
+        [string]$notes,
+
+        [string]$jobtitle,
 
         [string]$email,
 
@@ -88,7 +98,8 @@ function New-User() {
 
         [string]$employee_num,
 
-        [bool]$ldap_user = $false,
+        [bool]$ldap_import = $false,
+
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -97,36 +108,10 @@ function New-User() {
         [string]$apiKey
     )
 
-    $Values = @{
-        first_name    = $firstName
-        last_name     = $lastName
-        username      = $userName
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-        email         = $email
-        phone         = $phone
-        company_id    = $company_id
-        location_id   = $location_id
-        department_id = $department_id
-        manager_id    = $manager_id
-        jobtitle      = $jobTitle
-        employee_num  = $employee_num
-        notes         = "Imported using SnipeitPS Script"
-        activated     = 1
-    }
-
-    if ($ldap_user -eq $false) {
-        $ldap = @{
-            password    = $password
-            password_confirmation = $password
-            ldap_import = 0
-        }
-        $Values += $ldap
-    }
-    else {
-        $ldap = @{
-            ldap_import = 1
-        }
-        $Values += $ldap
+    if ($password ) {
+            $Values['password_confirmation'] = $password
     }
 
     $Body = $Values | ConvertTo-Json;

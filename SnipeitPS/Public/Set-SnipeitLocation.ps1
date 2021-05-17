@@ -1,39 +1,39 @@
 <#
     .SYNOPSIS
-    Add a new Location to Snipe-it asset system
+    Updates Location in Snipe-it asset system
 
     .DESCRIPTION
     Long description
 
     .PARAMETER name
-    Name of the Location
+    Name of Location
 
     .PARAMETER address
-    Address line 1 of the location
+    Address line 1
 
     .PARAMETER address2
-    Address line 2 of the location
+    Address line 2
 
     .PARAMETER state
-    Address State of the location
+    Address State
 
     .PARAMETER country
-    Country of the location
+    Address Contry
 
     .PARAMETER zip
-    The zip code of the location
+    Address zipcode
 
-    .PARAMETER ldap_ou
-    The LDAP OU of the location
-
-    .PARAMETER parent_id
-    Parent location ID for the location
-
-    .PARAMETER currency
-    Currency used at the location
+    .PARAMETER state
+    Address State
 
     .PARAMETER manager_id
-    The manager ID of the location
+    Location manager as id
+
+    .PARAMETER ldap_ou
+    LDAP OU of Location
+
+    .PARAMETER parent_id
+    Parent location as id
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-Info command
@@ -42,10 +42,11 @@
     Users API Key for Snipeit, can be set using Set-Info command
 
     .EXAMPLE
-    New-Location -name "Room 1" -address "123 Asset Street" -parent_id 14
-#>
+    Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
 
-function New-Location() {
+
+#>
+function Set-SnipeitLocation() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -53,6 +54,9 @@ function New-Location() {
 
     Param(
         [parameter(mandatory = $true)]
+        [int]$id,
+
+        [ValidateLength(3, 255)]
         [string]$name,
 
         [string]$address,
@@ -65,11 +69,11 @@ function New-Location() {
 
         [string]$zip,
 
-        [int]$parent_id,
-
         [int]$manager_id,
 
         [string]$ldap_ou,
+
+        [int]$parent_id,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -83,8 +87,8 @@ function New-Location() {
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
-        Uri    = "$url/api/v1/locations"
-        Method = 'post'
+        Uri    = "$url/api/v1/locations/$id"
+        Method = 'PUT'
         Body   = $Body
         Token  = $apiKey
     }
@@ -95,3 +99,4 @@ function New-Location() {
 
     $result
 }
+

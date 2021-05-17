@@ -21,23 +21,21 @@ function Get-ParameterValue {
     #  }
     [CmdletBinding()]
     param(
-        # The $MyInvocation for the caller -- DO NOT pass this (dot-source Get-ParameterValues instead)
-        $Invocation = $MyInvocation,
-        # The $PSBoundParameters for the caller -- DO NOT pass this (dot-source Get-ParameterValues instead)
-        $BoundParameters = $PSBoundParameters,
+        # Pass $MyInvocation.MyCommand.Parameters to function, powershell 7 seems to only populate variables with dot sourcing
+        [parameter(mandatory = $true)]
+        $Parameters
+        ,
 
-        [string[]]$DefaultExcludeParameter = @("id", "url", "apiKey", 'Debug', 'Verbose')
+        [string[]]$DefaultExcludeParameter = @("id", "url", "apiKey", 'Debug', 'Verbose','RequestType','customfields')
     )
 
     if ($MyInvocation.Line[($MyInvocation.OffsetInLine - 1)] -ne '.') {
-        throw "Get-ParameterValues must be dot-sourced, like this: . Get-ParameterValues"
-    }
-    if ($PSBoundParameters.Count -gt 0) {
-        throw "You should not pass parameters to Get-ParameterValues, just dot-source it like this: . Get-ParameterValues"
+        throw "Get-ParameterValue must be dot-sourced, like this: . Get-ParameterValues"
     }
 
+
     $ParameterValues = @{}
-    foreach ($parameter in $Invocation.MyCommand.Parameters.GetEnumerator()) {
+    foreach ($parameter in $Parameters.GetEnumerator()) {
         # gm -in $parameter.Value | Out-Default
         try {
             $key = $parameter.Key
@@ -48,9 +46,6 @@ function Get-ParameterValue {
                     }
                 }
 
-                if ($BoundParameters.ContainsKey($key)) {
-                    $ParameterValues[$key] = $BoundParameters[$key]
-                }
             }
         }
         finally {}

@@ -26,7 +26,7 @@ function Set-Component()
     $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
-        Uri    = "$url/api/v1/components/$component_id"
+        Uri    = "$url/api/v1/components/$id"
         Method = 'Patch'
         Body   = $Body
         Token  = $apiKey

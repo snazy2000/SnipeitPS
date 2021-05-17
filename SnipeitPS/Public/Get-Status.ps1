@@ -2,6 +2,21 @@
 .SYNOPSIS
 # Gets a list of Snipe-it Status Labels
 
+.PARAMETER search
+A text string to search the Status Labels data
+
+.PARAMETER id
+A id of specific Status Label
+
+.PARAMETER limit
+Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
+
+.PARAMETER offset
+Offset to use
+
+.PARAMETER all
+A return all results, works with -offset and other parameters
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -21,12 +36,16 @@ function Get-Status()
     Param(
         [string]$search,
 
+        [string]$id,
+
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
         [int]$limit = 50,
 
         [int]$offset,
+
+        [switch]$all = $false,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -35,16 +54,42 @@ function Get-Status()
         [string]$apiKey
     )
 
-    $SearchParameter = . Get-ParameterValue
+    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+
+    $apiurl = "$url/api/v1/statuslabels"
+
+    if ($search -and $id ) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    }
+
+    if ($id) {
+       $apiurl= "$url/api/v1/statuslabels/$id"
+    }
 
     $Parameters = @{
-        Uri           = "$url/api/v1/statuslabels"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
         GetParameters = $SearchParameter
     }
 
-    $result = Invoke-SnipeitMethod @Parameters
+    if ($all) {
+        $offstart = $(if($offset){$offset} Else {0})
+        $callargs = $SearchParameter
+        $callargs.Remove('all')
 
-    $result
+        while ($true) {
+            $callargs['offset'] = $offstart
+            $callargs['limit'] = $limit
+            $res=Get-Status @callargs
+            $res
+            if ($res.count -lt $limit) {
+                break
+            }
+            $offstart = $offstart + $limit
+        }
+    } else {
+        $result = Invoke-SnipeitMethod @Parameters
+        $result
+    }
 }

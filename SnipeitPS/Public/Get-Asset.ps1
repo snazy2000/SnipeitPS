@@ -5,6 +5,15 @@
 .PARAMETER search
 A text string to search the assets data
 
+.PARAMETER id
+A text string to search the assets data
+
+.PARAMETER asset_tag
+Specify exact asset tag to query
+
+.PARAMETER asset_serial
+Specify exact asset serial to query
+
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
@@ -36,10 +45,13 @@ Specify the column name you wish to sort by
 Specify the order (asc or desc) you wish to order by on your sort column
 
 .PARAMETER limit
-Specify the number of results you wish to return. Defaults to 50.
+Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
 .PARAMETER offset
 Offset to use
+
+.PARAMETER all
+A return all results, works with -offset and other parameters
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
@@ -48,17 +60,26 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Asset -url "https://assets.example.com" -token "token..."
+Get-Asset -url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-Asset -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+
+.EXAMPLE
+Get-Asset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 #>
 function Get-Asset() {
     Param(
         [string]$search,
+
+        [string]$id,
+
+        [string]$asset_tag,
+
+        [string]$asset_serial,
 
         [int]$order_number,
 
@@ -89,6 +110,7 @@ function Get-Asset() {
 
         [int]$offset,
 
+        [switch]$all = $false,
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -96,18 +118,64 @@ function Get-Asset() {
         [string]$apiKey
     )
 
-    $SearchParameter = . Get-ParameterValue
+    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+
+
+    $apiurl = "$url/api/v1/hardware"
+
+    if ($search -and ($asset_tag -or $asset_serial -or $id)) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
+    }
+
+    if ($id) {
+       if ( $search -or $asset_serial -or $asset_tag) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
+       }
+       $apiurl= "$url/api/v1/hardware/$id"
+    }
+
+    if ($asset_tag) {
+       if ( $search -or $asset_serial -or $id) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
+       }
+       $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"
+    }
+
+    if ($asset_serial) {
+       if ( $search -or $asset_tag) {
+         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of-search , -asset_tag or -asset_serial parameter"
+       }
+       $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"
+    }
 
     $Parameters = @{
-        Uri           = "$url/api/v1/hardware"
+        Uri           = $apiurl
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey
     }
 
-    $result = Invoke-SnipeitMethod @Parameters
+    if ($all) {
+        $offstart = $(if ($offset){$offset} Else {0})
+        $callargs = $SearchParameter
+        $callargs.Remove('all')
 
-    $result
+        while ($true) {
+            $callargs['offset'] = $offstart
+            $callargs['limit'] = $limit
+            $res=Get-Asset @callargs
+            $res
+            if ( $res.count -lt $limit) {
+                break
+            }
+            $offstart = $offstart + $limit
+        }
+    } else {
+        $result = Invoke-SnipeitMethod @Parameters
+        $result
+    }
+
+
 }
 
 

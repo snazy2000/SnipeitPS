@@ -15,10 +15,13 @@ Specify the column name you wish to sort by
 Specify the order (asc or desc) you wish to order by on your sort column
 
 .PARAMETER limit
-Specify the number of results you wish to return. Defaults to 50.
+Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
 .PARAMETER offset
 Offset to use
+
+.PARAMETER all
+A return all results, works with -offset and other parameters
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
@@ -48,6 +51,8 @@ function Get-AssetMaintenance() {
 
         [int]$limit = 50,
 
+        [switch]$all = $false,
+
         [int]$offset,
 
         [parameter(mandatory = $true)]
@@ -57,7 +62,7 @@ function Get-AssetMaintenance() {
         [string]$apiKey
     )
 
-    $SearchParameter = . Get-ParameterValue
+    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Parameters = @{
         Uri           = "$url/api/v1/maintenances"
@@ -66,9 +71,25 @@ function Get-AssetMaintenance() {
         Token         = $apiKey
     }
 
-    $result = Invoke-SnipeitMethod @Parameters
+    if ($all) {
+        $offstart = $(if($offset){$offset} Else {0})
+        $callargs = $SearchParameter
+        $callargs.Remove('all')
 
-    $result
+        while ($true) {
+            $callargs['offset'] = $offstart
+            $callargs['limit'] = $limit
+            $res=Get-AssetMaintenance @callargs
+            $res
+            if ($res.count -lt $limit) {
+                break
+            }
+            $offstart = $offstart + $limit
+        }
+    } else {
+        $result = Invoke-SnipeitMethod @Parameters
+        $result
+    }
 }
 
 

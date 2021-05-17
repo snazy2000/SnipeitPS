@@ -23,7 +23,7 @@ function Set-AssetOwner()
     )
 
     $Values = @{
-        "id" = $assigned_id
+        "id" = $id
         "checkout_to_type" = $checkout_to_type
     }
 
