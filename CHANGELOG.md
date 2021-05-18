@@ -5,4 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0] - 2017-11-18
+# [v1.1.x] - 2021-05-18
+
+## Pull request rollup release. Lots of new features including:
+
+### New features
+- Powershell 7 compatibility. So you can use SnipeItPS on macos or linux .
+- Get every asset, model, licence with snipeit id by using -id parameter
+- Get assets also by -asset_tag -or serialnumber
+- Get functions also return all results from snipe when using -all parameter (by @PetriAsi)
+
+### New functions
+- Reset-AssetOwner by @lunchboxrts
+- Remove-Asset by @sheppyh
+- Added Remove-AssetMaintenance by @sheppyh
+- Remove-User @gvoynov
+
+### Fixes
+- Fixed version number on powershell gallery
+- Fixed Set-AssetOwner when checking asset out to an other asset.
+
+## [v1.0] - 2017-11-18
