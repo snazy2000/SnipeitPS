@@ -1,36 +1,40 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# New-AssetMaintenance
 
 ## SYNOPSIS
-Short description
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AssetMaintenance [-asset_id] <Int32> [-supplier_id] <Int32> [-asset_maintenance_type] <String>
+ [-title] <String> [-start_date] <DateTime> [[-completion_date] <DateTime>] [[-is_warranty] <Boolean>]
+ [[-cost] <Decimal>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
-An example
-```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -apiKey
-Parameter description
+{{ Fill apiKey Description }}
 
 ```yaml
 Type: String
@@ -38,67 +42,82 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{Fill company_id Description}}
+### -asset_id
+{{ Fill asset_id Description }}
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -asset_maintenance_type
+{{ Fill asset_maintenance_type Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -location_id
-{{Fill location_id Description}}
+### -completion_date
+{{ Fill completion_date Description }}
 
 ```yaml
-Type: Int32
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-{{Fill manager_id Description}}
+### -cost
+{{ Fill cost Description }}
 
 ```yaml
-Type: Int32
+Type: Decimal
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Parameter description
+### -is_warranty
+{{ Fill is_warranty Description }}
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,14 +132,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -url
-Parameter description
+### -start_date
+{{ Fill start_date Description }}
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+{{ Fill supplier_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -title
+{{ Fill title Description }}
 
 ```yaml
 Type: String
@@ -128,7 +177,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+{{ Fill url Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,9 +234,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
+### System.Object
 ## NOTES
-General notes
 
 ## RELATED LINKS

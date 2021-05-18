@@ -1,36 +1,37 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# New-CustomField
 
 ## SYNOPSIS
-Short description
+Add a new Custom Field to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-CustomField [-Name] <String> [[-HelpText] <String>] [[-Element] <String>] [[-Format] <String>]
+ [[-field_encrypted] <Boolean>] [[-CustomFormat] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Add a new Custom Field to Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-An example
+New-Field -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Parameter description
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -38,17 +39,77 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{Fill company_id Description}}
+### -CustomFormat
+{{ Fill CustomFormat Description }}
 
 ```yaml
-Type: Int32
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Element
+{{ Fill Element Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: Text
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -field_encrypted
+{{ Fill field_encrypted Description }}
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Format
+{{ Fill Format Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: ANY
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HelpText
+{{ Fill HelpText Description }}
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -59,38 +120,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -location_id
-{{Fill location_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-{{Fill manager_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Parameter description
+### -Name
+Name of the Custom Field
 
 ```yaml
 Type: String
@@ -104,23 +135,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
-{{ Fill notes Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -url
-Parameter description
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -128,7 +144,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,6 +189,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

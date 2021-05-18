@@ -1,54 +1,42 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# Set-User
+# New-License
 
 ## SYNOPSIS
-Short description
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Set-User [-id] <Int32> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
- [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
- [[-activated] <Boolean>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-License [-name] <String> [-seats] <Int32> [[-category_id] <Int32>] [[-company_id] <Int32>]
+ [[-expiration_date] <DateTime>] [[-license_email] <MailAddress>] [[-license_name] <String>]
+ [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>] [[-order_number] <String>]
+ [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>] [[-reassignable] <Boolean>] [[-serial] <String>]
+ [[-supplier_id] <Int32>] [[-termination_date] <DateTime>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
-An example
-```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
-### -activated
-Parameter description
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 13
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -apiKey
-Parameter description
+{{ Fill apiKey Description }}
 
 ```yaml
 Type: String
@@ -56,14 +44,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 16
+Position: 18
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -category_id
+{{ Fill category_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -company_id
-Parameter description
+{{ Fill company_id Description }}
 
 ```yaml
 Type: Int32
@@ -71,29 +74,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: 0
+Position: 3
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -department_id
-Parameter description
+### -expiration_date
+{{ Fill expiration_date Description }}
 
 ```yaml
-Type: Int32
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
-Default value: 0
+Position: 4
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -email
-Parameter description
+### -license_email
+{{ Fill license_email Description }}
+
+```yaml
+Type: MailAddress
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -license_name
+{{ Fill license_name Description }}
 
 ```yaml
 Type: String
@@ -107,11 +125,101 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -employee_num
-Parameter description
+### -maintained
+{{ Fill maintained Description }}
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+{{ Fill name Description }}
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+{{ Fill notes Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order_number
+{{ Fill order_number Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_cost
+{{ Fill purchase_cost Description }}
+
+```yaml
+Type: Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_date
+{{ Fill purchase_date Description }}
+
+```yaml
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -122,23 +230,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -first_name
-Parameter description
+### -reassignable
+{{ Fill reassignable Description }}
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-Parameter description
+### -seats
+{{ Fill seats Description }}
 
 ```yaml
 Type: Int32
@@ -147,73 +255,13 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -jobtitle
-Parameter description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -last_name
-Parameter description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-Parameter description
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-Parameter description
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -notes
-Parameter description
+### -serial
+{{ Fill serial Description }}
 
 ```yaml
 Type: String
@@ -227,23 +275,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -phone
-Parameter description
+### -supplier_id
+{{ Fill supplier_id Description }}
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 15
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -termination_date
+{{ Fill termination_date Description }}
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 16
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+{{ Fill url Description }}
 
 ```yaml
 Type: String
@@ -251,22 +314,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 15
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -userName
-Parameter description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
+Position: 17
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -308,9 +356,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
+### System.Object
 ## NOTES
-General notes
 
 ## RELATED LINKS
