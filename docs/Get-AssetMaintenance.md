@@ -1,36 +1,168 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# Get-AssetMaintenance
 
 ## SYNOPSIS
-Short description
+Gets a list of Snipe-it Assets
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] <String>] [[-order] <String>]
+ [[-limit] <Int32>] [-all] [[-offset] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-An example
+Get-AssetMaintenances -url "https://assets.example.com" -token "token..."
+```
+
+### EXAMPLE 2
+```
+Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+```
+
+### EXAMPLE 3
+```
+Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
 
+### -all
+A return all results, works with -offset and other parameters
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -apiKey
-Parameter description
+Users API Key for Snipeit, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -asset_id
+{{ Fill asset_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -limit
+Specify the number of results you wish to return.
+Defaults to 50.
+Defines batch size for -all
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+Offset to use
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order
+Specify the order (asc or desc) you wish to order by on your sort column
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -search
+A text string to search the assets data
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -sort
+Specify the column name you wish to sort by
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -44,127 +176,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{Fill company_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{Fill location_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-{{Fill manager_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Parameter description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -notes
-{{ Fill notes Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -url
-Parameter description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -173,6 +184,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

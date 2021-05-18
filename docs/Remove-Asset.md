@@ -1,20 +1,19 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# Remove-Asset
 
 ## SYNOPSIS
-Short description
+Removes Asset to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-Asset [-ID] <String> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,13 +23,13 @@ Long description
 
 ### EXAMPLE 1
 ```
-An example
+Remove-Asset -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Parameter description
+### -APIKey
+{{ Fill APIKey Description }}
 
 ```yaml
 Type: String
@@ -38,59 +37,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{Fill company_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{Fill location_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-{{Fill manager_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Parameter description
+### -ID
+Unique ID For Asset to be removed
 
 ```yaml
 Type: String
@@ -104,23 +58,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
-{{ Fill notes Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -url
-Parameter description
+### -URL
+{{ Fill URL Description }}
 
 ```yaml
 Type: String
@@ -128,7 +67,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,6 +112,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

@@ -1,36 +1,36 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# New-Category
 
 ## SYNOPSIS
-Short description
+# Create a new Snipe-IT Category
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-Category [-name] <String> [-category_type] <String> [-url] <String> [-apiKey] <String> [-use_default_eula]
+ [-require_acceptance] [-checkin_email] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-An example
+New-Category -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Parameter description
+User's API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -38,59 +38,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{Fill company_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{Fill location_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-{{Fill manager_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -category_type
+{{ Fill category_type Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -checkin_email
+If switch is present, send email to user on checkin/checkout
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -name
-Parameter description
+Name of new category to be created
 
 ```yaml
 Type: String
@@ -104,23 +89,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
-{{ Fill notes Description }}
+### -require_acceptance
+If switch is present, require users to confirm acceptance of assets in this category
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -128,8 +113,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 3
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -use_default_eula
+If switch is present, use the primary default EULA
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -173,6 +173,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

@@ -1,36 +1,39 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# Set-Model
 
 ## SYNOPSIS
-Short description
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-Model [-id] <Int32> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
+ [[-manufacturer_id] <Int32>] [[-eol] <Int32>] [[-custom_fieldset_id] <Int32>] [-url] <String>
+ [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
-An example
-```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -apiKey
-Parameter description
+{{ Fill apiKey Description }}
 
 ```yaml
 Type: String
@@ -38,29 +41,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{Fill company_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{Fill location_id Description}}
+### -category_id
+{{ Fill category_id Description }}
 
 ```yaml
 Type: Int32
@@ -74,8 +62,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-{{Fill manager_id Description}}
+### -custom_fieldset_id
+{{ Fill custom_fieldset_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: fieldset_id
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -eol
+{{ Fill eol Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+{{ Fill id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
 
 ```yaml
 Type: Int32
@@ -89,23 +122,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Parameter description
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -notes
-{{ Fill notes Description }}
+### -model_number
+{{ Fill model_number Description }}
 
 ```yaml
 Type: String
@@ -113,14 +131,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+{{ Fill name Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+{{ Fill url Description }}
 
 ```yaml
 Type: String
@@ -128,7 +161,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,9 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
+### System.Object
 ## NOTES
-General notes
 
 ## RELATED LINKS

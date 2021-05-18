@@ -1,20 +1,21 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
-# New-Department
+# Set-SnipeitLocation
 
 ## SYNOPSIS
-Short description
+Updates Location in Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
+ [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
+ [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,46 +25,16 @@ Long description
 
 ### EXAMPLE 1
 ```
-An example
+Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Parameter description
+### -address
+Address line 1
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{Fill company_id Description}}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{Fill location_id Description}}
-
-```yaml
-Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -74,11 +45,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-{{Fill manager_id Description}}
+### -address2
+Address line 2
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,8 +60,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Parameter description
+### -apiKey
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -98,14 +69,104 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
-{{ Fill notes Description }}
+### -country
+Address Contry
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+{{ Fill id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ldap_ou
+LDAP OU of Location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manager_id
+Location manager as id
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Name of Location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -parent_id
+Parent location as id
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -state
+Address State
 
 ```yaml
 Type: String
@@ -120,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -128,7 +189,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -zip
+Address zipcode
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,6 +249,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS
