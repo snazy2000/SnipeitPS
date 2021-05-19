@@ -24,12 +24,12 @@ Get-Supplier [[-search] <String>] [[-id] <String>] [[-order] <String>] [[-limit]
 
 ### EXAMPLE 1
 ```
-Get-Supplier -url "https://assets.example.com" -token "token..."
+Get-Supplier -search MySupplier
 ```
 
 ### EXAMPLE 2
 ```
-Get-Supplier -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MySupplier" }
+Get-Supplier -id 2
 ```
 
 ## PARAMETERS

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Model
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Models
+Gets a list of Snipe-it Models
 
 ## SYNTAX
 
@@ -24,12 +24,12 @@ Get-Model [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <In
 
 ### EXAMPLE 1
 ```
-Get-Model -url "https://assets.example.com" -token "token..."
+Get-Model -search "DL380"
 ```
 
 ### EXAMPLE 2
 ```
-Get-Model -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "DL380" }
+Get-Model -id 1
 ```
 
 ## PARAMETERS

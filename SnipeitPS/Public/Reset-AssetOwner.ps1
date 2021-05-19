@@ -1,3 +1,30 @@
+<#
+    .SYNOPSIS
+    Checkin asset
+    .DESCRIPTION
+    Checks asset in from current user/localtion/asset
+
+    .PARAMETER ID
+    Unique ID For asset to checkin
+
+    .PARAMETER status_id
+    Change asset status to
+
+    .PARAMETER location_id
+    Location id to change asset location to
+
+    .PARAMETER notes
+    Notes about checkin
+
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-Info command
+
+    .PARAMETER apiKey
+    User's API Key for Snipeit, can be set using Set-Info command
+
+    .EXAMPLE
+    Remove-User -ID 44 -url $url -apiKey $secret -Verbose
+#>
 function Reset-AssetOwner() {
     [CmdletBinding(
         SupportsShouldProcess = $true,

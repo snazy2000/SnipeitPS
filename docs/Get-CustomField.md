@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-CustomField
 
 ## SYNOPSIS
-# Returns a list of all Snipe-IT custom fields
+Returns a list of all Snipe-IT custom fields
 
 ## SYNTAX
 

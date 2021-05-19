@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Department
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Departments
+Gets a list of Snipe-it Departments
 
 ## SYNTAX
 
@@ -29,7 +29,12 @@ Get-Department -url "https://assets.example.com" -token "token..."
 
 ### EXAMPLE 2
 ```
-Get-Department -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Department1" }
+Get-Department -search  Department1
+```
+
+### EXAMPLE 3
+```
+Get-Department -id 1
 ```
 
 ## PARAMETERS

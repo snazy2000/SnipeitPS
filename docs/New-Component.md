@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
 # New-Component
 
 ## SYNOPSIS
-Short description
+Create a new component
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-Component [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company
 ```
 
 ## DESCRIPTION
-Long description
+Createa new componen on Snipe-It system
 
 ## EXAMPLES
 
@@ -31,7 +31,7 @@ An example
 ## PARAMETERS
 
 ### -apiKey
-Parameter description
+User's API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -category_id
-Parameter description
+ID number of category
 
 ```yaml
 Type: Int32
@@ -55,7 +55,7 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -location_id
-{{ Fill location_id Description }}
+ID number of the location the accessory is assigned to
 
 ```yaml
 Type: Int32
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -name
-Parameter description
+Component name
 
 ```yaml
 Type: String
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -purchase_cost
-{{ Fill purchase_cost Description }}
+Cost of item being purchased.
 
 ```yaml
 Type: Single
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -purchase_date
-{{ Fill purchase_date Description }}
+Date accessory was purchased
 
 ```yaml
 Type: DateTime
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -qty
-Parameter description
+Quantity of the components you have
 
 ```yaml
 Type: String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String

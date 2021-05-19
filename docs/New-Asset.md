@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
@@ -30,10 +30,21 @@ Long description
 New-Asset -status_id 1 -model_id 1 -name "Machine1"
 ```
 
+Create asset with automatic tag if tag genaration is enabled on snipe-it, other wise without tag
+
 ### EXAMPLE 2
 ```
-New-Asset -status_id 1 -model_id 1 -name "Machine1" -customfields = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+New-Asset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
 ```
+
+Specifying asset tag when creating asset
+
+### EXAMPLE 3
+```
+New-Asset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+```
+
+Using customfields when creating asset.
 
 ## PARAMETERS
 
@@ -83,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -customfields
-Hastable of custom fields and extra fields that need passing through to Snipeit
+Hastable of custom fields and extra fields that need passing through to Snipeit.
+Use internal field names from snipeit .You can use Get-CustomField to get internal field names.
 
 ```yaml
 Type: Hashtable
@@ -98,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -model_id
-Model ID of the asset, this can be got using Get-Model
+Required Model ID of the asset, this can be got using Get-Model
 
 ```yaml
 Type: Int32
@@ -113,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -name
-Name of the Asset
+Optional Name of the Asset
 
 ```yaml
 Type: String
@@ -218,7 +230,7 @@ Accept wildcard characters: False
 ```
 
 ### -status_id
-Status ID of the asset, this can be got using Get-Status
+Required Status ID of the asset, this can be got using Get-Status
 
 ```yaml
 Type: Int32

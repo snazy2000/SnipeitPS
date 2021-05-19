@@ -1,30 +1,39 @@
 <#
-    .SYNOPSIS
-    Short description
+.SYNOPSIS
+Create a new component
 
-    .DESCRIPTION
-    Long description
+.DESCRIPTION
+Createa new componen on Snipe-It system
 
-    .PARAMETER name
-    Parameter description
+.PARAMETER name
+Component name
 
-    .PARAMETER category_id
-    Parameter description
+.PARAMETER category_id
+ID number of category
 
-    .PARAMETER qty
-    Parameter description
+.PARAMETER qty
+Quantity of the components you have
 
-    .PARAMETER url
-    Parameter description
+.PARAMETER location_id
+ID number of the location the accessory is assigned to
 
-    .PARAMETER apiKey
-    Parameter description
+.PARAMETER purchase_date
+Date accessory was purchased
 
-    .EXAMPLE
-    An example
+.PARAMETER purchase_cost
+Cost of item being purchased.
 
-    .NOTES
-    General notes
+.PARAMETER url
+URL of Snipeit system, can be set using Set-Info command
+
+.PARAMETER apiKey
+User's API Key for Snipeit, can be set using Set-Info command
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
 #>
 
 function New-Component() {

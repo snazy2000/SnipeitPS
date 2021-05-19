@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
 # Set-User
 
 ## SYNOPSIS
-Short description
+Creates a new user
 
 ## SYNTAX
 
@@ -21,19 +21,21 @@ Set-User [-id] <Int32> [[-first_name] <String>] [[-last_name] <String>] [[-userN
 ```
 
 ## DESCRIPTION
-Long description
+Creates a new user to Snipe-IT system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-An example
+Update-user -id 3 -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
 ```
+
+Updates user with id 3
 
 ## PARAMETERS
 
 ### -activated
-Parameter description
+{{ Fill activated Description }}
 
 ```yaml
 Type: Boolean
@@ -48,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Parameter description
+User's API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -63,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -company_id
-Parameter description
+ID number of company users belogs to
 
 ```yaml
 Type: Int32
@@ -78,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -department_id
-Parameter description
+ID number of department
 
 ```yaml
 Type: Int32
@@ -93,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -email
-Parameter description
+email address
 
 ```yaml
 Type: String
@@ -108,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -employee_num
-Parameter description
+Employeenumber
 
 ```yaml
 Type: String
@@ -123,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ### -first_name
-Parameter description
+Users first name
 
 ```yaml
 Type: String
@@ -138,7 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-Parameter description
+{{ Fill id Description }}
 
 ```yaml
 Type: Int32
@@ -153,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -jobtitle
-Parameter description
+Users job tittle
 
 ```yaml
 Type: String
@@ -168,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -last_name
-Parameter description
+Users last name
 
 ```yaml
 Type: String
@@ -183,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -location_id
-Parameter description
+ID number of localtion
 
 ```yaml
 Type: Int32
@@ -198,7 +200,7 @@ Accept wildcard characters: False
 ```
 
 ### -manager_id
-Parameter description
+ID number of manager
 
 ```yaml
 Type: Int32
@@ -213,7 +215,7 @@ Accept wildcard characters: False
 ```
 
 ### -notes
-Parameter description
+User Notes
 
 ```yaml
 Type: String
@@ -228,7 +230,7 @@ Accept wildcard characters: False
 ```
 
 ### -phone
-Parameter description
+Phone number
 
 ```yaml
 Type: String
@@ -243,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -258,7 +260,7 @@ Accept wildcard characters: False
 ```
 
 ### -userName
-Parameter description
+Username for user
 
 ```yaml
 Type: String

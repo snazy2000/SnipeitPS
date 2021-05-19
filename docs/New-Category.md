@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-Category
 
 ## SYNOPSIS
-# Create a new Snipe-IT Category
+Create a new Snipe-IT Category
 
 ## SYNTAX
 

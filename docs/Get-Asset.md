@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Asset
 
 ## SYNOPSIS
-Gets a list of Snipe-it Assets
+Gets a list of Snipe-it Assets or specific asset
 
 ## SYNTAX
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -asset_serial
-Specify exact asset serial to query
+Exact asset serialnumber to query
 
 ```yaml
 Type: String
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -asset_tag
-Specify exact asset tag to query
+Exact asset tag to query
 
 ```yaml
 Type: String
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-A text string to search the assets data
+ID number of excact snipeit asset
 
 ```yaml
 Type: String

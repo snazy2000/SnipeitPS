@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Fieldset
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Fieldsets
+Gets a list of Snipe-it Fieldsets
 
 ## SYNTAX
 

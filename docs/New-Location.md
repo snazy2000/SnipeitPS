@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
 # New-Location
 
 ## SYNOPSIS
-Add a new Model to Snipe-it asset system
+Add a new Location to Snipe-it asset system
 
 ## SYNTAX
 
@@ -25,13 +25,13 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+New-Location -name "Room 1" -address "123 Asset Street" -parent_id 14
 ```
 
 ## PARAMETERS
 
 ### -address
-{{Fill address Description}}
+Address line 1 of the location
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -address2
-{{Fill address2 Description}}
+Address line 2 of the location
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -country
-{{Fill country Description}}
+Country of the location
 
 ```yaml
 Type: String
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -name
-Name of the Asset Model
+Name of the Location
 
 ```yaml
 Type: String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -state
-{{Fill state Description}}
+Address State of the location
 
 ```yaml
 Type: String
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -zip
-{{Fill zip Description}}
+The zip code of the location
 
 ```yaml
 Type: String

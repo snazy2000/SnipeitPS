@@ -8,33 +8,31 @@ schema: 2.0.0
 # Set-Accessory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates accessory on Snipe-It system
 
 ## SYNTAX
 
 ```
 Set-Accessory [-id] <Int32> [[-name] <String>] [[-qty] <Int32>] [[-category_id] <Int32>]
  [[-company_id] <Int32>] [[-manufacturer_id] <Int32>] [[-order_number] <String>] [[-purchase_cost] <Single>]
- [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-supplier_id] <Int32>] [-url] <String>
+ [[-purchase_date] <DateTime>] [[-min_qty] <Boolean>] [[-supplier_id] <Int32>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates accessory on Snipe-It system
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Set-Accessory -id 1 -qty 3
+```
 
 ## PARAMETERS
 
 ### -apiKey
-{{ Fill apiKey Description }}
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -42,29 +40,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -category_id
-{{ Fill category_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{ Fill company_id Description }}
+ID number of the category the accessory belongs to
 
 ```yaml
 Type: Int32
@@ -73,7 +56,22 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -company_id
+ID Number of the company the accessory is assigned to
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,92 +85,47 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -manufacturer_id
-{{ Fill manufacturer_id Description }}
+ID number of the manufacturer for this accessory.
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-{{ Fill name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order_number
-{{ Fill order_number Description }}
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 6
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -purchase_cost
-{{ Fill purchase_cost Description }}
+### -min_qty
+Min quantity of the accessory before alert is triggered
 
 ```yaml
-Type: Single
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
-Default value: None
+Position: 10
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -purchase_date
-{{ Fill purchase_date Description }}
+### -name
+ID number of Accessory on Snipe-It system
 
 ```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -qty
-{{ Fill qty Description }}
-
-```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -183,11 +136,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -requestable
-{{ Fill requestable Description }}
+### -order_number
+Order number for this accessory.
 
 ```yaml
-Type: Boolean
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_cost
+Cost of item being purchased.
+
+```yaml
+Type: Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_date
+Date accessory was purchased
+
+```yaml
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -198,8 +181,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -supplier_id
-{{ Fill supplier_id Description }}
+### -qty
+Quantity of the accessory you have
 
 ```yaml
 Type: Int32
@@ -207,14 +190,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
-Default value: None
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+ID number of the supplier for this accessory
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-{{ Fill url Description }}
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -222,7 +220,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -264,11 +262,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

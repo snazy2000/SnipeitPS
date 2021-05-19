@@ -1,24 +1,22 @@
 <#
-    .SYNOPSIS
-    Short description
+.SYNOPSIS
+Creates a new Company
 
-    .DESCRIPTION
-    Long description
+.DESCRIPTION
+Creates new company on Snipe-It system
 
-    .PARAMETER name
-    Parameter description
+.PARAMETER name
+Comapany name
 
-    .PARAMETER url
-    Parameter description
+.PARAMETER url
+URL of Snipeit system, can be set using Set-Info command
 
-    .PARAMETER apiKey
-    Parameter description
+.PARAMETER apiKey
+User's API Key for Snipeit, can be set using Set-Info command
 
-    .EXAMPLE
-    An example
+.EXAMPLE
+New-Company -name "Acme Company"
 
-    .NOTES
-    General notes
 #>
 
 function New-Company()

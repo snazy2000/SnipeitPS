@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
 # New-Department
 
 ## SYNOPSIS
-Short description
+Creates a department
 
 ## SYNTAX
 
@@ -18,19 +18,19 @@ New-Department [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>]
 ```
 
 ## DESCRIPTION
-Long description
+Creates a new department on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-An example
+New-Department -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Parameter description
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -45,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -company_id
-{{Fill company_id Description}}
+ID number of company
 
 ```yaml
 Type: Int32
@@ -54,13 +54,13 @@ Aliases:
 
 Required: False
 Position: 2
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -location_id
-{{Fill location_id Description}}
+ID number of location
 
 ```yaml
 Type: Int32
@@ -69,13 +69,13 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -manager_id
-{{Fill manager_id Description}}
+ID number of manager
 
 ```yaml
 Type: Int32
@@ -84,13 +84,13 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -name
-Parameter description
+Department Name
 
 ```yaml
 Type: String
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-Parameter description
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -173,6 +173,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

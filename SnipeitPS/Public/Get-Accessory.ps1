@@ -1,6 +1,9 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Accessories
+Gets a list of Snipe-it Accessories
+
+.DESCRIPTION
+Gets a list of Snipe-it Accessories
 
 .PARAMETER search
 A text string to search the Accessory data
@@ -12,7 +15,7 @@ A id of specific Accessory
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
 .PARAMETER offset
-Offset to use
+Result offset to use
 
 .PARAMETER all
 A return all results, works with -offset and other parameters
@@ -24,12 +27,13 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Accessory -url "https://assets.example.com" -token "token..."
+Get-Accessory -search Keyboard
 
 .EXAMPLE
-Get-Accessory -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "HP" }
+Get-Accessory -id 1
 
 #>
+
 function Get-Accessory() {
     Param(
         [string]$search,

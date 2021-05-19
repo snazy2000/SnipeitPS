@@ -1,30 +1,31 @@
 <#
     .SYNOPSIS
-    Short description
+    Creates a department
 
     .DESCRIPTION
-    Long description
+    Creates a new department on Snipe-It system
 
     .PARAMETER name
-    Parameter description
+    Department Name
 
-    .PARAMETER category_id
-    Parameter description
+    .PARAMETER company_id
+    ID number of company
 
-    .PARAMETER qty
-    Parameter description
+    .PARAMETER location_id
+    ID number of location
+
+    .PARAMETER manager_id
+    ID number of manager
 
     .PARAMETER url
-    Parameter description
+    URL of Snipeit system, can be set using Set-Info command
 
     .PARAMETER apiKey
-    Parameter description
+    Users API Key for Snipeit, can be set using Set-Info command
 
     .EXAMPLE
-    An example
+    New-Department -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 
-    .NOTES
-    General notes
 #>
 
 function New-Department() {

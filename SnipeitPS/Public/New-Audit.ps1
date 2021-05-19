@@ -1,18 +1,18 @@
 <#
-    .SYNOPSIS
-    Add a new Audit to Snipe-it asset system
+.SYNOPSIS
+Add a new Audit to Snipe-it asset system
 
-    .DESCRIPTION
-    Long description
+.DESCRIPTION
+Long description
 
-    .PARAMETER Tag
-    The asset tag of the asset you wish to audit
+.PARAMETER Tag
+The asset tag of the asset you wish to audit
 
-    .PARAMETER Location_id
-    ID of the location you want to associate with the audit
+.PARAMETER Location_id
+ID of the location you want to associate with the audit
 
-    .EXAMPLE
-    New-Audit -tag 1 -location_id "Location of Audit"
+.EXAMPLE
+New-Audit -tag 1 -location_id 1
 
 #>
 

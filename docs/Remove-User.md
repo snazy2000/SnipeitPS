@@ -29,7 +29,7 @@ Remove-User -ID 44 -url $url -apiKey $secret -Verbose
 ## PARAMETERS
 
 ### -APIKey
-{{ Fill APIKey Description }}
+User's API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-{{ Fill URL Description }}
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String

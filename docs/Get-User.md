@@ -26,12 +26,22 @@ Get-User [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-locati
 
 ### EXAMPLE 1
 ```
-Get-User -url "https://assets.example.com" -token "token..."
+Get-User -search SomeSurname
 ```
 
 ### EXAMPLE 2
 ```
-Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.username -eq "stephenm" }
+Get-User -id 3
+```
+
+### EXAMPLE 3
+```
+Get-User -username someuser
+```
+
+### EXAMPLE 4
+```
+Get-User -email user@somedomain.com
 ```
 
 ## PARAMETERS
@@ -97,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -email
-{{ Fill email Description }}
+Search string for email field
 
 ```yaml
 Type: String
@@ -234,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -username
-{{ Fill username Description }}
+Search string for username field
 
 ```yaml
 Type: String

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Licenses
+Gets a list of Snipe-it Licenses
 
 .PARAMETER search
 A text string to search the Licenses data
@@ -25,10 +25,10 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-License -url "https://assets.example.com" -token "token..."
+Get-License -search SomeLicense
 
 .EXAMPLE
-Get-License -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "License" }
+Get-License -id 1
 
 #>
 
