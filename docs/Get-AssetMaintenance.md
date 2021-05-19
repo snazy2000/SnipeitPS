@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AssetMaintenance
 
 ## SYNOPSIS
-Gets a list of Snipe-it Assets
+Lists Snipe-it Assets Maintenances
 
 ## SYNTAX
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -asset_id
-{{ Fill asset_id Description }}
+Asset ID of the asset you'd like to return maintenances for
 
 ```yaml
 Type: Int32
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the assets data
+Search string
 
 ```yaml
 Type: String

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Companies
+Gets a list of Snipe-it Companies
 
 .PARAMETER search
 A text string to search the Companies data
@@ -16,7 +16,6 @@ Offset to use
 
 .PARAMETER all
 A return all results, works with -offset and other parameters
-
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
 
@@ -24,10 +23,12 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Company -url "https://assets.example.com" -token "token..."
+Get-Company
+Gets all companies
 
 .EXAMPLE
-Get-Company -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Company1" }
+Get-Company -id 1
+Gets specific company
 
 #>
 

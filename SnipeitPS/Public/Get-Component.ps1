@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Components
+Gets a list of Snipe-it Components
 
 .PARAMETER search
 A text string to search the Components data
@@ -18,16 +18,22 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system,can be set using Set-Info command
 
 .PARAMETER apiKey
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Component -url "https://assets.example.com" -token "token..."
+Get-Component
+Returns all components
 
 .EXAMPLE
-Get-Component -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Memory" }
+Get-Component -search display
+Returns search results containeing string display
+
+.EXAMPLE
+Get-Component -id
+Returns specific component
 
 #>
 

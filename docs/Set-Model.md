@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-Model
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates Model on Snipe-it asset system
 
 ## SYNTAX
 
@@ -19,21 +19,19 @@ Set-Model [-id] <Int32> [[-name] <String>] [[-model_number] <String>] [[-categor
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Updates Model on Snipe-it asset system
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+```
 
 ## PARAMETERS
 
 ### -apiKey
-{{ Fill apiKey Description }}
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -41,14 +39,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -category_id
-{{ Fill category_id Description }}
+Category ID that the asset belongs to this can be got using Get-Category
 
 ```yaml
 Type: Int32
@@ -56,8 +54,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: None
+Position: 4
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -71,8 +69,8 @@ Parameter Sets: (All)
 Aliases: fieldset_id
 
 Required: False
-Position: 6
-Default value: None
+Position: 7
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,14 +84,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
-Default value: None
+Position: 6
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-{{ Fill id Description }}
+ID number  of the Asset Model
 
 ```yaml
 Type: Int32
@@ -101,14 +99,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -manufacturer_id
-{{ Fill manufacturer_id Description }}
+Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
 
 ```yaml
 Type: Int32
@@ -116,14 +114,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: None
+Position: 5
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -model_number
-{{ Fill model_number Description }}
+Model number of the Asset Model
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Name of the Asset Model
 
 ```yaml
 Type: String
@@ -137,23 +150,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-{{ Fill name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -url
-{{ Fill url Description }}
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -161,7 +159,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -203,11 +201,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

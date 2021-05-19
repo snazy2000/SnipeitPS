@@ -8,6 +8,9 @@
     .PARAMETER name
     Name of the Asset Model
 
+    .PARAMETER model_number
+    Model number of the Asset Model
+
     .PARAMETER category_id
     Category ID that the asset belongs to this can be got using Get-Category
 

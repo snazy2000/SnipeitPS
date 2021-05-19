@@ -1,3 +1,74 @@
+<#
+    .SYNOPSIS
+    Updates a licence
+
+    .DESCRIPTION
+    Updates licence on Snipe-It system
+
+    .PARAMETER id
+    ID number of licence
+
+    .PARAMETER name
+    Name of license
+
+    .PARAMETER seats
+    Number of license seats owned.
+
+    .PARAMETER company_id
+    Id number of company license belongs to
+
+    .PARAMETER expiration_date
+    Date of license expiration
+
+    .PARAMETER expiration_date
+    Date of license expiration
+
+    .PARAMETER license_email
+    Email address associated with license
+
+    .PARAMETER license_name
+    Name of license contact person
+
+    .PARAMETER serial
+    Serialnumber  of license
+
+    .PARAMETER maintained
+    Maintained status of license
+
+    .PARAMETER manufacturer_id
+    ID number of manufacturer of license.
+
+    .PARAMETER notes
+    License Notes
+
+    .PARAMETER order_number
+    Order number of license purchase
+
+    .PARAMETER purchase_cost
+    Cost of license
+
+    .PARAMETER purchase_date
+    Date of license purchase
+
+    .PARAMETER reassignable
+    Is license reassignable?
+
+    .PARAMETER supplier_id
+    ID number of license supplier
+
+    .PARAMETER termination_date
+    Termination date for license.
+
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-Info command
+
+    .PARAMETER apiKey
+    Users API Key for Snipeit, can be set using Set-Info command
+
+    .EXAMPLE
+    Set-Licence -name "License" -seats 3 -company_id 1
+
+#>
 
 function Set-License() {
     [CmdletBinding(

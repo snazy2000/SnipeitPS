@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Category
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Categories
+Gets a list of Snipe-it Categories
 
 ## SYNTAX
 
@@ -24,12 +24,12 @@ Get-Category [[-search] <String>] [[-id] <String>] [[-order] <String>] [[-limit]
 
 ### EXAMPLE 1
 ```
-Get-Category -url "https://assets.example.com" -token "token..."
+Get-Category -id 1
 ```
 
 ### EXAMPLE 2
 ```
-Get-Category -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Laptop" }
+Get-Category -search "Laptop"
 ```
 
 ## PARAMETERS
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+Url of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String

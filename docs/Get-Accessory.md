@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Accessory
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Accessories
+Gets a list of Snipe-it Accessories
 
 ## SYNTAX
 
@@ -19,18 +19,18 @@ Get-Accessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int3
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets a list of Snipe-it Accessories
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-Accessory -url "https://assets.example.com" -token "token..."
+Get-Accessory -search Keyboard
 ```
 
 ### EXAMPLE 2
 ```
-Get-Accessory -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "HP" }
+Get-Accessory -id 1
 ```
 
 ## PARAMETERS
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -offset
-Offset to use
+Result offset to use
 
 ```yaml
 Type: Int32

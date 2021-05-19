@@ -1,3 +1,18 @@
+<#
+    .SYNOPSIS
+    Sets authetication information
+    .DESCRIPTION
+    Set apikey and url user to connect Snipe-It system
+
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-Info command
+
+    .PARAMETER apiKey
+    User's API Key for Snipeit, can be set using Set-Info command
+
+    .EXAMPLE
+    Set-Info -url $url -apiKey -Verbose
+#>
 function Set-Info {
     [CmdletBinding()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseShouldProcessForStateChangingFunctions', '')]

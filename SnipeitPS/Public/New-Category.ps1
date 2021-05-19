@@ -1,20 +1,28 @@
 <#
 .SYNOPSIS
-# Create a new Snipe-IT Category
+Create a new Snipe-IT Category
+
 .PARAMETER name
 Name of new category to be created
+
 .PARAMETER type
 Type of new category to be created (asset, accessory, consumable, component, license)
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
+
 .PARAMETER apiKey
 User's API Key for Snipeit, can be set using Set-Info command
+
 .PARAMETER use_default_eula
 If switch is present, use the primary default EULA
+
 .PARAMETER require_acceptance
 If switch is present, require users to confirm acceptance of assets in this category
+
 .PARAMETER checkin_email
 If switch is present, send email to user on checkin/checkout
+
 .EXAMPLE
 New-Category -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 #>

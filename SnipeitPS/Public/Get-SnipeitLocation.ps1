@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Locations
 
 .PARAMETER search
 A text string to search the Locations data
@@ -24,10 +24,10 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Location -url "https://assets.example.com" -token "token..."
+Get-Location -search Location1
 
 .EXAMPLE
-Get-Location -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Location1" }
+Get-Location -id 3
 
 #>
 

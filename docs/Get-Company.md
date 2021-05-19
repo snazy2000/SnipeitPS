@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Company
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Companies
+Gets a list of Snipe-it Companies
 
 ## SYNTAX
 
@@ -24,13 +24,17 @@ Get-Company [[-search] <String>] [[-id] <String>] [[-order] <String>] [[-limit] 
 
 ### EXAMPLE 1
 ```
-Get-Company -url "https://assets.example.com" -token "token..."
+Get-Company
 ```
+
+Gets all companies
 
 ### EXAMPLE 2
 ```
-Get-Company -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Company1" }
+Get-Company -id 1
 ```
+
+Gets specific company
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Component
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Components
+Gets a list of Snipe-it Components
 
 ## SYNTAX
 
@@ -25,13 +25,24 @@ Get-Component [[-search] <String>] [[-id] <String>] [[-category_id] <Int32>] [[-
 
 ### EXAMPLE 1
 ```
-Get-Component -url "https://assets.example.com" -token "token..."
+Get-Component
 ```
+
+Returns all components
 
 ### EXAMPLE 2
 ```
-Get-Component -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Memory" }
+Get-Component -search display
 ```
+
+Returns search results containeing string display
+
+### EXAMPLE 3
+```
+Get-Component -id
+```
+
+Returns specific component
 
 ## PARAMETERS
 
@@ -203,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system,can be set using Set-Info command
 
 ```yaml
 Type: String

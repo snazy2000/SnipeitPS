@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Status
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Status Labels
+Gets a list of Snipe-it Status Labels
 
 ## SYNTAX
 
@@ -24,12 +24,12 @@ Get-Status [[-search] <String>] [[-id] <String>] [[-order] <String>] [[-limit] <
 
 ### EXAMPLE 1
 ```
-Get-Status -url "https://assets.example.com" -token "token..."
+Get-Status -search  "Ready to Deploy"
 ```
 
 ### EXAMPLE 2
 ```
-Get-Status -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Ready to Deploy" }
+Get-Status -id 3
 ```
 
 ## PARAMETERS

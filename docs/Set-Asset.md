@@ -1,14 +1,14 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 
 # Set-Asset
 
 ## SYNOPSIS
-Update a Asset in the Snipe-it asset system
+Update a specific Asset in the Snipe-it asset system
 
 ## SYNTAX
 
@@ -53,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -archived
-Whether or not the asset is archived. Archived assets cannot be checked out and do not show up in the deployable asset screens
+Whether or not the asset is archived.
+Archived assets cannot be checked out and do not show up in the deployable asset screens
 
 ```yaml
 Type: Boolean
@@ -158,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Asset
+Asset name
 
 ```yaml
 Type: String

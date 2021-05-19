@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Models
+Gets a list of Snipe-it Models
 
 .PARAMETER search
 A text string to search the Models data
@@ -24,10 +24,10 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Model -url "https://assets.example.com" -token "token..."
+Get-Model -search "DL380"
 
 .EXAMPLE
-Get-Model -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "DL380" }
+Get-Model -id 1
 
 #>
 

@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
-online version: http://go.microsoft.com/fwlink/?LinkId=821589
+online version:
 schema: 2.0.0
 ---
 

@@ -24,13 +24,17 @@ Get-Manufacturer [[-search] <String>] [[-id] <String>] [[-order] <String>] [[-li
 
 ### EXAMPLE 1
 ```
-Get-Manufacturer -url "https://assets.example.com" -token "token..."
+Get-Manufacturer -search HP
 ```
+
+Search all manufacturers for string HP
 
 ### EXAMPLE 2
 ```
-Get-Manufacturer -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "HP" }
+Get-Manufacturer -id 3
 ```
+
+Returns manufacturer with id 3
 
 ## PARAMETERS
 

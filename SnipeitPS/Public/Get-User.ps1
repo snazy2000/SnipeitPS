@@ -8,6 +8,12 @@ A text string to search the User data
 .PARAMETER id
 A id of specific User
 
+.PARAMETER username
+Search string for username field
+
+.PARAMETER email
+Search string for email field
+
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -24,12 +30,18 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-User -url "https://assets.example.com" -token "token..."
+Get-User -search SomeSurname
 
 .EXAMPLE
-Get-User -url "https://assets.example.com" -token "token..." | Where-Object {$_.username -eq "stephenm" }
+Get-User -id 3
 
+.EXAMPLE
+Get-User -username someuser
+
+.EXAMPLE
+Get-User -email user@somedomain.com
 #>
+
 function Get-User() {
     Param(
         [string]$search,

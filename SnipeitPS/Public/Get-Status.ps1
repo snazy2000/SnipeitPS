@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Status Labels
+Gets a list of Snipe-it Status Labels
 
 .PARAMETER search
 A text string to search the Status Labels data
@@ -24,10 +24,10 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Status -url "https://assets.example.com" -token "token..."
+Get-Status -search  "Ready to Deploy"
 
 .EXAMPLE
-Get-Status -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Ready to Deploy" }
+Get-Status -id 3
 
 #>
 

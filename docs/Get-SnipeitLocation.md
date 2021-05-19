@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-SnipeitLocation
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Locations
 
 ## SYNTAX
 
@@ -24,12 +24,12 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <String>] [[-order] <String>] [[
 
 ### EXAMPLE 1
 ```
-Get-Location -url "https://assets.example.com" -token "token..."
+Get-Location -search Location1
 ```
 
 ### EXAMPLE 2
 ```
-Get-Location -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Location1" }
+Get-Location -id 3
 ```
 
 ## PARAMETERS

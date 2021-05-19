@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Categories
+Gets a list of Snipe-it Categories
 
 .PARAMETER search
 A text string to search the Categories data
@@ -18,16 +18,16 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-Info command
+Url of Snipeit system, can be set using Set-Info command
 
 .PARAMETER apiKey
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Category -url "https://assets.example.com" -token "token..."
+Get-Category -id 1
 
 .EXAMPLE
-Get-Category -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Laptop" }
+Get-Category -search "Laptop"
 
 #>
 

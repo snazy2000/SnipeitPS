@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AssetMaintenance
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add a new Asset maintenence to Snipe-it asset system
 
 ## SYNTAX
 
@@ -20,21 +20,19 @@ New-AssetMaintenance [-asset_id] <Int32> [-supplier_id] <Int32> [-asset_maintena
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Long description
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard" -start_date 2021-01-01
+```
 
 ## PARAMETERS
 
 ### -apiKey
-{{ Fill apiKey Description }}
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -42,14 +40,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -asset_id
-{{ Fill asset_id Description }}
+Required ID of the asset, this can be got using Get-Asset
 
 ```yaml
 Type: Int32
@@ -57,8 +55,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
-Default value: None
+Position: 1
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -72,7 +70,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -87,14 +85,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -cost
-{{ Fill cost Description }}
+Optional cost
 
 ```yaml
 Type: Decimal
@@ -102,14 +100,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
-Default value: None
+Position: 8
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -is_warranty
-{{ Fill is_warranty Description }}
+Optional Maintenance done under warranty
 
 ```yaml
 Type: Boolean
@@ -117,14 +115,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
-Default value: None
+Position: 7
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -notes
-{{ Fill notes Description }}
+Optional cost
 
 ```yaml
 Type: String
@@ -132,17 +130,47 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -start_date
-{{ Fill start_date Description }}
+Required start date
 
 ```yaml
 Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+Required maintenance supplier
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -title
+Required Title of maintenance
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,38 +181,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -supplier_id
-{{ Fill supplier_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -title
-{{ Fill title Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -url
-{{ Fill url Description }}
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -192,7 +190,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -234,11 +232,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
