@@ -1,4 +1,4 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
@@ -130,7 +130,7 @@ Users first name
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: firstName
 
 Required: True
 Position: 1
@@ -160,7 +160,7 @@ Users last name
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: lastName
 
 Required: True
 Position: 2
@@ -175,7 +175,7 @@ Mark user as import from ldap
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: ldap_user
 
 Required: False
 Position: 15

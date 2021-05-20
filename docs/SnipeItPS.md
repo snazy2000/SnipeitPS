@@ -95,6 +95,9 @@ Update a specific Asset in the Snipe-it asset system
 ### [Set-AssetOwner](Set-AssetOwner.md)
 Checkout asset
 
+### [Set-Component](Set-Component.md)
+Updates component
+
 ### [Set-Info](Set-Info.md)
 Sets authetication information
 
