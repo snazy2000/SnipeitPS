@@ -69,9 +69,11 @@ function New-User() {
 
     Param(
         [parameter(mandatory = $true)]
+        [alias('firstName')]
         [string]$first_name,
 
         [parameter(mandatory = $true)]
+        [alias('lastName')]
         [string]$last_name,
 
         [parameter(mandatory = $true)]
@@ -98,7 +100,7 @@ function New-User() {
         [int]$manager_id,
 
         [string]$employee_num,
-
+        [alias('ldap_user')]
         [bool]$ldap_import = $false,
 
 
