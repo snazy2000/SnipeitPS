@@ -5,6 +5,13 @@
     Long description
     .PARAMETER ID
     Unique ID For User to be removed
+
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-Info command
+
+    .PARAMETER apiKey
+    User's API Key for Snipeit, can be set using Set-Info command
+
     .EXAMPLE
     Remove-User -ID 44 -url $url -apiKey $secret -Verbose
 #>

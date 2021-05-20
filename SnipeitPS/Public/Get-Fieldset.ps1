@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Fieldsets
+Gets a list of Snipe-it Fieldsets
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command

@@ -5,58 +5,57 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Component
+# Set-SnipeitLocation
 
 ## SYNOPSIS
-Gets a list of Snipe-it Components
+Updates Location in Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Get-Component [[-search] <String>] [[-id] <String>] [[-category_id] <Int32>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-order] <String>] [[-sort] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
- [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
+ [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
+ [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Long description
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-Component
+Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
 ```
-
-Returns all components
-
-### EXAMPLE 2
-```
-Get-Component -search display
-```
-
-Returns search results containeing string display
-
-### EXAMPLE 3
-```
-Get-Component -id
-```
-
-Returns specific component
 
 ## PARAMETERS
 
-### -all
-A return all results, works with -offset and other parameters
+### -address
+Address line 1
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -address2
+Address line 2
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -70,44 +69,74 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -category_id
-{{ Fill category_id Description }}
+### -country
+Address Contry
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{ Fill company_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
+Position: 6
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Component
+{{ Fill id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ldap_ou
+LDAP OU of Location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manager_id
+Location manager as id
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Name of Location
 
 ```yaml
 Type: String
@@ -121,10 +150,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
+### -parent_id
+Parent location as id
 
 ```yaml
 Type: Int32
@@ -132,74 +159,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: 50
+Position: 10
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -location_id
-{{ Fill location_id Description }}
+### -state
+Address State
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 5
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-Offset to use
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order
-{{ Fill order Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Components data
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -sort
-{{ Fill sort Description }}
+### -url
+URL of Snipeit system, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -zip
+Address zipcode
 
 ```yaml
 Type: String
@@ -208,21 +205,37 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: Created_at
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -url
-URL of Snipeit system,can be set using Set-Info command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 10
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

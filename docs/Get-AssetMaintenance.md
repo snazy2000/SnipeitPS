@@ -5,17 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Component
+# Get-AssetMaintenance
 
 ## SYNOPSIS
-Gets a list of Snipe-it Components
+Lists Snipe-it Assets Maintenances
 
 ## SYNTAX
 
 ```
-Get-Component [[-search] <String>] [[-id] <String>] [[-category_id] <Int32>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-order] <String>] [[-sort] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
- [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-AssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] <String>] [[-order] <String>]
+ [[-limit] <Int32>] [-all] [[-offset] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,24 +24,18 @@ Get-Component [[-search] <String>] [[-id] <String>] [[-category_id] <Int32>] [[-
 
 ### EXAMPLE 1
 ```
-Get-Component
+Get-AssetMaintenances -url "https://assets.example.com" -token "token..."
 ```
-
-Returns all components
 
 ### EXAMPLE 2
 ```
-Get-Component -search display
+Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
-
-Returns search results containeing string display
 
 ### EXAMPLE 3
 ```
-Get-Component -id
+Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
-
-Returns specific component
 
 ## PARAMETERS
 
@@ -70,53 +63,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -category_id
-{{ Fill category_id Description }}
+### -asset_id
+Asset ID of the asset you'd like to return maintenances for
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{ Fill company_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-A id of specific Component
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 2
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,23 +95,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{ Fill location_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 5
-Default value: 0
+Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -162,14 +110,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 6
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -order
-{{ Fill order Description }}
+Specify the order (asc or desc) you wish to order by on your sort column
 
 ```yaml
 Type: String
@@ -177,14 +125,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 4
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Components data
+Search string
 
 ```yaml
 Type: String
@@ -199,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -sort
-{{ Fill sort Description }}
+Specify the column name you wish to sort by
 
 ```yaml
 Type: String
@@ -207,14 +155,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 3
 Default value: Created_at
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system,can be set using Set-Info command
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -222,7 +170,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

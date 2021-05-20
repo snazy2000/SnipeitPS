@@ -5,34 +5,30 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-Asset
+# New-License
 
 ## SYNOPSIS
-Update a specific Asset in the Snipe-it asset system
+Creates a licence
 
 ## SYNTAX
 
 ```
-Set-Asset [-id] <Int32> [[-Name] <String>] [[-Status_id] <String>] [[-Model_id] <String>]
- [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
- [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
- [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
- [-url] <String> [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-License [-name] <String> [-seats] <Int32> [[-category_id] <Int32>] [[-company_id] <Int32>]
+ [[-expiration_date] <DateTime>] [[-license_email] <MailAddress>] [[-license_name] <String>]
+ [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>] [[-order_number] <String>]
+ [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>] [[-reassignable] <Boolean>] [[-serial] <String>]
+ [[-supplier_id] <Int32>] [[-termination_date] <DateTime>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Creates a new licence on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1"
-```
-
-### EXAMPLE 2
-```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+New-Licence -name "License" -seats 3 -company_id 1
 ```
 
 ## PARAMETERS
@@ -46,30 +42,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 17
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -archived
-Whether or not the asset is archived.
-Archived assets cannot be checked out and do not show up in the deployable asset screens
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 14
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -assigned_to
-The id of the user the asset is currently checked out to
+### -category_id
+{{ Fill category_id Description }}
 
 ```yaml
 Type: Int32
@@ -77,14 +57,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 3
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -company_id
-The id of an associated company id
+Id number of company license belongs to
 
 ```yaml
 Type: Int32
@@ -92,44 +72,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -customfields
-Hastable of custom fields and extra fields that need passing through to Snipeit
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 18
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-ID of the Asset
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -last_checkout
-Date the asset was last checked out
+### -expiration_date
+Date of license expiration
 
 ```yaml
 Type: DateTime
@@ -143,8 +93,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Model_id
-Model ID of the asset, this can be got using Get-Model
+### -license_email
+Email address associated with license
+
+```yaml
+Type: MailAddress
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -license_name
+Name of license contact person
 
 ```yaml
 Type: String
@@ -152,74 +117,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Asset name
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order_number
-Order number for the asset
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_cost
-Purchase cost of the asset, without a currency symbol
-
-```yaml
-Type: Double
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_date
-Date of asset purchase
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 12
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -requestable
-Whether or not the asset can be requested by users with the permission to request assets
+### -maintained
+Maintained status of license
 
 ```yaml
 Type: Boolean
@@ -227,14 +132,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 8
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -rtd_location_id
-The id that corresponds to the location where the asset is usually located when not checked out
+### -manufacturer_id
+ID number of manufacturer of license.
 
 ```yaml
 Type: Int32
@@ -242,14 +147,119 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 15
+Position: 9
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Name of license being created
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+License Notes
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order_number
+Order number of license purchase
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_cost
+Cost of license
+
+```yaml
+Type: Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_date
+Date of license purchase
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -reassignable
+Is license reassignable?
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -seats
+Number of license seats owned.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -serial
-Serial number of the asset
+Serialnumber  of license
 
 ```yaml
 Type: String
@@ -257,22 +267,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 15
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status_id
-Status ID of the asset, this can be got using Get-Status
+### -supplier_id
+ID number of license supplier
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 16
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -termination_date
+Termination date for license.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 17
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -287,23 +312,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 16
+Position: 18
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -warranty_months
-Number of months for the asset warranty
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

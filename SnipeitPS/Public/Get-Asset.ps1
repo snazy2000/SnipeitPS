@@ -1,18 +1,18 @@
 <#
 .SYNOPSIS
- Gets a list of Snipe-it Assets
+Gets a list of Snipe-it Assets or specific asset
 
 .PARAMETER search
 A text string to search the assets data
 
 .PARAMETER id
-A text string to search the assets data
+ID number of excact snipeit asset
 
 .PARAMETER asset_tag
-Specify exact asset tag to query
+Exact asset tag to query
 
 .PARAMETER asset_serial
-Specify exact asset serial to query
+Exact asset serialnumber to query
 
 .PARAMETER order_number
 Optionally restrict asset results to this order number
@@ -71,6 +71,7 @@ Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
 .EXAMPLE
 Get-Asset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 #>
+
 function Get-Asset() {
     Param(
         [string]$search,

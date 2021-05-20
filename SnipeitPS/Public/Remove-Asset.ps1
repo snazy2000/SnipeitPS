@@ -5,8 +5,14 @@
     Long description
     .PARAMETER ID
     Unique ID For Asset to be removed
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-Info command
+
+    .PARAMETER apiKey
+    User's API Key for Snipeit, can be set using Set-Info command
+
     .EXAMPLE
-    Remove-Asset -ID 44 -url $url -apiKey $secret -Verbose
+    Remove-Asset -ID 44 -Verbose
 #>
 
 function Remove-Asset ()

@@ -5,44 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Component
+# Get-Accessory
 
 ## SYNOPSIS
-Gets a list of Snipe-it Components
+Gets a list of Snipe-it Accessories
 
 ## SYNTAX
 
 ```
-Get-Component [[-search] <String>] [[-id] <String>] [[-category_id] <Int32>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-order] <String>] [[-sort] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
- [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-Accessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int32>]
+ [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>] [[-sort] <String>] [[-order] <String>]
+ [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets a list of Snipe-it Accessories
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-Component
+Get-Accessory -search Keyboard
 ```
-
-Returns all components
 
 ### EXAMPLE 2
 ```
-Get-Component -search display
+Get-Accessory -id 1
 ```
-
-Returns search results containeing string display
-
-### EXAMPLE 3
-```
-Get-Component -id
-```
-
-Returns specific component
 
 ## PARAMETERS
 
@@ -100,23 +89,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-A id of specific Component
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 2
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -138,8 +112,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -location_id
-{{ Fill location_id Description }}
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
 
 ```yaml
 Type: Int32
@@ -147,14 +121,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -offset
-Offset to use
+Result offset to use
 
 ```yaml
 Type: Int32
@@ -177,14 +151,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Components data
+A text string to search the Accessory data
 
 ```yaml
 Type: String
@@ -207,14 +181,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 6
 Default value: Created_at
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -supplier_id
+{{ Fill supplier_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
-URL of Snipeit system,can be set using Set-Info command
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String

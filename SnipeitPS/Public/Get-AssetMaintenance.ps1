@@ -1,12 +1,12 @@
 <#
 .SYNOPSIS
- Gets a list of Snipe-it Assets
+Lists Snipe-it Assets Maintenances
 
 .PARAMETER asset_id
-
+Asset ID of the asset you'd like to return maintenances for
 
 .PARAMETER search
-A text string to search the assets data
+Search string
 
 .PARAMETER sort
 Specify the column name you wish to sort by

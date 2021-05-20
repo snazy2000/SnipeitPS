@@ -1,4 +1,62 @@
+<#
+.SYNOPSIS
+Updates accessory on Snipe-It system
 
+.DESCRIPTION
+Updates accessory on Snipe-It system
+
+.PARAMETER name
+ID number of Accessory on Snipe-It system
+
+.PARAMETER qty
+Quantity of the accessory you have
+
+.PARAMETER category_id
+ID number of the category the accessory belongs to
+
+.PARAMETER company_id
+ID Number of the company the accessory is assigned to
+
+.PARAMETER manufacturer_id
+ID number of the manufacturer for this accessory.
+
+.PARAMETER order_number
+Order number for this accessory.
+
+.PARAMETER purchase_cost
+Cost of item being purchased.
+
+.PARAMETER purchase_date
+Date accessory was purchased
+
+.PARAMETER order_number
+Order number for this accessory.
+
+.PARAMETER purchase_cost
+Cost of item being purchased.
+
+.PARAMETER purchase_date
+Date accessory was purchased
+
+.PARAMETER supplier_id
+ID number of the supplier for this accessory
+
+.PARAMETER location_id
+ID number of the location the accessory is assigned to
+
+.PARAMETER min_qty
+Min quantity of the accessory before alert is triggered
+
+.PARAMETER url
+URL of Snipeit system, can be set using Set-Info command
+
+.PARAMETER apiKey
+Users API Key for Snipeit, can be set using Set-Info command
+
+.EXAMPLE
+Set-Accessory -id 1 -qty 3
+
+#>
 function Set-Accessory() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -29,7 +87,7 @@ function Set-Accessory() {
 
         [datetime]$purchase_date,
 
-        [bool]$requestable,
+        [bool]$min_qty,
 
         [ValidateRange(1, [int]::MaxValue)]
         [int]$supplier_id,

@@ -5,61 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Component
+# New-AssetMaintenance
 
 ## SYNOPSIS
-Gets a list of Snipe-it Components
+Add a new Asset maintenence to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Get-Component [[-search] <String>] [[-id] <String>] [[-category_id] <Int32>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-order] <String>] [[-sort] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
- [-url] <String> [-apiKey] <String> [<CommonParameters>]
+New-AssetMaintenance [-asset_id] <Int32> [-supplier_id] <Int32> [-asset_maintenance_type] <String>
+ [-title] <String> [-start_date] <DateTime> [[-completion_date] <DateTime>] [[-is_warranty] <Boolean>]
+ [[-cost] <Decimal>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Long description
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-Component
+New-AssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard" -start_date 2021-01-01
 ```
-
-Returns all components
-
-### EXAMPLE 2
-```
-Get-Component -search display
-```
-
-Returns search results containeing string display
-
-### EXAMPLE 3
-```
-Get-Component -id
-```
-
-Returns specific component
 
 ## PARAMETERS
-
-### -all
-A return all results, works with -offset and other parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -apiKey
 Users API Key for Snipeit, can be set using Set-Info command
@@ -76,130 +46,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -category_id
-{{ Fill category_id Description }}
+### -asset_id
+Required ID of the asset, this can be got using Get-Asset
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 3
+Required: True
+Position: 1
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{ Fill company_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-A id of specific Component
+### -asset_maintenance_type
+{{ Fill asset_maintenance_type Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 2
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
+### -completion_date
+{{ Fill completion_date Description }}
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{ Fill location_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-Offset to use
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order
-{{ Fill order Description }}
-
-```yaml
-Type: String
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 6
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Components data
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -sort
-{{ Fill sort Description }}
+### -cost
+Optional cost
+
+```yaml
+Type: Decimal
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -is_warranty
+Optional Maintenance done under warranty
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+Optional cost
 
 ```yaml
 Type: String
@@ -207,14 +130,59 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
-Default value: Created_at
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -start_date
+Required start date
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+Required maintenance supplier
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -title
+Required Title of maintenance
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system,can be set using Set-Info command
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -223,6 +191,37 @@ Aliases:
 
 Required: True
 Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

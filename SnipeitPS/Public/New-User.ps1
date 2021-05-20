@@ -1,64 +1,65 @@
 <#
     .SYNOPSIS
-    Short description
+    Creates a new user
 
     .DESCRIPTION
-    Long description
+    Creates a new user to Snipe-IT system
 
     .PARAMETER first_name
-    Parameter description
+    Users first name
 
     .PARAMETER last_name
-    Parameter description
+    Users last name
 
     .PARAMETER username
-    Parameter description
+    Username for user
 
     .PARAMETER active
-    Parameter description
+    Can user log in to snipe-it?
 
     .PARAMETER notes
-    Parameter description
+    User Notes
 
     .PARAMETER jobtitle
-    Parameter description
+    Users job tittle
 
     .PARAMETER email
-    Parameter description
+    email address
 
     .PARAMETER phone
-    Parameter description
+    Phone number
 
     .PARAMETER company_id
-    Parameter description
+    ID number of company users belogs to
 
     .PARAMETER location_id
-    Parameter description
+    ID number of localtion
 
     .PARAMETER department_id
-    Parameter description
+    ID number of department
 
     .PARAMETER manager_id
-    Parameter description
+    ID number of manager
 
     .PARAMETER employee_num
-    Parameter description
+    Employeenumber
 
     .PARAMETER ldap_import
     Mark user as import from ldap
 
     .PARAMETER url
-    Parameter description
+    URL of Snipeit system, can be set using Set-Info command
 
     .PARAMETER apiKey
-    Parameter description
+    User's API Key for Snipeit, can be set using Set-Info command
 
     .EXAMPLE
-    An example
+    New-user -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+    Creates new a new user who can't login to system
 
     .NOTES
     General notes
-    #>
+#>
 function New-User() {
 
     [CmdletBinding(

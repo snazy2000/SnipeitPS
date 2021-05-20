@@ -5,17 +5,15 @@ online version:
 schema: 2.0.0
 ---
 
-# New-Model
+# Remove-User
 
 ## SYNOPSIS
-Add a new Model to Snipe-it asset system
+Removes User from Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-Model [-name] <String> [[-model_number] <String>] [-category_id] <Int32> [-manufacturer_id] <Int32>
- [[-eol] <Int32>] [-fieldset_id] <Int32> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-User [-ID] <String> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,103 +23,28 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+Remove-User -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -APIKey
+User's API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -category_id
-Category ID that the asset belongs to this can be got using Get-Category
-
-```yaml
-Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -eol
-{{ Fill eol Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -fieldset_id
-Fieldset ID that the asset uses (Custom fields)
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 6
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -model_number
-Model number of the Asset Model
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of the Asset Model
+### -ID
+Unique ID For User to be removed
 
 ```yaml
 Type: String
@@ -135,7 +58,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -url
+### -URL
 URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
@@ -144,7 +67,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

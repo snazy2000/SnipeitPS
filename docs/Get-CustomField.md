@@ -5,38 +5,38 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-Info
+# Get-CustomField
 
 ## SYNOPSIS
-Sets authetication information
+Returns a list of all Snipe-IT custom fields
 
 ## SYNTAX
 
 ```
-Set-Info [[-url] <Uri>] [[-apiKey] <String>] [<CommonParameters>]
+Get-CustomField [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set apikey and url user to connect Snipe-It system
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-Info -url $url -apiKey -Verbose
+Get-Field -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -47,11 +47,11 @@ Accept wildcard characters: False
 URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
-Type: Uri
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False

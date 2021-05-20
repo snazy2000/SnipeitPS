@@ -6,6 +6,12 @@ function Remove-AssetMaintenance {
         Removes asset maintenance event from Snipe-it asset system by ID
         .PARAMETER ID
         Unique ID of the asset maintenance to be removed
+        .PARAMETER url
+        URL of Snipeit system, can be set using Set-Info command
+
+        .PARAMETER apiKey
+        User's API Key for Snipeit, can be set using Set-Info command
+
         .EXAMPLE
         Remove-AssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
     #>

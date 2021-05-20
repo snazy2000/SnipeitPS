@@ -24,10 +24,10 @@ URL of Snipeit system, can be set using Set-Info command
 Users API Key for Snipeit, can be set using Set-Info command
 
 .EXAMPLE
-Get-Supplier -url "https://assets.example.com" -token "token..."
+Get-Supplier -search MySupplier
 
 .EXAMPLE
-Get-Supplier -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "MySupplier" }
+Get-Supplier -id 2
 
 #>
 

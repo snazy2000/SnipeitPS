@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-# Gets a list of Snipe-it Departments
+Gets a list of Snipe-it Departments
 
 .PARAMETER search
 A text string to search the Departments data
@@ -27,7 +27,10 @@ Users API Key for Snipeit, can be set using Set-Info command
 Get-Department -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-Department -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Department1" }
+Get-Department -search  Department1
+
+.EXAMPLE
+Get-Department -id 1
 
 #>
 

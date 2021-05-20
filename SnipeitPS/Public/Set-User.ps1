@@ -1,64 +1,65 @@
 <#
     .SYNOPSIS
-    Short description
+    Creates a new user
 
     .DESCRIPTION
-    Long description
-
-    .PARAMETER id
-    Parameter description
+    Creates a new user to Snipe-IT system
 
     .PARAMETER first_name
-    Parameter description
+    Users first name
 
     .PARAMETER last_name
-    Parameter description
+    Users last name
 
-    .PARAMETER userName
-    Parameter description
+    .PARAMETER username
+    Username for user
 
-    .PARAMETER jobtitle
-    Parameter description
-
-    .PARAMETER email
-    Parameter description
-
-    .PARAMETER phone
-    Parameter description
-
-    .PARAMETER company_id
-    Parameter description
-
-    .PARAMETER location_id
-    Parameter description
-
-    .PARAMETER department_id
-    Parameter description
-
-    .PARAMETER manager_id
-    Parameter description
-
-    .PARAMETER employee_num
-    Parameter description
-
-    .PARAMETER activated
-    Parameter description
+    .PARAMETER active
+    Can user log in to snipe-it?
 
     .PARAMETER notes
-    Parameter description
+    User Notes
+
+    .PARAMETER jobtitle
+    Users job tittle
+
+    .PARAMETER email
+    email address
+
+    .PARAMETER phone
+    Phone number
+
+    .PARAMETER company_id
+    ID number of company users belogs to
+
+    .PARAMETER location_id
+    ID number of localtion
+
+    .PARAMETER department_id
+    ID number of department
+
+    .PARAMETER manager_id
+    ID number of manager
+
+    .PARAMETER employee_num
+    Employeenumber
+
+    .PARAMETER ldap_import
+    Mark user as import from ldap
 
     .PARAMETER url
-    Parameter description
+    URL of Snipeit system, can be set using Set-Info command
 
     .PARAMETER apiKey
-    Parameter description
+    User's API Key for Snipeit, can be set using Set-Info command
 
     .EXAMPLE
-    An example
+    Update-user -id 3 -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+    Updates user with id 3
 
     .NOTES
     General notes
-    #>
+#>
 function Set-User() {
 
     [CmdletBinding(
@@ -103,16 +104,7 @@ function Set-User() {
         [string]$apiKey
     )
 
-    $Values = @{}
-
-    #$exclude = @('id', 'url', 'apiKey')
-    #$excludeRegex = [string]::Join('|', $exclude) # create the regex
-
-    foreach ($psbp in $PSBoundParameters.GetEnumerator()) {
-        #if ($psbp.Key -notmatch $excludeRegex) {
-            $Values.Add($psbp.Key, $psbp.Value)
-        #}
-    }
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Body = $Values | ConvertTo-Json;
 

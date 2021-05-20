@@ -32,3 +32,6 @@ Get-Help about_SnipeitPS
 Get-Command -Module SnipeitPS
 Get-Help Get-Asset -Full   # or any other command
 ```
+### Reporting bugs and issues
+Please use -Verbose switch with command you have problem with.
+Then create ticket here with all -Verbose output
