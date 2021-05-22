@@ -101,6 +101,9 @@ Sets authetication information
 ### [Set-SnipeItLicense](Set-SnipeItLicense.md)
 Updates a licence
 
+### [Set-SnipeitLocation](Set-SnipeitLocation.md)
+Updates Location in Snipe-it asset system
+
 ### [Set-SnipeItModel](Set-SnipeItModel.md)
 Updates Model on Snipe-it asset system
 
