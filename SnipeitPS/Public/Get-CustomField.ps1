@@ -1,6 +1,9 @@
 <#
     .SYNOPSIS
-    Returns a list of all Snipe-IT custom fields
+    Returns specific Snipe-IT custom field or a list of all custom field
+
+    .PARAMETER id
+    A id of specific field
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-Info command
@@ -16,6 +19,8 @@
 function Get-CustomField()
 {
     Param(
+        [int]$id,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -23,8 +28,14 @@ function Get-CustomField()
         [string]$apiKey
     )
 
+    if ($id) {
+        $apiurl= "$url/api/v1/fields/$id"
+    } else {
+        $apiurl = "$url/api/v1/fields"
+    }
+
     $Parameters = @{
-        Uri           = "$url/api/v1/fields"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
     }

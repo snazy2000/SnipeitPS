@@ -1,6 +1,9 @@
 <#
 .SYNOPSIS
-Gets a list of Snipe-it Fieldsets
+Returns a fieldset or list of Snipe-it Fieldsets
+
+.PARAMETER id
+A id of specific fieldset
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-Info command
@@ -18,6 +21,8 @@ Get-Fieldset -url "https://assets.example.com" -token "token..." | Where-Object 
 
 function Get-Fieldset() {
     Param(
+        [int]$id,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -25,8 +30,14 @@ function Get-Fieldset() {
         [string]$apiKey
     )
 
+    if ($id) {
+        $apiurl = "$url/api/v1/fieldsets/$id"
+    } else {
+        $apiurl = "$url/api/v1/fieldsets"
+    }
+
     $Parameters = @{
-        Uri           = "$url/api/v1/fieldsets"
+        Uri           = $apiurl
         Method        = 'Get'
         Token         = $apiKey
     }
