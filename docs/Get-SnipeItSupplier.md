@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
