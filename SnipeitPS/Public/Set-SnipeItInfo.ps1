@@ -46,7 +46,7 @@ function Set-SnipeItInfo {
             }
         }
 
-        $moduleCommands = Get-Command -Module SnipeitPS
+        $moduleCommands = Get-Command -Module SnipeitPS -CommandType Function
     }
 
     PROCESS {
