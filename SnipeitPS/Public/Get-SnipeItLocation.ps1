@@ -54,6 +54,8 @@ function Get-SnipeitLocation()
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $apiurl = "$url/api/v1/locations"

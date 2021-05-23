@@ -129,7 +129,9 @@ function Set-SnipeItLicense() {
         [string]$apiKey
     )
 
-     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
+    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($values['expiration_date']) {
         $values['expiration_date'] = $values['expiration_date'].ToString("yyyy-MM-dd")

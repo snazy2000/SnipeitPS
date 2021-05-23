@@ -53,6 +53,8 @@ function New-SnipeItDepartment() {
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Body = $Values | ConvertTo-Json;

@@ -28,6 +28,8 @@ function Get-SnipeItCustomField()
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     if ($id) {
         $apiurl= "$url/api/v1/fields/$id"
     } else {

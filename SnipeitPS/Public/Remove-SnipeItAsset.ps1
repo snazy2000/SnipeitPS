@@ -32,6 +32,8 @@ function Remove-SnipeItAsset ()
 
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = @{
         "ID"      = $Name
     }

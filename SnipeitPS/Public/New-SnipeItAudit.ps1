@@ -37,6 +37,8 @@ function New-SnipeItAudit()
 
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = @{
         "location_id" = $location_id
     }

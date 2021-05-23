@@ -62,6 +62,8 @@ function Get-SnipeItAssetMaintenance() {
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Parameters = @{

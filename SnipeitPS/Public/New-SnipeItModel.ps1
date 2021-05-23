@@ -61,6 +61,8 @@ function New-SnipeItModel()
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = @{
         name            = $name
         category_id     = $category_id

@@ -30,6 +30,8 @@ function Get-SnipeItFieldset() {
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     if ($id) {
         $apiurl = "$url/api/v1/fieldsets/$id"
     } else {

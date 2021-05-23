@@ -53,6 +53,7 @@ function Get-SnipeItCategory()
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 

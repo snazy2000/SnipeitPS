@@ -36,6 +36,7 @@ function New-SnipeItManufacturer()
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "name" = $Name

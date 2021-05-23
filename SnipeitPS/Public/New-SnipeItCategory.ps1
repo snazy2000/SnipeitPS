@@ -55,6 +55,8 @@ function New-SnipeItCategory()
         [switch]$checkin_email
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = @{
         "name"          = $name
         "category_type" = $category_type

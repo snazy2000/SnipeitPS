@@ -65,6 +65,8 @@ function Set-SnipeItAssetOwner()
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($Values['expected_checkin']) {

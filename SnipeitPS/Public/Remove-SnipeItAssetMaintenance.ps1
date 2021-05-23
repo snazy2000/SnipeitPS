@@ -36,6 +36,8 @@ function Remove-SnipeItAssetMaintenance {
         $apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = @{
         "ID"      = $ID
     }

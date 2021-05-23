@@ -23,7 +23,7 @@ function Set-SnipeItInfo {
     )
 
     BEGIN {
-
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
         function Add-DefaultParameter {
             param(
                 [Parameter(Mandatory = $true)]
@@ -43,6 +43,7 @@ function Set-SnipeItInfo {
                 # http://stackoverflow.com/questions/30427110/set-psdefaultparametersvalues-for-use-within-module-scope
                 $PSDefaultParameterValues["${command}:${parameter}"] = $Value
                 $global:PSDefaultParameterValues["${command}:${parameter}"] = $Value
+
             }
         }
 

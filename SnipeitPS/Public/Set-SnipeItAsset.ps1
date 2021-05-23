@@ -114,6 +114,8 @@ function Set-SnipeItAsset()
         [hashtable] $customfields
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($model_id) { $Values.Add('model_id',$model_id)}

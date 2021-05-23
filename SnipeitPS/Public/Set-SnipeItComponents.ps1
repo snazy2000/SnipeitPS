@@ -69,6 +69,8 @@ function Set-SnipeItComponent()
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     if ($values['purchase_date']) {

@@ -48,6 +48,8 @@ function Reset-SnipeItAssetOwner() {
         [string]$apiKey
     )
 
+    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
     $Values = @{
         "notes" = $notes
     }
