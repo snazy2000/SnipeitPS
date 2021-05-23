@@ -30,8 +30,8 @@ An example
 
 ## PARAMETERS
 
-### -name
-Component name
+### -apiKey
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -56,21 +56,6 @@ Aliases:
 Required: True
 Position: 2
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -qty
-Quantity of the components you have
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -105,16 +90,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -purchase_date
-Date accessory was purchased
+### -name
+Component name
 
 ```yaml
-Type: DateTime
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 6
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -135,6 +120,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -purchase_date
+Date accessory was purchased
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -qty
+Quantity of the components you have
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeItInfo command
 
@@ -150,16 +165,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 9
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,21 +188,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

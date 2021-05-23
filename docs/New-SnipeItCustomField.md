@@ -30,8 +30,8 @@ New-SnipeItCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "I
 
 ## PARAMETERS
 
-### -Name
-Name of the Custom Field
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -39,14 +39,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HelpText
-{{ Fill HelpText Description }}
+### -CustomFormat
+{{ Fill CustomFormat Description }}
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -75,21 +75,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Format
-{{ Fill Format Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: ANY
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -field_encrypted
 {{ Fill field_encrypted Description }}
 
@@ -105,8 +90,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomFormat
-{{ Fill CustomFormat Description }}
+### -Format
+{{ Fill Format Description }}
 
 ```yaml
 Type: String
@@ -114,7 +99,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 4
+Default value: ANY
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HelpText
+{{ Fill HelpText Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Custom Field
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -135,16 +150,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 8
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,21 +173,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

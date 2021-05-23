@@ -28,6 +28,21 @@ Get-SnipeItCustomField -url "https://assets.example.com" -token "token..."
 
 ## PARAMETERS
 
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -id
 A id of specific field
 
@@ -53,21 +68,6 @@ Aliases:
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

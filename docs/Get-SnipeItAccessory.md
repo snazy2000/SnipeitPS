@@ -35,32 +35,32 @@ Get-SnipeItAccessory -id 1
 
 ## PARAMETERS
 
-### -search
-A text string to search the Accessory data
+### -all
+A return all results, works with -offset and other parameters
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 1
+Required: True
+Position: 11
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-{{ Fill company_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -80,8 +80,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manufacturer_id
-{{ Fill manufacturer_id Description }}
+### -company_id
+{{ Fill company_id Description }}
 
 ```yaml
 Type: Int32
@@ -89,53 +89,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 2
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -supplier_id
-{{ Fill supplier_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -sort
-{{ Fill sort Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: Created_at
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order
-{{ Fill order Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -157,6 +112,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -offset
 Result offset to use
 
@@ -172,17 +142,62 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -all
-A return all results, works with -offset and other parameters
+### -order
+{{ Fill order Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 7
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -search
+A text string to search the Accessory data
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -sort
+{{ Fill sort Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+{{ Fill supplier_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -197,21 +212,6 @@ Aliases:
 
 Required: True
 Position: 10
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

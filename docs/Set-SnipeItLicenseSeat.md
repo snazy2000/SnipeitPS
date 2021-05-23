@@ -38,31 +38,31 @@ Checkout licence to asset id 3
 
 ## PARAMETERS
 
-### -id
-Unique ID For asset to checkout
+### -apiKey
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: 0
+Position: 7
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -seat_id
-{{ Fill seat_id Description }}
+### -asset_id
+Id of target asset
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,16 +83,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -asset_id
-Id of target asset
+### -id
+Unique ID For asset to checkout
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 4
+Required: True
+Position: 1
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,6 +113,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -seat_id
+{{ Fill seat_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeItInfo command
 
@@ -128,16 +143,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 7
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -151,21 +166,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

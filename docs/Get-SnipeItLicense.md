@@ -37,23 +37,38 @@ Get-SnipeItLicense -id 1
 
 ## PARAMETERS
 
-### -search
-A text string to search the Licenses data
+### -all
+A return all results, works with -offset and other parameters
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 1
+Required: True
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific License
+### -category_id
+{{ Fill category_id Description }}
 
 ```yaml
 Type: Int32
@@ -61,23 +76,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 13
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-{{ Fill name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -92,111 +92,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -product_key
-{{ Fill product_key Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order_number
-{{ Fill order_number Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_order
-{{ Fill purchase_order Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -license_name
-{{ Fill license_name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -license_email
-{{ Fill license_email Description }}
-
-```yaml
-Type: MailAddress
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-{{ Fill manufacturer_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -supplier_id
-{{ Fill supplier_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -217,8 +112,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -category_id
-{{ Fill category_id Description }}
+### -id
+A id of specific License
 
 ```yaml
 Type: Int32
@@ -226,29 +121,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -license_email
+{{ Fill license_email Description }}
 
 ```yaml
-Type: String
+Type: MailAddress
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
-Default value: Desc
+Position: 9
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -sort
-{{ Fill sort Description }}
+### -license_name
+{{ Fill license_name Description }}
 
 ```yaml
 Type: String
@@ -256,8 +151,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 15
-Default value: Created_at
+Position: 8
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -279,6 +174,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+{{ Fill name Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -offset
 Offset to use
 
@@ -294,17 +219,107 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -all
-A return all results, works with -offset and other parameters
+### -order
+{{ Fill order Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 14
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order_number
+{{ Fill order_number Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -product_key
+{{ Fill product_key Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_order
+{{ Fill purchase_order Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -search
+A text string to search the Licenses data
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -sort
+{{ Fill sort Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 15
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+{{ Fill supplier_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -319,21 +334,6 @@ Aliases:
 
 Required: True
 Position: 18
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

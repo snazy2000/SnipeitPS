@@ -30,8 +30,8 @@ New-SnipeItModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 
 ## PARAMETERS
 
-### -name
-Name of the Asset Model
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -39,22 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -model_number
-Model number of the Asset Model
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,21 +55,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -120,6 +90,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -manufacturer_id
+Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -model_number
+Model number of the Asset Model
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Name of the Asset Model
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeItInfo command
 
@@ -135,16 +150,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 8
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,21 +173,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

@@ -30,17 +30,17 @@ Set-SnipeItAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing
 
 ## PARAMETERS
 
-### -id
-Unique ID For asset to checkout
+### -apiKey
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
-Default value: 0
+Position: 9
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -60,6 +60,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -checkout_at
+Optional date to override the checkout time of now
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -checkout_to_type
 {{ Fill checkout_to_type Description }}
 
@@ -71,6 +86,36 @@ Aliases:
 Required: False
 Position: 3
 Default value: User
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -expected_checkin
+Optional date the asset is expected to be checked in
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+Unique ID For asset to checkout
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -108,36 +153,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -expected_checkin
-Optional date the asset is expected to be checked in
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -checkout_at
-Optional date to override the checkout time of now
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -url
 URL of Snipeit system, can be set using Set-SnipeItInfo command
 
@@ -153,16 +168,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 9
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -176,21 +191,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

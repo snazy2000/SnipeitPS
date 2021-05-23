@@ -12,122 +12,113 @@ Locale: en-US
 
 ## SnipeitPS Cmdlets
 ### [Get-SnipeItAccessory](Get-SnipeItAccessory.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Accessories
 
 ### [Get-SnipeItAsset](Get-SnipeItAsset.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Assets or specific asset
 
 ### [Get-SnipeItAssetMaintenance](Get-SnipeItAssetMaintenance.md)
-{{ Fill in the Description }}
+Lists Snipe-it Assets Maintenances
 
 ### [Get-SnipeItCategory](Get-SnipeItCategory.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Categories
 
 ### [Get-SnipeItCompany](Get-SnipeItCompany.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Companies
 
 ### [Get-SnipeItComponent](Get-SnipeItComponent.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Components
 
 ### [Get-SnipeItCustomField](Get-SnipeItCustomField.md)
-{{ Fill in the Description }}
+Returns specific Snipe-IT custom field or a list of all custom field
 
 ### [Get-SnipeItDepartment](Get-SnipeItDepartment.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Departments
 
 ### [Get-SnipeItFieldset](Get-SnipeItFieldset.md)
-{{ Fill in the Description }}
+Returns a fieldset or list of Snipe-it Fieldsets
 
 ### [Get-SnipeItLicense](Get-SnipeItLicense.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Licenses
 
 ### [Get-SnipeItLicenseSeat](Get-SnipeItLicenseSeat.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Licenses Seats or specific Seat
 
 ### [Get-SnipeitLocation](Get-SnipeitLocation.md)
-{{ Fill in the Description }}
-
-### [Get-SnipeItManufacturer](Get-SnipeItManufacturer.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Locations
 
 ### [Get-SnipeItModel](Get-SnipeItModel.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Models
 
 ### [Get-SnipeItStatus](Get-SnipeItStatus.md)
-{{ Fill in the Description }}
-
-### [Get-SnipeItSupplier](Get-SnipeItSupplier.md)
-{{ Fill in the Description }}
-
-### [Get-SnipeItUser](Get-SnipeItUser.md)
-{{ Fill in the Description }}
+Gets a list of Snipe-it Status Labels
 
 ### [New-SnipeItAsset](New-SnipeItAsset.md)
-{{ Fill in the Description }}
+Add a new Asset to Snipe-it asset system
 
 ### [New-SnipeItAssetMaintenance](New-SnipeItAssetMaintenance.md)
-{{ Fill in the Description }}
+Add a new Asset maintenence to Snipe-it asset system
 
 ### [New-SnipeItCategory](New-SnipeItCategory.md)
-{{ Fill in the Description }}
+Create a new Snipe-IT Category
 
 ### [New-SnipeItComponent](New-SnipeItComponent.md)
-{{ Fill in the Description }}
+Create a new component
 
 ### [New-SnipeItCustomField](New-SnipeItCustomField.md)
-{{ Fill in the Description }}
+Add a new Custom Field to Snipe-it asset system
 
 ### [New-SnipeItDepartment](New-SnipeItDepartment.md)
-{{ Fill in the Description }}
+Creates a department
 
 ### [New-SnipeItLicense](New-SnipeItLicense.md)
-{{ Fill in the Description }}
+Creates a licence
 
 ### [New-SnipeItLocation](New-SnipeItLocation.md)
-{{ Fill in the Description }}
+Add a new Location to Snipe-it asset system
 
 ### [New-SnipeItManufacturer](New-SnipeItManufacturer.md)
-{{ Fill in the Description }}
+Add a new Manufacturer to Snipe-it asset system
 
 ### [New-SnipeItModel](New-SnipeItModel.md)
-{{ Fill in the Description }}
+Add a new Model to Snipe-it asset system
 
 ### [New-SnipeItUser](New-SnipeItUser.md)
-{{ Fill in the Description }}
+Creates a new user
 
 ### [Remove-SnipeItAsset](Remove-SnipeItAsset.md)
-{{ Fill in the Description }}
+Removes Asset from Snipe-it asset system
 
 ### [Remove-SnipeItUser](Remove-SnipeItUser.md)
-{{ Fill in the Description }}
+Removes User from Snipe-it asset system
 
 ### [Set-SnipeItAccessory](Set-SnipeItAccessory.md)
-{{ Fill in the Description }}
+Updates accessory on Snipe-It system
 
 ### [Set-SnipeItAsset](Set-SnipeItAsset.md)
-{{ Fill in the Description }}
+Update a specific Asset in the Snipe-it asset system
 
 ### [Set-SnipeItAssetOwner](Set-SnipeItAssetOwner.md)
-{{ Fill in the Description }}
+Checkout asset
 
 ### [Set-SnipeItComponent](Set-SnipeItComponent.md)
-{{ Fill in the Description }}
+Updates component
 
 ### [Set-SnipeItInfo](Set-SnipeItInfo.md)
-{{ Fill in the Description }}
+Sets authetication information
 
 ### [Set-SnipeItLicense](Set-SnipeItLicense.md)
-{{ Fill in the Description }}
+Updates a licence
 
 ### [Set-SnipeItLicenseSeat](Set-SnipeItLicenseSeat.md)
-{{ Fill in the Description }}
+Set license seat or checkout license seat
 
 ### [Set-SnipeitLocation](Set-SnipeitLocation.md)
-{{ Fill in the Description }}
+Updates Location in Snipe-it asset system
 
 ### [Set-SnipeItModel](Set-SnipeItModel.md)
-{{ Fill in the Description }}
+Updates Model on Snipe-it asset system
 
 ### [Set-SnipeItUser](Set-SnipeItUser.md)
-{{ Fill in the Description }}
+Creates a new user
 

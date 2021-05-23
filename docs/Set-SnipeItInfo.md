@@ -28,21 +28,6 @@ Set-SnipeItInfo -url $url -apiKey -Verbose
 
 ## PARAMETERS
 
-### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
-
-```yaml
-Type: Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -apiKey
 User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
@@ -53,6 +38,21 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-SnipeItInfo command
+
+```yaml
+Type: Uri
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
