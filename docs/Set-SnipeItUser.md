@@ -1,67 +1,56 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLocation
+# Set-SnipeItUser
 
 ## SYNOPSIS
-Updates Location in Snipe-it asset system
+Creates a new user
 
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeItUser [-id] <Int32> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
+ [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>]
+ [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
+ [[-activated] <Boolean>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Creates a new user to Snipe-IT system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
+Update-user -id 3 -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
 ```
+
+Updates user with id 3
 
 ## PARAMETERS
 
-### -address
-Address line 1
+### -activated
+{{ Fill activated Description }}
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -address2
-Address line 2
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
+Position: 13
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -69,14 +58,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 16
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -country
-Address Contry
+### -company_id
+ID number of company users belogs to
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -department_id
+ID number of department
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -email
+email address
 
 ```yaml
 Type: String
@@ -85,6 +104,36 @@ Aliases:
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -employee_num
+Employeenumber
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -first_name
+Users first name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,68 +154,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ldap_ou
-LDAP OU of Location
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-Location manager as id
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Name of Location
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -parent_id
-Parent location as id
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -state
-Address State
+### -jobtitle
+Users job tittle
 
 ```yaml
 Type: String
@@ -180,23 +169,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+### -last_name
+Users last name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 11
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -zip
-Address zipcode
+### -location_id
+ID number of localtion
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manager_id
+ID number of manager
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+User Notes
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -phone
+Phone number
 
 ```yaml
 Type: String
@@ -205,6 +239,36 @@ Aliases:
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 15
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -userName
+Username for user
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -249,5 +313,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+General notes
 
 ## RELATED LINKS

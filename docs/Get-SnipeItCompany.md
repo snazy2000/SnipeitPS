@@ -1,19 +1,19 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeItCompany
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Companies
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeItCompany [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,13 +24,17 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-Location -search Location1
+Get-Company
 ```
+
+Gets all companies
 
 ### EXAMPLE 2
 ```
-Get-Location -id 3
+Get-Company -id 1
 ```
+
+Gets specific company
 
 ## PARAMETERS
 
@@ -50,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -65,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Location
+A id of specific Company
 
 ```yaml
 Type: Int32
@@ -127,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the Companies data
 
 ```yaml
 Type: String
@@ -142,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String

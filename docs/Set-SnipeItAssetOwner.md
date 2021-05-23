@@ -1,37 +1,82 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLocation
+# Set-SnipeItAssetOwner
 
 ## SYNOPSIS
-Updates Location in Snipe-it asset system
+Checkout asset
 
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeItAssetOwner [-id] <Int32> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [[-name] <String>]
+ [[-note] <String>] [[-expected_checkin] <DateTime>] [[-checkout_at] <DateTime>] [-url] <String>
+ [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Checkout asset to user/localtion/asset
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
+Remove-User -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
 
-### -address
-Address line 1
+### -apiKey
+User's API Key for Snipeit, can be set using Set-Info command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -assigned_id
+Id of target user , location or asset
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -checkout_at
+Optional date to override the checkout time of now
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -checkout_to_type
+{{ Fill checkout_to_type Description }}
 
 ```yaml
 Type: String
@@ -40,46 +85,16 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: User
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -address2
-Address line 2
+### -expected_checkin
+Optional date the asset is expected to be checked in
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 12
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -country
-Address Contry
-
-```yaml
-Type: String
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-{{ Fill id Description }}
+Unique ID For asset to checkout
 
 ```yaml
 Type: Int32
@@ -105,38 +120,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ldap_ou
-LDAP OU of Location
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-Location manager as id
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -name
-Name of Location
+Optional new asset name.
+This is useful for changing the asset's name on new checkout,
+for example, an asset that was named "Anna's Macbook Pro" could be renamed on the fly
+when it's checked out to Elizabeth, to "Beth's Macbook Pro"
 
 ```yaml
 Type: String
@@ -144,29 +132,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -parent_id
-Parent location as id
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -state
-Address State
+### -note
+Notes about checkout
 
 ```yaml
 Type: String
@@ -181,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -189,22 +162,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -zip
-Address zipcode
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

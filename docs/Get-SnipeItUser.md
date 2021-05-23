@@ -5,57 +5,58 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLocation
+# Get-SnipeItUser
 
 ## SYNOPSIS
-Updates Location in Snipe-it asset system
+# Gets a list of Snipe-it Users
 
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-SnipeItUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
+ [[-group_id] <Int32>] [[-department_id] <Int32>] [[-username] <String>] [[-email] <String>]
+ [[-order] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
+Get-User -search SomeSurname
+```
+
+### EXAMPLE 2
+```
+Get-User -id 3
+```
+
+### EXAMPLE 3
+```
+Get-User -username someuser
+```
+
+### EXAMPLE 4
+```
+Get-User -email user@somedomain.com
 ```
 
 ## PARAMETERS
 
-### -address
-Address line 1
+### -all
+A return all results, works with -offset and other parameters
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -address2
-Address line 2
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -69,44 +70,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -country
-Address Contry
+### -company_id
+{{ Fill company_id Description }}
 
 ```yaml
-Type: String
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -department_id
+{{ Fill department_id Description }}
+
+```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-{{ Fill id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ldap_ou
-LDAP OU of Location
+### -email
+Search string for email field
 
 ```yaml
 Type: String
@@ -114,14 +115,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-Location manager as id
+### -group_id
+{{ Fill group_id Description }}
 
 ```yaml
 Type: Int32
@@ -129,14 +130,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 5
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of Location
+### -id
+A id of specific User
 
 ```yaml
 Type: String
@@ -150,8 +151,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -parent_id
-Parent location as id
+### -limit
+Specify the number of results you wish to return.
+Defaults to 50.
+Defines batch size for -all
 
 ```yaml
 Type: Int32
@@ -160,13 +163,43 @@ Aliases:
 
 Required: False
 Position: 10
+Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+{{ Fill location_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -state
-Address State
+### -offset
+Offset to use
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order
+{{ Fill order Description }}
 
 ```yaml
 Type: String
@@ -174,7 +207,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 9
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -search
+A text string to search the User data
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,14 +237,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -zip
-Address zipcode
+### -username
+Search string for username field
 
 ```yaml
 Type: String
@@ -205,37 +253,6 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

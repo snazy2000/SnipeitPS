@@ -1,20 +1,20 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeItDepartment
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Departments
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+ [[-offset] <Int32>] [-all] [[-sort] <String>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +24,17 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-Location -search Location1
+Get-Department -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-Location -id 3
+Get-Department -search  Department1
+```
+
+### EXAMPLE 3
+```
+Get-Department -id 1
 ```
 
 ## PARAMETERS
@@ -50,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -58,14 +63,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Location
+A id of specific Department
 
 ```yaml
 Type: Int32
@@ -127,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the Departments data
 
 ```yaml
 Type: String
@@ -141,8 +146,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -sort
+{{ Fill sort Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-Info command
 
 ```yaml
 Type: String
@@ -150,7 +170,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

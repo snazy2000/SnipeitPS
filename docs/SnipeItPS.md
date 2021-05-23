@@ -1,115 +1,112 @@
 ﻿---
 Module Name: SnipeitPS
-Module Guid: {{ Update Module Guid }}
+Module Guid: f86f4db4-1cb1-45c4-b7bf-6762531bfdeb
 Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
+Locale: en-US
 ---
 
 # SnipeitPS Module
 ## Description
-{{ Fill in the Description }}
+Powershell API for SnipeIt Asset Management
 
 ## SnipeitPS Cmdlets
-### [Get-Accessory](Get-Accessory.md)
+### [Get-SnipeItAccessory](Get-SnipeItAccessory.md)
 Gets a list of Snipe-it Accessories
 
-### [Get-Asset](Get-Asset.md)
+### [Get-SnipeItAsset](Get-SnipeItAsset.md)
 Gets a list of Snipe-it Assets or specific asset
 
-### [Get-AssetMaintenance](Get-AssetMaintenance.md)
+### [Get-SnipeItAssetMaintenance](Get-SnipeItAssetMaintenance.md)
 Lists Snipe-it Assets Maintenances
 
-### [Get-Category](Get-Category.md)
+### [Get-SnipeItCategory](Get-SnipeItCategory.md)
 Gets a list of Snipe-it Categories
 
-### [Get-Company](Get-Company.md)
+### [Get-SnipeItCompany](Get-SnipeItCompany.md)
 Gets a list of Snipe-it Companies
 
-### [Get-Component](Get-Component.md)
+### [Get-SnipeItComponent](Get-SnipeItComponent.md)
 Gets a list of Snipe-it Components
 
-### [Get-CustomField](Get-CustomField.md)
-Returns a list of all Snipe-IT custom fields
+### [Get-SnipeItCustomField](Get-SnipeItCustomField.md)
+Returns specific Snipe-IT custom field or a list of all custom field
 
-### [Get-Department](Get-Department.md)
+### [Get-SnipeItDepartment](Get-SnipeItDepartment.md)
 Gets a list of Snipe-it Departments
 
-### [Get-Fieldset](Get-Fieldset.md)
-Gets a list of Snipe-it Fieldsets
+### [Get-SnipeItFieldset](Get-SnipeItFieldset.md)
+Returns a fieldset or list of Snipe-it Fieldsets
 
-### [Get-Model](Get-Model.md)
+### [Get-SnipeItModel](Get-SnipeItModel.md)
 Gets a list of Snipe-it Models
 
-### [Get-SnipeitLocation](Get-SnipeitLocation.md)
-Gets a list of Snipe-it Locations
-
-### [Get-Status](Get-Status.md)
+### [Get-SnipeItStatus](Get-SnipeItStatus.md)
 Gets a list of Snipe-it Status Labels
 
-### [New-Asset](New-Asset.md)
+### [New-SnipeItAsset](New-SnipeItAsset.md)
 Add a new Asset to Snipe-it asset system
 
-### [New-AssetMaintenance](New-AssetMaintenance.md)
+### [New-SnipeItAssetMaintenance](New-SnipeItAssetMaintenance.md)
 Add a new Asset maintenence to Snipe-it asset system
 
-### [New-Category](New-Category.md)
+### [New-SnipeItCategory](New-SnipeItCategory.md)
 Create a new Snipe-IT Category
 
-### [New-Component](New-Component.md)
+### [New-SnipeItComponent](New-SnipeItComponent.md)
 Create a new component
 
-### [New-CustomField](New-CustomField.md)
+### [New-SnipeItCustomField](New-SnipeItCustomField.md)
 Add a new Custom Field to Snipe-it asset system
 
-### [New-Department](New-Department.md)
+### [New-SnipeItDepartment](New-SnipeItDepartment.md)
 Creates a department
 
-### [New-License](New-License.md)
+### [New-SnipeItLicense](New-SnipeItLicense.md)
 Creates a licence
 
-### [New-Location](New-Location.md)
+### [New-SnipeItLocation](New-SnipeItLocation.md)
 Add a new Location to Snipe-it asset system
 
-### [New-Manufacturer](New-Manufacturer.md)
+### [New-SnipeItManufacturer](New-SnipeItManufacturer.md)
 Add a new Manufacturer to Snipe-it asset system
 
-### [New-Model](New-Model.md)
+### [New-SnipeItModel](New-SnipeItModel.md)
 Add a new Model to Snipe-it asset system
 
-### [New-User](New-User.md)
+### [New-SnipeItUser](New-SnipeItUser.md)
 Creates a new user
 
-### [Remove-Asset](Remove-Asset.md)
+### [Remove-SnipeItAsset](Remove-SnipeItAsset.md)
 Removes Asset to Snipe-it asset system
 
-### [Remove-User](Remove-User.md)
+### [Remove-SnipeItUser](Remove-SnipeItUser.md)
 Removes User from Snipe-it asset system
 
-### [Set-Accessory](Set-Accessory.md)
+### [Set-SnipeItAccessory](Set-SnipeItAccessory.md)
 Updates accessory on Snipe-It system
 
-### [Set-Asset](Set-Asset.md)
+### [Set-SnipeItAsset](Set-SnipeItAsset.md)
 Update a specific Asset in the Snipe-it asset system
 
-### [Set-AssetOwner](Set-AssetOwner.md)
+### [Set-SnipeItAssetOwner](Set-SnipeItAssetOwner.md)
 Checkout asset
 
-### [Set-Component](Set-Component.md)
+### [Set-SnipeItComponent](Set-SnipeItComponent.md)
 Updates component
 
-### [Set-Info](Set-Info.md)
+### [Set-SnipeItInfo](Set-SnipeItInfo.md)
 Sets authetication information
 
-### [Set-License](Set-License.md)
+### [Set-SnipeItLicense](Set-SnipeItLicense.md)
 Updates a licence
-
-### [Set-Model](Set-Model.md)
-Updates Model on Snipe-it asset system
 
 ### [Set-SnipeitLocation](Set-SnipeitLocation.md)
 Updates Location in Snipe-it asset system
 
-### [Set-User](Set-User.md)
+### [Set-SnipeItModel](Set-SnipeItModel.md)
+Updates Model on Snipe-it asset system
+
+### [Set-SnipeItUser](Set-SnipeItUser.md)
 Creates a new user
 
