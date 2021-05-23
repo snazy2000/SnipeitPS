@@ -28,13 +28,13 @@ Creates a new licence on Snipe-It system
 
 ### EXAMPLE 1
 ```
-New-Licence -name "License" -seats 3 -company_id 1
+New-SnipeItLicence -name "License" -seats 3 -company_id 1
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -name
+Name of license being created
 
 ```yaml
 Type: String
@@ -42,8 +42,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 19
+Position: 1
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -seats
+Number of license seats owned.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,21 +168,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of license being created
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -notes
 License Notes
 
@@ -243,21 +243,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -seats
-Number of license seats owned.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -serial
 Serialnumber  of license
 
@@ -304,7 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -318,16 +303,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -341,6 +326,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

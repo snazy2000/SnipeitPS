@@ -54,7 +54,7 @@
     User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-user -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+    New-SnipeItuser -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
     Creates new a new user who can't login to system
 
     .NOTES

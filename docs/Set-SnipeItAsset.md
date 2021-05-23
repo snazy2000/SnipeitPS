@@ -27,43 +27,87 @@ Long description
 
 ### EXAMPLE 1
 ```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1"
+Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 ```
 
 ### EXAMPLE 2
 ```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -id
+ID of the Asset
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Asset name
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 17
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -archived
-Whether or not the asset is archived.
-Archived assets cannot be checked out and do not show up in the deployable asset screens
+### -Status_id
+Status ID of the asset, this can be got using Get-Status
 
 ```yaml
-Type: Boolean
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
-Default value: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Model_id
+Model ID of the asset, this can be got using Get-Model
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -last_checkout
+Date the asset was last checked out
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -98,53 +142,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -customfields
-Hastable of custom fields and extra fields that need passing through to Snipeit
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 18
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-ID of the Asset
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -last_checkout
-Date the asset was last checked out
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Model_id
-Model ID of the asset, this can be got using Get-Model
+### -serial
+Serial number of the asset
 
 ```yaml
 Type: String
@@ -152,22 +151,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Asset name
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -184,6 +168,21 @@ Aliases:
 Required: False
 Position: 9
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -warranty_months
+Number of months for the asset warranty
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -233,6 +232,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -archived
+Whether or not the asset is archived.
+Archived assets cannot be checked out and do not show up in the deployable asset screens
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -rtd_location_id
 The id that corresponds to the location where the asset is usually located when not checked out
 
@@ -248,38 +263,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -serial
-Serial number of the asset
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Status_id
-Status ID of the asset, this can be got using Get-Status
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 
 ```yaml
 Type: String
@@ -293,31 +278,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -warranty_months
-Number of months for the asset warranty
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfo command
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 10
-Default value: 0
+Required: True
+Position: 17
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -customfields
+Hastable of custom fields and extra fields that need passing through to Snipeit
 
 ```yaml
-Type: SwitchParameter
+Type: Hashtable
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
-Position: Named
+Position: 18
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -331,6 +316,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

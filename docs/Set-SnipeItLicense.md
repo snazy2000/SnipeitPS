@@ -28,22 +28,52 @@ Updates licence on Snipe-It system
 
 ### EXAMPLE 1
 ```
-Set-Licence -name "License" -seats 3 -company_id 1
+Set-SnipeItLicence -name "License" -seats 3 -company_id 1
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -id
+ID number of licence
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Name of license
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 20
+Required: False
+Position: 2
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -seats
+Number of license seats owned.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -89,21 +119,6 @@ Aliases:
 Required: False
 Position: 6
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-ID number of licence
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -164,21 +179,6 @@ Aliases:
 Required: False
 Position: 10
 Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Name of license
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -258,21 +258,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -seats
-Number of license seats owned.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -serial
 Serialnumber  of license
 
@@ -319,7 +304,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -333,16 +318,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -356,6 +341,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

@@ -30,7 +30,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+    New-SnipeItModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 #>
 
 function Set-SnipeItModel() {

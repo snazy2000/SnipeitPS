@@ -24,7 +24,7 @@ If switch is present, require users to confirm acceptance of assets in this cate
 If switch is present, send email to user on checkin/checkout
 
 .EXAMPLE
-New-Category -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeItCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 #>
 
 function New-SnipeItCategory()

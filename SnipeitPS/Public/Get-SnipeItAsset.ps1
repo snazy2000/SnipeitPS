@@ -60,16 +60,16 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Asset -url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-Asset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 #>
 
 function Get-SnipeItAsset() {

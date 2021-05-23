@@ -27,51 +27,66 @@ Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[
 
 ### EXAMPLE 1
 ```
-Get-Asset -url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 3
 ```
-Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 4
 ```
-Get-Asset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 ```
 
 ## PARAMETERS
 
-### -all
-A return all results, works with -offset and other parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -search
+A text string to search the assets data
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 20
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+ID number of excact snipeit asset
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -asset_tag
+Exact asset tag to query
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,23 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -asset_tag
-Exact asset tag to query
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -category_id
-Optionally restrict asset results to this category ID
+### -order_number
+Optionally restrict asset results to this order number
 
 ```yaml
 Type: Int32
@@ -116,99 +116,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-Optionally restrict asset results to this company ID
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -depreciation_id
-{{ Fill depreciation_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-ID number of excact snipeit asset
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 17
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-Optionally restrict asset results to this location ID
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-Optionally restrict asset results to this manufacturer ID
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
+Position: 5
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -229,8 +137,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -offset
-Offset to use
+### -category_id
+Optionally restrict asset results to this category ID
 
 ```yaml
 Type: Int32
@@ -238,29 +146,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 18
+Position: 7
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-Specify the order (asc or desc) you wish to order by on your sort column
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 16
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order_number
-Optionally restrict asset results to this order number
+### -manufacturer_id
+Optionally restrict asset results to this manufacturer ID
 
 ```yaml
 Type: Int32
@@ -268,7 +161,52 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -company_id
+Optionally restrict asset results to this company ID
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+Optionally restrict asset results to this location ID
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -depreciation_id
+{{ Fill depreciation_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -285,36 +223,6 @@ Aliases:
 Required: False
 Position: 12
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the assets data
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -sort
-Specify the column name you wish to sort by
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 15
-Default value: Created_at
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -349,8 +257,85 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -sort
+Specify the column name you wish to sort by
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 15
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order
+Specify the order (asc or desc) you wish to order by on your sort column
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 16
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -limit
+Specify the number of results you wish to return.
+Defaults to 50.
+Defines batch size for -all
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 17
+Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+Offset to use
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 18
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -all
+A return all results, works with -offset and other parameters
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -359,6 +344,21 @@ Aliases:
 
 Required: True
 Position: 19
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

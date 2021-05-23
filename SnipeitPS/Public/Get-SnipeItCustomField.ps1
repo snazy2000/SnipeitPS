@@ -12,7 +12,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    Get-Field -url "https://assets.example.com" -token "token..."
+    Get-SnipeItCustomField -url "https://assets.example.com" -token "token..."
 
 #>
 

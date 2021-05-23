@@ -1,4 +1,4 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
@@ -24,45 +24,30 @@ Get-SnipeItManufacturer [[-search] <String>] [[-id] <Int32>] [[-order] <String>]
 
 ### EXAMPLE 1
 ```
-Get-Manufacturer -search HP
+Get-SnipeItManufacturer -search HP
 ```
 
 Search all manufacturers for string HP
 
 ### EXAMPLE 2
 ```
-Get-Manufacturer -id 3
+Get-SnipeItManufacturer -id 3
 ```
 
 Returns manufacturer with id 3
 
 ## PARAMETERS
 
-### -all
-A return all results, works with -offset and other parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+### -search
+A text string to search the Manufactures data
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 7
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -79,6 +64,21 @@ Aliases:
 Required: False
 Position: 2
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order
+{{ Fill order Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -115,32 +115,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -all
+A return all results, works with -offset and other parameters
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Manufactures data
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,6 +140,21 @@ Aliases:
 
 Required: True
 Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

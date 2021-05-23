@@ -5,63 +5,41 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItModel
+# Set-SnipeItLicenseSeat
 
 ## SYNOPSIS
-Add a new Model to Snipe-it asset system
+Set license seat or checkout license seat
 
 ## SYNTAX
 
 ```
-New-SnipeItModel [-name] <String> [[-model_number] <String>] [-category_id] <Int32> [-manufacturer_id] <Int32>
- [[-eol] <Int32>] [-fieldset_id] <Int32> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-SnipeItLicenseSeat [-id] <Int32> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
+ [[-note] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Checkout specific license seat to user, asset or both
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-SnipeItModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+Set-SnipeItLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
 ```
+
+Checkout licence to user id 3
+
+### EXAMPLE 2
+```
+Set-SnipeItLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
+```
+
+Checkout licence to asset id 3
 
 ## PARAMETERS
 
-### -name
-Name of the Asset Model
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -model_number
-Model number of the Asset Model
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -category_id
-Category ID that the asset belongs to this can be got using Get-Category
+### -id
+Unique ID For asset to checkout
 
 ```yaml
 Type: Int32
@@ -69,29 +47,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 1
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -seat_id
+{{ Fill seat_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -assigned_id
+{{ Fill assigned_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: 3
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manufacturer_id
-Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -eol
-{{ Fill eol Description }}
+### -asset_id
+Id of target asset
 
 ```yaml
 Type: Int32
@@ -99,23 +92,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -fieldset_id
-Fieldset ID that the asset uses (Custom fields)
+### -note
+Notes about checkout
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 6
-Default value: 0
+Required: False
+Position: 5
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -129,14 +122,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -144,7 +137,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

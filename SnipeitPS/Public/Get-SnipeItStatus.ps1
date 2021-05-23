@@ -24,10 +24,10 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Status -search  "Ready to Deploy"
+Get-SnipeItStatus -search  "Ready to Deploy"
 
 .EXAMPLE
-Get-Status -id 3
+Get-SnipeItStatus -id 3
 
 #>
 

@@ -23,25 +23,10 @@ Long description
 
 ### EXAMPLE 1
 ```
-Remove-User -ID 44 -url $url -apiKey $secret -Verbose
+Remove-SnipeItUser -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
-
-### -APIKey
-User's API Key for Snipeit, can be set using Set-Info command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ID
 Unique ID For User to be removed
@@ -59,7 +44,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -73,16 +58,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -APIKey
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,6 +81,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

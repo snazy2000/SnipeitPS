@@ -12,7 +12,7 @@ The asset tag of the asset you wish to audit
 ID of the location you want to associate with the audit
 
 .EXAMPLE
-New-Audit -tag 1 -location_id 1
+New-SnipeItAudit -tag 1 -location_id 1
 
 #>
 

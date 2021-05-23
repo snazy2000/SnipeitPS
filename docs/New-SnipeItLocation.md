@@ -25,10 +25,25 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-Location -name "Room 1" -address "123 Asset Street" -parent_id 14
+New-SnipeItLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
 ```
 
 ## PARAMETERS
+
+### -name
+Name of the Location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -address
 Address line 1 of the location
@@ -60,16 +75,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+### -state
+Address State of the location
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 11
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -90,8 +105,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ldap_ou
-The LDAP OU of the location
+### -zip
+The zip code of the location
 
 ```yaml
 Type: String
@@ -99,37 +114,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-The manager ID of the location
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Name of the Location
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -150,8 +135,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -state
-Address State of the location
+### -manager_id
+The manager ID of the location
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ldap_ou
+The LDAP OU of the location
 
 ```yaml
 Type: String
@@ -159,14 +159,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -180,31 +180,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -zip
-The zip code of the location
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
+Required: True
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -218,6 +203,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

@@ -27,10 +27,10 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Accessory -search Keyboard
+Get-SnipeItAccessory -search Keyboard
 
 .EXAMPLE
-Get-Accessory -id 1
+Get-SnipeItAccessory -id 1
 
 #>
 

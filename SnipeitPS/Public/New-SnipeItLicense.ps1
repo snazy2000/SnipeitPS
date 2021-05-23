@@ -63,7 +63,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-Licence -name "License" -seats 3 -company_id 1
+    New-SnipeItLicence -name "License" -seats 3 -company_id 1
 
 #>
 

@@ -54,7 +54,7 @@ URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfoeItInfo command
 
 .EXAMPLE
-Set-Accessory -id 1 -qty 3
+Set-SnipeItAccessory -id 1 -qty 3
 
 #>
 function Set-SnipeItAccessory() {

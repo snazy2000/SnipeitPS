@@ -24,10 +24,10 @@ URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Location -search Location1
+Get-SnipeItLocation -search Location1
 
 .EXAMPLE
-Get-Location -id 3
+Get-SnipeItLocation -id 3
 
 #>
 

@@ -42,7 +42,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-Location -name "Room 1" -address "123 Asset Street" -parent_id 14
+    New-SnipeItLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
 #>
 
 function New-SnipeItLocation() {

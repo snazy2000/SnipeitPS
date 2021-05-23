@@ -30,16 +30,16 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-User -search SomeSurname
+Get-SnipeItUser -search SomeSurname
 
 .EXAMPLE
-Get-User -id 3
+Get-SnipeItUser -id 3
 
 .EXAMPLE
-Get-User -username someuser
+Get-SnipeItUser -username someuser
 
 .EXAMPLE
-Get-User -email user@somedomain.com
+Get-SnipeItUser -email user@somedomain.com
 #>
 
 function Get-SnipeItUser() {

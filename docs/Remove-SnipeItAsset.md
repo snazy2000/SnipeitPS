@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-SnipeItAsset
 
 ## SYNOPSIS
-Removes Asset to Snipe-it asset system
+Removes Asset from Snipe-it asset system
 
 ## SYNTAX
 
@@ -17,31 +17,16 @@ Remove-SnipeItAsset [-ID] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [
 ```
 
 ## DESCRIPTION
-Long description
+Removes Asset from Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-Asset -ID 44 -Verbose
+Remove-SnipeItAsset -ID 44 -Verbose
 ```
 
 ## PARAMETERS
-
-### -APIKey
-User's API Key for Snipeit, can be set using Set-Info command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ID
 Unique ID For Asset to be removed
@@ -59,7 +44,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -73,16 +58,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -APIKey
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,6 +81,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

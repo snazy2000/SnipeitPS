@@ -31,7 +31,7 @@
     User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    Remove-User -ID 44 -url $url -apiKey $secret -Verbose
+    Set-SnipeItAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing check out to user"
 #>
 function Set-SnipeItAssetOwner()
 {

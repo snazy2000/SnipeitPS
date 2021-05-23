@@ -24,11 +24,11 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Manufacturer -search HP
+Get-SnipeItManufacturer -search HP
 Search all manufacturers for string HP
 
 .EXAMPLE
-Get-Manufacturer -id 3
+Get-SnipeItManufacturer -id 3
 Returns manufacturer with id 3
 
 #>

@@ -54,7 +54,7 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-New-Accessory -name "Accessory" -qty 3  -category_id 1
+New-SnipeItAccessory -name "Accessory" -qty 3  -category_id 1
 
 #>
 function New-SnipeItAccessory() {

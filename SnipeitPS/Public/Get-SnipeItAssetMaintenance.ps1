@@ -30,13 +30,13 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-AssetMaintenances -url "https://assets.example.com" -token "token..."
+Get-SnipeItAssetMaintenances -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 #>
 function Get-SnipeItAssetMaintenance() {
     Param(

@@ -60,10 +60,10 @@
     Hastable of custom fields and extra fields that need passing through to Snipeit
 
     .EXAMPLE
-    Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1"
+    Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 
     .EXAMPLE
-    Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+    Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
 #>
 
 function Set-SnipeItAsset()

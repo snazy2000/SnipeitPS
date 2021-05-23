@@ -15,7 +15,7 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-New-Company -name "Acme Company"
+New-SnipeItCompany -name "Acme Company"
 
 #>
 

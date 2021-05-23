@@ -15,7 +15,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-Field -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
+    New-SnipeItCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 #>
 
 function New-SnipeItCustomField()
