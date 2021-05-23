@@ -93,6 +93,8 @@ FunctionsToExport = @(
         'New-SnipeItLicense',
         'Set-SnipeItLicense',
         'Get-SnipeItLicense',
+        'Get-SnipeItLicenseSeat',
+        'Set-SnipeItLicenseSeat',
         'New-SnipeItLocation',
         'New-SnipeItManufacturer',
         'New-SnipeItModel',
