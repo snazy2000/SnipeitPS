@@ -31,7 +31,7 @@
     Checkout licence to asset id 3
 
 #>
-function Set-SnipeItLicenceSeat()
+function Set-SnipeItLicenseSeat()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,

@@ -28,10 +28,8 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-License -search SomeLicense
+Get-SnipeItLicenseSeat -id 1
 
-.EXAMPLE
-Get-License -id 1
 
 #>
 
