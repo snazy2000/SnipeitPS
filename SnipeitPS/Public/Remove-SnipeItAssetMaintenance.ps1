@@ -13,7 +13,7 @@ function Remove-SnipeItAssetMaintenance {
         User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
         .EXAMPLE
-        Remove-AssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
+        Remove-SnipeItAssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
     #>
     [CmdletBinding(
         SupportsShouldProcess = $true,

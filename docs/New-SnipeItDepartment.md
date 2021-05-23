@@ -24,13 +24,13 @@ Creates a new department on Snipe-It system
 
 ### EXAMPLE 1
 ```
-New-Department -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
+New-SnipeItDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

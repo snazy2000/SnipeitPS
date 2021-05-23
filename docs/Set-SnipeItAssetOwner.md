@@ -25,13 +25,13 @@ Checkout asset to user/localtion/asset
 
 ### EXAMPLE 1
 ```
-Remove-User -ID 44 -url $url -apiKey $secret -Verbose
+Set-SnipeItAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing check out to user"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-Info command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

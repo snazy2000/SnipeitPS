@@ -27,21 +27,21 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-Asset -status_id 1 -model_id 1 -name "Machine1"
+New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1"
 ```
 
 Create asset with automatic tag if tag genaration is enabled on snipe-it, other wise without tag
 
 ### EXAMPLE 2
 ```
-New-Asset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
+New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
 ```
 
 Specifying asset tag when creating asset
 
 ### EXAMPLE 3
 ```
-New-Asset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
 ```
 
 Using customfields when creating asset.
@@ -49,7 +49,7 @@ Using customfields when creating asset.
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -260,7 +260,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

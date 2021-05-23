@@ -24,17 +24,17 @@ Get-SnipeItAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] 
 
 ### EXAMPLE 1
 ```
-Get-AssetMaintenances -url "https://assets.example.com" -token "token..."
+Get-SnipeItAssetMaintenances -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 3
 ```
-Get-AssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

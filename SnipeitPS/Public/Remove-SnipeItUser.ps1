@@ -13,7 +13,7 @@
     User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    Remove-User -ID 44 -url $url -apiKey $secret -Verbose
+    Remove-SnipeItUser -ID 44 -url $url -apiKey $secret -Verbose
 #>
 
 function Remove-SnipeItUser ()

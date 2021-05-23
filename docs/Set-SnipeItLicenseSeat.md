@@ -1,56 +1,45 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItSupplier
+# Set-SnipeItLicenseSeat
 
 ## SYNOPSIS
-# Gets a list of Snipe-it Suppliers
+Set license seat or checkout license seat
 
 ## SYNTAX
 
 ```
-Get-SnipeItSupplier [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Set-SnipeItLicenseSeat [-id] <Int32> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
+ [[-note] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Checkout specific license seat to user, asset or both
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-SnipeItSupplier -search MySupplier
+Set-SnipeItLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
 ```
+
+Checkout licence to user id 3
 
 ### EXAMPLE 2
 ```
-Get-SnipeItSupplier -id 2
+Set-SnipeItLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
 ```
+
+Checkout licence to asset id 3
 
 ## PARAMETERS
 
-### -all
-A return all results, works with -offset and other parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -64,25 +53,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Suplier
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
+### -asset_id
+Id of target asset
 
 ```yaml
 Type: Int32
@@ -91,13 +63,13 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: 50
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -offset
-Offset to use
+### -assigned_id
+{{ Fill assigned_id Description }}
 
 ```yaml
 Type: Int32
@@ -105,29 +77,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 3
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -id
+Unique ID For asset to checkout
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 3
-Default value: Desc
+Required: True
+Position: 1
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -search
-A text string to search the Supliers data
+### -note
+Notes about checkout
 
 ```yaml
 Type: String
@@ -135,8 +107,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 5
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -seat_id
+{{ Fill seat_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -151,6 +138,37 @@ Aliases:
 
 Required: True
 Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

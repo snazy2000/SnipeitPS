@@ -24,13 +24,13 @@ New-SnipeItCategory [-name] <String> [-category_type] <String> [-url] <String> [
 
 ### EXAMPLE 1
 ```
-New-Category -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeItCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-Info command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

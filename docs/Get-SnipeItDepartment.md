@@ -24,17 +24,17 @@ Get-SnipeItDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [
 
 ### EXAMPLE 1
 ```
-Get-Department -url "https://assets.example.com" -token "token..."
+Get-SnipeItDepartment -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-Department -search  Department1
+Get-SnipeItDepartment -search  Department1
 ```
 
 ### EXAMPLE 3
 ```
-Get-Department -id 1
+Get-SnipeItDepartment -id 1
 ```
 
 ## PARAMETERS
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

@@ -24,12 +24,12 @@ Get-SnipeItModel [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-lim
 
 ### EXAMPLE 1
 ```
-Get-Model -search "DL380"
+Get-SnipeItModel -search "DL380"
 ```
 
 ### EXAMPLE 2
 ```
-Get-Model -id 1
+Get-SnipeItModel -id 1
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

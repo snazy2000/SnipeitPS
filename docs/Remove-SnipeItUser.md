@@ -23,13 +23,13 @@ Long description
 
 ### EXAMPLE 1
 ```
-Remove-User -ID 44 -url $url -apiKey $secret -Verbose
+Remove-SnipeItUser -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
 
 ### -APIKey
-User's API Key for Snipeit, can be set using Set-Info command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

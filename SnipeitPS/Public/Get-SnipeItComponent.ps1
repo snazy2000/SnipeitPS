@@ -24,15 +24,15 @@ URL of Snipeit system,can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Component
+Get-SnipeItComponent
 Returns all components
 
 .EXAMPLE
-Get-Component -search display
+Get-SnipeItComponent -search display
 Returns search results containeing string display
 
 .EXAMPLE
-Get-Component -id
+Get-SnipeItComponent -id
 Returns specific component
 
 #>

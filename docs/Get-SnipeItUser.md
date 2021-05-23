@@ -26,22 +26,22 @@ Get-SnipeItUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[
 
 ### EXAMPLE 1
 ```
-Get-User -search SomeSurname
+Get-SnipeItUser -search SomeSurname
 ```
 
 ### EXAMPLE 2
 ```
-Get-User -id 3
+Get-SnipeItUser -id 3
 ```
 
 ### EXAMPLE 3
 ```
-Get-User -username someuser
+Get-SnipeItUser -username someuser
 ```
 
 ### EXAMPLE 4
 ```
-Get-User -email user@somedomain.com
+Get-SnipeItUser -email user@somedomain.com
 ```
 
 ## PARAMETERS

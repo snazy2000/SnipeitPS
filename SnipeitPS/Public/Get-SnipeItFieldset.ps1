@@ -12,10 +12,10 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Fieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeItFieldset -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-Fieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeItFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
 
 #>
 

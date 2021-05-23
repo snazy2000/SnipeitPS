@@ -5,52 +5,55 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItUser
+# Get-SnipeItLicense
 
 ## SYNOPSIS
-Creates a new user
+Gets a list of Snipe-it Licenses
 
 ## SYNTAX
 
 ```
-Set-SnipeItUser [-id] <Int32> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
- [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
- [[-activated] <Boolean>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-SnipeItLicense [[-search] <String>] [[-id] <Int32>] [[-name] <String>] [[-company_id] <Int32>]
+ [[-product_key] <String>] [[-order_number] <Int32>] [[-purchase_order] <String>] [[-license_name] <String>]
+ [[-license_email] <MailAddress>] [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>]
+ [[-depreciation_id] <Int32>] [[-category_id] <Int32>] [[-order] <String>] [[-sort] <String>]
+ [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new user to Snipe-IT system
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Update-SnipeItUser -id 3 -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+Get-SnipeItLicense -search SomeLicense
 ```
 
-Updates user with id 3
+### EXAMPLE 2
+```
+Get-SnipeItLicense -id 1
+```
 
 ## PARAMETERS
 
-### -activated
-{{ Fill activated Description }}
+### -all
+A return all results, works with -offset and other parameters
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -58,14 +61,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 16
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-ID number of company users belogs to
+### -category_id
+{{ Fill category_id Description }}
 
 ```yaml
 Type: Int32
@@ -73,14 +76,106 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 13
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -department_id
-ID number of department
+### -company_id
+{{ Fill company_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -depreciation_id
+{{ Fill depreciation_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+A id of specific License
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -license_email
+{{ Fill license_email Description }}
+
+```yaml
+Type: MailAddress
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -license_name
+{{ Fill license_name Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -limit
+Specify the number of results you wish to return.
+Defaults to 50.
+Defines batch size for -all
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 16
+Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
 
 ```yaml
 Type: Int32
@@ -94,83 +189,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -email
-email address
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -employee_num
-Employeenumber
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 12
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -first_name
-Users first name
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-{{ Fill id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -jobtitle
-Users job tittle
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -last_name
-Users last name
+### -name
+{{ Fill name Description }}
 
 ```yaml
 Type: String
@@ -184,8 +204,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -location_id
-ID number of localtion
+### -offset
+Offset to use
 
 ```yaml
 Type: Int32
@@ -193,29 +213,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 17
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-ID number of manager
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -notes
-User Notes
+### -order
+{{ Fill order Description }}
 
 ```yaml
 Type: String
@@ -224,13 +229,43 @@ Aliases:
 
 Required: False
 Position: 14
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order_number
+{{ Fill order_number Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -product_key
+{{ Fill product_key Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -phone
-Phone number
+### -purchase_order
+{{ Fill purchase_order Description }}
 
 ```yaml
 Type: String
@@ -244,6 +279,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -search
+A text string to search the Licenses data
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -sort
+{{ Fill sort Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 15
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+{{ Fill supplier_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeItInfo command
 
@@ -253,53 +333,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 15
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -userName
-Username for user
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
+Position: 18
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -313,6 +347,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

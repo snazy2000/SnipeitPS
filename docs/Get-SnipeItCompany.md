@@ -24,14 +24,14 @@ Get-SnipeItCompany [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-l
 
 ### EXAMPLE 1
 ```
-Get-Company
+Get-SnipeItCompany
 ```
 
 Gets all companies
 
 ### EXAMPLE 2
 ```
-Get-Company -id 1
+Get-SnipeItCompany -id 1
 ```
 
 Gets specific company
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

@@ -25,7 +25,7 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-Location -name "Room 1" -address "123 Asset Street" -parent_id 14
+New-SnipeItLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
 ```
 
 ## PARAMETERS
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

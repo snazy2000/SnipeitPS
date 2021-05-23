@@ -24,13 +24,13 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Department -url "https://assets.example.com" -token "token..."
+Get-SnipeItDepartment -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-Department -search  Department1
+Get-SnipeItDepartment -search  Department1
 
 .EXAMPLE
-Get-Department -id 1
+Get-SnipeItDepartment -id 1
 
 #>
 

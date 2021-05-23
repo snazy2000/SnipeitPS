@@ -25,13 +25,13 @@ Updates Model on Snipe-it asset system
 
 ### EXAMPLE 1
 ```
-New-Model -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+New-SnipeItModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

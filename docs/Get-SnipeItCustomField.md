@@ -23,13 +23,13 @@ Get-SnipeItCustomField [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<Comm
 
 ### EXAMPLE 1
 ```
-Get-Field -url "https://assets.example.com" -token "token..."
+Get-SnipeItCustomField -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

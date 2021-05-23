@@ -25,21 +25,21 @@ Get-SnipeItComponent [[-search] <String>] [[-id] <Int32>] [[-category_id] <Int32
 
 ### EXAMPLE 1
 ```
-Get-Component
+Get-SnipeItComponent
 ```
 
 Returns all components
 
 ### EXAMPLE 2
 ```
-Get-Component -search display
+Get-SnipeItComponent -search display
 ```
 
 Returns search results containeing string display
 
 ### EXAMPLE 3
 ```
-Get-Component -id
+Get-SnipeItComponent -id
 ```
 
 Returns specific component
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system,can be set using Set-Info command
+URL of Snipeit system,can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

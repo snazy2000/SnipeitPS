@@ -26,13 +26,13 @@ Updates accessory on Snipe-It system
 
 ### EXAMPLE 1
 ```
-Set-Accessory -id 1 -qty 3
+Set-SnipeItAccessory -id 1 -qty 3
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfoeItInfo command
 
 ```yaml
 Type: String
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 
 ```yaml
 Type: String

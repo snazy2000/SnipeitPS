@@ -23,18 +23,18 @@ Get-SnipeItFieldset [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonP
 
 ### EXAMPLE 1
 ```
-Get-Fieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeItFieldset -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-Fieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeItFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

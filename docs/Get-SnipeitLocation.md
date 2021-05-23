@@ -1,4 +1,4 @@
----
+﻿---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
@@ -24,12 +24,12 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-Location -search Location1
+Get-SnipeItLocation -search Location1
 ```
 
 ### EXAMPLE 2
 ```
-Get-Location -id 3
+Get-SnipeItLocation -id 3
 ```
 
 ## PARAMETERS

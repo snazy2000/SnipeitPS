@@ -24,12 +24,12 @@ Get-SnipeItCategory [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-Category -id 1
+Get-SnipeItCategory -id 1
 ```
 
 ### EXAMPLE 2
 ```
-Get-Category -search "Laptop"
+Get-SnipeItCategory -search "Laptop"
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-Url of Snipeit system, can be set using Set-Info command
+Url of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

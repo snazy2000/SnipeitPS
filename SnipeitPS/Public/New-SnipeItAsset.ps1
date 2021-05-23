@@ -53,15 +53,15 @@ Hastable of custom fields and extra fields that need passing through to Snipeit.
 Use internal field names from snipeit .You can use Get-CustomField to get internal field names.
 
 .EXAMPLE
-New-Asset -status_id 1 -model_id 1 -name "Machine1"
+New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1"
 Create asset with automatic tag if tag genaration is enabled on snipe-it, other wise without tag
 
 .EXAMPLE
-New-Asset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
+New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
 Specifying asset tag when creating asset
 
 .EXAMPLE
-New-Asset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
 Using customfields when creating asset.
 #>
 

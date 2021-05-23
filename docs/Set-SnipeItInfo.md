@@ -23,13 +23,13 @@ Set apikey and url user to connect Snipe-It system
 
 ### EXAMPLE 1
 ```
-Set-Info -url $url -apiKey -Verbose
+Set-SnipeItInfo -url $url -apiKey -Verbose
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-Info command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: Uri

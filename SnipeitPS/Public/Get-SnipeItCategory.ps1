@@ -24,10 +24,10 @@ Url of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Category -id 1
+Get-SnipeItCategory -id 1
 
 .EXAMPLE
-Get-Category -search "Laptop"
+Get-SnipeItCategory -search "Laptop"
 
 #>
 

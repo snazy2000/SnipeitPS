@@ -27,18 +27,18 @@ Long description
 
 ### EXAMPLE 1
 ```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1"
+Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 ```
 
 ### EXAMPLE 2
 ```
-Set-Asset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfo command
 
 ```yaml
 Type: String
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 
 ```yaml
 Type: String

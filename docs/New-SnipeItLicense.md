@@ -28,13 +28,13 @@ Creates a new licence on Snipe-It system
 
 ### EXAMPLE 1
 ```
-New-Licence -name "License" -seats 3 -company_id 1
+New-SnipeItLicence -name "License" -seats 3 -company_id 1
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -304,7 +304,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

@@ -23,11 +23,11 @@ URL of Snipeit system, can be set using Set-SnipeItInfo command
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 .EXAMPLE
-Get-Company
+Get-SnipeItCompany
 Gets all companies
 
 .EXAMPLE
-Get-Company -id 1
+Get-SnipeItCompany -id 1
 Gets specific company
 
 #>

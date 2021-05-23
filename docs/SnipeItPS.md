@@ -8,7 +8,7 @@ Locale: en-US
 
 # SnipeitPS Module
 ## Description
-Powershell API for SnipeIt Asset Management
+{{ Fill in the Description }}
 
 ## SnipeitPS Cmdlets
 ### [Get-SnipeItAccessory](Get-SnipeItAccessory.md)
@@ -37,6 +37,15 @@ Gets a list of Snipe-it Departments
 
 ### [Get-SnipeItFieldset](Get-SnipeItFieldset.md)
 Returns a fieldset or list of Snipe-it Fieldsets
+
+### [Get-SnipeItLicense](Get-SnipeItLicense.md)
+Gets a list of Snipe-it Licenses
+
+### [Get-SnipeItLicenseSeat](Get-SnipeItLicenseSeat.md)
+Gets a list of Snipe-it Licenses Seats or specific Seat
+
+### [Get-SnipeitLocation](Get-SnipeitLocation.md)
+Gets a list of Snipe-it Locations
 
 ### [Get-SnipeItModel](Get-SnipeItModel.md)
 Gets a list of Snipe-it Models
@@ -78,7 +87,7 @@ Add a new Model to Snipe-it asset system
 Creates a new user
 
 ### [Remove-SnipeItAsset](Remove-SnipeItAsset.md)
-Removes Asset to Snipe-it asset system
+Removes Asset from Snipe-it asset system
 
 ### [Remove-SnipeItUser](Remove-SnipeItUser.md)
 Removes User from Snipe-it asset system
@@ -100,6 +109,9 @@ Sets authetication information
 
 ### [Set-SnipeItLicense](Set-SnipeItLicense.md)
 Updates a licence
+
+### [Set-SnipeItLicenseSeat](Set-SnipeItLicenseSeat.md)
+Set license seat or checkout license seat
 
 ### [Set-SnipeitLocation](Set-SnipeitLocation.md)
 Updates Location in Snipe-it asset system

@@ -24,12 +24,12 @@ Get-SnipeItStatus [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-li
 
 ### EXAMPLE 1
 ```
-Get-Status -search  "Ready to Deploy"
+Get-SnipeItStatus -search  "Ready to Deploy"
 ```
 
 ### EXAMPLE 2
 ```
-Get-Status -id 3
+Get-SnipeItStatus -id 3
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

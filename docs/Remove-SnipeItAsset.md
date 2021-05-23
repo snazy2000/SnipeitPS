@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-SnipeItAsset
 
 ## SYNOPSIS
-Removes Asset to Snipe-it asset system
+Removes Asset from Snipe-it asset system
 
 ## SYNTAX
 
@@ -17,19 +17,19 @@ Remove-SnipeItAsset [-ID] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [
 ```
 
 ## DESCRIPTION
-Long description
+Removes Asset from Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-Asset -ID 44 -Verbose
+Remove-SnipeItAsset -ID 44 -Verbose
 ```
 
 ## PARAMETERS
 
 ### -APIKey
-User's API Key for Snipeit, can be set using Set-Info command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

@@ -15,7 +15,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-Manufacturer -name "HP"
+    New-SnipeItManufacturer -name "HP"
 #>
 
 function New-SnipeItManufacturer()

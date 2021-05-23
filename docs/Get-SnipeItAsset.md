@@ -27,22 +27,22 @@ Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[
 
 ### EXAMPLE 1
 ```
-Get-Asset -url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 3
 ```
-Get-Asset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 4
 ```
-Get-Asset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeItAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 ```
 
 ## PARAMETERS
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-Info command
+Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -350,7 +350,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-Info command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String

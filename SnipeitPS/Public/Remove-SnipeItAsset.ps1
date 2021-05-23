@@ -12,7 +12,7 @@
     User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    Remove-Asset -ID 44 -Verbose
+    Remove-SnipeItAsset -ID 44 -Verbose
 #>
 
 function Remove-SnipeItAsset ()

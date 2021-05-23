@@ -24,7 +24,7 @@
     Users API Key for Snipeit, can be set using Set-SnipeItInfo command
 
     .EXAMPLE
-    New-Department -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
+    New-SnipeItDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 
 #>
 
