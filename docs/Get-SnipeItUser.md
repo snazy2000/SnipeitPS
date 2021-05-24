@@ -1,20 +1,22 @@
-﻿---
+---
 external help file: SnipeItPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeItUser
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+# Gets a list of Snipe-it Users
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
+ [[-group_id] <Int32>] [[-department_id] <Int32>] [[-username] <String>] [[-email] <String>]
+ [[-order] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +26,22 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLocation -search Location1
+Get-SnipeItUser -search SomeSurname
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItLocation -id 3
+Get-SnipeItUser -id 3
+```
+
+### EXAMPLE 3
+```
+Get-SnipeItUser -username someuser
+```
+
+### EXAMPLE 4
+```
+Get-SnipeItUser -email user@somedomain.com
 ```
 
 ## PARAMETERS
@@ -58,14 +70,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Location
+### -company_id
+{{ Fill company_id Description }}
 
 ```yaml
 Type: Int32
@@ -73,8 +85,68 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -department_id
+{{ Fill department_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -email
+Search string for email field
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -group_id
+{{ Fill group_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+A id of specific User
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -90,8 +162,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 10
 Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+{{ Fill location_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -105,7 +192,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 11
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -120,14 +207,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 9
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the User data
 
 ```yaml
 Type: String
@@ -142,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -150,7 +237,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 12
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -username
+Search string for username field
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -5,17 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLocation
+# New-SnipeItLocation
 
 ## SYNOPSIS
-Updates Location in Snipe-it asset system
+Add a new Location to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeItLocation [-name] <String> [[-address] <String>] [[-address2] <String>] [[-state] <String>]
+ [[-country] <String>] [[-zip] <String>] [[-parent_id] <Int32>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +25,28 @@ Long description
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
+New-SnipeItLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
 ```
 
 ## PARAMETERS
 
 ### -address
-Address line 1
+Address line 1 of the location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -address2
+Address line 2 of the location
 
 ```yaml
 Type: String
@@ -40,21 +55,6 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -address2
-Address line 2
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -69,14 +69,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -country
-Address Contry
+Country of the location
 
 ```yaml
 Type: String
@@ -84,29 +84,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-{{ Fill id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ldap_ou
-LDAP OU of Location
+The LDAP OU of the location
 
 ```yaml
 Type: String
@@ -121,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -manager_id
-Location manager as id
+The manager ID of the location
 
 ```yaml
 Type: Int32
@@ -136,22 +121,22 @@ Accept wildcard characters: False
 ```
 
 ### -name
-Name of Location
+Name of the Location
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 2
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -parent_id
-Parent location as id
+Parent location ID for the location
 
 ```yaml
 Type: Int32
@@ -159,14 +144,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 7
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -state
-Address State
+Address State of the location
 
 ```yaml
 Type: String
@@ -174,7 +159,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,14 +174,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -zip
-Address zipcode
+The zip code of the location
 
 ```yaml
 Type: String
@@ -204,7 +189,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

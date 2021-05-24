@@ -5,31 +5,32 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeItAccessory
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Accessories
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItAccessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int32>]
+ [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>] [[-sort] <String>] [[-order] <String>]
+ [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Gets a list of Snipe-it Accessories
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLocation -search Location1
+Get-SnipeItAccessory -search Keyboard
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItLocation -id 3
+Get-SnipeItAccessory -id 1
 ```
 
 ## PARAMETERS
@@ -58,14 +59,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Location
+### -category_id
+{{ Fill category_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -company_id
+{{ Fill company_id Description }}
 
 ```yaml
 Type: Int32
@@ -90,14 +106,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 8
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -offset
-Offset to use
+### -manufacturer_id
+{{ Fill manufacturer_id Description }}
 
 ```yaml
 Type: Int32
@@ -105,7 +121,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+Result offset to use
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -120,14 +151,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 7
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the Accessory data
 
 ```yaml
 Type: String
@@ -141,8 +172,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -sort
+{{ Fill sort Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+{{ Fill supplier_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -150,7 +211,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -5,60 +5,30 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLocation
+# New-SnipeItCustomField
 
 ## SYNOPSIS
-Updates Location in Snipe-it asset system
+Add a new Custom Field to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeItCustomField [-Name] <String> [[-HelpText] <String>] [[-Element] <String>] [[-Format] <String>]
+ [[-field_encrypted] <Boolean>] [[-CustomFormat] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Add a new Custom Field to Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
+New-SnipeItCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 ```
 
 ## PARAMETERS
-
-### -address
-Address line 1
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -address2
-Address line 2
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -apiKey
 Users API Key for Snipeit, can be set using Set-SnipeItInfo command
@@ -69,14 +39,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -country
-Address Contry
+### -CustomFormat
+{{ Fill CustomFormat Description }}
 
 ```yaml
 Type: String
@@ -90,23 +60,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-{{ Fill id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ldap_ou
-LDAP OU of Location
+### -Element
+{{ Fill Element Description }}
 
 ```yaml
 Type: String
@@ -114,29 +69,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
-Default value: None
+Position: 3
+Default value: Text
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -manager_id
-Location manager as id
+### -field_encrypted
+{{ Fill field_encrypted Description }}
 
 ```yaml
-Type: Int32
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: 0
+Position: 5
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of Location
+### -Format
+{{ Fill Format Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: ANY
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HelpText
+{{ Fill HelpText Description }}
 
 ```yaml
 Type: String
@@ -150,31 +120,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -parent_id
-Parent location as id
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -state
-Address State
+### -Name
+Name of the Custom Field
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 5
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,21 +144,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -zip
-Address zipcode
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 7
 Default value: None
 Accept pipeline input: False
