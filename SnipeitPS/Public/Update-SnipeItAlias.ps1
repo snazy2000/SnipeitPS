@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+Replaces old SnipeItPS commands with new ones
+
+.DESCRIPTION
+Replaces old SnipeItPS commands with new ones
+
+.PARAMETER String
+Input string
+
+.EXAMPLE
+Get-Content [your-script.ps1] | Update-SnipeItAlias | Out-File [new-script-name.ps1]
+Replaces old command from file "your-script.ps1" and creates new script "new-script-name.ps1"
+After testing new file you can replace old file with new.
+
+#>
+
+
 function Update-SnipeItAlias()
 {
     [CmdletBinding(
@@ -28,7 +46,7 @@ function Update-SnipeItAlias()
         }
     }
     end{
-        Write-Verbose "..replacing done 1 "
+        Write-Verbose "..replacing done"
     }
 
 
