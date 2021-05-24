@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v1.2.x] - 2021-05-24
+
+## Prefixing SnipeItPS
+
+### New Features
+All commands are now prefixed like Set-Info -> Set-SnipeItInfo.
+To keep compatibility all old commands are available as aliases.
+To update existing scripts theres Update-SnipeItAlias command.
+
+### New fuctions
+- Update-SnipeitAlias Tool to update existing scripts
+- Get-SnipeItLicenceSeat lists license seats
+- Set-SnipeItLicenseSeat Set and checkouts/in license seats
+Licenseseat api is supported from Snipe-It release => v5.1.5
+
+### New fixes
+Added -id parameter support to support Get-SnipeItCustomField and
+Get-SnipeItFieldSet commands
+
 # [v1.1.x] - 2021-05-18
 
 ## Pull request rollup release. Lots of new features including:
