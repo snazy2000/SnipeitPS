@@ -25,6 +25,7 @@ function Update-SnipeItAlias()
     param(
         [Parameter(Mandatory = $true,
             ValueFromPipeline = $true)]
+        [AllowEmptyString()]
 	    [string[]]
 	    $String
     )
