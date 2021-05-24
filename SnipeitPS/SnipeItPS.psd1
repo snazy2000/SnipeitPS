@@ -110,7 +110,9 @@ FunctionsToExport = @(
         'Set-SnipeItAccessory',
         'Get-SnipeItAccessory',
         'Remove-SnipeItAsset',
-        'Remove-SnipeItUser'
+        'Remove-SnipeItUser',
+        'Update-SnipeItAlias'
+
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

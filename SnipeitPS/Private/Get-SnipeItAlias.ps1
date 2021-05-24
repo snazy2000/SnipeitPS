@@ -1,21 +1,5 @@
-<#
-.DESCRIPTION
-Powershell API for SnipeIt Asset Management
-#>
-$scriptRoot = $PSScriptRoot + '\Public'
-
-Get-ChildItem $scriptRoot *.ps1 | ForEach-Object {
-    Import-Module $_.FullName
-}
-
-$scriptRoot = $PSScriptRoot + '\Private'
-
-Get-ChildItem $scriptRoot *.ps1 | ForEach-Object {
-    Import-Module $_.FullName
-}
-
-
-$SnipeItAliases= @{'Get-Asset' = 'Get-SnipeItAsset';
+ Function Get-SnipeItAlias(){
+ @{'Get-Asset' = 'Get-SnipeItAsset';
     'Get-AssetMaintenance' = 'Get-SnipeItAssetMaintenance';
     'Get-Category' = 'Get-SnipeItCategory';
     'Get-Company' = 'Get-SnipeItCompany';
@@ -51,6 +35,4 @@ $SnipeItAliases= @{'Get-Asset' = 'Get-SnipeItAsset';
     'Get-Accessory' = 'Get-SnipeItAccessory';
     'Remove-Asset' = 'Remove-SnipeItAsset';
     'Remove-User' = 'Remove-SnipeItUser';}
-
-#Create unprefixed aliases
-Set-SnipeItAlias
+}

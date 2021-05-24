@@ -122,3 +122,6 @@ Updates Model on Snipe-it asset system
 ### [Set-SnipeItUser](Set-SnipeItUser.md)
 Creates a new user
 
+### [Update-SnipeItAlias](Update-SnipeItAlias.md)
+{{ Fill in the Synopsis }}
+
