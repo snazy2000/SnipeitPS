@@ -29,6 +29,12 @@
     .PARAMETER manager_id
     Location manager as id
 
+    .PARAMETER city
+    City of the location
+
+    .PARAMETER currency
+    Currency used at the location
+
     .PARAMETER ldap_ou
     LDAP OU of Location
 
@@ -68,6 +74,10 @@ function Set-SnipeitLocation() {
         [string]$country,
 
         [string]$zip,
+
+        [string]$city,
+
+        [string]$currency,
 
         [int]$manager_id,
 

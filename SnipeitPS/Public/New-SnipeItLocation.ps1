@@ -32,6 +32,9 @@
     .PARAMETER currency
     Currency used at the location
 
+    .PARAMETER city
+    City of the location
+
     .PARAMETER manager_id
     The manager ID of the location
 
@@ -59,11 +62,15 @@ function New-SnipeItLocation() {
 
         [string]$address2,
 
+        [string]$city,
+
         [string]$state,
 
         [string]$country,
 
         [string]$zip,
+
+        [string]$currency,
 
         [int]$parent_id,
 
