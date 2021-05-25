@@ -13,7 +13,7 @@ Updates component
 ## SYNTAX
 
 ```
-Set-SnipeItComponent [-id] <String> [-qty] <String> [[-name] <String>] [[-company_id] <Int32>]
+Set-SnipeItComponent [-id] <Int32> [-qty] <Int32> [[-name] <String>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -64,13 +64,13 @@ Accept wildcard characters: False
 ID number of  name
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,13 +139,13 @@ Accept wildcard characters: False
 Quantity of the components you have
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 2
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

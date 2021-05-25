@@ -15,9 +15,9 @@ Add a new Asset to Snipe-it asset system
 ```
 New-SnipeItAsset [-status_id] <Int32> [-model_id] <Int32> [[-name] <String>] [[-asset_tag] <String>]
  [[-serial] <String>] [[-company_id] <Int32>] [[-order_number] <String>] [[-notes] <String>]
- [[-warranty_months] <Int32>] [[-purchase_cost] <String>] [[-purchase_date] <String>] [[-supplier_id] <Int32>]
- [[-rtd_location_id] <Int32>] [-url] <String> [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-warranty_months] <Int32>] [[-purchase_cost] <String>] [[-purchase_date] <DateTime>]
+ [[-supplier_id] <Int32>] [[-rtd_location_id] <Int32>] [-url] <String> [-apiKey] <String>
+ [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 Optional Purchase cost of the Asset
 
 ```yaml
-Type: String
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 

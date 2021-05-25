@@ -47,10 +47,10 @@ function Set-SnipeItComponent()
 
     Param(
         [parameter(mandatory = $true)]
-        [string]$id,
+        [int]$id,
 
         [parameter(mandatory = $true)]
-        [string]$qty,
+        [int]$qty,
 
         [string]$name,
 
