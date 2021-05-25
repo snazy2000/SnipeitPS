@@ -14,6 +14,9 @@ Locale: en-US
 ### [Get-SnipeItAccessory](Get-SnipeItAccessory.md)
 Gets a list of Snipe-it Accessories
 
+### [Get-SnipeItAccessoryOwner](Get-SnipeItAccessoryOwner.md)
+Get list of checked out accessories
+
 ### [Get-SnipeItAsset](Get-SnipeItAsset.md)
 Gets a list of Snipe-it Assets or specific asset
 
@@ -92,8 +95,14 @@ Removes Asset from Snipe-it asset system
 ### [Remove-SnipeItUser](Remove-SnipeItUser.md)
 Removes User from Snipe-it asset system
 
+### [Reset-SnipeItAccessoryOwner](Reset-SnipeItAccessoryOwner.md)
+Checkin  accessories
+
 ### [Set-SnipeItAccessory](Set-SnipeItAccessory.md)
 Updates accessory on Snipe-It system
+
+### [Set-SnipeItAccessoryOwner](Set-SnipeItAccessoryOwner.md)
+Checkout accessory
 
 ### [Set-SnipeItAsset](Set-SnipeItAsset.md)
 Update a specific Asset in the Snipe-it asset system
