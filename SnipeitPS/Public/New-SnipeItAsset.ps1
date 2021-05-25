@@ -106,7 +106,7 @@ function New-SnipeItAsset()
         [string]$purchase_cost,
 
         [parameter(mandatory = $false)]
-        [string]$purchase_date,
+        [datetime]$purchase_date,
 
         [parameter(mandatory = $false)]
         [int]$supplier_id,
@@ -127,6 +127,9 @@ function New-SnipeItAsset()
 
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
+    if ($values['purchase_date']) {
+        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+    }
 
     if ($customfields)
     {

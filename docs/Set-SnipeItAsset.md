@@ -13,7 +13,7 @@ Update a specific Asset in the Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeItAsset [-id] <Int32> [[-Name] <String>] [[-Status_id] <String>] [[-Model_id] <String>]
+Set-SnipeItAsset [-id] <Int32> [[-Name] <String>] [[-status_id] <Int32>] [[-model_id] <Int32>]
  [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
  [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
  [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
@@ -143,17 +143,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Model_id
+### -model_id
 Model ID of the asset, this can be got using Get-Model
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 4
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -263,17 +263,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status_id
+### -status_id
 Status ID of the asset, this can be got using Get-Status
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

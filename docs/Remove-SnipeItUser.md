@@ -13,7 +13,7 @@ Removes User from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeItUser [-ID] <String> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-SnipeItUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,17 +43,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ID
+### -id
 Unique ID For User to be removed
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

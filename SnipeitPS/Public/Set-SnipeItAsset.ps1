@@ -79,9 +79,9 @@ function Set-SnipeItAsset()
 
         [string]$Name,
 
-        [string]$Status_id,
+        [int]$status_id,
 
-        [string]$Model_id,
+        [int]$model_id,
 
         [DateTime]$last_checkout,
 
@@ -97,7 +97,7 @@ function Set-SnipeItAsset()
 
         [double]$purchase_cost,
 
-        [DateTime]$purchase_date,
+        [datetime]$purchase_date,
 
         [bool]$requestable,
 
@@ -118,7 +118,9 @@ function Set-SnipeItAsset()
 
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    if ($model_id) { $Values.Add('model_id',$model_id)}
+    if ($values['purchase_date']) {
+        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+    }
 
     if ($customfields)
     {

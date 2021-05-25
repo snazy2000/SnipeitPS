@@ -24,7 +24,7 @@ function Remove-SnipeItAsset ()
 
     Param(
     [parameter(mandatory = $true)]
-        [int]$ID,
+        [int]$id,
     [parameter(mandatory = $true)]
         [string]$URL,
     [parameter(mandatory = $true)]
@@ -35,7 +35,7 @@ function Remove-SnipeItAsset ()
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
-        "ID"      = $Name
+        "ID"      = $id
     }
 
     $Body = $Values | ConvertTo-Json

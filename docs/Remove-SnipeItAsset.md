@@ -13,7 +13,7 @@ Removes Asset from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeItAsset [-ID] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-SnipeItAsset [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ID
+### -id
 Unique ID For Asset to be removed
 
 ```yaml
