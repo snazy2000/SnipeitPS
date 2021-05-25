@@ -13,9 +13,10 @@ Add a new Location to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeItLocation [-name] <String> [[-address] <String>] [[-address2] <String>] [[-state] <String>]
- [[-country] <String>] [[-zip] <String>] [[-parent_id] <Int32>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeItLocation [-name] <String> [[-address] <String>] [[-address2] <String>] [[-city] <String>]
+ [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-currency] <String>] [[-parent_id] <Int32>]
+ [[-manager_id] <Int32>] [[-ldap_ou] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +70,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -city
+City of the location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -84,7 +100,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -currency
+Currency used at the location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,7 +130,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +145,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 10
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -144,7 +175,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 9
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,7 +190,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -174,7 +205,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,7 +220,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

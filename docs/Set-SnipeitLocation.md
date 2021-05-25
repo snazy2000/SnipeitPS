@@ -14,8 +14,9 @@ Updates Location in Snipe-it asset system
 
 ```
 Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-manager_id] <Int32>] [[-ldap_ou] <String>]
- [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-city] <String>] [[-currency] <String>]
+ [[-manager_id] <Int32>] [[-ldap_ou] <String>] [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +70,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -city
+City of the location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -85,6 +101,21 @@ Aliases:
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -currency
+Currency used at the location
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +145,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,7 +160,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 10
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,7 +190,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 12
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,7 +220,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
