@@ -50,6 +50,12 @@
     .PARAMETER rtd_location_id
     The id that corresponds to the location where the asset is usually located when not checked out
 
+    .PARAMETER notes
+    Notes about asset
+
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Put youc use Patch if needed
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 
@@ -105,6 +111,11 @@ function Set-SnipeItAsset()
 
         [int]$rtd_location_id,
 
+        [string]$notes,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -131,7 +142,7 @@ function Set-SnipeItAsset()
 
     $Parameters = @{
         Uri    = "$url/api/v1/hardware/$id"
-        Method = 'Put'
+        Method = $RequestType
         Body   = $Body
         Token  = $apiKey
     }
