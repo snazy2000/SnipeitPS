@@ -13,11 +13,12 @@ Update a specific Asset in the Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeItAsset [-id] <Int32> [[-Name] <String>] [[-Status_id] <String>] [[-Model_id] <String>]
+Set-SnipeItAsset [-id] <Int32> [[-name] <String>] [[-status_id] <Int32>] [[-model_id] <Int32>]
  [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
  [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
  [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
- [-url] <String> [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-notes] <String>] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [[-customfields] <Hashtable>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 17
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,7 +108,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 18
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,22 +144,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Model_id
+### -model_id
 Model ID of the asset, this can be got using Get-Model
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 4
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -name
 Asset name
 
 ```yaml
@@ -168,6 +169,21 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+Notes about asset
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 16
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -233,6 +249,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Put youc use Patch if needed
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 17
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -rtd_location_id
 The id that corresponds to the location where the asset is usually located when not checked out
 
@@ -263,17 +295,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Status_id
+### -status_id
 Status ID of the asset, this can be got using Get-Status
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -287,7 +319,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 16
+Position: 18
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

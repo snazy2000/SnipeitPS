@@ -5,27 +5,26 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItComponent
+# Get-SnipeItAccessoryOwner
 
 ## SYNOPSIS
-Updates component
+Get list of checked out accessories
 
 ## SYNTAX
 
 ```
-Set-SnipeItComponent [-id] <Int32> [-qty] <Int32> [[-name] <String>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-SnipeItAccessoryOwner [-id] <Int32> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates component on Snipe-It system
+Get list of checked out accessories
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-An example
+Get-SnipeItAccessoryOwner -id 1
 ```
 
 ## PARAMETERS
@@ -39,29 +38,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -company_id
-{{ Fill company_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -id
-ID number of  name
+Unique ID For accessory to list
 
 ```yaml
 Type: Int32
@@ -70,81 +54,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-ID number of the location the accessory is assigned to
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Component name
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_cost
-Cost of item being purchased.
-
-```yaml
-Type: Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_date
-Date accessory was purchased
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -qty
-Quantity of the components you have
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,7 +68,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -204,6 +113,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

@@ -85,26 +85,32 @@
                  Write-Verbose $webResponse.Content
 
                 # API returned a Content: lets work wit it
-                $response = ConvertFrom-Json -InputObject $webResponse.Content
+                try{
+                    $response = ConvertFrom-Json -InputObject $webResponse.Content
 
-                if ($response.status -eq "error") {
-                    Write-Verbose "[$($MyInvocation.MyCommand.Name)] An error response was received from; resolving"
-                    # This could be handled nicely in an function such as:
-                    # ResolveError $response -WriteError
-                    Write-Error $($response.messages | Out-String)
-                }
-                else {
-                    $result = $response
-                    if (($response) -and ($response | Get-Member -Name payload))
-                    {
-                        $result = $response.payload
+                    if ($response.status -eq "error") {
+                        Write-Verbose "[$($MyInvocation.MyCommand.Name)] An error response was received from; resolving"
+                        # This could be handled nicely in an function such as:
+                        # ResolveError $response -WriteError
+                        Write-Error $($response.messages | Out-String)
                     }
-                    elseif (($response) -and ($response | Get-Member -Name rows)) {
-                        $result = $response.rows
-                    }
+                    else {
+                        $result = $response
+                        if (($response) -and ($response | Get-Member -Name payload))
+                        {
+                            $result = $response.payload
+                        }
+                        elseif (($response) -and ($response | Get-Member -Name rows)) {
+                            $result = $response.rows
+                        }
 
-                    $result
+                        $result
+                    }
                 }
+                catch {
+                    Write-Warning "Cannot parse server response. To debug try to add -Verbose with command."
+                }
+
             }
             elseif ($webResponse.StatusCode -eq "Unauthorized") {
                 Write-Error "[$($MyInvocation.MyCommand.Name)] You are not Authorized to access the resource, check your token is correct"

@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v1.3.x] - 2021-05-27
+
+## Checking out accessories
+
+### New features
+You can specify Put or Patch for  Set-SnipeItAsset when updating assets.
+Set-SnipeItLocation new -city parameter
+
+### New Functions
+- Set-SnipeItAccessoryOwner checkout accessory
+- Get-SnipeItAccessoryOwner list checkedout accessories
+- Reset-SnipeItAccessoryOwner checkin accessory
+
+### Fixes
+- Set-SnipeItAsset fixed datetime and name inputs #126,128
+-
+
 # [v1.2.x] - 2021-05-24
 
 ## Prefixing SnipeItPS

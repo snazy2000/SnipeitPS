@@ -50,6 +50,12 @@
     .PARAMETER rtd_location_id
     The id that corresponds to the location where the asset is usually located when not checked out
 
+    .PARAMETER notes
+    Notes about asset
+
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Put youc use Patch if needed
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
 
@@ -77,11 +83,11 @@ function Set-SnipeItAsset()
         [parameter(mandatory = $true)]
         [int]$id,
 
-        [string]$Name,
+        [string]$name,
 
-        [string]$Status_id,
+        [int]$status_id,
 
-        [string]$Model_id,
+        [int]$model_id,
 
         [DateTime]$last_checkout,
 
@@ -97,13 +103,18 @@ function Set-SnipeItAsset()
 
         [double]$purchase_cost,
 
-        [DateTime]$purchase_date,
+        [datetime]$purchase_date,
 
         [bool]$requestable,
 
         [bool]$archived,
 
         [int]$rtd_location_id,
+
+        [string]$notes,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -118,7 +129,9 @@ function Set-SnipeItAsset()
 
     $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    if ($model_id) { $Values.Add('model_id',$model_id)}
+    if ($values['purchase_date']) {
+        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+    }
 
     if ($customfields)
     {
@@ -129,7 +142,7 @@ function Set-SnipeItAsset()
 
     $Parameters = @{
         Uri    = "$url/api/v1/hardware/$id"
-        Method = 'Put'
+        Method = $RequestType
         Body   = $Body
         Token  = $apiKey
     }

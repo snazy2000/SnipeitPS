@@ -25,7 +25,7 @@ function Remove-SnipeItUser ()
 
     Param(
     [parameter(mandatory = $true)]
-        [string]$ID,
+        [int]$id,
     [parameter(mandatory = $true)]
         [string]$URL,
     [parameter(mandatory = $true)]
@@ -36,7 +36,7 @@ function Remove-SnipeItUser ()
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
-        "ID"      = $ID
+        "ID"      = $id
     }
 
     $Body = $Values | ConvertTo-Json

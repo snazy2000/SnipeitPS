@@ -23,7 +23,7 @@ function Remove-SnipeItAssetMaintenance {
         # Asset maintenance ID
         [Parameter(Mandatory = $true)]
         [int]
-        $ID,
+        $id,
 
         # SnipeIt URL
         [Parameter(Mandatory = $true)]
@@ -39,7 +39,7 @@ function Remove-SnipeItAssetMaintenance {
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
-        "ID"      = $ID
+        "ID"      = $id
     }
 
     $Body = $Values | ConvertTo-Json
