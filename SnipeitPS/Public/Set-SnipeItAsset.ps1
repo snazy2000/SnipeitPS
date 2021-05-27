@@ -83,7 +83,7 @@ function Set-SnipeItAsset()
         [parameter(mandatory = $true)]
         [int]$id,
 
-        [string]$Name,
+        [string]$name,
 
         [int]$status_id,
 
