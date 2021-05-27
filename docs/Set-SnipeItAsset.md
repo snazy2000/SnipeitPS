@@ -13,7 +13,7 @@ Update a specific Asset in the Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeItAsset [-id] <Int32> [[-Name] <String>] [[-status_id] <Int32>] [[-model_id] <Int32>]
+Set-SnipeItAsset [-id] <Int32> [[-name] <String>] [[-status_id] <Int32>] [[-model_id] <Int32>]
  [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
  [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
  [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
@@ -159,7 +159,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -name
 Asset name
 
 ```yaml
