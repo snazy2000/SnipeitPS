@@ -17,6 +17,9 @@ Gets a list of Snipe-it Accessories
 ### [Get-SnipeItAccessoryOwner](Get-SnipeItAccessoryOwner.md)
 Get list of checked out accessories
 
+### [Get-SnipeItActivity](Get-SnipeItActivity.md)
+Gets and search Snipe-it Activity history
+
 ### [Get-SnipeItAsset](Get-SnipeItAsset.md)
 Gets a list of Snipe-it Assets or specific asset
 

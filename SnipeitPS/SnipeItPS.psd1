@@ -114,7 +114,8 @@ FunctionsToExport = @(
         'Update-SnipeItAlias',
         'Set-SnipeItAccessoryOwner',
         'Get-SnipeItAccessoryOwner',
-        'Reset-SnipeItAccessoryOwner'
+        'Reset-SnipeItAccessoryOwner',
+        'Get-SnipeItActivity'
 
 )
 
