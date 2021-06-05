@@ -25,16 +25,14 @@ Get-SnipeItManufacturer [[-search] <String>] [[-id] <Int32>] [[-order] <String>]
 ### EXAMPLE 1
 ```
 Get-SnipeItManufacturer -search HP
-```
-
 Search all manufacturers for string HP
+```
 
 ### EXAMPLE 2
 ```
 Get-SnipeItManufacturer -id 3
-```
-
 Returns manufacturer with id 3
+```
 
 ## PARAMETERS
 

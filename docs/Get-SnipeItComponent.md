@@ -26,23 +26,20 @@ Get-SnipeItComponent [[-search] <String>] [[-id] <Int32>] [[-category_id] <Int32
 ### EXAMPLE 1
 ```
 Get-SnipeItComponent
-```
-
 Returns all components
+```
 
 ### EXAMPLE 2
 ```
 Get-SnipeItComponent -search display
-```
-
 Returns search results containeing string display
+```
 
 ### EXAMPLE 3
 ```
 Get-SnipeItComponent -id
-```
-
 Returns specific component
+```
 
 ## PARAMETERS
 
