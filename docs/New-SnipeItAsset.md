@@ -28,23 +28,20 @@ Long description
 ### EXAMPLE 1
 ```
 New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1"
-```
-
 Create asset with automatic tag if tag genaration is enabled on snipe-it, other wise without tag
+```
 
 ### EXAMPLE 2
 ```
 New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
-```
-
 Specifying asset tag when creating asset
+```
 
 ### EXAMPLE 3
 ```
 New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
-```
-
 Using customfields when creating asset.
+```
 
 ## PARAMETERS
 

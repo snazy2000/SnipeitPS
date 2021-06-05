@@ -12,7 +12,7 @@
 RootModule = 'SnipeItPS'
 
 # Version number of this module.
-ModuleVersion = '1.3'
+ModuleVersion = '1.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -114,7 +114,8 @@ FunctionsToExport = @(
         'Update-SnipeItAlias',
         'Set-SnipeItAccessoryOwner',
         'Get-SnipeItAccessoryOwner',
-        'Reset-SnipeItAccessoryOwner'
+        'Reset-SnipeItAccessoryOwner',
+        'Get-SnipeItActivity'
 
 )
 
