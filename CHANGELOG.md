@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v1.4.x] - 2021-05-27
+
+## More Activity
+
+### New features
+SnipeIt activity history is now searchable. So finding out checked out the
+assest its easy. Api support many different target or item types that can
+be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
+,'AssetModel','Category','Company','Component','Consumable','CustomField',
+,'Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel',
+'Supplier','User'
+
+
+### New Functions
+- Get-SnipeItActivity Get and search Snipe-It change history.
+
+
 # [v1.3.x] - 2021-05-27
 
 ## Checking out accessories
