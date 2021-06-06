@@ -5,7 +5,7 @@
     Checkout specific license seat to user, asset or both
 
     .PARAMETER ID
-    Unique ID For asset to checkout
+    Unique ID For license to checkout or array of IDs
 
     .PARAMETER assigned_to
     Id of target user
@@ -40,7 +40,7 @@ function Set-SnipeItLicenseSeat()
 
     Param(
         [parameter(mandatory = $true)]
-        [int]$id,
+        [int[]]$id,
 
         [parameter(mandatory = $true)]
         [int]$seat_id,
@@ -58,21 +58,27 @@ function Set-SnipeItLicenseSeat()
         [string]$apiKey
     )
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    begin{
+        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/licenses/$id/seats/$seat_id"
-        Method = 'Patch'
-        Body   = $Body
-        Token  = $apiKey
+        $Body = $Values | ConvertTo-Json;
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
+    process{
+        foreach($license_id in $id) {
+            $Parameters = @{
+                Uri    = "$url/api/v1/licenses/$license_id/seats/$seat_id"
+                Method = 'Patch'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-    return $result
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            return $result
+        }
+    }
 }

@@ -2,6 +2,9 @@
     .SYNOPSIS
     Creates a new user
 
+    .PARAMETER id
+    ID number of Snipe--It user or array of IDs
+
     .DESCRIPTION
     Creates a new user to Snipe-IT system
 
@@ -68,8 +71,8 @@ function Set-SnipeItUser() {
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [string]$first_name,
 
@@ -103,23 +106,28 @@ function Set-SnipeItUser() {
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+    begin{
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/users/$id"
-        Method = 'PATCH'
-        Body   = $Body
-        Token  = $apiKey
+        $Body = $Values | ConvertTo-Json;
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
+    process{
+        foreach($user_id in $id) {
+            $Parameters = @{
+                Uri    = "$url/api/v1/users/$user_id"
+                Method = 'PATCH'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-    $result
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
+    }
 }

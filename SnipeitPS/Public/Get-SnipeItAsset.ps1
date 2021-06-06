@@ -79,10 +79,10 @@ function Get-SnipeItAsset() {
         [int]$id,
 
         [string]$asset_tag,
+        [Alias('asset_serial')]
+        [string]$serial,
 
-        [string]$asset_serial,
-
-        [int]$order_number,
+        [string]$order_number,
 
         [int]$model_id,
 

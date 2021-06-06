@@ -8,6 +8,9 @@ Creates new accessory on Snipe-It system
 .PARAMETER name
 Accessory name
 
+.PARAMETER notes
+Notes about the accessory
+
 .PARAMETER qty
 Quantity of the accessory you have
 

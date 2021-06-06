@@ -44,7 +44,7 @@ function Get-SnipeItLicense() {
 
         [string]$product_key,
 
-        [int]$order_number,
+        [string]$order_number,
 
         [string]$purchase_order,
 

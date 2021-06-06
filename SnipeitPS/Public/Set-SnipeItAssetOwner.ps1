@@ -5,7 +5,7 @@
     Checkout asset to user/localtion/asset
 
     .PARAMETER ID
-    Unique ID For asset to checkout
+    Unique IDs For assets to checkout
 
     .PARAMETER assigned_id
     Id of target user , location or asset
@@ -41,8 +41,8 @@ function Set-SnipeItAssetOwner()
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [parameter(mandatory = $true)]
         [int]$assigned_id,
@@ -65,41 +65,48 @@ function Set-SnipeItAssetOwner()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin{
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    if ($Values['expected_checkin']) {
-        $Values['expected_checkin'] = $values['expected_checkin'].ToString("yyyy-MM-dd")
+        if ($Values['expected_checkin']) {
+            $Values['expected_checkin'] = $values['expected_checkin'].ToString("yyyy-MM-dd")
+        }
+
+        if ($Values['checkout_at']) {
+            $Values['checkout_at'] = $values['checkout_at'].ToString("yyyy-MM-dd")
+        }
+
+        switch ($checkout_to_type)
+        {
+            'location' { $Values += @{ "assigned_location" = $assigned_id } }
+            'user' { $Values += @{ "assigned_user" = $assigned_id } }
+            'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
+        }
+
+        #This can be removed now
+        if($Values.ContainsKey('assigned_id')){$Values.Remove('assigned_id')}
+
+        $Body = $Values | ConvertTo-Json;
+
     }
 
-    if ($Values['checkout_at']) {
-        $Values['checkout_at'] = $values['checkout_at'].ToString("yyyy-MM-dd")
+    process{
+        foreach($asset_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/hardware/$asset_id/checkout"
+                Method = 'POST'
+                Body   = $Body
+                Token  = $apiKey
+            }
+
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            return $result
+        }
     }
-
-    switch ($checkout_to_type)
-    {
-        'location' { $Values += @{ "assigned_location" = $assigned_id } }
-        'user' { $Values += @{ "assigned_user" = $assigned_id } }
-        'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
-    }
-
-    #This can be removed now
-    if($Values.ContainsKey('assigned_id')){$Values.Remove('assigned_id')}
-
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/hardware/$id/checkout"
-        Method = 'POST'
-        Body   = $Body
-        Token  = $apiKey
-    }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    return $result
 }
