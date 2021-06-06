@@ -13,7 +13,7 @@ Updates a licence
 ## SYNTAX
 
 ```
-Set-SnipeItLicense [-id] <Int32> [[-name] <String>] [[-seats] <Int32>] [[-category_id] <Int32>]
+Set-SnipeItLicense [-id] <Int32[]> [[-name] <String>] [[-seats] <Int32>] [[-category_id] <Int32>]
  [[-company_id] <Int32>] [[-expiration_date] <DateTime>] [[-license_email] <MailAddress>]
  [[-license_name] <String>] [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>]
  [[-order_number] <String>] [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>]
@@ -97,14 +97,14 @@ Accept wildcard characters: False
 ID number of licence
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

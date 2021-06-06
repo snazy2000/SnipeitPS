@@ -13,7 +13,7 @@ Creates a new user
 ## SYNTAX
 
 ```
-Set-SnipeItUser [-id] <Int32> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
+Set-SnipeItUser [-id] <Int32[]> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
  [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
  [[-activated] <Boolean>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
@@ -142,14 +142,14 @@ Accept wildcard characters: False
 {{ Fill id Description }}
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

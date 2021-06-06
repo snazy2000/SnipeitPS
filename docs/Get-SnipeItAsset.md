@@ -13,8 +13,8 @@ Gets a list of Snipe-it Assets or specific asset
 ## SYNTAX
 
 ```
-Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[-asset_serial] <String>]
- [[-order_number] <Int32>] [[-model_id] <Int32>] [[-category_id] <Int32>] [[-manufacturer_id] <Int32>]
+Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[-serial] <String>]
+ [[-order_number] <String>] [[-model_id] <Int32>] [[-category_id] <Int32>] [[-manufacturer_id] <Int32>]
  [[-company_id] <Int32>] [[-location_id] <Int32>] [[-depreciation_id] <Int32>] [[-requestable] <Boolean>]
  [[-status] <String>] [[-status_id] <Int32>] [[-sort] <String>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
@@ -72,21 +72,6 @@ Aliases:
 
 Required: True
 Position: 20
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -asset_serial
-Exact asset serialnumber to query
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -263,7 +248,7 @@ Accept wildcard characters: False
 Optionally restrict asset results to this order number
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -299,6 +284,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -serial
+{{ Fill serial Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: asset_serial
+
+Required: False
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
