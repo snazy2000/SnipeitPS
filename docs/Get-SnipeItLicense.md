@@ -14,7 +14,7 @@ Gets a list of Snipe-it Licenses
 
 ```
 Get-SnipeItLicense [[-search] <String>] [[-id] <Int32>] [[-name] <String>] [[-company_id] <Int32>]
- [[-product_key] <String>] [[-order_number] <Int32>] [[-purchase_order] <String>] [[-license_name] <String>]
+ [[-product_key] <String>] [[-order_number] <String>] [[-purchase_order] <String>] [[-license_name] <String>]
  [[-license_email] <MailAddress>] [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>]
  [[-depreciation_id] <Int32>] [[-category_id] <Int32>] [[-order] <String>] [[-sort] <String>]
  [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 {{ Fill order_number Description }}
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 

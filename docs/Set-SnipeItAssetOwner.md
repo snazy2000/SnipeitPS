@@ -13,7 +13,7 @@ Checkout asset
 ## SYNTAX
 
 ```
-Set-SnipeItAssetOwner [-id] <Int32> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [[-name] <String>]
+Set-SnipeItAssetOwner [-id] <Int32[]> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [[-name] <String>]
  [[-note] <String>] [[-expected_checkin] <DateTime>] [[-checkout_at] <DateTime>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -109,14 +109,14 @@ Accept wildcard characters: False
 Unique ID For asset to checkout
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

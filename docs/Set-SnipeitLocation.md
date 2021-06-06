@@ -13,7 +13,7 @@ Updates Location in Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
+Set-SnipeitLocation [-id] <Int32[]> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
  [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-city] <String>] [[-currency] <String>]
  [[-manager_id] <Int32>] [[-ldap_ou] <String>] [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String>
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -125,14 +125,14 @@ Accept wildcard characters: False
 {{ Fill id Description }}
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
