@@ -6,7 +6,7 @@
     Updates Model on Snipe-it asset system
 
     .PARAMETER id
-    ID number  of the Asset Model
+    ID number of the Asset Model or array of IDs
 
     .PARAMETER name
     Name of the Asset Model
@@ -40,8 +40,8 @@ function Set-SnipeItModel() {
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [ValidateLength(1, 255)]
         [string]$name,
@@ -66,22 +66,27 @@ function Set-SnipeItModel() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/models/$id"
-        Method = 'put'
-        Body   = $Body
-        Token  = $apiKey
+        $Body = $Values | ConvertTo-Json;
     }
+    process {
+        foreach ($model_id in $id) {
+            $Parameters = @{
+                Uri    = "$url/api/v1/models/$model_id"
+                Method = 'put'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
     }
-
-    $result
 }

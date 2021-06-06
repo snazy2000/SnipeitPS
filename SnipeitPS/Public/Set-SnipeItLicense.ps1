@@ -6,7 +6,7 @@
     Updates licence on Snipe-It system
 
     .PARAMETER id
-    ID number of licence
+    ID number of license or array of license IDs
 
     .PARAMETER name
     Name of license
@@ -77,8 +77,8 @@ function Set-SnipeItLicense() {
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true, ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [ValidateLength(3, 255)]
         [string]$name,
@@ -128,36 +128,39 @@ function Set-SnipeItLicense() {
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+    begin{
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        if ($values['expiration_date']) {
+            $values['expiration_date'] = $values['expiration_date'].ToString("yyyy-MM-dd")
+        }
 
-    if ($values['expiration_date']) {
-        $values['expiration_date'] = $values['expiration_date'].ToString("yyyy-MM-dd")
+        if ($values['purchase_date']) {
+            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        }
+
+        if ($values['termination_date']) {
+            $values['termination_date'] = $values['termination_date'].ToString("yyyy-MM-dd")
+        }
+
+        $Body = $Values | ConvertTo-Json;
     }
+    process {
+        foreach($license_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/licenses/$license_id"
+                Method = 'PUT'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
     }
-
-    if ($values['termination_date']) {
-        $values['termination_date'] = $values['termination_date'].ToString("yyyy-MM-dd")
-    }
-
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/licenses/$id"
-        Method = 'PUT'
-        Body   = $Body
-        Token  = $apiKey
-    }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }
-

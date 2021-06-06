@@ -5,6 +5,9 @@
     .DESCRIPTION
     Long description
 
+    .PARAMETER id
+    ID number of location or array or IDs
+
     .PARAMETER name
     Name of Location
 
@@ -59,8 +62,8 @@ function Set-SnipeitLocation() {
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [ValidateLength(3, 255)]
         [string]$name,
@@ -92,23 +95,29 @@ function Set-SnipeitLocation() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin{
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/locations/$id"
-        Method = 'PUT'
-        Body   = $Body
-        Token  = $apiKey
+        $Body = $Values | ConvertTo-Json;
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
+    process{
+        foreach ($location_id in $id) {
+            $Parameters = @{
+                Uri    = "$url/api/v1/locations/$location_id"
+                Method = 'PUT'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-    $result
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
+    }
 }
 
