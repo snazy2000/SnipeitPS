@@ -46,7 +46,7 @@ function Set-SnipeItModel() {
         [ValidateLength(1, 255)]
         [string]$name,
 
-        [ValidateLength(1, 255)]
+        [AllowEmptyString()]
         [string]$model_number,
 
         [int]$category_id,

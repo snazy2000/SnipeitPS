@@ -68,22 +68,30 @@ function Set-SnipeitLocation() {
         [ValidateLength(3, 255)]
         [string]$name,
 
+        [AllowEmptyString()]
         [string]$address,
 
+        [AllowEmptyString()]
         [string]$address2,
 
+        [AllowEmptyString()]
         [string]$state,
 
+        [AllowEmptyString()]
         [string]$country,
 
+        [AllowEmptyString()]
         [string]$zip,
 
+        [AllowEmptyString()]
         [string]$city,
 
+        [AllowEmptyString()]
         [string]$currency,
 
         [int]$manager_id,
 
+        [AllowEmptyString()]
         [string]$ldap_ou,
 
         [int]$parent_id,

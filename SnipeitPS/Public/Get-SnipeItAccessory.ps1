@@ -36,25 +36,38 @@ Get-SnipeItAccessory -id 1
 
 function Get-SnipeItAccessory() {
     Param(
+        [parameter(ParameterSetName='Search')]
         [string]$search,
 
+        [parameter(ParameterSetName='Get by ID')]
+        [int]$id,
+
+        [parameter(ParameterSetName='Search')]
         [int]$company_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$category_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$manufacturer_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$supplier_id,
 
+        [parameter(ParameterSetName='Search')]
         [string]$sort = "created_at",
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 
+        [parameter(ParameterSetName='Search')]
         [int]$offset,
 
+        [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]
@@ -65,6 +78,10 @@ function Get-SnipeItAccessory() {
     )
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
+    if ($id -and $search){
+        throw "Please specify only one of -id or -search parameter"
+    }
+
     $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
 
     $Parameters = @{
@@ -72,6 +89,10 @@ function Get-SnipeItAccessory() {
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey
+    }
+
+    if($id){
+        $Parameters.Uri ="$url/api/v1/accessories/$id"
     }
 
     if ($all) {

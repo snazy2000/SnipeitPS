@@ -37,19 +37,26 @@ Get-SnipeItDepartment -id 1
 function Get-SnipeItDepartment()
 {
     Param(
+        [parameter(ParameterSetName='Search')]
         [string]$search,
 
+        [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 
+        [parameter(ParameterSetName='Search')]
         [int]$offset,
 
+        [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet('id', 'name', 'image', 'users_count', 'created_at')]
         [string]$sort = "created_at",
 
