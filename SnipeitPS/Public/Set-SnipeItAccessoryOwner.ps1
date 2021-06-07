@@ -45,7 +45,7 @@ function Set-SnipeItAccessoryOwner()
         [string]$apiKey
     )
     begin{
-        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         $Body = $Values | ConvertTo-Json;
     }

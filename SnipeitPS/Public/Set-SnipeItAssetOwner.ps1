@@ -68,7 +68,7 @@ function Set-SnipeItAssetOwner()
     begin{
         Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         if ($Values['expected_checkin']) {
             $Values['expected_checkin'] = $values['expected_checkin'].ToString("yyyy-MM-dd")
