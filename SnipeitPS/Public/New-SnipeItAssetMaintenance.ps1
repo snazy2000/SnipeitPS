@@ -79,7 +79,7 @@ function New-SnipeItAssetMaintenance() {
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     if ($values['start_date']) {
         $values['start_date'] = $values['start_date'].ToString("yyyy-MM-dd")

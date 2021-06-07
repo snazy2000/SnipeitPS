@@ -25,6 +25,8 @@ function Get-ParameterValue {
         [parameter(mandatory = $true)]
         $Parameters
         ,
+        [parameter(mandatory = $true)]
+        $BoundParameters,
 
         [string[]]$DefaultExcludeParameter = @("id", "url", "apiKey", 'Debug', 'Verbose','RequestType','customfields')
     )
@@ -40,10 +42,15 @@ function Get-ParameterValue {
         try {
             $key = $parameter.Key
             if ($key -notin $DefaultExcludeParameter) {
+                #Fill in default parameters values
                 if ($null -ne ($value = Get-Variable -Name $key -ValueOnly -ErrorAction Ignore )) {
                     if ($value -ne ($null -as $parameter.Value.ParameterType)) {
                         $ParameterValues[$key] = $value
                     }
+                }
+                #Fill in all given parameters even empty
+                if ($BoundParameters.ContainsKey($key)) {
+                    $ParameterValues[$key] = $BoundParameters[$key]
                 }
 
             }
