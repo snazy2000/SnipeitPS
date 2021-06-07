@@ -48,7 +48,7 @@ function New-SnipeItCustomField()
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     #Convert Values to JSON format
     $Body = $Values | ConvertTo-Json;

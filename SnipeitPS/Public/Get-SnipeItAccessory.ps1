@@ -82,7 +82,7 @@ function Get-SnipeItAccessory() {
         throw "Please specify only one of -id or -search parameter"
     }
 
-    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     $Parameters = @{
         Uri           = "$url/api/v1/accessories"

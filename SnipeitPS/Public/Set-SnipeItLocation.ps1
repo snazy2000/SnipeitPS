@@ -106,7 +106,7 @@ function Set-SnipeitLocation() {
     begin{
         Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-        $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         $Body = $Values | ConvertTo-Json;
     }

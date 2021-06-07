@@ -88,7 +88,7 @@ function Get-SnipeItActivity() {
         throw "Please specify both item_type and item_id"
     }
 
-    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
 
     $Parameters = @{
