@@ -12,9 +12,15 @@ Gets a list of Snipe-it Departments
 
 ## SYNTAX
 
+### Search
 ```
-Get-SnipeItDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [[-sort] <String>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItDepartment [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+ [-sort <String>] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get with ID
+```
+Get-SnipeItDepartment [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +50,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
@@ -63,7 +69,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -74,11 +80,11 @@ A id of specific Department
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Get with ID
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -91,11 +97,11 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,11 +112,11 @@ Offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -121,11 +127,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -136,11 +142,11 @@ A text string to search the Departments data
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -151,11 +157,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: Created_at
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,7 +176,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

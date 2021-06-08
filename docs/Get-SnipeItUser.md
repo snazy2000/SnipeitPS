@@ -12,11 +12,16 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### Search
 ```
-Get-SnipeItUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
- [[-group_id] <Int32>] [[-department_id] <Int32>] [[-username] <String>] [[-email] <String>]
- [[-order] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String>
- [<CommonParameters>]
+Get-SnipeItUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] [-group_id <Int32>]
+ [-department_id <Int32>] [-username <String>] [-email <String>] [-order <String>] [-limit <Int32>]
+ [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get with ID
+```
+Get-SnipeItUser [-id <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +56,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
@@ -70,7 +75,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 13
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,11 +86,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,11 +101,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -111,11 +116,11 @@ Search string for email field
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -126,11 +131,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -141,11 +146,11 @@ A id of specific User
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Get with ID
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,11 +163,11 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 10
+Position: Named
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,11 +178,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -188,11 +193,11 @@ Offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 11
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -203,11 +208,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -218,11 +223,11 @@ A text string to search the User data
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -237,7 +242,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -248,11 +253,11 @@ Search string for username field
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
