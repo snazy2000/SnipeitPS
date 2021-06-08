@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### New features
 Most of "Set" command accepts piped input. Piped objects "id" attribute
 is used to select asset set values. Like
-Get-SnipeItAsset -model_id 213 | Set-SnipeItAsset -notes 'This is nice!'
+Get-SnipeitAsset -model_id 213 | Set-SnipeitAsset -notes 'This is nice!'
 
 Set command accept id parameter as array, so its easier to set multiple items
 in one run.
@@ -29,7 +29,7 @@ needed
 ## More Activity
 
 ### New features
-SnipeIt activity history is now searchable. So finding out checked out the
+Snipeit activity history is now searchable. So finding out checked out the
 assest its easy. Api support many different target or item types that can
 be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
 ,'AssetModel','Category','Company','Component','Consumable','CustomField',
@@ -38,7 +38,7 @@ be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
 
 
 ### New Functions
-- Get-SnipeItActivity Get and search Snipe-It change history.
+- Get-SnipeitActivity Get and search Snipe-It change history.
 
 
 # [v1.3.x] - 2021-05-27
@@ -46,43 +46,43 @@ be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
 ## Checking out accessories
 
 ### New features
-You can specify Put or Patch for  Set-SnipeItAsset when updating assets.
-Set-SnipeItLocation new -city parameter
+You can specify Put or Patch for  Set-SnipeitAsset when updating assets.
+Set-SnipeitLocation new -city parameter
 
 ### New Functions
-- Set-SnipeItAccessoryOwner checkout accessory
-- Get-SnipeItAccessoryOwner list checkedout accessories
-- Reset-SnipeItAccessoryOwner checkin accessory
+- Set-SnipeitAccessoryOwner checkout accessory
+- Get-SnipeitAccessoryOwner list checkedout accessories
+- Reset-SnipeitAccessoryOwner checkin accessory
 
 ### Fixes
-- Set-SnipeItAsset fixed datetime and name inputs #126,128
+- Set-SnipeitAsset fixed datetime and name inputs #126,128
 -
 
 # [v1.2.x] - 2021-05-24
 
-## Prefixing SnipeItPS
+## Prefixing SnipeitPS
 
 ### New Features
-All commands are now prefixed like Set-Info -> Set-SnipeItInfo.
+All commands are now prefixed like Set-Info -> Set-SnipeitInfo.
 To keep compatibility all old commands are available as aliases.
-To update existing scripts theres Update-SnipeItAlias command.
+To update existing scripts theres Update-SnipeitAlias command.
 
 ### New fuctions
 - Update-SnipeitAlias Tool to update existing scripts
-- Get-SnipeItLicenceSeat lists license seats
-- Set-SnipeItLicenseSeat Set and checkouts/in license seats
+- Get-SnipeitLicenceSeat lists license seats
+- Set-SnipeitLicenseSeat Set and checkouts/in license seats
 Licenseseat api is supported from Snipe-It release => v5.1.5
 
 ### New fixes
-Added -id parameter support to support Get-SnipeItCustomField and
-Get-SnipeItFieldSet commands
+Added -id parameter support to support Get-SnipeitCustomField and
+Get-SnipeitFieldSet commands
 
 # [v1.1.x] - 2021-05-18
 
 ## Pull request rollup release. Lots of new features including:
 
 ### New features
-- Powershell 7 compatibility. So you can use SnipeItPS on macos or linux .
+- Powershell 7 compatibility. So you can use SnipeitPS on macos or linux .
 - Get every asset, model, licence with snipeit id by using -id parameter
 - Get assets also by -asset_tag -or serialnumber
 - Get functions also return all results from snipe when using -all parameter (by @PetriAsi)

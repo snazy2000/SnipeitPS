@@ -1,0 +1,69 @@
+<#
+    .SYNOPSIS
+    Add a new Custom Field to Snipe-it asset system
+
+    .DESCRIPTION
+    Add a new Custom Field to Snipe-it asset system
+
+    .PARAMETER Name
+    Name of the Custom Field
+
+    .PARAMETER url
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
+
+    .PARAMETER apiKey
+    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+
+    .EXAMPLE
+    New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
+#>
+
+function New-SnipeitCustomField()
+{
+    [CmdletBinding(
+        SupportsShouldProcess = $true,
+        ConfirmImpact = "Low"
+    )]
+
+    Param(
+        [parameter(mandatory = $true)]
+        [string]$Name,
+
+        [string]$HelpText,
+
+        [string]$Element = "text",
+
+        [string]$Format = "ANY",
+
+        [bool]$field_encrypted,
+
+        [string]$CustomFormat,
+
+        [parameter(mandatory = $true)]
+        [string]$url,
+
+        [parameter(mandatory = $true)]
+        [string]$apiKey
+    )
+
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+
+    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+
+    #Convert Values to JSON format
+    $Body = $Values | ConvertTo-Json;
+
+    $Parameters = @{
+        Uri    = "$url/api/v1/fields"
+        Method = 'post'
+        Body   = $Body
+        Token  = $apiKey
+    }
+
+    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+    {
+        $result = Invoke-SnipeitMethod @Parameters
+    }
+
+    $result
+}

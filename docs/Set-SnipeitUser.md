@@ -5,64 +5,51 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLocation
+# Set-SnipeitUser
 
 ## SYNOPSIS
-Updates Location in Snipe-it asset system
+Creates a new user
 
 ## SYNTAX
 
 ```
-Set-SnipeitLocation [-id] <Int32[]> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
- [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-city] <String>] [[-currency] <String>]
- [[-manager_id] <Int32>] [[-ldap_ou] <String>] [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeitUser [-id] <Int32[]> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
+ [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>]
+ [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
+ [[-activated] <Boolean>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Creates a new user to Snipe-IT system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLocation -id 123 -name "Some storage"  -parent_id 100
+Update-SnipeitUser -id 3 -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+Updates user with id 3
 ```
 
 ## PARAMETERS
 
-### -address
-Address line 1
+### -activated
+{{ Fill activated Description }}
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -address2
-Address line 2
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
+Position: 13
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -70,89 +57,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 14
+Position: 16
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -city
-City of the location
+### -company_id
+ID number of company users belogs to
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 8
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -country
-Address Contry
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -currency
-Currency used at the location
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-ID number of location or array or IDs
-
-```yaml
-Type: Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ldap_ou
-LDAP OU of Location
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manager_id
-Location manager as id
+### -department_id
+ID number of department
 
 ```yaml
 Type: Int32
@@ -166,8 +93,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of Location
+### -email
+email address
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -employee_num
+Employeenumber
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -first_name
+Users first name
 
 ```yaml
 Type: String
@@ -181,23 +138,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -parent_id
-Parent location as id
+### -id
+ID number of Snipe--It user or array of IDs
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 12
-Default value: 0
-Accept pipeline input: False
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -state
-Address State
+### -jobtitle
+Users job tittle
 
 ```yaml
 Type: String
@@ -206,6 +163,81 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -last_name
+Users last name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+ID number of localtion
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manager_id
+ID number of manager
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+User Notes
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -phone
+Phone number
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -220,14 +252,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 13
+Position: 15
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -zip
-Address zipcode
+### -userName
+Username for user
 
 ```yaml
 Type: String
@@ -235,7 +267,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -280,5 +312,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+General notes
 
 ## RELATED LINKS
