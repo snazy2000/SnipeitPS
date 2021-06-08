@@ -20,6 +20,9 @@ Quantity of the components you have
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
 
+.PARAMETER order_number
+Order number for the accessory
+
 .PARAMETER purchase_date
 Date accessory was purchased
 
@@ -58,6 +61,9 @@ function Set-SnipeItComponent()
 
         [int]$location_id,
 
+
+        [string]$order_number,
+
         [datetime]$purchase_date,
 
         [float]$purchase_cost,
@@ -71,7 +77,7 @@ function Set-SnipeItComponent()
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     if ($values['purchase_date']) {
         $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")

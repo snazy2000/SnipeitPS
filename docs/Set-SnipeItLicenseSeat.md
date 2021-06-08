@@ -13,7 +13,7 @@ Set license seat or checkout license seat
 ## SYNTAX
 
 ```
-Set-SnipeItLicenseSeat [-id] <Int32> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
+Set-SnipeItLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
  [[-note] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Unique ID For asset to checkout
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 

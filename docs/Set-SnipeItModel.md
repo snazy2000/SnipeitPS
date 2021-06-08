@@ -13,7 +13,7 @@ Updates Model on Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeItModel [-id] <Int32> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
+Set-SnipeItModel [-id] <Int32[]> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
  [[-manufacturer_id] <Int32>] [[-eol] <Int32>] [[-custom_fieldset_id] <Int32>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -94,14 +94,14 @@ Accept wildcard characters: False
 ID number  of the Asset Model
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

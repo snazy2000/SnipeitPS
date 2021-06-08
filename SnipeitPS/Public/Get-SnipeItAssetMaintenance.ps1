@@ -64,7 +64,7 @@ function Get-SnipeItAssetMaintenance() {
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     $Parameters = @{
         Uri           = "$url/api/v1/maintenances"

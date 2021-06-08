@@ -6,7 +6,7 @@
     Long description
 
     .PARAMETER id
-    ID of the Asset
+    ID of the Asset or array of IDs
 
     .PARAMETER Name
     Asset name
@@ -70,6 +70,9 @@
 
     .EXAMPLE
     Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+
+    .EXAMPLE
+    Get-SnipeItAsset -serial 12345678 | Set-SnipeItAsset -notes 'Just updated'
 #>
 
 function Set-SnipeItAsset()
@@ -80,8 +83,9 @@ function Set-SnipeItAsset()
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
+
 
         [string]$name,
 
@@ -96,6 +100,7 @@ function Set-SnipeItAsset()
         [int]$company_id,
 
         [string]$serial,
+
 
         [string]$order_number,
 
@@ -124,33 +129,38 @@ function Set-SnipeItAsset()
 
         [hashtable] $customfields
     )
+    begin{
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        if ($values['purchase_date']) {
+            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        }
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($customfields)
+        {
+            $Values += $customfields
+        }
+
+        $Body = $Values | ConvertTo-Json;
     }
 
-    if ($customfields)
-    {
-        $Values += $customfields
+    process {
+        foreach($asset_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/hardware/$asset_id"
+                Method = $RequestType
+                Body   = $Body
+                Token  = $apiKey
+            }
+
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
     }
-
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/hardware/$id"
-        Method = $RequestType
-        Body   = $Body
-        Token  = $apiKey
-    }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }

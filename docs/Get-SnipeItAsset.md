@@ -12,12 +12,27 @@ Gets a list of Snipe-it Assets or specific asset
 
 ## SYNTAX
 
+### Search
 ```
-Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[-asset_serial] <String>]
- [[-order_number] <Int32>] [[-model_id] <Int32>] [[-category_id] <Int32>] [[-manufacturer_id] <Int32>]
- [[-company_id] <Int32>] [[-location_id] <Int32>] [[-depreciation_id] <Int32>] [[-requestable] <Boolean>]
- [[-status] <String>] [[-status_id] <Int32>] [[-sort] <String>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItAsset [-search <String>] [-order_number <String>] [-model_id <Int32>] [-category_id <Int32>]
+ [-manufacturer_id <Int32>] [-company_id <Int32>] [-location_id <Int32>] [-depreciation_id <Int32>]
+ [-requestable <Boolean>] [-status <String>] [-status_id <Int32>] [-sort <String>] [-order <String>]
+ [-limit <Int32>] [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get with id
+```
+Get-SnipeItAsset [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get with asset tag
+```
+Get-SnipeItAsset [-asset_tag <String>] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get with serial
+```
+Get-SnipeItAsset [-serial <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +67,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
@@ -71,22 +86,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 20
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -asset_serial
-Exact asset serialnumber to query
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -97,11 +97,11 @@ Exact asset tag to query
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Get with asset tag
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,11 +112,11 @@ Optionally restrict asset results to this category ID
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -127,11 +127,11 @@ Optionally restrict asset results to this company ID
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,11 +142,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 11
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -157,11 +157,11 @@ ID number of excact snipeit asset
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Get with id
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -174,11 +174,11 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 17
+Position: Named
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,11 +189,11 @@ Optionally restrict asset results to this location ID
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 10
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -204,11 +204,11 @@ Optionally restrict asset results to this manufacturer ID
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -219,11 +219,11 @@ Optionally restrict asset results to this asset model ID
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -234,11 +234,11 @@ Offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 18
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -249,11 +249,11 @@ Specify the order (asc or desc) you wish to order by on your sort column
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 16
+Position: Named
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -263,12 +263,12 @@ Accept wildcard characters: False
 Optionally restrict asset results to this order number
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
+Type: String
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -279,11 +279,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Boolean
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 12
+Position: Named
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -294,11 +294,26 @@ A text string to search the assets data
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -serial
+{{ Fill serial Description }}
+
+```yaml
+Type: String
+Parameter Sets: Get with serial
+Aliases: asset_serial
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -309,11 +324,11 @@ Specify the column name you wish to sort by
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 15
+Position: Named
 Default value: Created_at
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -324,11 +339,11 @@ Optionally restrict asset results to one of these status types: RTD, Deployed, U
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 13
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -339,11 +354,11 @@ Optionally restrict asset results to this status label ID
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 14
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -358,7 +373,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 19
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

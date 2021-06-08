@@ -13,7 +13,7 @@ Checkout accessory
 ## SYNTAX
 
 ```
-Set-SnipeItAccessoryOwner [-id] <Int32> [-assigned_to] <Int32> [[-note] <String>] [-url] <String>
+Set-SnipeItAccessoryOwner [-id] <Int32[]> [-assigned_to] <Int32> [[-note] <String>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,14 +63,14 @@ Accept wildcard characters: False
 Unique ID For accessory to checkout
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

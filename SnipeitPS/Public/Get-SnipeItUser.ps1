@@ -44,29 +44,41 @@ Get-SnipeItUser -email user@somedomain.com
 
 function Get-SnipeItUser() {
     Param(
+        [parameter(ParameterSetName='Search')]
         [string]$search,
 
+        [parameter(ParameterSetName='Get with ID')]
         [string]$id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$company_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$location_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$group_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$department_id,
 
+        [parameter(ParameterSetName='Search')]
         [string]$username,
 
+        [parameter(ParameterSetName='Search')]
         [string]$email,
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 
+        [parameter(ParameterSetName='Search')]
         [int]$offset,
 
+        [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]
@@ -78,7 +90,7 @@ function Get-SnipeItUser() {
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     $apiurl = "$url/api/v1/users"
 

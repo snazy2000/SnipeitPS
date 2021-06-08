@@ -21,16 +21,15 @@ Update-Module SnipeitPS
 
 # To use each session:
 Import-Module SnipeitPS
-Set-Info -URL 'https://asset.example.com' -apiKey 'tokenKey'
+Set-SnipeItInfo -URL 'https://asset.example.com' -apiKey 'tokenKey'
 ```
 
 ### Usage
 
 ```powershell
 # Review the help at any time!
-Get-Help about_SnipeitPS
 Get-Command -Module SnipeitPS
-Get-Help Get-Asset -Full   # or any other command
+Get-Help Get-SnipeItAsset -Full   # or any other command
 ```
 ### Reporting bugs and issues
 Please use -Verbose switch with command you have problem with.

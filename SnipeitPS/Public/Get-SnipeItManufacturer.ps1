@@ -36,17 +36,23 @@ Returns manufacturer with id 3
 function Get-SnipeItManufacturer()
 {
     Param(
+        [parameter(ParameterSetName='Search')]
         [string]$search,
 
+        [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 
+        [parameter(ParameterSetName='Search')]
         [int]$offset,
 
+        [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]
@@ -58,7 +64,7 @@ function Get-SnipeItManufacturer()
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     $apiurl = "$url/api/v1/manufacturers"
 

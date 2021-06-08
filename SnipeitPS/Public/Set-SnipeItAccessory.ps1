@@ -6,7 +6,10 @@ Updates accessory on Snipe-It system
 Updates accessory on Snipe-It system
 
 .PARAMETER name
-ID number of Accessory on Snipe-It system
+ID number of Accessory or array of IDs on Snipe-It system
+
+.PARAMETER notes
+Notes about the accessory
 
 .PARAMETER qty
 Quantity of the accessory you have
@@ -64,8 +67,8 @@ function Set-SnipeItAccessory() {
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [ValidateLength(3, 255)]
         [string]$name,
@@ -80,6 +83,7 @@ function Set-SnipeItAccessory() {
 
         [ValidateRange(1, [int]::MaxValue)]
         [int]$manufacturer_id,
+
 
         [string]$order_number,
 
@@ -99,27 +103,34 @@ function Set-SnipeItAccessory() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($values['purchase_date']) {
+            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        }
+
+        $Body = $Values | ConvertTo-Json;
+        Write-Verbose "Body: $Body"
+        }
+
+    process {
+        foreach($accessory_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/accessories/$accessory_id"
+                Method = 'Patch'
+                Body   = $Body
+                Token  = $apiKey
+            }
+
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+       }
     }
-
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/accessories/$id"
-        Method = 'POST'
-        Body   = $Body
-        Token  = $apiKey
-    }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }
 

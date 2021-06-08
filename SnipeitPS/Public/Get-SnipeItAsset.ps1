@@ -74,43 +74,63 @@ Get-SnipeItAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token 
 
 function Get-SnipeItAsset() {
     Param(
+        [parameter(ParameterSetName='Search')]
         [string]$search,
 
+        [parameter(ParameterSetName='Get with id')]
         [int]$id,
 
+        [parameter(ParameterSetName='Get with asset tag')]
         [string]$asset_tag,
 
-        [string]$asset_serial,
+        [parameter(ParameterSetName='Get with serial')]
+        [Alias('asset_serial')]
+        [string]$serial,
 
-        [int]$order_number,
+        [parameter(ParameterSetName='Search')]
+        [string]$order_number,
 
+        [parameter(ParameterSetName='Search')]
         [int]$model_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$category_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$manufacturer_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$company_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$location_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$depreciation_id,
 
+        [parameter(ParameterSetName='Search')]
         [bool]$requestable = $false,
 
+        [parameter(ParameterSetName='Search')]
         [string]$status,
 
+        [parameter(ParameterSetName='Search')]
         [int]$status_id,
 
+        [parameter(ParameterSetName='Search')]
         [string]$sort = "created_at",
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 
+        [parameter(ParameterSetName='Search')]
         [int]$offset,
 
+        [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
         [parameter(mandatory = $true)]
         [string]$url,
@@ -120,7 +140,7 @@ function Get-SnipeItAsset() {
     )
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
 
     $apiurl = "$url/api/v1/hardware"

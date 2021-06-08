@@ -8,6 +8,9 @@ Creates new accessory on Snipe-It system
 .PARAMETER name
 Accessory name
 
+.PARAMETER notes
+Notes about the accessory
+
 .PARAMETER qty
 Quantity of the accessory you have
 
@@ -104,7 +107,7 @@ function New-SnipeItAccessory() {
 
     Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
+    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     if ($values['purchase_date']) {
         $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")

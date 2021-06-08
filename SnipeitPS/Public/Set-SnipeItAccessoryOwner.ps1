@@ -5,7 +5,7 @@
     Checkout accessory to user
 
     .PARAMETER id
-    Unique ID For accessory to checkout
+    Unique ID  For accessory or array of IDs to checkout
 
     .PARAMETER assigned_id
     Id of target user
@@ -30,8 +30,8 @@ function Set-SnipeItAccessoryOwner()
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [parameter(mandatory = $true)]
         [int]$assigned_to,
@@ -44,22 +44,27 @@ function Set-SnipeItAccessoryOwner()
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+    begin{
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Values = . Get-ParameterValue $MyInvocation.MyCommand.Parameters
-
-    $Body = $Values | ConvertTo-Json;
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/accessories/$id/checkout"
-        Method = 'POST'
-        Body   = $Body
-        Token  = $apiKey
+        $Body = $Values | ConvertTo-Json;
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
+    process {
+        foreach($accessory_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/accessories/$accessory_id/checkout"
+                Method = 'POST'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-    return $result
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            return $result
+        }
+    }
 }
