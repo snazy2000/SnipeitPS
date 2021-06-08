@@ -1,26 +1,27 @@
-﻿---
+---
 external help file: SnipeitPS-help.xml
 Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeitUser
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+# Gets a list of Snipe-it Users
 
 ## SYNTAX
 
 ### Search
 ```
-Get-SnipeitLocation [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] [-group_id <Int32>]
+ [-department_id <Int32>] [-username <String>] [-email <String>] [-order <String>] [-limit <Int32>]
+ [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitUser [-id <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +31,22 @@ Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParamet
 
 ### EXAMPLE 1
 ```
-Get-SnipeitLocation -search Location1
+Get-SnipeitUser -search SomeSurname
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitLocation -id 3
+Get-SnipeitUser -id 3
+```
+
+### EXAMPLE 3
+```
+Get-SnipeitUser -username someuser
+```
+
+### EXAMPLE 4
+```
+Get-SnipeitUser -email user@somedomain.com
 ```
 
 ## PARAMETERS
@@ -70,17 +81,77 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Location
+### -company_id
+{{ Fill company_id Description }}
 
 ```yaml
 Type: Int32
-Parameter Sets: Get with ID
+Parameter Sets: Search
 Aliases:
 
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -department_id
+{{ Fill department_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -email
+Search string for email field
+
+```yaml
+Type: String
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -group_id
+{{ Fill group_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+A id of specific User
+
+```yaml
+Type: String
+Parameter Sets: Get with ID
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -98,6 +169,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+{{ Fill location_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -133,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the User data
 
 ```yaml
 Type: String
@@ -148,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -156,6 +242,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -username
+Search string for username field
+
+```yaml
+Type: String
+Parameter Sets: Search
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -5,22 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeitLicenseSeat
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Licenses Seats or specific Seat
 
 ## SYNTAX
 
-### Search
 ```
-Get-SnipeitLocation [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
-```
-
-### Get with ID
-```
-Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitLicenseSeat [-id] <Int32> [[-seat_id] <Int32>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
+ [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +24,7 @@ Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParamet
 
 ### EXAMPLE 1
 ```
-Get-SnipeitLocation -search Location1
-```
-
-### EXAMPLE 2
-```
-Get-SnipeitLocation -id 3
+Get-SnipeitLicenseSeat -id 1
 ```
 
 ## PARAMETERS
@@ -45,7 +34,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Search
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -64,22 +53,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Location
+A id of specific License
 
 ```yaml
 Type: Int32
-Parameter Sets: Get with ID
+Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,11 +81,11 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: Search
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,48 +96,33 @@ Offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: Search
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -seat_id
+A id of specific seat
 
 ```yaml
-Type: String
-Parameter Sets: Search
+Type: Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Locations data
-
-```yaml
-Type: String
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Position: 2
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -156,7 +130,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

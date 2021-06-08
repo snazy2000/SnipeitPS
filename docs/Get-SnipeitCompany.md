@@ -5,22 +5,22 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeitCompany
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Companies
 
 ## SYNTAX
 
 ### Search
 ```
-Get-SnipeitLocation [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitCompany [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
+ -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitCompany [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,14 @@ Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParamet
 
 ### EXAMPLE 1
 ```
-Get-SnipeitLocation -search Location1
+Get-SnipeitCompany
+Gets all companies
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitLocation -id 3
+Get-SnipeitCompany -id 1
+Gets specific company
 ```
 
 ## PARAMETERS
@@ -71,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Location
+A id of specific Company
 
 ```yaml
 Type: Int32
@@ -133,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the Companies data
 
 ```yaml
 Type: String
@@ -148,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

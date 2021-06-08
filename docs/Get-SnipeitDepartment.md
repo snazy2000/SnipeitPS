@@ -5,22 +5,22 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeitDepartment
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Departments
 
 ## SYNTAX
 
 ### Search
 ```
-Get-SnipeitLocation [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitDepartment [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+ [-sort <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitDepartment [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,17 @@ Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParamet
 
 ### EXAMPLE 1
 ```
-Get-SnipeitLocation -search Location1
+Get-SnipeitDepartment -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitLocation -id 3
+Get-SnipeitDepartment -search  Department1
+```
+
+### EXAMPLE 3
+```
+Get-SnipeitDepartment -id 1
 ```
 
 ## PARAMETERS
@@ -71,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Location
+A id of specific Department
 
 ```yaml
 Type: Int32
@@ -133,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+A text string to search the Departments data
 
 ```yaml
 Type: String
@@ -147,8 +152,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -sort
+{{ Fill sort Description }}
+
+```yaml
+Type: String
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

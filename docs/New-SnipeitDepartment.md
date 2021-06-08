@@ -5,55 +5,29 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# New-SnipeitDepartment
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Creates a department
 
 ## SYNTAX
 
-### Search
 ```
-Get-SnipeitLocation [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
-```
-
-### Get with ID
-```
-Get-SnipeitLocation [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+New-SnipeitDepartment [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
+ [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a new department on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-SnipeitLocation -search Location1
-```
-
-### EXAMPLE 2
-```
-Get-SnipeitLocation -id 3
+New-SnipeitDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 ```
 
 ## PARAMETERS
-
-### -all
-A return all results, works with -offset and other parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -apiKey
 Users API Key for Snipeit, can be set using Set-SnipeitInfo command
@@ -64,91 +38,59 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Location
+### -company_id
+ID number of company
 
 ```yaml
 Type: Int32
-Parameter Sets: Get with ID
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
+### -location_id
+ID number of location
 
 ```yaml
 Type: Int32
-Parameter Sets: Search
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-Offset to use
-
-```yaml
-Type: Int32
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
+Position: 3
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -manager_id
+ID number of manager
 
 ```yaml
-Type: String
-Parameter Sets: Search
+Type: Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: Desc
+Position: 4
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -search
-A text string to search the Locations data
-
-```yaml
-Type: String
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+### -name
+Department Name
 
 ```yaml
 Type: String
@@ -156,6 +98,67 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+{{ Fill notes Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
