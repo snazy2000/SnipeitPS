@@ -34,42 +34,60 @@ Get-SnipeItLicense -id 1
 
 function Get-SnipeItLicense() {
     Param(
+        [parameter(ParameterSetName='Search')]
         [string]$search,
 
+        [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Search')]
         [string]$name,
 
+        [parameter(ParameterSetName='Search')]
         [int] $company_id,
 
+        [parameter(ParameterSetName='Search')]
         [string]$product_key,
 
+        [parameter(ParameterSetName='Search')]
         [string]$order_number,
 
+        [parameter(ParameterSetName='Search')]
         [string]$purchase_order,
 
+        [parameter(ParameterSetName='Search')]
         [string]$license_name,
 
+        [parameter(ParameterSetName='Search')]
         [mailaddress]$license_email,
 
+        [parameter(ParameterSetName='Search')]
         [int]$manufacturer_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$supplier_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$depreciation_id,
 
+        [parameter(ParameterSetName='Search')]
         [int]$category_id,
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
         [ValidateSet('id', 'name', 'purchase_cost', 'expiration_date', 'purchase_order', 'order_number', 'notes', 'purchase_date', 'serial', 'company', 'category', 'license_name', 'license_email', 'free_seats_count', 'seats', 'manufacturer', 'supplier')]
         [string]$sort = "created_at",
 
+        [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 
+        [parameter(ParameterSetName='Search')]
         [int]$offset,
 
+        [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]

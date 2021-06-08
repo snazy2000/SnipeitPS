@@ -84,7 +84,7 @@ function Set-SnipeItAccessory() {
         [ValidateRange(1, [int]::MaxValue)]
         [int]$manufacturer_id,
 
-        [AllowEmptyString]
+
         [string]$order_number,
 
         [float]$purchase_cost,
@@ -113,6 +113,7 @@ function Set-SnipeItAccessory() {
         }
 
         $Body = $Values | ConvertTo-Json;
+        Write-Verbose "Body: $Body"
         }
 
     process {

@@ -17,6 +17,9 @@ Quantity of the components you have
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
 
+.PARAMETER order_number
+Order number of the component
+
 .PARAMETER purchase_date
 Date accessory was purchased
 
@@ -55,6 +58,8 @@ function New-SnipeItComponent() {
         [int]$company_id,
 
         [int]$location_id,
+
+        [string]$order_number,
 
         [datetime]$purchase_date,
 

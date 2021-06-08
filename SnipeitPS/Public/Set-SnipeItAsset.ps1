@@ -86,6 +86,7 @@ function Set-SnipeItAsset()
         [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
         [int[]]$id,
 
+
         [string]$name,
 
         [int]$status_id,
@@ -99,6 +100,7 @@ function Set-SnipeItAsset()
         [int]$company_id,
 
         [string]$serial,
+
 
         [string]$order_number,
 

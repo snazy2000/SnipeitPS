@@ -80,9 +80,12 @@ function Set-SnipeItUser() {
 
         [string]$userName,
 
+
         [string]$jobtitle,
 
+
         [string]$email,
+
 
         [string]$phone,
 
@@ -94,9 +97,11 @@ function Set-SnipeItUser() {
 
         [int]$manager_id,
 
+
         [string]$employee_num,
 
         [bool]$activated,
+
 
         [string]$notes,
 
