@@ -14,20 +14,14 @@ Gets a list of Snipe-it Components
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitComponent.md
-Get-SnipeitComponent [[-search] <String>] [[-id] <Int32>] [[-category_id] <Int32>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-order] <String>] [[-sort] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
- [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItComponent [-search <String>] [-category_id <Int32>] [-company_id <Int32>] [-location_id <Int32>]
+Get-SnipeitComponent [-search <String>] [-category_id <Int32>] [-company_id <Int32>] [-location_id <Int32>]
  [-order <String>] [-sort <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String> -apiKey <String>
  [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItComponent [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItComponent.md
+Get-SnipeitComponent [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

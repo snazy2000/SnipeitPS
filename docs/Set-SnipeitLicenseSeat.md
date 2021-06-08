@@ -82,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-Unique ID For asset to checkout
+Unique ID For license to checkout or array of IDs
 
 ```yaml
 Type: Int32[]
@@ -91,7 +91,7 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

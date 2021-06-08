@@ -14,14 +14,7 @@ Gets a list of Snipe-it Licenses
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitLicense.md
-Get-SnipeitLicense [[-search] <String>] [[-id] <Int32>] [[-name] <String>] [[-company_id] <Int32>]
- [[-product_key] <String>] [[-order_number] <String>] [[-purchase_order] <String>] [[-license_name] <String>]
- [[-license_email] <MailAddress>] [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>]
- [[-depreciation_id] <Int32>] [[-category_id] <Int32>] [[-order] <String>] [[-sort] <String>]
- [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItLicense [-search <String>] [-name <String>] [-company_id <Int32>] [-product_key <String>]
+Get-SnipeitLicense [-search <String>] [-name <String>] [-company_id <Int32>] [-product_key <String>]
  [-order_number <String>] [-purchase_order <String>] [-license_name <String>] [-license_email <MailAddress>]
  [-manufacturer_id <Int32>] [-supplier_id <Int32>] [-depreciation_id <Int32>] [-category_id <Int32>]
  [-order <String>] [-sort <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String> -apiKey <String>
@@ -30,8 +23,7 @@ Get-SnipeItLicense [-search <String>] [-name <String>] [-company_id <Int32>] [-p
 
 ### Get with ID
 ```
-Get-SnipeItLicense [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItLicense.md
+Get-SnipeitLicense [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -258,7 +250,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

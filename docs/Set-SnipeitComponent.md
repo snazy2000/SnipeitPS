@@ -13,15 +13,9 @@ Updates component
 ## SYNTAX
 
 ```
-<<<<<<< HEAD:docs/Set-SnipeitComponent.md
 Set-SnipeitComponent [-id] <Int32> [-qty] <Int32> [[-name] <String>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
-=======
-Set-SnipeItComponent [-id] <Int32> [-qty] <Int32> [[-name] <String>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
  [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Set-SnipeItComponent.md
 ```
 
 ## DESCRIPTION

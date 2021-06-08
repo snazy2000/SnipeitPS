@@ -30,17 +30,17 @@ function Update-SnipeitAlias()
 	    $String
     )
     begin{
-        Write-Verbose "Replacing old SnipeIt fuctions with new ones.. "
-        $SnipeItAliases = Get-SnipeitAlias
+        Write-Verbose "Replacing old Snipeit fuctions with new ones.. "
+        $SnipeitAliases = Get-SnipeitAlias
 
     }
     process {
         If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
             ForEach ($st in $String){
                 $result = $st
-                ForEach ($key in $SnipeItAliases.Keys ) {
-                    #Write-Verbose "Replacing $key with $($SnipeItAliases[$key])"
-                    $result = $result -replace $key, $SnipeItAliases[$key]
+                ForEach ($key in $SnipeitAliases.Keys ) {
+                    #Write-Verbose "Replacing $key with $($SnipeitAliases[$key])"
+                    $result = $result -replace $key, $SnipeitAliases[$key]
                 }
                 $result
             }

@@ -14,14 +14,7 @@ Gets a list of Snipe-it Assets or specific asset
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitAsset.md
-Get-SnipeitAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[-serial] <String>]
- [[-order_number] <String>] [[-model_id] <Int32>] [[-category_id] <Int32>] [[-manufacturer_id] <Int32>]
- [[-company_id] <Int32>] [[-location_id] <Int32>] [[-depreciation_id] <Int32>] [[-requestable] <Boolean>]
- [[-status] <String>] [[-status_id] <Int32>] [[-sort] <String>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItAsset [-search <String>] [-order_number <String>] [-model_id <Int32>] [-category_id <Int32>]
+Get-SnipeitAsset [-search <String>] [-order_number <String>] [-model_id <Int32>] [-category_id <Int32>]
  [-manufacturer_id <Int32>] [-company_id <Int32>] [-location_id <Int32>] [-depreciation_id <Int32>]
  [-requestable <Boolean>] [-status <String>] [-status_id <Int32>] [-sort <String>] [-order <String>]
  [-limit <Int32>] [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
@@ -29,18 +22,17 @@ Get-SnipeItAsset [-search <String>] [-order_number <String>] [-model_id <Int32>]
 
 ### Get with id
 ```
-Get-SnipeItAsset [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitAsset [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with asset tag
 ```
-Get-SnipeItAsset [-asset_tag <String>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitAsset [-asset_tag <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with serial
 ```
-Get-SnipeItAsset [-serial <String>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItAsset.md
+Get-SnipeitAsset [-serial <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -277,7 +269,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

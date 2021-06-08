@@ -14,20 +14,14 @@ Gets a list of Snipe-it Accessories
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitAccessory.md
-Get-SnipeitAccessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int32>]
- [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>] [[-sort] <String>] [[-order] <String>]
- [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItAccessory [-search <String>] [-company_id <Int32>] [-category_id <Int32>] [-manufacturer_id <Int32>]
+Get-SnipeitAccessory [-search <String>] [-company_id <Int32>] [-category_id <Int32>] [-manufacturer_id <Int32>]
  [-supplier_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
  -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get by ID
 ```
-Get-SnipeItAccessory [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItAccessory.md
+Get-SnipeitAccessory [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

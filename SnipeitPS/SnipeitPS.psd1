@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2017 Stephen Maunder. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Powershell API for SnipeIt Asset Management'
+Description = 'Powershell API for Snipeit Asset Management'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'

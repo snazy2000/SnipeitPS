@@ -14,18 +14,13 @@ Gets a list of Snipe-it Companies
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitCompany.md
-Get-SnipeitCompany [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItCompany [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
+Get-SnipeitCompany [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
  -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItCompany [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItCompany.md
+Get-SnipeitCompany [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -14,21 +14,14 @@ schema: 2.0.0
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitUser.md
-Get-SnipeitUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
- [[-group_id] <Int32>] [[-department_id] <Int32>] [[-username] <String>] [[-email] <String>]
- [[-order] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String>
- [<CommonParameters>]
-=======
-Get-SnipeItUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] [-group_id <Int32>]
+Get-SnipeitUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] [-group_id <Int32>]
  [-department_id <Int32>] [-username <String>] [-email <String>] [-order <String>] [-limit <Int32>]
  [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItUser [-id <String>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItUser.md
+Get-SnipeitUser [-id <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

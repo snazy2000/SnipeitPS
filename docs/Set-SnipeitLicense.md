@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-ID number of licence
+ID number of license or array of license IDs
 
 ```yaml
 Type: Int32[]
@@ -103,7 +103,7 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

@@ -13,15 +13,9 @@ Create a new component
 ## SYNTAX
 
 ```
-<<<<<<< HEAD:docs/New-SnipeitComponent.md
 New-SnipeitComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
-=======
-New-SnipeItComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
  [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/New-SnipeItComponent.md
 ```
 
 ## DESCRIPTION

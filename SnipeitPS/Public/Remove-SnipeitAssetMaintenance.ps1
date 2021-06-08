@@ -25,12 +25,12 @@ function Remove-SnipeitAssetMaintenance {
         [int]
         $id,
 
-        # SnipeIt URL
+        # Snipeit URL
         [Parameter(Mandatory = $true)]
         [string]
         $url,
 
-        # SnipeIt ApiKey
+        # Snipeit ApiKey
         [Parameter(Mandatory = $true)]
         [string]
         $apiKey

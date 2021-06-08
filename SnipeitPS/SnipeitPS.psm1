@@ -1,6 +1,6 @@
 <#
 .DESCRIPTION
-Powershell API for SnipeIt Asset Management
+Powershell API for Snipeit Asset Management
 #>
 $scriptRoot = $PSScriptRoot + '\Public'
 

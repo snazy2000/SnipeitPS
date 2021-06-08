@@ -14,18 +14,13 @@ Gets a list of Snipe-it Departments
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitDepartment.md
-Get-SnipeitDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [[-sort] <String>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItDepartment [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+Get-SnipeitDepartment [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
  [-sort <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItDepartment [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItDepartment.md
+Get-SnipeitDepartment [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

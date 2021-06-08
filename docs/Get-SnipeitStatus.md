@@ -14,18 +14,13 @@ Gets a list of Snipe-it Status Labels
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitStatus.md
-Get-SnipeitStatus [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItStatus [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
+Get-SnipeitStatus [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
  -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItStatus [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItStatus.md
+Get-SnipeitStatus [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

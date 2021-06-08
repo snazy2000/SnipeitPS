@@ -14,18 +14,13 @@ schema: 2.0.0
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitManufacturer.md
-Get-SnipeitManufacturer [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItManufacturer [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+Get-SnipeitManufacturer [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
  -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItManufacturer [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItManufacturer.md
+Get-SnipeitManufacturer [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

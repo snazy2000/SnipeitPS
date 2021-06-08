@@ -36,6 +36,11 @@ Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
 ```
 
+### EXAMPLE 3
+```
+Get-SnipeitAsset -serial 12345678 | Set-SnipeitAsset -notes 'Just updated'
+```
+
 ## PARAMETERS
 
 ### -apiKey
@@ -115,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-ID of the Asset
+ID of the Asset or array of IDs
 
 ```yaml
 Type: Int32[]
@@ -124,7 +129,7 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-{{ Fill id Description }}
+ID number of Snipe--It user or array of IDs
 
 ```yaml
 Type: Int32[]
@@ -148,7 +148,7 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

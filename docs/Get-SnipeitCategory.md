@@ -14,18 +14,13 @@ Gets a list of Snipe-it Categories
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitCategory.md
-Get-SnipeitCategory [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItCategory [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+Get-SnipeitCategory [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
  -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItCategory [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItCategory.md
+Get-SnipeitCategory [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

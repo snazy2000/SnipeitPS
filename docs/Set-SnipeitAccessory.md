@@ -86,7 +86,7 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -name
-ID number of Accessory on Snipe-It system
+ID number of Accessory or array of IDs on Snipe-It system
 
 ```yaml
 Type: String

@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-Unique ID For accessory to checkout
+Unique ID  For accessory or array of IDs to checkout
 
 ```yaml
 Type: Int32[]
@@ -69,7 +69,7 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

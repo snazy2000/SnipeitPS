@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### New features
 Most of "Set" command accepts piped input. Piped objects "id" attribute
 is used to select asset set values. Like
-Get-SnipeItAsset -model_id 213 | Set-SnipeItAsset -notes 'This is nice!'
+Get-SnipeitAsset -model_id 213 | Set-SnipeitAsset -notes 'This is nice!'
 
 Set command accept id parameter as array, so its easier to set multiple items
 in one run.
@@ -29,7 +29,7 @@ needed
 ## More Activity
 
 ### New features
-SnipeIt activity history is now searchable. So finding out checked out the
+Snipeit activity history is now searchable. So finding out checked out the
 assest its easy. Api support many different target or item types that can
 be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
 ,'AssetModel','Category','Company','Component','Consumable','CustomField',

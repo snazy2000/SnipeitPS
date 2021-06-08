@@ -14,18 +14,13 @@ Gets a list of Snipe-it Models
 
 ### Search
 ```
-<<<<<<< HEAD:docs/Get-SnipeitModel.md
-Get-SnipeitModel [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
-=======
-Get-SnipeItModel [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
+Get-SnipeitModel [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
  -apiKey <String> [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeItModel [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
->>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItModel.md
+Get-SnipeitModel [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
