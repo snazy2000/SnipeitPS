@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v1.5.x] - 2021-06-08
+
+## Piping input
+
+### New features
+Most of "Set" command accepts piped input. Piped objects "id" attribute
+is used to select asset set values. Like
+Get-SnipeItAsset -model_id 213 | Set-SnipeItAsset -notes 'This is nice!'
+
+Set command accept id parameter as array, so its easier to set multiple items
+in one run.
+
+Parameter sets. Get commands have now parameters sets.This will make syntax more
+clear between search and get by ID use. Use get-help to
+
+### Fixes
+-Empty strings are accepted as input so it's possible to wipe field values if
+needed
+
 # [v1.4.x] - 2021-05-27
 
 ## More Activity
