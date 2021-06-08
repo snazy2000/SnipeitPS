@@ -5,16 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeItAssetMaintenance
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Lists Snipe-it Assets Maintenances
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] <String>] [[-order] <String>]
+ [[-limit] <Int32>] [-all] [[-offset] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +24,17 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLocation -search Location1
+Get-SnipeItAssetMaintenances -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItLocation -id 3
+Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+```
+
+### EXAMPLE 3
+```
+Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
@@ -58,14 +63,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Location
+### -asset_id
+Asset ID of the asset you'd like to return maintenances for
 
 ```yaml
 Type: Int32
@@ -90,7 +95,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,14 +110,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -order
-{{ Fill order Description }}
+Specify the order (asc or desc) you wish to order by on your sort column
 
 ```yaml
 Type: String
@@ -120,14 +125,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 4
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -search
-A text string to search the Locations data
+Search string
 
 ```yaml
 Type: String
@@ -141,8 +146,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -sort
+Specify the column name you wish to sort by
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: Created_at
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -150,7 +170,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

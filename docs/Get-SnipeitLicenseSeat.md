@@ -5,16 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Get-SnipeItLicenseSeat
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Gets a list of Snipe-it Licenses Seats or specific Seat
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeItLicenseSeat [-id] <Int32> [[-seat_id] <Int32>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
+ [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +24,7 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLocation -search Location1
-```
-
-### EXAMPLE 2
-```
-Get-SnipeItLocation -id 3
+Get-SnipeItLicenseSeat -id 1
 ```
 
 ## PARAMETERS
@@ -58,22 +53,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-A id of specific Location
+A id of specific License
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 2
+Required: True
+Position: 1
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -90,7 +85,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 3
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,44 +100,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -seat_id
+A id of specific seat
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Locations data
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
+Position: 2
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -150,7 +130,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

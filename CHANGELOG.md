@@ -41,7 +41,7 @@ Set-SnipeItLocation new -city parameter
 
 # [v1.2.x] - 2021-05-24
 
-## Prefixing SnipeItPS
+## Prefixing SnipeitPS
 
 ### New Features
 All commands are now prefixed like Set-Info -> Set-SnipeItInfo.
@@ -63,7 +63,7 @@ Get-SnipeItFieldSet commands
 ## Pull request rollup release. Lots of new features including:
 
 ### New features
-- Powershell 7 compatibility. So you can use SnipeItPS on macos or linux .
+- Powershell 7 compatibility. So you can use SnipeitPS on macos or linux .
 - Get every asset, model, licence with snipeit id by using -id parameter
 - Get assets also by -asset_tag -or serialnumber
 - Get functions also return all results from snipe when using -all parameter (by @PetriAsi)

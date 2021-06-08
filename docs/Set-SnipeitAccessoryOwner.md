@@ -5,52 +5,32 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeitLocation
+# Set-SnipeItAccessoryOwner
 
 ## SYNOPSIS
-Gets a list of Snipe-it Locations
+Checkout accessory
 
 ## SYNTAX
 
 ```
-Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
- [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Set-SnipeItAccessoryOwner [-id] <Int32[]> [-assigned_to] <Int32> [[-note] <String>] [-url] <String>
+ [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Checkout accessory to user
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLocation -search Location1
-```
-
-### EXAMPLE 2
-```
-Get-SnipeItLocation -id 3
+Set-SnipeItAccessoryOwner -id 1 -assigned_id 1  -note "testing check out to user"
 ```
 
 ## PARAMETERS
 
-### -all
-A return all results, works with -offset and other parameters
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -58,61 +38,44 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-A id of specific Location
+### -assigned_to
+{{ Fill assigned_to Description }}
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
+### -id
+Unique ID For accessory to checkout
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 4
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -offset
-Offset to use
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
+Required: True
+Position: 1
 Default value: 0
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -note
+Notes about checkout
 
 ```yaml
 Type: String
@@ -121,28 +84,13 @@ Aliases:
 
 Required: False
 Position: 3
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Locations data
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeItInfo command
 
 ```yaml
 Type: String
@@ -150,7 +98,38 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
