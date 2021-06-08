@@ -30,10 +30,10 @@ Date accessory was purchased
 Cost of item being purchased.
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
 An example
@@ -41,7 +41,7 @@ An example
 .NOTES
 General notes
 #>
-function Set-SnipeItComponent()
+function Set-SnipeitComponent()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -75,7 +75,7 @@ function Set-SnipeItComponent()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

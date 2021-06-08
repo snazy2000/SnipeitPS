@@ -18,20 +18,20 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-Url of Snipeit system, can be set using Set-SnipeItInfo command
+Url of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItCategory -id 1
+Get-SnipeitCategory -id 1
 
 .EXAMPLE
-Get-SnipeItCategory -search "Laptop"
+Get-SnipeitCategory -search "Laptop"
 
 #>
 
-function Get-SnipeItCategory()
+function Get-SnipeitCategory()
 {
     Param(
         [parameter(ParameterSetName='Search')]
@@ -59,7 +59,7 @@ function Get-SnipeItCategory()
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -88,7 +88,7 @@ function Get-SnipeItCategory()
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItCategory @callargs
+            $res=Get-SnipeitCategory @callargs
             $res
             if ($res.count -lt $limit) {
                 break

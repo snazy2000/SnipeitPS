@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItSupplier
+# Get-SnipeitSupplier
 
 ## SYNOPSIS
 # Gets a list of Snipe-it Suppliers
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-SnipeItSupplier [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeitSupplier [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,12 +24,12 @@ Get-SnipeItSupplier [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItSupplier -search MySupplier
+Get-SnipeitSupplier -search MySupplier
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItSupplier -id 2
+Get-SnipeitSupplier -id 2
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

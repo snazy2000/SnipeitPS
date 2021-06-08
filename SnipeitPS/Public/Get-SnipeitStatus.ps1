@@ -18,20 +18,20 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItStatus -search  "Ready to Deploy"
+Get-SnipeitStatus -search  "Ready to Deploy"
 
 .EXAMPLE
-Get-SnipeItStatus -id 3
+Get-SnipeitStatus -id 3
 
 #>
 
-function Get-SnipeItStatus()
+function Get-SnipeitStatus()
 {
     Param(
         [parameter(ParameterSetName='Search')]
@@ -60,7 +60,7 @@ function Get-SnipeItStatus()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -89,7 +89,7 @@ function Get-SnipeItStatus()
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItStatus @callargs
+            $res=Get-SnipeitStatus @callargs
             $res
             if ($res.count -lt $limit) {
                 break

@@ -9,10 +9,10 @@ Name of new category to be created
 Type of new category to be created (asset, accessory, consumable, component, license)
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .PARAMETER use_default_eula
 If switch is present, use the primary default EULA
@@ -24,10 +24,10 @@ If switch is present, require users to confirm acceptance of assets in this cate
 If switch is present, send email to user on checkin/checkout
 
 .EXAMPLE
-New-SnipeItCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 #>
 
-function New-SnipeItCategory()
+function New-SnipeitCategory()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -55,7 +55,7 @@ function New-SnipeItCategory()
         [switch]$checkin_email
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "name"          = $name

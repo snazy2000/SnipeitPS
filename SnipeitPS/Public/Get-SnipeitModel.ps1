@@ -18,20 +18,20 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItModel -search "DL380"
+Get-SnipeitModel -search "DL380"
 
 .EXAMPLE
-Get-SnipeItModel -id 1
+Get-SnipeitModel -id 1
 
 #>
 
-function Get-SnipeItModel()
+function Get-SnipeitModel()
 {
     Param(
         [parameter(ParameterSetName='Search')]
@@ -60,7 +60,7 @@ function Get-SnipeItModel()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -89,7 +89,7 @@ function Get-SnipeItModel()
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItModel @callargs
+            $res=Get-SnipeitModel @callargs
             $res
             if ($res.count -ne $limit ) {
                 break

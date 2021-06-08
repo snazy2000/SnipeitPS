@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItLicenseSeat
+# Get-SnipeitLicenseSeat
 
 ## SYNOPSIS
 Gets a list of Snipe-it Licenses Seats or specific Seat
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Licenses Seats or specific Seat
 ## SYNTAX
 
 ```
-Get-SnipeItLicenseSeat [-id] <Int32> [[-seat_id] <Int32>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
+Get-SnipeitLicenseSeat [-id] <Int32> [[-seat_id] <Int32>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
  [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Get-SnipeItLicenseSeat [-id] <Int32> [[-seat_id] <Int32>] [[-limit] <Int32>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLicenseSeat -id 1
+Get-SnipeitLicenseSeat -id 1
 ```
 
 ## PARAMETERS
@@ -45,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -18,17 +18,17 @@
     ID number of manager
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    New-SnipeItDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
+    New-SnipeitDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 
 #>
 
-function New-SnipeItDepartment() {
+function New-SnipeitDepartment() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -53,7 +53,7 @@ function New-SnipeItDepartment() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

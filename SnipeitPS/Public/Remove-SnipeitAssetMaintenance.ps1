@@ -1,4 +1,4 @@
-function Remove-SnipeItAssetMaintenance {
+function Remove-SnipeitAssetMaintenance {
     <#
         .SYNOPSIS
         Remove asset maintenance from Snipe-it asset system
@@ -7,13 +7,13 @@ function Remove-SnipeItAssetMaintenance {
         .PARAMETER ID
         Unique ID of the asset maintenance to be removed
         .PARAMETER url
-        URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+        URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
         .PARAMETER apiKey
-        User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+        User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
         .EXAMPLE
-        Remove-SnipeItAssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
+        Remove-SnipeitAssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
     #>
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -36,7 +36,7 @@ function Remove-SnipeItAssetMaintenance {
         $apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "ID"      = $id

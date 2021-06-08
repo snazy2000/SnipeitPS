@@ -7,16 +7,16 @@
     Unique ID For User to be removed
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Remove-SnipeItUser -ID 44 -url $url -apiKey $secret -Verbose
+    Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
 #>
 
-function Remove-SnipeItUser ()
+function Remove-SnipeitUser ()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -33,7 +33,7 @@ function Remove-SnipeItUser ()
 
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "ID"      = $id

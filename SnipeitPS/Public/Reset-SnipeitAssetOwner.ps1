@@ -17,15 +17,15 @@
     Notes about checkin
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfoeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfoeItInfo command
 
     .EXAMPLE
-    Remove-SnipeItUser -ID 44 -url $url -apiKey $secret -Verbose
+    Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
 #>
-function Reset-SnipeItAssetOwner() {
+function Reset-SnipeitAssetOwner() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Medium"
@@ -48,7 +48,7 @@ function Reset-SnipeItAssetOwner() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "notes" = $notes

@@ -15,4 +15,4 @@ Get-ChildItem $scriptRoot *.ps1 | ForEach-Object {
 }
 
 #Create unprefixed aliases
-Set-SnipeItAlias
+Set-SnipeitAlias

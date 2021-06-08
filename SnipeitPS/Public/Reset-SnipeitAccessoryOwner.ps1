@@ -7,25 +7,25 @@
 
     .PARAMETER  assigned_pivot_id
     This is the assigned_pivot_id of the accessory+user relationships in the accessories_users table
-    Use Get-SnipeItAccessoryOwner to find out nooded value
+    Use Get-SnipeitAccessoryOwner to find out nooded value
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
        .EXAMPLE
     To get the accessories_users table for specific accessory id number
 
-    Get-SnipeItAccessoryOwner -id 1
+    Get-SnipeitAccessoryOwner -id 1
 
     Thenselect  assigned_pivot_id for userid you like check in
 
-    Get-SnipeItAccessoryOwner -assigned_pivot_id xxx
+    Get-SnipeitAccessoryOwner -assigned_pivot_id xxx
 
 #>
-function Reset-SnipeItAccessoryOwner()
+function Reset-SnipeitAccessoryOwner()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,

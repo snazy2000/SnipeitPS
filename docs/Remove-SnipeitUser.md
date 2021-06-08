@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeItUser
+# Remove-SnipeitUser
 
 ## SYNOPSIS
 Removes User from Snipe-it asset system
@@ -13,7 +13,7 @@ Removes User from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeItUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-SnipeitUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +23,13 @@ Long description
 
 ### EXAMPLE 1
 ```
-Remove-SnipeItUser -ID 44 -url $url -apiKey $secret -Verbose
+Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
 
 ### -APIKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

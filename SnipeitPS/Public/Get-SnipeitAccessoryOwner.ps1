@@ -8,15 +8,15 @@
     Unique ID For accessory to list
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Get-SnipeItAccessoryOwner -id 1
+    Get-SnipeitAccessoryOwner -id 1
 #>
-function Get-SnipeItAccessoryOwner()
+function Get-SnipeitAccessoryOwner()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,

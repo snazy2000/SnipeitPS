@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItAsset
+# New-SnipeitAsset
 
 ## SYNOPSIS
 Add a new Asset to Snipe-it asset system
@@ -13,7 +13,7 @@ Add a new Asset to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeItAsset [-status_id] <Int32> [-model_id] <Int32> [[-name] <String>] [[-asset_tag] <String>]
+New-SnipeitAsset [-status_id] <Int32> [-model_id] <Int32> [[-name] <String>] [[-asset_tag] <String>]
  [[-serial] <String>] [[-company_id] <Int32>] [[-order_number] <String>] [[-notes] <String>]
  [[-warranty_months] <Int32>] [[-purchase_cost] <String>] [[-purchase_date] <DateTime>]
  [[-supplier_id] <Int32>] [[-rtd_location_id] <Int32>] [-url] <String> [-apiKey] <String>
@@ -27,26 +27,26 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1"
+New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1"
 Create asset with automatic tag if tag genaration is enabled on snipe-it, other wise without tag
 ```
 
 ### EXAMPLE 2
 ```
-New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
+New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
 Specifying asset tag when creating asset
 ```
 
 ### EXAMPLE 3
 ```
-New-SnipeItAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
 Using customfields when creating asset.
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -257,7 +257,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

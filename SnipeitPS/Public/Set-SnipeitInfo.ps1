@@ -5,15 +5,15 @@
     Set apikey and url user to connect Snipe-It system
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Set-SnipeItInfo -url $url -apiKey -Verbose
+    Set-SnipeitInfo -url $url -apiKey -Verbose
 #>
-function Set-SnipeItInfo {
+function Set-SnipeitInfo {
     [CmdletBinding()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseShouldProcessForStateChangingFunctions', '')]
     param (
@@ -23,7 +23,7 @@ function Set-SnipeItInfo {
     )
 
     BEGIN {
-        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
         function Add-DefaultParameter {
             param(
                 [Parameter(Mandatory = $true)]

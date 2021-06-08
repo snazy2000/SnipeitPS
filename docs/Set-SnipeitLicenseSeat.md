@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItLicenseSeat
+# Set-SnipeitLicenseSeat
 
 ## SYNOPSIS
 Set license seat or checkout license seat
@@ -13,7 +13,7 @@ Set license seat or checkout license seat
 ## SYNTAX
 
 ```
-Set-SnipeItLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
+Set-SnipeitLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
  [[-note] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,20 +24,20 @@ Checkout specific license seat to user, asset or both
 
 ### EXAMPLE 1
 ```
-Set-SnipeItLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
 Checkout licence to user id 3
 ```
 
 ### EXAMPLE 2
 ```
-Set-SnipeItLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
 Checkout licence to asset id 3
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

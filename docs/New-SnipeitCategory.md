@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItCategory
+# New-SnipeitCategory
 
 ## SYNOPSIS
 Create a new Snipe-IT Category
@@ -13,7 +13,7 @@ Create a new Snipe-IT Category
 ## SYNTAX
 
 ```
-New-SnipeItCategory [-name] <String> [-category_type] <String> [-url] <String> [-apiKey] <String>
+New-SnipeitCategory [-name] <String> [-category_type] <String> [-url] <String> [-apiKey] <String>
  [-use_default_eula] [-require_acceptance] [-checkin_email] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ New-SnipeItCategory [-name] <String> [-category_type] <String> [-url] <String> [
 
 ### EXAMPLE 1
 ```
-New-SnipeItCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -39,16 +39,16 @@
     The manager ID of the location
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    New-SnipeItLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
+    New-SnipeitLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
 #>
 
-function New-SnipeItLocation() {
+function New-SnipeitLocation() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -85,7 +85,7 @@ function New-SnipeItLocation() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

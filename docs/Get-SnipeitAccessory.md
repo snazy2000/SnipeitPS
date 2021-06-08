@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItAccessory
+# Get-SnipeitAccessory
 
 ## SYNOPSIS
 Gets a list of Snipe-it Accessories
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Accessories
 ## SYNTAX
 
 ```
-Get-SnipeItAccessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int32>]
+Get-SnipeitAccessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int32>]
  [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>] [[-sort] <String>] [[-order] <String>]
  [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
@@ -25,12 +25,12 @@ Gets a list of Snipe-it Accessories
 
 ### EXAMPLE 1
 ```
-Get-SnipeItAccessory -search Keyboard
+Get-SnipeitAccessory -search Keyboard
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItAccessory -id 1
+Get-SnipeitAccessory -id 1
 ```
 
 ## PARAMETERS
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

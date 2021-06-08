@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Reset-SnipeItAccessoryOwner
+# Reset-SnipeitAccessoryOwner
 
 ## SYNOPSIS
 Checkin  accessories
@@ -13,7 +13,7 @@ Checkin  accessories
 ## SYNTAX
 
 ```
-Reset-SnipeItAccessoryOwner [-assigned_pivot_id] <Int32> [-url] <String> [-apiKey] <String> [-WhatIf]
+Reset-SnipeitAccessoryOwner [-assigned_pivot_id] <Int32> [-url] <String> [-apiKey] <String> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,16 +27,16 @@ Checkin  accessories
 To get the accessories_users table for specific accessory id number
 ```
 
-Get-SnipeItAccessoryOwner -id 1
+Get-SnipeitAccessoryOwner -id 1
 
 Thenselect  assigned_pivot_id for userid you like check in
 
-Get-SnipeItAccessoryOwner -assigned_pivot_id xxx
+Get-SnipeitAccessoryOwner -assigned_pivot_id xxx
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 
 ### -assigned_pivot_id
 This is the assigned_pivot_id of the accessory+user relationships in the accessories_users table
-Use Get-SnipeItAccessoryOwner to find out nooded value
+Use Get-SnipeitAccessoryOwner to find out nooded value
 
 ```yaml
 Type: Int32
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -60,17 +60,17 @@
     Termination date for license.
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Set-SnipeItLicence -name "License" -seats 3 -company_id 1
+    Set-SnipeitLicence -name "License" -seats 3 -company_id 1
 
 #>
 
-function Set-SnipeItLicense() {
+function Set-SnipeitLicense() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -130,7 +130,7 @@ function Set-SnipeItLicense() {
         [string]$apiKey
     )
     begin{
-        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

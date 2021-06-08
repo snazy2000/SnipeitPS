@@ -18,23 +18,23 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItDepartment -url "https://assets.example.com" -token "token..."
+Get-SnipeitDepartment -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-SnipeItDepartment -search  Department1
+Get-SnipeitDepartment -search  Department1
 
 .EXAMPLE
-Get-SnipeItDepartment -id 1
+Get-SnipeitDepartment -id 1
 
 #>
 
-function Get-SnipeItDepartment()
+function Get-SnipeitDepartment()
 {
     Param(
         [parameter(ParameterSetName='Search')]
@@ -67,7 +67,7 @@ function Get-SnipeItDepartment()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -96,7 +96,7 @@ function Get-SnipeItDepartment()
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItDepartment @callargs
+            $res=Get-SnipeitDepartment @callargs
             $res
             if ($res.count -lt $limit) {
                 break

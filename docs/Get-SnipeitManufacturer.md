@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItManufacturer
+# Get-SnipeitManufacturer
 
 ## SYNOPSIS
 # Gets a list of Snipe-it Manufacturers
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-SnipeItManufacturer [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeitManufacturer [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ Get-SnipeItManufacturer [[-search] <String>] [[-id] <Int32>] [[-order] <String>]
 
 ### EXAMPLE 1
 ```
-Get-SnipeItManufacturer -search HP
+Get-SnipeitManufacturer -search HP
 Search all manufacturers for string HP
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItManufacturer -id 3
+Get-SnipeitManufacturer -id 3
 Returns manufacturer with id 3
 ```
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItDepartment
+# New-SnipeitDepartment
 
 ## SYNOPSIS
 Creates a department
@@ -13,7 +13,7 @@ Creates a department
 ## SYNTAX
 
 ```
-New-SnipeItDepartment [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
+New-SnipeitDepartment [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
  [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ Creates a new department on Snipe-It system
 
 ### EXAMPLE 1
 ```
-New-SnipeItDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
+New-SnipeitDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

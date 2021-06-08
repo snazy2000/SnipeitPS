@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItAssetOwner
+# Set-SnipeitAssetOwner
 
 ## SYNOPSIS
 Checkout asset
@@ -13,7 +13,7 @@ Checkout asset
 ## SYNTAX
 
 ```
-Set-SnipeItAssetOwner [-id] <Int32[]> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [[-name] <String>]
+Set-SnipeitAssetOwner [-id] <Int32[]> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [[-name] <String>]
  [[-note] <String>] [[-expected_checkin] <DateTime>] [[-checkout_at] <DateTime>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,13 +25,13 @@ Checkout asset to user/localtion/asset
 
 ### EXAMPLE 1
 ```
-Set-SnipeItAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing check out to user"
+Set-SnipeitAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing check out to user"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

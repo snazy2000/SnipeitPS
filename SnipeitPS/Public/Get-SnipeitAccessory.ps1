@@ -21,20 +21,20 @@ Result offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItAccessory -search Keyboard
+Get-SnipeitAccessory -search Keyboard
 
 .EXAMPLE
-Get-SnipeItAccessory -id 1
+Get-SnipeitAccessory -id 1
 
 #>
 
-function Get-SnipeItAccessory() {
+function Get-SnipeitAccessory() {
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
@@ -76,7 +76,7 @@ function Get-SnipeItAccessory() {
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     if ($id -and $search){
         throw "Please specify only one of -id or -search parameter"
@@ -103,7 +103,7 @@ function Get-SnipeItAccessory() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItAccessory @callargs
+            $res=Get-SnipeitAccessory @callargs
             $res
             if ($res.count -lt $limit) {
                 break

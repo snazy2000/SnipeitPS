@@ -24,16 +24,16 @@
     Fieldset ID that the asset uses (Custom fields)
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    New-SnipeItModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+    New-SnipeitModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 #>
 
-function Set-SnipeItModel() {
+function Set-SnipeitModel() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Medium"
@@ -66,7 +66,7 @@ function Set-SnipeItModel() {
     )
 
     begin {
-        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

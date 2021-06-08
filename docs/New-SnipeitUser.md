@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItUser
+# New-SnipeitUser
 
 ## SYNOPSIS
 Creates a new user
@@ -13,7 +13,7 @@ Creates a new user
 ## SYNTAX
 
 ```
-New-SnipeItUser [-first_name] <String> [-last_name] <String> [-username] <String> [[-password] <String>]
+New-SnipeitUser [-first_name] <String> [-last_name] <String> [-username] <String> [[-password] <String>]
  [[-activated] <Boolean>] [[-notes] <String>] [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>]
  [[-company_id] <Int32>] [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>]
  [[-employee_num] <String>] [[-ldap_import] <Boolean>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
@@ -27,7 +27,7 @@ Creates a new user to Snipe-IT system
 
 ### EXAMPLE 1
 ```
-New-SnipeItuser -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+New-Snipeituser -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
 Creates new a new user who can't login to system
 ```
 
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -19,7 +19,7 @@ be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
 
 
 ### New Functions
-- Get-SnipeItActivity Get and search Snipe-It change history.
+- Get-SnipeitActivity Get and search Snipe-It change history.
 
 
 # [v1.3.x] - 2021-05-27
@@ -27,16 +27,16 @@ be uses as filter. Searchable types are 'Accessory','Asset','AssetMaintenance'
 ## Checking out accessories
 
 ### New features
-You can specify Put or Patch for  Set-SnipeItAsset when updating assets.
-Set-SnipeItLocation new -city parameter
+You can specify Put or Patch for  Set-SnipeitAsset when updating assets.
+Set-SnipeitLocation new -city parameter
 
 ### New Functions
-- Set-SnipeItAccessoryOwner checkout accessory
-- Get-SnipeItAccessoryOwner list checkedout accessories
-- Reset-SnipeItAccessoryOwner checkin accessory
+- Set-SnipeitAccessoryOwner checkout accessory
+- Get-SnipeitAccessoryOwner list checkedout accessories
+- Reset-SnipeitAccessoryOwner checkin accessory
 
 ### Fixes
-- Set-SnipeItAsset fixed datetime and name inputs #126,128
+- Set-SnipeitAsset fixed datetime and name inputs #126,128
 -
 
 # [v1.2.x] - 2021-05-24
@@ -44,19 +44,19 @@ Set-SnipeItLocation new -city parameter
 ## Prefixing SnipeitPS
 
 ### New Features
-All commands are now prefixed like Set-Info -> Set-SnipeItInfo.
+All commands are now prefixed like Set-Info -> Set-SnipeitInfo.
 To keep compatibility all old commands are available as aliases.
-To update existing scripts theres Update-SnipeItAlias command.
+To update existing scripts theres Update-SnipeitAlias command.
 
 ### New fuctions
 - Update-SnipeitAlias Tool to update existing scripts
-- Get-SnipeItLicenceSeat lists license seats
-- Set-SnipeItLicenseSeat Set and checkouts/in license seats
+- Get-SnipeitLicenceSeat lists license seats
+- Set-SnipeitLicenseSeat Set and checkouts/in license seats
 Licenseseat api is supported from Snipe-It release => v5.1.5
 
 ### New fixes
-Added -id parameter support to support Get-SnipeItCustomField and
-Get-SnipeItFieldSet commands
+Added -id parameter support to support Get-SnipeitCustomField and
+Get-SnipeitFieldSet commands
 
 # [v1.1.x] - 2021-05-18
 

@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItAccessory
+# Set-SnipeitAccessory
 
 ## SYNOPSIS
 Updates accessory on Snipe-It system
@@ -13,7 +13,7 @@ Updates accessory on Snipe-It system
 ## SYNTAX
 
 ```
-Set-SnipeItAccessory [-id] <Int32[]> [[-name] <String>] [[-qty] <Int32>] [[-category_id] <Int32>]
+Set-SnipeitAccessory [-id] <Int32[]> [[-name] <String>] [[-qty] <Int32>] [[-category_id] <Int32>]
  [[-company_id] <Int32>] [[-manufacturer_id] <Int32>] [[-order_number] <String>] [[-purchase_cost] <Single>]
  [[-purchase_date] <DateTime>] [[-min_qty] <Boolean>] [[-supplier_id] <Int32>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -26,13 +26,13 @@ Updates accessory on Snipe-It system
 
 ### EXAMPLE 1
 ```
-Set-SnipeItAccessory -id 1 -qty 3
+Set-SnipeitAccessory -id 1 -qty 3
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfoeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfoeItInfo command
 
 ```yaml
 Type: String
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String

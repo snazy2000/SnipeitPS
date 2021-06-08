@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItLicense
+# Get-SnipeitLicense
 
 ## SYNOPSIS
 Gets a list of Snipe-it Licenses
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Licenses
 ## SYNTAX
 
 ```
-Get-SnipeItLicense [[-search] <String>] [[-id] <Int32>] [[-name] <String>] [[-company_id] <Int32>]
+Get-SnipeitLicense [[-search] <String>] [[-id] <Int32>] [[-name] <String>] [[-company_id] <Int32>]
  [[-product_key] <String>] [[-order_number] <String>] [[-purchase_order] <String>] [[-license_name] <String>]
  [[-license_email] <MailAddress>] [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>]
  [[-depreciation_id] <Int32>] [[-category_id] <Int32>] [[-order] <String>] [[-sort] <String>]
@@ -27,12 +27,12 @@ Get-SnipeItLicense [[-search] <String>] [[-id] <Int32>] [[-name] <String>] [[-co
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLicense -search SomeLicense
+Get-SnipeitLicense -search SomeLicense
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItLicense -id 1
+Get-SnipeitLicense -id 1
 ```
 
 ## PARAMETERS
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -325,7 +325,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

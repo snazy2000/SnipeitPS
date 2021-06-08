@@ -24,25 +24,25 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItUser -search SomeSurname
+Get-SnipeitUser -search SomeSurname
 
 .EXAMPLE
-Get-SnipeItUser -id 3
+Get-SnipeitUser -id 3
 
 .EXAMPLE
-Get-SnipeItUser -username someuser
+Get-SnipeitUser -username someuser
 
 .EXAMPLE
-Get-SnipeItUser -email user@somedomain.com
+Get-SnipeitUser -email user@somedomain.com
 #>
 
-function Get-SnipeItUser() {
+function Get-SnipeitUser() {
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
@@ -88,7 +88,7 @@ function Get-SnipeItUser() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -116,7 +116,7 @@ function Get-SnipeItUser() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItUser @callargs
+            $res=Get-SnipeitUser @callargs
             $res
             if ($res.count -lt $limit) {
                 break

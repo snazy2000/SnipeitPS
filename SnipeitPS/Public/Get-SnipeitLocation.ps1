@@ -18,16 +18,16 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItLocation -search Location1
+Get-SnipeitLocation -search Location1
 
 .EXAMPLE
-Get-SnipeItLocation -id 3
+Get-SnipeitLocation -id 3
 
 #>
 
@@ -60,7 +60,7 @@ function Get-SnipeitLocation()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

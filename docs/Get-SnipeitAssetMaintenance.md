@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItAssetMaintenance
+# Get-SnipeitAssetMaintenance
 
 ## SYNOPSIS
 Lists Snipe-it Assets Maintenances
@@ -13,7 +13,7 @@ Lists Snipe-it Assets Maintenances
 ## SYNTAX
 
 ```
-Get-SnipeItAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] <String>] [[-order] <String>]
+Get-SnipeitAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] <String>] [[-order] <String>]
  [[-limit] <Int32>] [-all] [[-offset] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,17 +24,17 @@ Get-SnipeItAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] 
 
 ### EXAMPLE 1
 ```
-Get-SnipeItAssetMaintenances -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -12,11 +12,11 @@ The asset tag of the asset you wish to audit
 ID of the location you want to associate with the audit
 
 .EXAMPLE
-New-SnipeItAudit -tag 1 -location_id 1
+New-SnipeitAudit -tag 1 -location_id 1
 
 #>
 
-function New-SnipeItAudit()
+function New-SnipeitAudit()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -37,7 +37,7 @@ function New-SnipeItAudit()
 
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "location_id" = $location_id

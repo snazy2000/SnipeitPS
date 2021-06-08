@@ -14,15 +14,15 @@
     Notes about checkout
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Set-SnipeItAccessoryOwner -id 1 -assigned_id 1  -note "testing check out to user"
+    Set-SnipeitAccessoryOwner -id 1 -assigned_id 1  -note "testing check out to user"
 #>
-function Set-SnipeItAccessoryOwner()
+function Set-SnipeitAccessoryOwner()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,

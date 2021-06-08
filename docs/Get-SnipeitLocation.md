@@ -24,12 +24,12 @@ Get-SnipeitLocation [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItLocation -search Location1
+Get-SnipeitLocation -search Location1
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItLocation -id 3
+Get-SnipeitLocation -id 3
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String

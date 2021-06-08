@@ -30,20 +30,20 @@ Result offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItAccessory -search Keyboard
+Get-SnipeitAccessory -search Keyboard
 
 .EXAMPLE
-Get-SnipeItAccessory -id 1
+Get-SnipeitAccessory -id 1
 
 #>
 
-function Get-SnipeItActivity() {
+function Get-SnipeitActivity() {
     Param(
 
         [string]$search,
@@ -106,7 +106,7 @@ function Get-SnipeItActivity() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItActivity @callargs
+            $res=Get-SnipeitActivity @callargs
             $res
             if ($res.count -lt $limit) {
                 break

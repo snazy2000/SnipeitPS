@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItActivity
+# Get-SnipeitActivity
 
 ## SYNOPSIS
 Gets and search Snipe-it Activity history
@@ -13,7 +13,7 @@ Gets and search Snipe-it Activity history
 ## SYNTAX
 
 ```
-Get-SnipeItActivity [[-search] <String>] [[-target_type] <String>] [[-target_id] <Int32>]
+Get-SnipeitActivity [[-search] <String>] [[-target_type] <String>] [[-target_id] <Int32>]
  [[-item_type] <String>] [[-item_id] <Int32>] [[-action_type] <String>] [[-limit] <Int32>] [[-offset] <Int32>]
  [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
@@ -25,12 +25,12 @@ Gets a list of Snipe-it activity history
 
 ### EXAMPLE 1
 ```
-Get-SnipeItAccessory -search Keyboard
+Get-SnipeitAccessory -search Keyboard
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItAccessory -id 1
+Get-SnipeitAccessory -id 1
 ```
 
 ## PARAMETERS
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

@@ -18,26 +18,26 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system,can be set using Set-SnipeItInfo command
+URL of Snipeit system,can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItComponent
+Get-SnipeitComponent
 Returns all components
 
 .EXAMPLE
-Get-SnipeItComponent -search display
+Get-SnipeitComponent -search display
 Returns search results containeing string display
 
 .EXAMPLE
-Get-SnipeItComponent -id
+Get-SnipeitComponent -id
 Returns specific component
 
 #>
 
-function Get-SnipeItComponent() {
+function Get-SnipeitComponent() {
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
@@ -78,7 +78,7 @@ function Get-SnipeItComponent() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -107,7 +107,7 @@ function Get-SnipeItComponent() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItComponent @callargs
+            $res=Get-SnipeitComponent @callargs
             $res
             if ($res.count -lt $limit) {
                 break

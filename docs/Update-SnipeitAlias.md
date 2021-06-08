@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Update-SnipeItAlias
+# Update-SnipeitAlias
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Update-SnipeItAlias [-String] <String[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-SnipeitAlias [-String] <String[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

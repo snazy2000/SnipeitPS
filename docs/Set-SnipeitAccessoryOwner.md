@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItAccessoryOwner
+# Set-SnipeitAccessoryOwner
 
 ## SYNOPSIS
 Checkout accessory
@@ -13,7 +13,7 @@ Checkout accessory
 ## SYNTAX
 
 ```
-Set-SnipeItAccessoryOwner [-id] <Int32[]> [-assigned_to] <Int32> [[-note] <String>] [-url] <String>
+Set-SnipeitAccessoryOwner [-id] <Int32[]> [-assigned_to] <Int32> [[-note] <String>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ Checkout accessory to user
 
 ### EXAMPLE 1
 ```
-Set-SnipeItAccessoryOwner -id 1 -assigned_id 1  -note "testing check out to user"
+Set-SnipeitAccessoryOwner -id 1 -assigned_id 1  -note "testing check out to user"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

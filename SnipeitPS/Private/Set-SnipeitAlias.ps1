@@ -1,4 +1,4 @@
-function Set-SnipeItAlias()
+function Set-SnipeitAlias()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -7,7 +7,7 @@ function Set-SnipeItAlias()
     param()
     Write-Verbose "Setting compatibility aliases.. "
     Write-Verbose "All aliases are deprediated."
-    $SnipeItAliases = get-SnipeItAlias
+    $SnipeItAliases = get-SnipeitAlias
     ForEach ($key in $SnipeItAliases.Keys ) {
         New-Alias -Name $key -Value $($SnipeItAliases[$key]) -Scope 1
         Write-Verbose ("{0,5} -> {1}" -f $key,$($SnipeItAliases[$key]))

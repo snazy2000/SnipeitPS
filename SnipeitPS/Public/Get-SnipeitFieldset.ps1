@@ -6,20 +6,20 @@ Returns a fieldset or list of Snipe-it Fieldsets
 A id of specific fieldset
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItFieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeitFieldset -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-SnipeItFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeitFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
 
 #>
 
-function Get-SnipeItFieldset() {
+function Get-SnipeitFieldset() {
     Param(
         [int]$id,
 
@@ -30,7 +30,7 @@ function Get-SnipeItFieldset() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     if ($id) {
         $apiurl = "$url/api/v1/fieldsets/$id"

@@ -57,25 +57,25 @@
     Http request type to send Snipe IT system. Defaults to Put youc use Patch if needed
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfo command
+    Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfo command
 
     .PARAMETER customfields
     Hastable of custom fields and extra fields that need passing through to Snipeit
 
     .EXAMPLE
-    Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
+    Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 
     .EXAMPLE
-    Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+    Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
 
     .EXAMPLE
-    Get-SnipeItAsset -serial 12345678 | Set-SnipeItAsset -notes 'Just updated'
+    Get-SnipeitAsset -serial 12345678 | Set-SnipeitAsset -notes 'Just updated'
 #>
 
-function Set-SnipeItAsset()
+function Set-SnipeitAsset()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -130,7 +130,7 @@ function Set-SnipeItAsset()
         [hashtable] $customfields
     )
     begin{
-        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

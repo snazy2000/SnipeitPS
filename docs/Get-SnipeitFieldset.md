@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItFieldset
+# Get-SnipeitFieldset
 
 ## SYNOPSIS
 Returns a fieldset or list of Snipe-it Fieldsets
@@ -13,7 +13,7 @@ Returns a fieldset or list of Snipe-it Fieldsets
 ## SYNTAX
 
 ```
-Get-SnipeItFieldset [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeitFieldset [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,18 +23,18 @@ Get-SnipeItFieldset [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonP
 
 ### EXAMPLE 1
 ```
-Get-SnipeItFieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeitFieldset -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeitFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

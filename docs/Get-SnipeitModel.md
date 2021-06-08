@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItModel
+# Get-SnipeitModel
 
 ## SYNOPSIS
 Gets a list of Snipe-it Models
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Models
 ## SYNTAX
 
 ```
-Get-SnipeItModel [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeitModel [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,12 +24,12 @@ Get-SnipeItModel [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-lim
 
 ### EXAMPLE 1
 ```
-Get-SnipeItModel -search "DL380"
+Get-SnipeitModel -search "DL380"
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItModel -id 1
+Get-SnipeitModel -id 1
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

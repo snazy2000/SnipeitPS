@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItComponent
+# Get-SnipeitComponent
 
 ## SYNOPSIS
 Gets a list of Snipe-it Components
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Components
 ## SYNTAX
 
 ```
-Get-SnipeItComponent [[-search] <String>] [[-id] <Int32>] [[-category_id] <Int32>] [[-company_id] <Int32>]
+Get-SnipeitComponent [[-search] <String>] [[-id] <Int32>] [[-category_id] <Int32>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-order] <String>] [[-sort] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all]
  [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
@@ -25,19 +25,19 @@ Get-SnipeItComponent [[-search] <String>] [[-id] <Int32>] [[-category_id] <Int32
 
 ### EXAMPLE 1
 ```
-Get-SnipeItComponent
+Get-SnipeitComponent
 Returns all components
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItComponent -search display
+Get-SnipeitComponent -search display
 Returns search results containeing string display
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeItComponent -id
+Get-SnipeitComponent -id
 Returns specific component
 ```
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system,can be set using Set-SnipeItInfo command
+URL of Snipeit system,can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

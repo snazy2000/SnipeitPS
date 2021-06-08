@@ -17,22 +17,22 @@ Offset to use
 .PARAMETER all
 A return all results, works with -offset and other parameters
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItCompany
+Get-SnipeitCompany
 Gets all companies
 
 .EXAMPLE
-Get-SnipeItCompany -id 1
+Get-SnipeitCompany -id 1
 Gets specific company
 
 #>
 
-function Get-SnipeItCompany()
+function Get-SnipeitCompany()
 {
     Param(
         [parameter(ParameterSetName='Search')]
@@ -61,7 +61,7 @@ function Get-SnipeItCompany()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -90,7 +90,7 @@ function Get-SnipeItCompany()
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItCompany @callargs
+            $res=Get-SnipeitCompany @callargs
             $res
             if ($res.count -lt $limit) {
                 break

@@ -6,16 +6,16 @@
     .PARAMETER ID
     Unique ID For Asset to be removed
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeItInfo command
+    URL of Snipeit system, can be set using Set-SnipeitInfo command
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Remove-SnipeItAsset -ID 44 -Verbose
+    Remove-SnipeitAsset -ID 44 -Verbose
 #>
 
-function Remove-SnipeItAsset ()
+function Remove-SnipeitAsset ()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -32,7 +32,7 @@ function Remove-SnipeItAsset ()
 
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
         "ID"      = $id

@@ -54,25 +54,25 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItAsset -url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 
 .EXAMPLE
-Get-SnipeItAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 #>
 
-function Get-SnipeItAsset() {
+function Get-SnipeitAsset() {
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
@@ -138,7 +138,7 @@ function Get-SnipeItAsset() {
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -185,7 +185,7 @@ function Get-SnipeItAsset() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItAsset @callargs
+            $res=Get-SnipeitAsset @callargs
             $res
             if ( $res.count -lt $limit) {
                 break

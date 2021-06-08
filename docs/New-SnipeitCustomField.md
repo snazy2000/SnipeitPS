@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItCustomField
+# New-SnipeitCustomField
 
 ## SYNOPSIS
 Add a new Custom Field to Snipe-it asset system
@@ -13,7 +13,7 @@ Add a new Custom Field to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeItCustomField [-Name] <String> [[-HelpText] <String>] [[-Element] <String>] [[-Format] <String>]
+New-SnipeitCustomField [-Name] <String> [[-HelpText] <String>] [[-Element] <String>] [[-Format] <String>]
  [[-field_encrypted] <Boolean>] [[-CustomFormat] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -25,13 +25,13 @@ Add a new Custom Field to Snipe-it asset system
 
 ### EXAMPLE 1
 ```
-New-SnipeItCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
+New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

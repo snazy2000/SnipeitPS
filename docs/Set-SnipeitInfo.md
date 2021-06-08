@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItInfo
+# Set-SnipeitInfo
 
 ## SYNOPSIS
 Sets authetication information
@@ -13,7 +13,7 @@ Sets authetication information
 ## SYNTAX
 
 ```
-Set-SnipeItInfo [[-url] <Uri>] [[-apiKey] <String>] [<CommonParameters>]
+Set-SnipeitInfo [[-url] <Uri>] [[-apiKey] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +23,13 @@ Set apikey and url user to connect Snipe-It system
 
 ### EXAMPLE 1
 ```
-Set-SnipeItInfo -url $url -apiKey -Verbose
+Set-SnipeitInfo -url $url -apiKey -Verbose
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: Uri

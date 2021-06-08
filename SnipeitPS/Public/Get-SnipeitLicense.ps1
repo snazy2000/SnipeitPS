@@ -19,20 +19,20 @@ A return all results, works with -offset and other parameters
 
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItLicense -search SomeLicense
+Get-SnipeitLicense -search SomeLicense
 
 .EXAMPLE
-Get-SnipeItLicense -id 1
+Get-SnipeitLicense -id 1
 
 #>
 
-function Get-SnipeItLicense() {
+function Get-SnipeitLicense() {
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
@@ -97,7 +97,7 @@ function Get-SnipeItLicense() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -126,7 +126,7 @@ function Get-SnipeItLicense() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItLicense @callargs
+            $res=Get-SnipeitLicense @callargs
             $res
             if ($res.count -lt $limit) {
                 break

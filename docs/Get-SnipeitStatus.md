@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItStatus
+# Get-SnipeitStatus
 
 ## SYNOPSIS
 Gets a list of Snipe-it Status Labels
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Status Labels
 ## SYNTAX
 
 ```
-Get-SnipeItStatus [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeitStatus [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,12 +24,12 @@ Get-SnipeItStatus [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-li
 
 ### EXAMPLE 1
 ```
-Get-SnipeItStatus -search  "Ready to Deploy"
+Get-SnipeitStatus -search  "Ready to Deploy"
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItStatus -id 3
+Get-SnipeitStatus -id 3
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

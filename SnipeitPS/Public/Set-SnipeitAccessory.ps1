@@ -51,16 +51,16 @@ ID number of the location the accessory is assigned to
 Min quantity of the accessory before alert is triggered
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfoeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfoeItInfo command
 
 .EXAMPLE
-Set-SnipeItAccessory -id 1 -qty 3
+Set-SnipeitAccessory -id 1 -qty 3
 
 #>
-function Set-SnipeItAccessory() {
+function Set-SnipeitAccessory() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -104,7 +104,7 @@ function Set-SnipeItAccessory() {
     )
 
     begin {
-        Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

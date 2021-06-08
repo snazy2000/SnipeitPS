@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItAsset
+# Set-SnipeitAsset
 
 ## SYNOPSIS
 Update a specific Asset in the Snipe-it asset system
@@ -13,7 +13,7 @@ Update a specific Asset in the Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeItAsset [-id] <Int32[]> [[-name] <String>] [[-status_id] <Int32>] [[-model_id] <Int32>]
+Set-SnipeitAsset [-id] <Int32[]> [[-name] <String>] [[-status_id] <Int32>] [[-model_id] <Int32>]
  [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
  [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
  [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
@@ -28,18 +28,18 @@ Long description
 
 ### EXAMPLE 1
 ```
-Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
+Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 ```
 
 ### EXAMPLE 2
 ```
-Set-SnipeItAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfoeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfoeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String

@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItDepartment
+# Get-SnipeitDepartment
 
 ## SYNOPSIS
 Gets a list of Snipe-it Departments
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Departments
 ## SYNTAX
 
 ```
-Get-SnipeItDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeitDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [[-sort] <String>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,17 +24,17 @@ Get-SnipeItDepartment [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [
 
 ### EXAMPLE 1
 ```
-Get-SnipeItDepartment -url "https://assets.example.com" -token "token..."
+Get-SnipeitDepartment -url "https://assets.example.com" -token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItDepartment -search  Department1
+Get-SnipeitDepartment -search  Department1
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeItDepartment -id 1
+Get-SnipeitDepartment -id 1
 ```
 
 ## PARAMETERS
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

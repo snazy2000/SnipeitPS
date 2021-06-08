@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItAsset
+# Get-SnipeitAsset
 
 ## SYNOPSIS
 Gets a list of Snipe-it Assets or specific asset
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Assets or specific asset
 ## SYNTAX
 
 ```
-Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[-serial] <String>]
+Get-SnipeitAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[-serial] <String>]
  [[-order_number] <String>] [[-model_id] <Int32>] [[-category_id] <Int32>] [[-manufacturer_id] <Int32>]
  [[-company_id] <Int32>] [[-location_id] <Int32>] [[-depreciation_id] <Int32>] [[-requestable] <Boolean>]
  [[-status] <String>] [[-status_id] <Int32>] [[-sort] <String>] [[-order] <String>] [[-limit] <Int32>]
@@ -27,22 +27,22 @@ Get-SnipeItAsset [[-search] <String>] [[-id] <Int32>] [[-asset_tag] <String>] [[
 
 ### EXAMPLE 1
 ```
-Get-SnipeItAsset -url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeItAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
 ```
 
 ### EXAMPLE 4
 ```
-Get-SnipeItAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
 ```
 
 ## PARAMETERS
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -350,7 +350,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

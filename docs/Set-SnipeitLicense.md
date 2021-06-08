@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItLicense
+# Set-SnipeitLicense
 
 ## SYNOPSIS
 Updates a licence
@@ -13,7 +13,7 @@ Updates a licence
 ## SYNTAX
 
 ```
-Set-SnipeItLicense [-id] <Int32[]> [[-name] <String>] [[-seats] <Int32>] [[-category_id] <Int32>]
+Set-SnipeitLicense [-id] <Int32[]> [[-name] <String>] [[-seats] <Int32>] [[-category_id] <Int32>]
  [[-company_id] <Int32>] [[-expiration_date] <DateTime>] [[-license_email] <MailAddress>]
  [[-license_name] <String>] [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>]
  [[-order_number] <String>] [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>]
@@ -28,13 +28,13 @@ Updates licence on Snipe-It system
 
 ### EXAMPLE 1
 ```
-Set-SnipeItLicence -name "License" -seats 3 -company_id 1
+Set-SnipeitLicence -name "License" -seats 3 -company_id 1
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -319,7 +319,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

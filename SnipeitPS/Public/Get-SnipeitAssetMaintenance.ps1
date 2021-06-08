@@ -24,21 +24,21 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeItAssetMaintenances -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 
 .EXAMPLE
-Get-SnipeItAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
 #>
-function Get-SnipeItAssetMaintenance() {
+function Get-SnipeitAssetMaintenance() {
     Param(
         [string]$search,
 
@@ -62,7 +62,7 @@ function Get-SnipeItAssetMaintenance() {
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -81,7 +81,7 @@ function Get-SnipeItAssetMaintenance() {
         while ($true) {
             $callargs['offset'] = $offstart
             $callargs['limit'] = $limit
-            $res=Get-SnipeItAssetMaintenance @callargs
+            $res=Get-SnipeitAssetMaintenance @callargs
             $res
             if ($res.count -lt $limit) {
                 break

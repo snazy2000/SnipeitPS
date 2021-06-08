@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItCategory
+# Get-SnipeitCategory
 
 ## SYNOPSIS
 Gets a list of Snipe-it Categories
@@ -13,7 +13,7 @@ Gets a list of Snipe-it Categories
 ## SYNTAX
 
 ```
-Get-SnipeItCategory [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
+Get-SnipeitCategory [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-limit] <Int32>]
  [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
@@ -24,12 +24,12 @@ Get-SnipeItCategory [[-search] <String>] [[-id] <Int32>] [[-order] <String>] [[-
 
 ### EXAMPLE 1
 ```
-Get-SnipeItCategory -id 1
+Get-SnipeitCategory -id 1
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItCategory -search "Laptop"
+Get-SnipeitCategory -search "Laptop"
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-Url of Snipeit system, can be set using Set-SnipeItInfo command
+Url of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

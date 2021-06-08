@@ -9,17 +9,17 @@ Creates new company on Snipe-It system
 Comapany name
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-New-SnipeItCompany -name "Acme Company"
+New-SnipeitCompany -name "Acme Company"
 
 #>
 
-function New-SnipeItCompany()
+function New-SnipeitCompany()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -37,7 +37,7 @@ function New-SnipeItCompany()
         [string]$apiKey
     )
 
-    Test-SnipeItAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 

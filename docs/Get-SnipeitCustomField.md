@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItCustomField
+# Get-SnipeitCustomField
 
 ## SYNOPSIS
 Returns specific Snipe-IT custom field or a list of all custom field
@@ -13,7 +13,7 @@ Returns specific Snipe-IT custom field or a list of all custom field
 ## SYNTAX
 
 ```
-Get-SnipeItCustomField [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeitCustomField [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +23,13 @@ Get-SnipeItCustomField [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<Comm
 
 ### EXAMPLE 1
 ```
-Get-SnipeItCustomField -url "https://assets.example.com" -token "token..."
+Get-SnipeitCustomField -url "https://assets.example.com" -token "token..."
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

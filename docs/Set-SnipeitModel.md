@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeItModel
+# Set-SnipeitModel
 
 ## SYNOPSIS
 Updates Model on Snipe-it asset system
@@ -13,7 +13,7 @@ Updates Model on Snipe-it asset system
 ## SYNTAX
 
 ```
-Set-SnipeItModel [-id] <Int32[]> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
+Set-SnipeitModel [-id] <Int32[]> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
  [[-manufacturer_id] <Int32>] [[-eol] <Int32>] [[-custom_fieldset_id] <Int32>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -25,13 +25,13 @@ Updates Model on Snipe-it asset system
 
 ### EXAMPLE 1
 ```
-New-SnipeItModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
+New-SnipeitModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

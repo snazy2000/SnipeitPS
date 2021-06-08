@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-SnipeItUser
+# Get-SnipeitUser
 
 ## SYNOPSIS
 # Gets a list of Snipe-it Users
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-SnipeItUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
+Get-SnipeitUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
  [[-group_id] <Int32>] [[-department_id] <Int32>] [[-username] <String>] [[-email] <String>]
  [[-order] <String>] [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String>
  [<CommonParameters>]
@@ -26,22 +26,22 @@ Get-SnipeItUser [[-search] <String>] [[-id] <String>] [[-company_id] <Int32>] [[
 
 ### EXAMPLE 1
 ```
-Get-SnipeItUser -search SomeSurname
+Get-SnipeitUser -search SomeSurname
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeItUser -id 3
+Get-SnipeitUser -id 3
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeItUser -username someuser
+Get-SnipeitUser -username someuser
 ```
 
 ### EXAMPLE 4
 ```
-Get-SnipeItUser -email user@somedomain.com
+Get-SnipeitUser -email user@somedomain.com
 ```
 
 ## PARAMETERS
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

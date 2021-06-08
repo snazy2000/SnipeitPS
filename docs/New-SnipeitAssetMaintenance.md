@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItAssetMaintenance
+# New-SnipeitAssetMaintenance
 
 ## SYNOPSIS
 Add a new Asset maintenence to Snipe-it asset system
@@ -13,7 +13,7 @@ Add a new Asset maintenence to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeItAssetMaintenance [-asset_id] <Int32> [-supplier_id] <Int32> [-asset_maintenance_type] <String>
+New-SnipeitAssetMaintenance [-asset_id] <Int32> [-supplier_id] <Int32> [-asset_maintenance_type] <String>
  [-title] <String> [-start_date] <DateTime> [[-completion_date] <DateTime>] [[-is_warranty] <Boolean>]
  [[-cost] <Decimal>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,13 +26,13 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-SnipeItAssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard" -start_date 2021-01-01
+New-SnipeitAssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard" -start_date 2021-01-01
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

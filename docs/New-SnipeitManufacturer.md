@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItManufacturer
+# New-SnipeitManufacturer
 
 ## SYNOPSIS
 Add a new Manufacturer to Snipe-it asset system
@@ -13,7 +13,7 @@ Add a new Manufacturer to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeItManufacturer [-Name] <String> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+New-SnipeitManufacturer [-Name] <String> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,13 +24,13 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-SnipeItManufacturer -name "HP"
+New-SnipeitManufacturer -name "HP"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

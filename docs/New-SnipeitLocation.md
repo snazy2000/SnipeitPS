@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeItLocation
+# New-SnipeitLocation
 
 ## SYNOPSIS
 Add a new Location to Snipe-it asset system
@@ -13,7 +13,7 @@ Add a new Location to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeItLocation [-name] <String> [[-address] <String>] [[-address2] <String>] [[-city] <String>]
+New-SnipeitLocation [-name] <String> [[-address] <String>] [[-address2] <String>] [[-city] <String>]
  [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-currency] <String>] [[-parent_id] <Int32>]
  [[-manager_id] <Int32>] [[-ldap_ou] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,7 +26,7 @@ Long description
 
 ### EXAMPLE 1
 ```
-New-SnipeItLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
+New-SnipeitLocation -name "Room 1" -address "123 Asset Street" -parent_id 14
 ```
 
 ## PARAMETERS
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeItInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

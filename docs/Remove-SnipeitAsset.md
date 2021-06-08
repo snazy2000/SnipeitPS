@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeItAsset
+# Remove-SnipeitAsset
 
 ## SYNOPSIS
 Removes Asset from Snipe-it asset system
@@ -13,7 +13,7 @@ Removes Asset from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeItAsset [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-SnipeitAsset [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,13 +23,13 @@ Removes Asset from Snipe-it asset system
 
 ### EXAMPLE 1
 ```
-Remove-SnipeItAsset -ID 44 -Verbose
+Remove-SnipeitAsset -ID 44 -Verbose
 ```
 
 ## PARAMETERS
 
 ### -APIKey
-User's API Key for Snipeit, can be set using Set-SnipeItInfo command
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 ```
 
 ### -URL
-URL of Snipeit system, can be set using Set-SnipeItInfo command
+URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
