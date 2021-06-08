@@ -13,9 +13,15 @@ Create a new component
 ## SYNTAX
 
 ```
+<<<<<<< HEAD:docs/New-SnipeitComponent.md
 New-SnipeitComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>] [-url] <String>
  [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+=======
+New-SnipeItComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
+ [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+>>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/New-SnipeItComponent.md
 ```
 
 ## DESCRIPTION
@@ -39,7 +45,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,6 +111,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -order_number
+Order number of the component
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -purchase_cost
 Cost of item being purchased.
 
@@ -114,7 +135,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 8
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,7 +150,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,7 +180,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -12,10 +12,22 @@ Gets a list of Snipe-it Accessories
 
 ## SYNTAX
 
+### Search
 ```
+<<<<<<< HEAD:docs/Get-SnipeitAccessory.md
 Get-SnipeitAccessory [[-search] <String>] [[-company_id] <Int32>] [[-category_id] <Int32>]
  [[-manufacturer_id] <Int32>] [[-supplier_id] <Int32>] [[-sort] <String>] [[-order] <String>]
  [[-limit] <Int32>] [[-offset] <Int32>] [-all] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+=======
+Get-SnipeItAccessory [-search <String>] [-company_id <Int32>] [-category_id <Int32>] [-manufacturer_id <Int32>]
+ [-supplier_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+ -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get by ID
+```
+Get-SnipeItAccessory [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+>>>>>>> 9f68e602e32566c28846ccb9572fa0b078d64696:docs/Get-SnipeItAccessory.md
 ```
 
 ## DESCRIPTION
@@ -40,7 +52,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
@@ -59,7 +71,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,11 +82,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -85,11 +97,26 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+A id of specific Accessory
+
+```yaml
+Type: Int32
+Parameter Sets: Get by ID
+Aliases:
+
+Required: False
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -102,11 +129,11 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -117,11 +144,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -132,11 +159,11 @@ Result offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -147,11 +174,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -162,11 +189,11 @@ A text string to search the Accessory data
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -177,11 +204,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: Created_at
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -192,11 +219,11 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -211,7 +238,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
