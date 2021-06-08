@@ -107,7 +107,7 @@ function Set-SnipeItLicense() {
 
         [string]$notes,
 
-        [AllowEmptyString()]
+
         [string]$order_number,
 
         [float]$purchase_cost,

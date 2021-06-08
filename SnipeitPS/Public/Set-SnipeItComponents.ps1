@@ -61,7 +61,7 @@ function Set-SnipeItComponent()
 
         [int]$location_id,
 
-        [AllowEmptyString()]
+
         [string]$order_number,
 
         [datetime]$purchase_date,

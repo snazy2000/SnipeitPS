@@ -80,13 +80,13 @@ function Set-SnipeItUser() {
 
         [string]$userName,
 
-        [AllowEmptyString()]
+
         [string]$jobtitle,
 
-        [AllowEmptyString()]
+
         [string]$email,
 
-        [AllowEmptyString()]
+
         [string]$phone,
 
         [int]$company_id,
@@ -97,12 +97,12 @@ function Set-SnipeItUser() {
 
         [int]$manager_id,
 
-        [AllowEmptyString()]
+
         [string]$employee_num,
 
         [bool]$activated,
 
-        [AllowEmptyString()]
+
         [string]$notes,
 
         [parameter(mandatory = $true)]
