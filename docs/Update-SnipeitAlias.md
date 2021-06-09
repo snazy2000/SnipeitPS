@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-SnipeitAlias
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Replaces old SnipeitPS commands with new ones
 
 ## SYNTAX
 
@@ -17,21 +17,22 @@ Update-SnipeitAlias [-String] <String[]> [-WhatIf] [-Confirm] [<CommonParameters
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Replaces old SnipeitPS commands with new ones
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-Content [your-script.ps1] | Update-SnipeitAlias | Out-File [new-script-name.ps1]
 ```
 
-{{ Add example description here }}
+Replaces old command from file "your-script.ps1" and creates new script "new-script-name.ps1"
+After testing new file you can replace old file with new.
 
 ## PARAMETERS
 
 ### -String
-{{ Fill String Description }}
+Input string
 
 ```yaml
 Type: String[]
@@ -39,7 +40,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -81,11 +82,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String[]
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

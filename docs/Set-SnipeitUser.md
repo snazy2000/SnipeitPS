@@ -34,7 +34,7 @@ Updates user with id 3
 ## PARAMETERS
 
 ### -activated
-{{ Fill activated Description }}
+Can user log in to snipe-it?
 
 ```yaml
 Type: Boolean
