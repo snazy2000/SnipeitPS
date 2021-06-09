@@ -33,6 +33,7 @@ Get-SnipeitModel -id 1
 
 function Get-SnipeitModel()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

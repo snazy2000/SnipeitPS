@@ -33,6 +33,7 @@ Get-SnipeitCategory -search "Laptop"
 
 function Get-SnipeitCategory()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

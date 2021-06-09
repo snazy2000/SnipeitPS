@@ -36,6 +36,7 @@ Get-SnipeitDepartment -id 1
 
 function Get-SnipeitDepartment()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

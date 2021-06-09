@@ -33,6 +33,7 @@ Get-SnipeitLicense -id 1
 #>
 
 function Get-SnipeitLicense() {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
