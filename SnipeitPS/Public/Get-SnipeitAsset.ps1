@@ -14,6 +14,12 @@ Exact asset tag to query
 .PARAMETER asset_serial
 Exact asset serialnumber to query
 
+.PARAMETER audit_due
+Retrieve a list of assets that are due for auditing soon.
+
+.PARAMETER audit_overdue
+Retrieve a list of assets that are overdue for auditing.
+
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
@@ -87,6 +93,12 @@ function Get-SnipeitAsset() {
         [Alias('asset_serial')]
         [string]$serial,
 
+        [parameter(ParameterSetName='Assets due auditing soon')]
+        [switch]$audit_due,
+
+        [parameter(ParameterSetName='Assets overdue for auditing')]
+        [switch]$audit_overdue,
+
         [parameter(ParameterSetName='Search')]
         [string]$order_number,
 
@@ -118,57 +130,52 @@ function Get-SnipeitAsset() {
         [int]$status_id,
 
         [parameter(ParameterSetName='Search')]
-        [string]$sort = "created_at",
+        [parameter(ParameterSetName='Assets due auditing soon')]
+        [parameter(ParameterSetName='Assets overdue for auditing')]
+        [ValidateSet('id','created_at','asset_tag','serial','order_number','model_id','category_id','manufacturer_id','company_id','location_id','status','status_id')]
+        [string]$sort,
 
         [parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Assets due auditing soon')]
+        [parameter(ParameterSetName='Assets overdue for auditing')]
         [ValidateSet("asc", "desc")]
-        [string]$order = "desc",
+        [string]$order,
 
         [parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Assets due auditing soon')]
+        [parameter(ParameterSetName='Assets overdue for auditing')]
         [int]$limit = 50,
 
         [parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Assets due auditing soon')]
+        [parameter(ParameterSetName='Assets overdue for auditing')]
         [int]$offset,
 
         [parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Assets due auditing soon')]
+        [parameter(ParameterSetName='Assets overdue for auditing')]
         [switch]$all = $false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+
     Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-
-    $apiurl = "$url/api/v1/hardware"
-
-    if ($search -and ($asset_tag -or $asset_serial -or $id)) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
+    switch ($PsCmdlet.ParameterSetName) {
+        'Search' { $apiurl = "$url/api/v1/hardware" }
+        'Get with id'  {$apiurl= "$url/api/v1/hardware/$id"}
+        'Get with asset tag' {$apiurl= "$url/api/v1/hardware/bytag/$asset_tag"}
+        'Get with serial' { $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"}
+        'Assets due auditing soon' {$apiurl = "$url/api/v1/hardware/audit/due"}
+        'Assets overdue for auditing' {$apiurl = "$url/api/v1/hardware/audit/overdue"}
     }
 
-    if ($id) {
-       if ( $search -or $asset_serial -or $asset_tag) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
-       }
-       $apiurl= "$url/api/v1/hardware/$id"
-    }
-
-    if ($asset_tag) {
-       if ( $search -or $asset_serial -or $id) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of -search , -asset_tag or -asset_serial parameter"
-       }
-       $apiurl= "$url/api/v1/hardware/bytag/$asset_tag"
-    }
-
-    if ($asset_serial) {
-       if ( $search -or $asset_tag) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only one of-search , -asset_tag or -asset_serial parameter"
-       }
-       $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"
-    }
 
     $Parameters = @{
         Uri           = $apiurl
@@ -180,6 +187,7 @@ function Get-SnipeitAsset() {
     if ($all) {
         $offstart = $(if ($offset){$offset} Else {0})
         $callargs = $SearchParameter
+        Write-Verbose "Callargs: $($callargs | convertto-json)"
         $callargs.Remove('all')
 
         while ($true) {
