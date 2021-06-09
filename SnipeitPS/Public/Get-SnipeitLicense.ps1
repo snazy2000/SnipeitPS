@@ -78,7 +78,7 @@ function Get-SnipeitLicense() {
         [string]$order = "desc",
 
         [parameter(ParameterSetName='Search')]
-        [ValidateSet('id', 'name', 'purchase_cost', 'expiration_date', 'purchase_order', 'order_number', 'notes', 'purchase_date', 'serial', 'company', 'category', 'license_name', 'license_email', 'free_seats_count', 'seats', 'manufacturer', 'supplier')]
+        [ValidateSet('created_at','id', 'name', 'purchase_cost', 'expiration_date', 'purchase_order', 'order_number', 'notes', 'purchase_date', 'serial', 'company', 'category', 'license_name', 'license_email', 'free_seats_count', 'seats', 'manufacturer', 'supplier')]
         [string]$sort = "created_at",
 
         [parameter(ParameterSetName='Search')]
