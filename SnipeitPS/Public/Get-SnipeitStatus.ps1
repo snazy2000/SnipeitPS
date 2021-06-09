@@ -33,6 +33,7 @@ Get-SnipeitStatus -id 3
 
 function Get-SnipeitStatus()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

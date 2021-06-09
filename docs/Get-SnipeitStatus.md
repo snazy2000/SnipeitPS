@@ -12,7 +12,7 @@ Gets a list of Snipe-it Status Labels
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitStatus [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
  -apiKey <String> [<CommonParameters>]
