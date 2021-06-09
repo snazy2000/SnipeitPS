@@ -135,5 +135,5 @@ Updates Model on Snipe-it asset system
 Creates a new user
 
 ### [Update-SnipeitAlias](Update-SnipeitAlias.md)
-{{ Fill in the Synopsis }}
+Replaces old SnipeitPS commands with new ones
 

@@ -10,12 +10,11 @@ Input string
 
 .EXAMPLE
 Get-Content [your-script.ps1] | Update-SnipeitAlias | Out-File [new-script-name.ps1]
+
 Replaces old command from file "your-script.ps1" and creates new script "new-script-name.ps1"
 After testing new file you can replace old file with new.
 
 #>
-
-
 function Update-SnipeitAlias()
 {
     [CmdletBinding(

@@ -30,7 +30,6 @@ Get-SnipeitSupplier -search MySupplier
 Get-SnipeitSupplier -id 2
 
 #>
-
 function Get-SnipeitSupplier()
 {
     Param(

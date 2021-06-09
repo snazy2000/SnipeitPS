@@ -17,7 +17,7 @@
     .PARAMETER username
     Username for user
 
-    .PARAMETER active
+    .PARAMETER activated
     Can user log in to snipe-it?
 
     .PARAMETER notes
