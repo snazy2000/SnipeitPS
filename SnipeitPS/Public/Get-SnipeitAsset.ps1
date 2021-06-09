@@ -79,6 +79,7 @@ Get-SnipeitAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token 
 #>
 
 function Get-SnipeitAsset() {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,
