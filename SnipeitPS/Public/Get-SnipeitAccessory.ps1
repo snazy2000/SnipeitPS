@@ -35,6 +35,7 @@ Get-SnipeitAccessory -id 1
 #>
 
 function Get-SnipeitAccessory() {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

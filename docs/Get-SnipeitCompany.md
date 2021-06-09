@@ -12,7 +12,7 @@ Gets a list of Snipe-it Companies
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitCompany [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String>
  -apiKey <String> [<CommonParameters>]

@@ -12,7 +12,7 @@ Gets a list of Snipe-it Licenses
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitLicense [-search <String>] [-name <String>] [-company_id <Int32>] [-product_key <String>]
  [-order_number <String>] [-purchase_order <String>] [-license_name <String>] [-license_email <MailAddress>]
