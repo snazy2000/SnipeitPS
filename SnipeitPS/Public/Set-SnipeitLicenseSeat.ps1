@@ -45,7 +45,8 @@ function Set-SnipeitLicenseSeat()
         [parameter(mandatory = $true)]
         [int]$seat_id,
 
-        [int]$assigned_id,
+        [Alias('assigned_id')]
+        [int]$assigned_to,
 
         [int]$asset_id,
 
