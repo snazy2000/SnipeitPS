@@ -12,7 +12,7 @@ Gets a list of Snipe-it Components
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitComponent [-search <String>] [-category_id <Int32>] [-company_id <Int32>] [-location_id <Int32>]
  [-order <String>] [-sort <String>] [-limit <Int32>] [-offset <Int32>] [-all] -url <String> -apiKey <String>

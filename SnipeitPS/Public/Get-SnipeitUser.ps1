@@ -43,6 +43,7 @@ Get-SnipeitUser -email user@somedomain.com
 #>
 
 function Get-SnipeitUser() {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

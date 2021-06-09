@@ -36,8 +36,8 @@ Get-SnipeitComponent -id
 Returns specific component
 
 #>
-
 function Get-SnipeitComponent() {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

@@ -33,6 +33,7 @@ Get-SnipeitLocation -id 3
 
 function Get-SnipeitLocation()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

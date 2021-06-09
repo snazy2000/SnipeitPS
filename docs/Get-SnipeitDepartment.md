@@ -12,7 +12,7 @@ Gets a list of Snipe-it Departments
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitDepartment [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
  [-sort <String>] -url <String> -apiKey <String> [<CommonParameters>]

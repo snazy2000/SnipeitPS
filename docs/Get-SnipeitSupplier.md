@@ -12,7 +12,7 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitSupplier [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
  -url <String> -apiKey <String> [<CommonParameters>]

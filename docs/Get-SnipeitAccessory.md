@@ -12,7 +12,7 @@ Gets a list of Snipe-it Accessories
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitAccessory [-search <String>] [-company_id <Int32>] [-category_id <Int32>] [-manufacturer_id <Int32>]
  [-supplier_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]

@@ -13,7 +13,7 @@ Set license seat or checkout license seat
 ## SYNTAX
 
 ```
-Set-SnipeitLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_id] <Int32>] [[-asset_id] <Int32>]
+Set-SnipeitLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_to] <Int32>] [[-asset_id] <Int32>]
  [[-note] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,13 +66,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -assigned_id
-{{ Fill assigned_id Description }}
+### -assigned_to
+Id of target user
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: assigned_id
 
 Required: False
 Position: 3

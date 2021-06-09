@@ -34,6 +34,7 @@
 #>
 function Get-SnipeitManufacturer()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

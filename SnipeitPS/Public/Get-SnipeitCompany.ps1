@@ -34,6 +34,7 @@ Gets specific company
 
 function Get-SnipeitCompany()
 {
+    [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
         [string]$search,

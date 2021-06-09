@@ -12,7 +12,7 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] [-group_id <Int32>]
  [-department_id <Int32>] [-username <String>] [-email <String>] [-order <String>] [-limit <Int32>]
