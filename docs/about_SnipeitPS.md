@@ -8,11 +8,11 @@ Powershell API Wrapper for Snipe-it.
 Collection of tools that makes interacting with Snipe-it api more pleasant.
 
 # EXAMPLES
-Prepare connection Snipe-It with
+Prepare connection Snipe-It with:
 
 Set-SnipeitInfo -url https://your.site -apikey YourVeryLongApiKey....
 
-To search assets use
+To search assets use:
 
 Get-SnipeitAsset -search needle
 
@@ -21,23 +21,23 @@ set notes for every asset that have model_id 123.
 
 Get-SnipeitAsset -model_id 123 -all | Set-SnipeitAsset
 
-# NOTE
+You can get specific items with -id prameter like
 
+Get-SnipeitModel -id 123
+
+# NOTE
+Most of commands are using same parameters as in Snipe It api,
+but it's always good idea  check syntax with Get-Help
 
 # TROUBLESHOOTING NOTE
-{{ Troubleshooting Placeholder - Warns users of bugs}}
-
-{{ Explains behavior that is likely to change with fixes }}
+Check your api key and certificate on server first.
 
 # SEE ALSO
-{{ See also placeholder }}
 
-{{ You can also list related articles, blogs, and video URLs. }}
+Report any issues to:
+[GitHub project page](https://github.com/snazy2000/SnipeitPS/issues)
 
 # KEYWORDS
-{{List alternate names or titles for this topic that readers might use.}}
 
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
-- {{ Keyword Placeholder }}
+- Snipe-It
+- asset management
