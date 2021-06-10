@@ -110,7 +110,7 @@ Hastable of custom fields and extra fields that need passing through to Snipeit
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: CustomValues
 
 Required: False
 Position: 20

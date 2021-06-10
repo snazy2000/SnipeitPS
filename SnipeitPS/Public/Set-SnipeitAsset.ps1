@@ -69,7 +69,7 @@
     Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 
     .EXAMPLE
-    Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+    Set-SnipeitAsset -id 1 -name "Machine1" -customfields =  @{ "_snipeit_os_5" = "Windows 10 Pro" ; "_snipeit_os_version" = "1909" }
 
     .EXAMPLE
     Get-SnipeitAsset -serial 12345678 | Set-SnipeitAsset -notes 'Just updated'
@@ -101,7 +101,6 @@ function Set-SnipeitAsset()
 
         [string]$serial,
 
-
         [string]$order_number,
 
         [int]$warranty_months,
@@ -127,6 +126,7 @@ function Set-SnipeitAsset()
         [parameter(mandatory = $true)]
         [string]$apiKey,
 
+        [Alias('CustomValues')]
         [hashtable] $customfields
     )
     begin{

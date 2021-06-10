@@ -61,7 +61,7 @@ New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
 Specifying asset tag when creating asset
 
 .EXAMPLE
-New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -customfields = @{ "_snipeit_os_5" = "Windows 10 Pro" }
 Using customfields when creating asset.
 #>
 
@@ -120,6 +120,7 @@ function New-SnipeitAsset()
         [parameter(mandatory = $true)]
         [string]$apiKey,
 
+        [Alias('CustomValues')]
         [hashtable] $customfields
     )
 
