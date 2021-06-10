@@ -97,7 +97,7 @@ Use internal field names from snipeit .You can use Get-CustomField to get intern
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: CustomValues
 
 Required: False
 Position: 16
