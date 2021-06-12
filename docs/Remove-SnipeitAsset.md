@@ -13,17 +13,23 @@ Removes Asset from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeitAsset [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-SnipeitAsset [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes Asset from Snipe-it asset system
+Removes asset or multiple assets from Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
 Remove-SnipeitAsset -ID 44 -Verbose
+```
+
+### EXAMPLE 2
+```
+Get-SnipeitAsset -serial 123456789  | Remove-SnipeitAsset
 ```
 
 ## PARAMETERS
@@ -47,14 +53,14 @@ Accept wildcard characters: False
 Unique ID For Asset to be removed
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: 0
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

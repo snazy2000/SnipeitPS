@@ -115,7 +115,17 @@ FunctionsToExport = @(
         'Set-SnipeitAccessoryOwner',
         'Get-SnipeitAccessoryOwner',
         'Reset-SnipeitAccessoryOwner',
-        'Get-SnipeitActivity'
+        'Get-SnipeitActivity',
+        'Remove-SnipeitAccessory',
+        'Remove-SnipeitCategory',
+        'Remove-SnipeitCompany',
+        'Remove-SnipeitComponent',
+        'Remove-SnipeitCustomField',
+        'Remove-SnipeitDepartment',
+        'Remove-SnipeitLicense',
+        'Remove-SnipeitLocation',
+        'Remove-SnipeitManufacturer',
+        'Remove-SnipeitModel'
 
 )
 

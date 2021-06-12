@@ -39,7 +39,7 @@ Specifying asset tag when creating asset
 
 ### EXAMPLE 3
 ```
-New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5" = "Windows 10 Pro" }
+New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -customfields = @{ "_snipeit_os_5" = "Windows 10 Pro" }
 Using customfields when creating asset.
 ```
 

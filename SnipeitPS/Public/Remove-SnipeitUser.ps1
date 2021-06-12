@@ -2,7 +2,7 @@
     .SYNOPSIS
     Removes User from Snipe-it asset system
     .DESCRIPTION
-    Long description
+    Removes Uuser or users from Snipe-it asset system
     .PARAMETER ID
     Unique ID For User to be removed
 
@@ -24,7 +24,7 @@ function Remove-SnipeitUser ()
     )]
 
     Param(
-    [parameter(mandatory = $true)]
+    [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
         [int]$id,
     [parameter(mandatory = $true)]
         [string]$URL,
@@ -32,26 +32,25 @@ function Remove-SnipeitUser ()
         [string]$APIKey
 
     )
-
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
-
-    $Values = @{
-        "ID"      = $id
+    begin{
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
     }
 
-    $Body = $Values | ConvertTo-Json
+    process {
+        foreach($user_id in $id) {
+            $Parameters = @{
+                Uri    = "$url/api/v1/users/$user_id"
+                Method = 'Delete'
+                Body   = '{}'
+                Token  = $apiKey
+            }
 
-    $Parameters = @{
-        Uri    = "$url/api/v1/users/$ID"
-        Method = 'Delete'
-        Body   = $Body
-        Token  = $apiKey
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
     }
-
-     If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }

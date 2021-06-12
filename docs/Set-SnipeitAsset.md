@@ -33,7 +33,7 @@ Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1"
 
 ### EXAMPLE 2
 ```
-Set-SnipeitAsset -id 1 -status_id 1 -model_id 1 -name "Machine1" -CustomValues = @{ "_snipeit_os_5 = "Windows 10 Pro" }
+Set-SnipeitAsset -id 1 -name "Machine1" -customfields =  @{ "_snipeit_os_5" = "Windows 10 Pro" ; "_snipeit_os_version" = "1909" }
 ```
 
 ### EXAMPLE 3
