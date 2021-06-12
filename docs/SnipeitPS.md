@@ -92,8 +92,35 @@ Add a new Model to Snipe-it asset system
 ### [New-SnipeitUser](New-SnipeitUser.md)
 Creates a new user
 
+### [Remove-SnipeitAccessory](Remove-SnipeitAccessory.md)
+Removes Accessory from Snipe-it asset system
+
 ### [Remove-SnipeitAsset](Remove-SnipeitAsset.md)
 Removes Asset from Snipe-it asset system
+
+### [Remove-SnipeitCompany](Remove-SnipeitCompany.md)
+Removes Company from Snipe-it asset system
+
+### [Remove-SnipeitComponent](Remove-SnipeitComponent.md)
+Removes component from Snipe-it asset system
+
+### [Remove-SnipeitCustomField](Remove-SnipeitCustomField.md)
+Removes custom field from Snipe-it asset system
+
+### [Remove-SnipeitDepartment](Remove-SnipeitDepartment.md)
+Removes department from Snipe-it asset system
+
+### [Remove-SnipeitLicense](Remove-SnipeitLicense.md)
+Removes licence from Snipe-it asset system
+
+### [Remove-SnipeitLocation](Remove-SnipeitLocation.md)
+Removes Location from Snipe-it asset system
+
+### [Remove-SnipeitManufacturer](Remove-SnipeitManufacturer.md)
+Removes manufacturer from Snipe-it asset system
+
+### [Remove-SnipeitModel](Remove-SnipeitModel.md)
+Removes Asset model from Snipe-it asset system
 
 ### [Remove-SnipeitUser](Remove-SnipeitUser.md)
 Removes User from Snipe-it asset system

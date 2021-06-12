@@ -12,7 +12,7 @@ Gets a list of Snipe-it Assets or specific asset
 
 ## SYNTAX
 
-### Search
+### Search (Default)
 ```
 Get-SnipeitAsset [-search <String>] [-order_number <String>] [-model_id <Int32>] [-category_id <Int32>]
  [-manufacturer_id <Int32>] [-company_id <Int32>] [-location_id <Int32>] [-depreciation_id <Int32>]
@@ -33,6 +33,18 @@ Get-SnipeitAsset [-asset_tag <String>] -url <String> -apiKey <String> [<CommonPa
 ### Get with serial
 ```
 Get-SnipeitAsset [-serial <String>] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Assets due auditing soon
+```
+Get-SnipeitAsset [-audit_due] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+ -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Assets overdue for auditing
+```
+Get-SnipeitAsset [-audit_overdue] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
+ -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +79,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Search
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
 Aliases:
 
 Required: False
@@ -103,6 +115,36 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -audit_due
+Retrieve a list of assets that are due for auditing soon.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Assets due auditing soon
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -audit_overdue
+Retrieve a list of assets that are overdue for auditing.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Assets overdue for auditing
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -174,7 +216,7 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: Search
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
 Aliases:
 
 Required: False
@@ -234,7 +276,7 @@ Offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: Search
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
 Aliases:
 
 Required: False
@@ -249,12 +291,12 @@ Specify the order (asc or desc) you wish to order by on your sort column
 
 ```yaml
 Type: String
-Parameter Sets: Search
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
 Aliases:
 
 Required: False
 Position: Named
-Default value: Desc
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -324,12 +366,12 @@ Specify the column name you wish to sort by
 
 ```yaml
 Type: String
-Parameter Sets: Search
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
 Aliases:
 
 Required: False
 Position: Named
-Default value: Created_at
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
