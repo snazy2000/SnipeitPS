@@ -2,8 +2,8 @@
     .SYNOPSIS
     Removes component from Snipe-it asset system
     .DESCRIPTION
-    Removes comoponent or multiple components from Snipe-it asset system
-    .PARAMETER ID
+    Removes component or multiple components from Snipe-it asset system
+    .PARAMETER IDs
     Unique ID For component to be removed
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
