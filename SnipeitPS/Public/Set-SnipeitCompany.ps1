@@ -53,7 +53,7 @@ function Set-SnipeitCompany()
     process{
         foreach($company_id in $id){
             $Parameters = @{
-                Uri    = "$url/api/v1/companies/$companyid"
+                Uri    = "$url/api/v1/companies/$company_id"
                 Method = 'Patch'
                 Body   = $Body
                 Token  = $apiKey
