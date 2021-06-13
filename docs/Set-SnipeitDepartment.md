@@ -5,31 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitUser
+# Set-SnipeitDepartment
 
 ## SYNOPSIS
-Removes User from Snipe-it asset system
+Updates a department
 
 ## SYNTAX
 
 ```
-Remove-SnipeitUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeitDepartment [-id] <Int32[]> [[-name] <String>] [[-company_id] <Int32>] [[-location_id] <Int32>]
+ [[-manager_id] <Int32>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes Uuser or users from Snipe-it asset system
+Updates the department on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
+Set-SnipeitDepartment -id 4  -manager_id 3
 ```
 
 ## PARAMETERS
 
-### -APIKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -37,28 +39,103 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-Unique ID For User to be removed
+### -company_id
+ID number of company
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+Id number of Department
+
+```yaml
+Type: Int32[]
+Parameter Sets: (All)
+Aliases:
+
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -URL
+### -location_id
+ID number of location
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manager_id
+ID number of manager
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Department Name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+{{ Fill notes Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
@@ -67,7 +144,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -5,25 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitUser
+# Remove-SnipeitDepartment
 
 ## SYNOPSIS
-Removes User from Snipe-it asset system
+Removes department from Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Remove-SnipeitUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-SnipeitDepartment [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes Uuser or users from Snipe-it asset system
+Removes department or multiple departments from Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
+Remove-SnipeitDepartment -ID 44 -Verbose
+```
+
+### EXAMPLE 2
+```
+Get-SnipeitDepartment | Where-object {$_.name -like '*head*'} | Remove-SnipeitDepartment
 ```
 
 ## PARAMETERS
@@ -44,16 +50,16 @@ Accept wildcard characters: False
 ```
 
 ### -id
-Unique ID For User to be removed
+Unique ID For department to be removed
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

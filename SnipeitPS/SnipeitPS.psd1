@@ -12,7 +12,7 @@
 RootModule = 'SnipeitPS'
 
 # Version number of this module.
-ModuleVersion = '1.5'
+ModuleVersion = '1.6'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -70,6 +70,9 @@ PowerShellVersion = '3.0'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
+        'Get-SnipeitAccessory',
+        'Get-SnipeitAccessoryOwner',
+        'Get-SnipeitActivity',
         'Get-SnipeitAsset',
         'Get-SnipeitAssetMaintenance',
         'Get-SnipeitCategory',
@@ -78,45 +81,59 @@ FunctionsToExport = @(
         'Get-SnipeitCustomField',
         'Get-SnipeitDepartment',
         'Get-SnipeitFieldset',
+        'Get-SnipeitLicense',
+        'Get-SnipeitLicenseSeat',
         'Get-SnipeitLocation',
         'Get-SnipeitManufacturer',
         'Get-SnipeitModel',
         'Get-SnipeitStatus',
         'Get-SnipeitSupplier',
         'Get-SnipeitUser',
+        'New-SnipeitAccessory',
         'New-SnipeitAsset',
         'New-SnipeitAssetMaintenance',
+        'New-SnipeItAudit',
         'New-SnipeitCategory',
         'New-SnipeitComponent',
         'New-SnipeitCustomField',
         'New-SnipeitDepartment',
         'New-SnipeitLicense',
-        'Set-SnipeitLicense',
-        'Get-SnipeitLicense',
-        'Get-SnipeitLicenseSeat',
-        'Set-SnipeitLicenseSeat',
         'New-SnipeitLocation',
         'New-SnipeitManufacturer',
         'New-SnipeitModel',
         'New-SnipeitUser',
+        'Remove-SnipeitAccessory',
+        'Remove-SnipeitAsset',
+        'Remove-SnipeitAssetMaintenance',
+        'Remove-SnipeitCategory',
+        'Remove-SnipeitCompany',
+        'Remove-SnipeitComponent',
+        'Remove-SnipeitCustomField',
+        'Remove-SnipeitDepartment',
+        'Remove-SnipeitLicense',
+        'Remove-SnipeitLocation',
+        'Remove-SnipeitManufacturer',
+        'Remove-SnipeitModel',
+        'Remove-SnipeitUser',
+        'Reset-SnipeitAccessoryOwner',
+        'Reset-SnipeitAssetOwner',
+        'Set-SnipeitAccessory',
+        'Set-SnipeitAccessoryOwner',
         'Set-SnipeitAsset',
         'Set-SnipeitAssetOwner',
+        'Set-SnipeitCategory'
+        'Set-SnipeitCompany'
         'Set-SnipeitComponent',
-        'Set-SnipeitModel',
+        'Set-SnipeitCustomField',
+        'Set-SnipeitDepartment',
         'Set-SnipeitInfo',
-        'Set-SnipeitUser',
+        'Set-SnipeitLicense',
+        'Set-SnipeitLicenseSeat',
         'Set-SnipeitLocation',
-        'Add-SnipeitAccessory',
-        'Set-SnipeitAccessory',
-        'Get-SnipeitAccessory',
-        'Remove-SnipeitAsset',
-        'Remove-SnipeitUser',
-        'Update-SnipeitAlias',
-        'Set-SnipeitAccessoryOwner',
-        'Get-SnipeitAccessoryOwner',
-        'Reset-SnipeitAccessoryOwner',
-        'Get-SnipeitActivity'
-
+        'Set-SnipeitModel',
+        'Set-SnipeitStatus',
+        'Set-SnipeitUser',
+        'Update-SnipeitAlias'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

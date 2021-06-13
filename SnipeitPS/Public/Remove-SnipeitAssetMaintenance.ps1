@@ -2,10 +2,13 @@ function Remove-SnipeitAssetMaintenance {
     <#
         .SYNOPSIS
         Remove asset maintenance from Snipe-it asset system
+
         .DESCRIPTION
-        Removes asset maintenance event from Snipe-it asset system by ID
+        Removes asset maintenance event or events from Snipe-it asset system by ID
+
         .PARAMETER ID
         Unique ID of the asset maintenance to be removed
+
         .PARAMETER url
         URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
@@ -21,8 +24,8 @@ function Remove-SnipeitAssetMaintenance {
     )]
     param (
         # Asset maintenance ID
-        [Parameter(Mandatory = $true)]
-        [int]
+        [Parameter(Mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]
         $id,
 
         # Snipeit URL
@@ -35,26 +38,24 @@ function Remove-SnipeitAssetMaintenance {
         [string]
         $apiKey
     )
-
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
-
-    $Values = @{
-        "ID"      = $id
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
     }
+    process {
+        foreach($maintenance_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/maintenances/$maintenance_id"
+                Method = 'Delete'
+                Body   = '{}'
+                Token  = $apiKey
+            }
 
-    $Body = $Values | ConvertTo-Json
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
 
-    $Parameters = @{
-        Uri    = "$url/api/v1/maintenances/$ID"
-        Method = 'Delete'
-        Body   = $Body
-        Token  = $apiKey
+            $result
+        }
     }
-
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }

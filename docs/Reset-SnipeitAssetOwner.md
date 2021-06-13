@@ -5,19 +5,20 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitUser
+# Reset-SnipeitAssetOwner
 
 ## SYNOPSIS
-Removes User from Snipe-it asset system
+Checkin asset
 
 ## SYNTAX
 
 ```
-Remove-SnipeitUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Reset-SnipeitAssetOwner [-id] <Int32> [[-status_id] <Int32>] [[-location_id] <Int32>] [[-notes] <String>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes Uuser or users from Snipe-it asset system
+Checks asset in from current user/localtion/asset
 
 ## EXAMPLES
 
@@ -28,8 +29,8 @@ Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
 
 ## PARAMETERS
 
-### -APIKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -apiKey
+User's API Key for Snipeit, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String
@@ -37,14 +38,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-Unique ID For User to be removed
+Unique ID For asset to checkin
 
 ```yaml
 Type: Int32
@@ -54,12 +55,57 @@ Aliases:
 Required: True
 Position: 1
 Default value: 0
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -URL
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+### -location_id
+Location id to change asset location to
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+Notes about checkin
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -status_id
+Change asset status to
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String
@@ -67,7 +113,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

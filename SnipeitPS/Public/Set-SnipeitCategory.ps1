@@ -8,29 +8,29 @@ Name of new category to be created
 .PARAMETER type
 Type of new category to be created (asset, accessory, consumable, component, license)
 
-.PARAMETER eula_text
-This allows you to customize your EULAs for specific types of assets
-
-.PARAMETER use_default_eula
-If switch is present, use the primary default EULA
-
-.PARAMETER require_acceptance
-If switch is present, require users to confirm acceptance of assets in this category
-
-.PARAMETER checkin_email
-If switch is present, send email to user on checkin/checkout
-
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 .PARAMETER apiKey
 User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
+.PARAMETER use_default_eula
+If switch is present, use the primary default EULA
+
+.PARAMETER eula_text
+This allows you to customize your EULAs for specific types of assets
+
+.PARAMETER require_acceptance
+If switch is present, require users to confirm acceptance of assets in this category
+
+.PARAMETER checkin_email
+Should the user be emailed the EULA and/or an acceptance confirmation email when this item is checked in?
+
 .EXAMPLE
-New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+Set-SnipeitCategory -id 4 -name "Laptops"
 #>
 
-function New-SnipeitCategory()
+function Set-SnipeitCategory()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -39,20 +39,21 @@ function New-SnipeitCategory()
 
     Param(
         [parameter(mandatory = $true)]
+        [int[]]$id,
+
         [string]$name,
 
-        [parameter(mandatory = $true)]
         [ValidateSet("asset", "accessory", "consumable", "component", "license")]
         [string]$category_type,
 
         [string]$eula_text,
 
+        [bool]$use_default_eula,
 
-        [switch]$use_default_eula,
+        [bool]$require_acceptance,
 
-        [switch]$require_acceptance,
+        [bool]$checkin_email,
 
-        [switch]$checkin_email,
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -60,12 +61,9 @@ function New-SnipeitCategory()
         [string]$apiKey
 
     )
+
     begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
-
-        if($eula_text -and $use_default_eula){
-            throw 'Dont use -use_defalt_eula if -eula_text is set'
-        }
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
@@ -73,19 +71,20 @@ function New-SnipeitCategory()
     }
 
     process {
+        foreach($category_id in $id){
+            $Parameters = @{
+                Uri    = "$url/api/v1/categories/$category_id"
+                Method = 'Put'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-        $Parameters = @{
-            Uri    = "$url/api/v1/categories"
-            Method = 'POST'
-            Body   = $Body
-            Token  = $apiKey
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
         }
-
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-        {
-            $result = Invoke-SnipeitMethod @Parameters
-        }
-
-        $result
     }
 }

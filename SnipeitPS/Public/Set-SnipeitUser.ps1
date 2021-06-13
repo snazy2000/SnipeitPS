@@ -80,12 +80,9 @@ function Set-SnipeitUser() {
 
         [string]$userName,
 
-
         [string]$jobtitle,
 
-
         [string]$email,
-
 
         [string]$phone,
 
@@ -97,11 +94,9 @@ function Set-SnipeitUser() {
 
         [int]$manager_id,
 
-
         [string]$employee_num,
 
         [bool]$activated,
-
 
         [string]$notes,
 

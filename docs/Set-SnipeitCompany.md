@@ -5,30 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitUser
+# Set-SnipeitCompany
 
 ## SYNOPSIS
-Removes User from Snipe-it asset system
+Updates company name
 
 ## SYNTAX
 
 ```
-Remove-SnipeitUser [-id] <Int32> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeitCompany [-id] <Int32[]> [-name] <String> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes Uuser or users from Snipe-it asset system
+Updates companyt name on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
+An example
 ```
 
 ## PARAMETERS
 
-### -APIKey
+### -apiKey
 User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
@@ -37,29 +38,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-Unique ID For User to be removed
+ID number of company
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -URL
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+### -name
+Company name
 
 ```yaml
 Type: String
@@ -68,6 +69,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,5 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+General notes
 
 ## RELATED LINKS

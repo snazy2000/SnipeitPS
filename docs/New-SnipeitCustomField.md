@@ -13,9 +13,9 @@ Add a new Custom Field to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeitCustomField [-Name] <String> [[-HelpText] <String>] [[-Element] <String>] [[-Format] <String>]
- [[-field_encrypted] <Boolean>] [[-CustomFormat] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-SnipeitCustomField [-name] <String> [[-help_text] <String>] [-element] <String> [-format] <String>
+ [[-field_values] <String>] [[-field_encrypted] <Boolean>] [[-show_in_email] <Boolean>]
+ [[-custom_format] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,44 +39,45 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -custom_format
+In the case of format 'CUSTOM REGEX', this should be validation regex this field
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CustomFormat
-{{ Fill CustomFormat Description }}
+### -element
+Form field type that should be displayed.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 6
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Element
-{{ Fill Element Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: Text
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -field_encrypted
-{{ Fill field_encrypted Description }}
+Whether the field should be encrypted.
+(This can cause issues if you change it after the field was created.)
 
 ```yaml
 Type: Boolean
@@ -84,14 +85,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 6
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Format
-{{ Fill Format Description }}
+### -field_values
+In the case of list boxes, etc, this should be a list of the options available
 
 ```yaml
 Type: String
@@ -99,14 +100,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: ANY
+Position: 5
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HelpText
-{{ Fill HelpText Description }}
+### -format
+How the field should be validated
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -help_text
+Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
 
 ```yaml
 Type: String
@@ -120,8 +136,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the Custom Field
+### -name
+The field's name, which is also the form label
 
 ```yaml
 Type: String
@@ -135,6 +151,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -show_in_email
+Whether or not to show the custom field in email notifications
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -144,7 +175,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

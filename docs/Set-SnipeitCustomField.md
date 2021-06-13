@@ -5,33 +5,33 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeitCategory
+# Set-SnipeitCustomField
 
 ## SYNOPSIS
-Create a new Snipe-IT Category
+Add a new Custom Field to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-SnipeitCategory [-name] <String> [-category_type] <String> [[-eula_text] <String>] [-use_default_eula]
- [-require_acceptance] [-checkin_email] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-SnipeitCustomField [-id] <Int32[]> [[-name] <String>] [[-help_text] <String>] [-element] <String>
+ [[-format] <String>] [[-field_values] <String>] [[-field_encrypted] <Boolean>] [[-show_in_email] <Boolean>]
+ [[-custom_format] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Add a new Custom Field to Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -39,44 +39,90 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -custom_format
+In the case of format 'CUSTOM REGEX', this should be validation regex this field
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -element
+Form field type that should be displayed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -field_encrypted
+Whether the field should be encrypted.
+(This can cause issues if you change it after the field was created.)
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -field_values
+In the case of list boxes, etc, this should be a list of the options available
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -format
+How the field should be validated
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -category_type
-{{ Fill category_type Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -checkin_email
-If switch is present, send email to user on checkin/checkout
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -eula_text
-This allows you to customize your EULAs for specific types of assets
+### -help_text
+Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
 
 ```yaml
 Type: String
@@ -90,31 +136,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of new category to be created
+### -id
+{{ Fill id Description }}
 
 ```yaml
-Type: String
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -require_acceptance
-If switch is present, require users to confirm acceptance of assets in this category
+### -name
+The field's name, which is also the form label
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -show_in_email
+Whether or not to show the custom field in email notifications
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,23 +190,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 10
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -use_default_eula
-If switch is present, use the primary default EULA
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

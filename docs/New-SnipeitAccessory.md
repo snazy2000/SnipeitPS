@@ -5,42 +5,28 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeitAsset
+# New-SnipeitAccessory
 
 ## SYNOPSIS
-Add a new Asset to Snipe-it asset system
+Creates new accessory on Snipe-It system
 
 ## SYNTAX
 
 ```
-New-SnipeitAsset [-status_id] <Int32> [-model_id] <Int32> [[-name] <String>] [[-asset_tag] <String>]
- [[-serial] <String>] [[-company_id] <Int32>] [[-order_number] <String>] [[-notes] <String>]
- [[-warranty_months] <Int32>] [[-purchase_cost] <String>] [[-purchase_date] <DateTime>]
- [[-supplier_id] <Int32>] [[-rtd_location_id] <Int32>] [-url] <String> [-apiKey] <String>
- [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeitAccessory [-name] <String> [-qty] <Int32> [-category_id] <Int32> [[-company_id] <Int32>]
+ [[-manufacturer_id] <Int32>] [[-order_number] <String>] [[-purchase_cost] <Single>]
+ [[-purchase_date] <DateTime>] [[-min_qty] <Int32>] [[-supplier_id] <Int32>] [[-location_id] <Int32>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Long description
+Creates new accessory on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1"
-Create asset with automatic tag if tag genaration is enabled on snipe-it, other wise without tag
-```
-
-### EXAMPLE 2
-```
-New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -asset_tag "DEV123"
-Specifying asset tag when creating asset
-```
-
-### EXAMPLE 3
-```
-New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -customfields = @{ "_snipeit_os_5" = "Windows 10 Pro" }
-Using customfields when creating asset.
+New-SnipeitAccessory -name "Accessory" -qty 3  -category_id 1
 ```
 
 ## PARAMETERS
@@ -54,29 +40,29 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 15
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -asset_tag
-Asset Tag for the Asset, not required when snipe asset_tag autogeneration is on.
+### -category_id
+ID number of the category the accessory belongs to
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
-Aliases: tag
+Aliases:
 
-Required: False
-Position: 4
-Default value: None
+Required: True
+Position: 3
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -company_id
-Optional Company id
+ID Number of the company the accessory is assigned to
 
 ```yaml
 Type: Int32
@@ -84,30 +70,119 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -customfields
-Hastable of custom fields and extra fields that need passing through to Snipeit.
-Use internal field names from snipeit .You can use Get-CustomField to get internal field names.
+### -location_id
+ID number of the location the accessory is assigned to
 
 ```yaml
-Type: Hashtable
+Type: Int32
 Parameter Sets: (All)
-Aliases: CustomValues
+Aliases:
 
 Required: False
-Position: 16
+Position: 11
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manufacturer_id
+ID number of the manufacturer for this accessory.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -min_qty
+Min quantity of the accessory before alert is triggered
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Accessory name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -model_id
-Required Model ID of the asset, this can be got using Get-Model
+### -order_number
+Order number for this accessory.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_cost
+Cost of item being purchased.
+
+```yaml
+Type: Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_date
+Date accessory was purchased
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -qty
+Quantity of the accessory you have
 
 ```yaml
 Type: Int32
@@ -121,136 +196,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Optional Name of the Asset
+### -supplier_id
+ID number of the supplier for this accessory
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -notes
-Optional Notes
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -order_number
-Optional Order number
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_cost
-Optional Purchase cost of the Asset
-
-```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 10
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_date
-Optional Purchase cost of the Asset
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -rtd_location_id
-Optional Default location id for the asset
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 13
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -serial
-Optional Serial number of the Asset
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -status_id
-Required Status ID of the asset, this can be got using Get-Status
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -supplier_id
-{{ Fill supplier_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 12
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -265,23 +220,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 14
+Position: 12
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -warranty_months
-{{ Fill warranty_months Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

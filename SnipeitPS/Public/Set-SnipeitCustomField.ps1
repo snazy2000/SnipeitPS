@@ -39,7 +39,7 @@
     New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 #>
 
-function New-SnipeitCustomField()
+function Set-SnipeitCustomField()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -47,24 +47,25 @@ function New-SnipeitCustomField()
     )]
 
     Param(
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
+
         [string]$name,
 
         [string]$help_text,
 
-        [parameter(mandatory = $true)]
+        [parameter(Mandatory=$true)]
         [ValidateSet('text','textarea','listbox','checkbox','radio')]
         [string]$element ,
 
-        [parameter(mandatory = $true)]
         [ValidateSet('ANY','CUSTOM REGEX','ALPHA','ALPHA-DASH','NUMERIC','ALPHA-NUMERIC','EMAIL','DATE','URL','IP','IPV4','IPV6','MAC','BOOLEAN')]
         [string]$format,
 
         [string]$field_values,
 
-        [bool]$field_encrypted=$false,
+        [bool]$field_encrypted,
 
-        [bool]$show_in_email=$false,
+        [bool]$show_in_email,
 
         [string]$custom_format,
 
@@ -74,7 +75,6 @@ function New-SnipeitCustomField()
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
-
     begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
         if ($format -eq 'CUSTOM REGEX' -and (-not $custom_format)) {
@@ -85,21 +85,24 @@ function New-SnipeitCustomField()
 
         $Body = $Values | ConvertTo-Json;
 
-        $Parameters = @{
-            Uri    = "$url/api/v1/fields"
-            Method = 'post'
-            Body   = $Body
-            Token  = $apiKey
-        }
     }
 
     process{
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-        {
-            $result = Invoke-SnipeitMethod @Parameters
-        }
+        foreach($field_id in $id) {
+            $Parameters = @{
+                Uri    = "$url/api/v1/fields/$field_id"
+                Method = 'Put'
+                Body   = $Body
+                Token  = $apiKey
+            }
 
-        $result
+            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+            {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
+        }
     }
 }
 
