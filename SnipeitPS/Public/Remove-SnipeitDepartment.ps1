@@ -37,7 +37,7 @@ function Remove-SnipeitDepartment ()
     begin {
     }
     process {
-        foreach($depatment_id in $id){
+        foreach($department_id in $id){
             $Parameters = @{
                 Uri    = "$url/api/v1/departments/$department_id"
                 Method = 'Delete'
