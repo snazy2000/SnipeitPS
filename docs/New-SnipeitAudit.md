@@ -5,37 +5,77 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitComponent
+# New-SnipeitAudit
 
 ## SYNOPSIS
-Removes component from Snipe-it asset system
+Add a new Audit to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Remove-SnipeitComponent [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-SnipeitAudit [-tag] <String> [[-location_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes component or multiple components from Snipe-it asset system
+Long description
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitComponent -ID 44 -Verbose
-```
-
-### EXAMPLE 2
-```
-Get-SnipeitComponent -search 123456789  | Remove-SnipeitComponent
+New-SnipeitAudit -tag 1 -location_id 1
 ```
 
 ## PARAMETERS
 
-### -APIKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -apiKey
+{{ Fill apiKey Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -location_id
+ID of the location you want to associate with the audit
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -tag
+The asset tag of the asset you wish to audit
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+{{ Fill url Description }}
 
 ```yaml
 Type: String
@@ -44,36 +84,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-{{ Fill id Description }}
-
-```yaml
-Type: Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -URL
-URL of Snipeit system, can be set using Set-SnipeitInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

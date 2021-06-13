@@ -29,7 +29,7 @@ Remove-SnipeitCompany -ID 44 -Verbose
 
 ### EXAMPLE 2
 ```
-Get-SnipeitCompany -search  "some corp"  | Remove-SnipeitCompany
+Get-SnipeitCompany | | Where-object {$_.name -like '*some*'} | Remove-SnipeitCompany
 ```
 
 ## PARAMETERS

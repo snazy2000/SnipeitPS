@@ -5,31 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitComponent
+# Remove-SnipeitCategory
 
 ## SYNOPSIS
-Removes component from Snipe-it asset system
+Removes category from Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Remove-SnipeitComponent [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
+Remove-SnipeitCategory [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes component or multiple components from Snipe-it asset system
+Removes category or multiple categories from Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitComponent -ID 44 -Verbose
+Remove-SnipeitCategory -ID 44 -Verbose
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitComponent -search 123456789  | Remove-SnipeitComponent
+Get-SnipeitCategory -search something  | Remove-SnipeitCategory
 ```
 
 ## PARAMETERS
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-{{ Fill id Description }}
+Unique ID For categoryto be removed
 
 ```yaml
 Type: Int32[]

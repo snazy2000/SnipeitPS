@@ -5,36 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitComponent
+# Remove-SnipeitAssetMaintenance
 
 ## SYNOPSIS
-Removes component from Snipe-it asset system
+Remove asset maintenance from Snipe-it asset system
 
 ## SYNTAX
 
 ```
-Remove-SnipeitComponent [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
+Remove-SnipeitAssetMaintenance [-id] <Int32[]> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes component or multiple components from Snipe-it asset system
+Removes asset maintenance event or events from Snipe-it asset system by ID
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitComponent -ID 44 -Verbose
-```
-
-### EXAMPLE 2
-```
-Get-SnipeitComponent -search 123456789  | Remove-SnipeitComponent
+Remove-SnipeitAssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
 ```
 
 ## PARAMETERS
 
-### -APIKey
+### -apiKey
 User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
@@ -50,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -id
-{{ Fill id Description }}
+Unique ID of the asset maintenance to be removed
 
 ```yaml
 Type: Int32[]
@@ -64,8 +59,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -URL
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+### -url
+URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
 ```yaml
 Type: String

@@ -29,7 +29,7 @@ Remove-SnipeitDepartment -ID 44 -Verbose
 
 ### EXAMPLE 2
 ```
-Get-SnipeitDepartment -search head  | Remove-SnipeitDepartment
+Get-SnipeitDepartment | Where-object {$_.name -like '*head*'} | Remove-SnipeitDepartment
 ```
 
 ## PARAMETERS
