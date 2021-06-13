@@ -28,6 +28,7 @@ Set-SnipeitInfo -URL 'https://asset.example.com' -apiKey 'tokenKey'
 
 ```powershell
 # Review the help at any time!
+Get-Help about_SnipeitPS
 Get-Command -Module SnipeitPS
 Get-Help Get-SnipeitAsset -Full   # or any other command
 ```
