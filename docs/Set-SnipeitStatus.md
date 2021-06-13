@@ -5,17 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeitCategory
+# Set-SnipeitStatus
 
 ## SYNOPSIS
-Create a new Snipe-IT Category
+Sets  Snipe-it Status Labels
 
 ## SYNTAX
 
 ```
-New-SnipeitCategory [-name] <String> [-category_type] <String> [[-eula_text] <String>] [-use_default_eula]
- [-require_acceptance] [-checkin_email] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-SnipeitStatus [-id] <Int32[]> [[-name] <String>] [-type] <String> [[-notes] <String>] [[-color] <String>]
+ [[-show_in_nav] <Boolean>] [[-default_label] <Boolean>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,13 +25,18 @@ New-SnipeitCategory [-name] <String> [-category_type] <String> [[-eula_text] <St
 
 ### EXAMPLE 1
 ```
-New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+Get-SnipeitStatus -search  "Ready to Deploy"
+```
+
+### EXAMPLE 2
+```
+Set-SnipeitStatus -id 3 -name 'Waiting for arrival' -type pending
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -39,83 +44,113 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -color
+Hex code showing what color the status label should be on the pie chart in the dashboard
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -category_type
-{{ Fill category_type Description }}
+### -default_label
+1 or 0 - determine whether it should be bubbled up to the top of the list of available statuses
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -checkin_email
-If switch is present, send email to user on checkin/checkout
-
-```yaml
-Type: SwitchParameter
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 7
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -eula_text
-This allows you to customize your EULAs for specific types of assets
+### -id
+A id of specific Status Label
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Name of new category to be created
-
-```yaml
-Type: String
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -require_acceptance
-If switch is present, require users to confirm acceptance of assets in this category
+### -name
+{{ Fill name Description }}
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+{{ Fill notes Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -show_in_nav
+1 or 0 - determine whether the status label should show in the left-side nav of the web GUI
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
 Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -type
+{{ Fill type Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -129,23 +164,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 8
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -use_default_eula
-If switch is present, use the primary default EULA
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

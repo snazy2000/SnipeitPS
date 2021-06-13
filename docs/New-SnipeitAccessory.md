@@ -5,27 +5,28 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeitCustomField
+# New-SnipeitAccessory
 
 ## SYNOPSIS
-Add a new Custom Field to Snipe-it asset system
+Creates new accessory on Snipe-It system
 
 ## SYNTAX
 
 ```
-New-SnipeitCustomField [-name] <String> [[-help_text] <String>] [-element] <String> [-format] <String>
- [[-field_values] <String>] [[-field_encrypted] <Boolean>] [[-show_in_email] <Boolean>]
- [[-custom_format] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeitAccessory [-name] <String> [-qty] <Int32> [-category_id] <Int32> [[-company_id] <Int32>]
+ [[-manufacturer_id] <Int32>] [[-order_number] <String>] [[-purchase_cost] <Single>]
+ [[-purchase_date] <DateTime>] [[-min_qty] <Int32>] [[-supplier_id] <Int32>] [[-location_id] <Int32>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add a new Custom Field to Snipe-it asset system
+Creates new accessory on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
+New-SnipeitAccessory -name "Accessory" -qty 3  -category_id 1
 ```
 
 ## PARAMETERS
@@ -39,105 +40,89 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -custom_format
-In the case of format 'CUSTOM REGEX', this should be validation regex this field
+### -category_id
+ID number of the category the accessory belongs to
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -element
-Form field type that should be displayed.
-
-```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 3
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -field_encrypted
-Whether the field should be encrypted.
-(This can cause issues if you change it after the field was created.)
+### -company_id
+ID Number of the company the accessory is assigned to
 
 ```yaml
-Type: Boolean
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
-Default value: False
+Position: 4
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -field_values
-In the case of list boxes, etc, this should be a list of the options available
+### -location_id
+ID number of the location the accessory is assigned to
 
 ```yaml
-Type: String
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -manufacturer_id
+ID number of the manufacturer for this accessory.
+
+```yaml
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 5
-Default value: None
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -format
-How the field should be validated
+### -min_qty
+Min quantity of the accessory before alert is triggered
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -help_text
-Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
-
-```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
+Position: 9
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -name
-The field's name, which is also the form label
+Accessory name
 
 ```yaml
 Type: String
@@ -151,17 +136,77 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -show_in_email
-Whether or not to show the custom field in email notifications
+### -order_number
+Order number for this accessory.
 
 ```yaml
-Type: Boolean
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_cost
+Cost of item being purchased.
+
+```yaml
+Type: Single
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 7
-Default value: False
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -purchase_date
+Date accessory was purchased
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -qty
+Quantity of the accessory you have
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -supplier_id
+ID number of the supplier for this accessory
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -175,7 +220,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

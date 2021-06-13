@@ -5,36 +5,31 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SnipeitComponent
+# Set-SnipeitCompany
 
 ## SYNOPSIS
-Removes component from Snipe-it asset system
+Updates company name
 
 ## SYNTAX
 
 ```
-Remove-SnipeitComponent [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
+Set-SnipeitCompany [-id] <Int32[]> [-name] <String> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes component or multiple components from Snipe-it asset system
+Updates companyt name on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitComponent -ID 44 -Verbose
-```
-
-### EXAMPLE 2
-```
-Get-SnipeitComponent -search 123456789  | Remove-SnipeitComponent
+An example
 ```
 
 ## PARAMETERS
 
-### -APIKey
+### -apiKey
 User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
@@ -43,14 +38,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -id
-{{ Fill id Description }}
+ID number of company
 
 ```yaml
 Type: Int32[]
@@ -64,8 +59,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -URL
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+### -name
+Company name
 
 ```yaml
 Type: String
@@ -74,6 +69,21 @@ Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -url
+URL of Snipeit system, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -118,5 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
+General notes
 
 ## RELATED LINKS

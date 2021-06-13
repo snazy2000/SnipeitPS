@@ -29,7 +29,7 @@ Remove-SnipeitManufacturer -ID 44 -Verbose
 
 ### EXAMPLE 2
 ```
-Get-SnipeitManufacturer -search needle  | Remove-SnipeitManufacturer
+Get-SnipeitManufacturer | Where-object {$_.name -like '*something*'}  | Remove-SnipeitManufacturer
 ```
 
 ## PARAMETERS

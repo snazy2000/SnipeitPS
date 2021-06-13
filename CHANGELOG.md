@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v.1.6.x]
+
+## Remove more things ja set some more
+
+### New features
+Added some set and remove functions. Pipelineinput supported
+for all remove functions.
+
+### New functions
+ - Remove-SnipeitAccessory
+ - Remove-SnipeitCategory
+ - Remove-SnipeitCompany
+ - Remove-SnipeitComponent
+ - Remove-SnipeitCustomField
+ - Remove-SnipeitDepartment
+ - Remove-SnipeitLicense
+ - Remove-SnipeitLocation
+ - Remove-SnipeitManufacturer
+ - Remove-SnipeitModel
+ - Set-SnipeitCategory
+ - Set-SnipeitCompany
+ - Set-SnipeitCustomField
+ - Set-SnipeitDepartment
+ - Set-SnipeitStatus
+
+
 # [v1.5.x] - 2021-06-08
 
 ## Piping input
