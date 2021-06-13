@@ -129,6 +129,7 @@ function Set-SnipeitLicense() {
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+
     begin{
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
@@ -148,6 +149,7 @@ function Set-SnipeitLicense() {
 
         $Body = $Values | ConvertTo-Json;
     }
+
     process {
         foreach($license_id in $id){
             $Parameters = @{
