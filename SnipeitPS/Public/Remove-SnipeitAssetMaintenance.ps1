@@ -2,10 +2,13 @@ function Remove-SnipeitAssetMaintenance {
     <#
         .SYNOPSIS
         Remove asset maintenance from Snipe-it asset system
+
         .DESCRIPTION
         Removes asset maintenance event or events from Snipe-it asset system by ID
+
         .PARAMETER ID
         Unique ID of the asset maintenance to be removed
+
         .PARAMETER url
         URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
