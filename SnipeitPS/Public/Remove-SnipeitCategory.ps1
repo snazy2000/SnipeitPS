@@ -18,7 +18,7 @@
     Get-SnipeitCategory -search something  | Remove-SnipeitCategory
 #>
 
-function Remove-SnipeitModel ()
+function Remove-SnipeitCategory ()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,

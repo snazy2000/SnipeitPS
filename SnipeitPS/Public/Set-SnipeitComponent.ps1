@@ -49,8 +49,8 @@ function Set-SnipeitComponent()
     )]
 
     Param(
-        [parameter(mandatory = $true)]
-        [int]$id,
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
         [parameter(mandatory = $true)]
         [int]$qty,
@@ -74,28 +74,33 @@ function Set-SnipeitComponent()
         [parameter(mandatory = $true)]
         [string]$apiKey
     )
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        if ($values['purchase_date']) {
+            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        }
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        $Body = $values | ConvertTo-Json;
     }
 
-    $Body = $values | ConvertTo-Json;
+    process {
+        foreach($component_id in $id){
+        $Parameters = @{
+            Uri    = "$url/api/v1/components/$component_id"
+            Method = 'Patch'
+            Body   = $Body
+            Token  = $apiKey
+        }
 
-    $Parameters = @{
-        Uri    = "$url/api/v1/components/$id"
-        Method = 'Patch'
-        Body   = $Body
-        Token  = $apiKey
+        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
+        {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
+
+        $result
+        }
     }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }
