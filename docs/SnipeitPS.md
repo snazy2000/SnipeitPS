@@ -35,6 +35,9 @@ Gets a list of Snipe-it Companies
 ### [Get-SnipeitComponent](Get-SnipeitComponent.md)
 Gets a list of Snipe-it Components
 
+### [Get-SnipeitConsumable](Get-SnipeitConsumable.md)
+Gets a list of Snipe-it consumables
+
 ### [Get-SnipeitCustomField](Get-SnipeitCustomField.md)
 Returns specific Snipe-IT custom field or a list of all custom field
 
@@ -74,8 +77,14 @@ Add a new Audit to Snipe-it asset system
 ### [New-SnipeitCategory](New-SnipeitCategory.md)
 Create a new Snipe-IT Category
 
+### [New-SnipeitCompany](New-SnipeitCompany.md)
+Creates a new Company
+
 ### [New-SnipeitComponent](New-SnipeitComponent.md)
 Create a new component
+
+### [New-SnipeitConsumable](New-SnipeitConsumable.md)
+Add a new Consumable to Snipe-it asset system
 
 ### [New-SnipeitCustomField](New-SnipeitCustomField.md)
 Add a new Custom Field to Snipe-it asset system
@@ -115,6 +124,9 @@ Removes Company from Snipe-it asset system
 
 ### [Remove-SnipeitComponent](Remove-SnipeitComponent.md)
 Removes component from Snipe-it asset system
+
+### [Remove-SnipeitConsumable](Remove-SnipeitConsumable.md)
+Removes consumable from Snipe-it asset system
 
 ### [Remove-SnipeitCustomField](Remove-SnipeitCustomField.md)
 Removes custom field from Snipe-it asset system
@@ -163,6 +175,9 @@ Updates company name
 
 ### [Set-SnipeitComponent](Set-SnipeitComponent.md)
 Updates component
+
+### [Set-SnipeitConsumable](Set-SnipeitConsumable.md)
+Add a new Consumable to Snipe-it asset system
 
 ### [Set-SnipeitCustomField](Set-SnipeitCustomField.md)
 Add a new Custom Field to Snipe-it asset system
