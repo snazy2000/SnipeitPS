@@ -94,6 +94,7 @@ FunctionsToExport = @(
         'New-SnipeitAssetMaintenance',
         'New-SnipeItAudit',
         'New-SnipeitCategory',
+        'New-SnipeitCompany',
         'New-SnipeitComponent',
         'New-SnipeitCustomField',
         'New-SnipeitDepartment',
