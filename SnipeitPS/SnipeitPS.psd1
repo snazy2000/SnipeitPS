@@ -12,7 +12,7 @@
 RootModule = 'SnipeitPS'
 
 # Version number of this module.
-ModuleVersion = '1.6'
+ModuleVersion = '1.7'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -78,6 +78,7 @@ FunctionsToExport = @(
         'Get-SnipeitCategory',
         'Get-SnipeitCompany',
         'Get-SnipeitComponent',
+        'Get-SnipeitConsumable',
         'Get-SnipeitCustomField',
         'Get-SnipeitDepartment',
         'Get-SnipeitFieldset',
@@ -94,7 +95,9 @@ FunctionsToExport = @(
         'New-SnipeitAssetMaintenance',
         'New-SnipeItAudit',
         'New-SnipeitCategory',
+        'New-SnipeitCompany',
         'New-SnipeitComponent',
+        'New-SnipeitConsumable',
         'New-SnipeitCustomField',
         'New-SnipeitDepartment',
         'New-SnipeitLicense',
@@ -108,6 +111,7 @@ FunctionsToExport = @(
         'Remove-SnipeitCategory',
         'Remove-SnipeitCompany',
         'Remove-SnipeitComponent',
+        'Remove-SnipeitConsumable',
         'Remove-SnipeitCustomField',
         'Remove-SnipeitDepartment',
         'Remove-SnipeitLicense',
@@ -124,6 +128,7 @@ FunctionsToExport = @(
         'Set-SnipeitCategory'
         'Set-SnipeitCompany'
         'Set-SnipeitComponent',
+        'Set-SnipeitConsumable',
         'Set-SnipeitCustomField',
         'Set-SnipeitDepartment',
         'Set-SnipeitInfo',

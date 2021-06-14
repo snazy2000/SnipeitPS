@@ -5,7 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-# [v.1.6.x]
+# [v.1.7.x] - 2021-06-14
+
+## Consumables
+
+## New features
+Added support for consumables
+
+## New functions
+- New-SnipeitConsumable
+- Get-SnipeitConsumable
+- Set-SnipeitConsumable
+- Remove-SnipeitConsumable
+
+
+# [v.1.6.x] - 2021-06-14
 
 ## Remove more things ja set some more
 
