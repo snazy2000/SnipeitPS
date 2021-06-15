@@ -191,7 +191,9 @@ task Deploy -If (
     (-not ($env:APPVEYOR_PULL_REQUEST_NUMBER)) -and
     # Do not deploy if the commit contains the string "skip-deploy"
     # Meant for major/minor version publishes with a .0 build/patch version (like 2.1.0)
-    $env:APPVEYOR_REPO_COMMIT_MESSAGE -notlike '*skip-deploy*'
+    $env:APPVEYOR_REPO_COMMIT_MESSAGE -notlike '*skip-deploy*' -and
+    # publish from one powershell version is enought
+    $env:PShell -eq '5'
 ) {
     Remove-Module SnipeitPS -ErrorAction SilentlyContinue
 }, PublishToGallery
