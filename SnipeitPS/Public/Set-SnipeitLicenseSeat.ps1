@@ -46,9 +46,9 @@ function Set-SnipeitLicenseSeat()
         [int]$seat_id,
 
         [Alias('assigned_id')]
-        [int]$assigned_to,
+        [Nullable[System.Int32]]$assigned_to,
 
-        [int]$asset_id,
+        [Nullable[System.Int32]]$asset_id,
 
         [string]$note,
 
