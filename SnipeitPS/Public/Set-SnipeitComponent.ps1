@@ -17,6 +17,9 @@ ID number of category
 .PARAMETER qty
 Quantity of the components you have
 
+.PARAMETER min_amt
+Minimum Quantity of the components before alert is triggered
+
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
 
@@ -54,6 +57,8 @@ function Set-SnipeitComponent()
 
         [parameter(mandatory = $true)]
         [int]$qty,
+
+        [int]$min_amt,
 
         [string]$name,
 
