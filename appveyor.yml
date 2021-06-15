@@ -7,12 +7,15 @@
 #
 ############################################################
 
-# This tells AppVeyor that we need WMF 5 and PowerShell 5.0
-os: WMF 5
+# powershell core and 5.1
+image:
+    - Visual Studio 2017
+    - Visual Studio 2019
 
 environment:
   PSGalleryAPIKey:
     secure: UdM6qhf5B0G8liHhUrwWERCZr44iSqmg4jUq0lwlTjZs4KyeoiwnBzdej0phqIAm
+  PShell: '5'
 
 version: 1.7.{build}
 
@@ -53,14 +56,39 @@ before_build:
 build_script:
     - ps: Invoke-Build -Task Build
 
-# after_build:
-    # - cmd: mdspell %releasePath%\**/*.md --ignore-numbers --ignore-acronyms --report
-
 test_script:
     - ps: Invoke-Build -Task Test
 
 before_deploy:
     - ps: Invoke-Build -Task Deploy
+
+#Build with powershell core
+for:
+  -
+    matrix:
+      only:
+        - image: Visual Studio 2019
+    environment:
+      PShell: '7'
+    install:
+      - pwsh: |
+          Install-Module InvokeBuild -Scope CurrentUser -Force
+          Install-Module BuildHelpers -Scope CurrentUser -Force
+          Install-Module platyPS -Scope CurrentUser -Force
+          Install-Module Pester -Scope CurrentUser -Force
+          Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+          $env:releasePath = "$($pwd.Path)\Release"
+    before_build:
+      - pwsh: Invoke-Build -Task ShowDebug
+    build_script:
+      - pwsh: Invoke-Build -Task Build
+
+    test_script:
+      - pwsh: Invoke-Build -Task Test
+
+    before_deploy:
+      - pwsh: Invoke-Build -Task Deploy
+
 
 deploy:
     provider: GitHub

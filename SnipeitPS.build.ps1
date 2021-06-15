@@ -88,15 +88,14 @@ task GitStatus -If (Test-Path .git) {
     }
 }
 
-task TestVersions TestPS3, TestPS4, TestPS4, TestPS5
-task TestPS3 {
-    exec {powershell.exe -Version 3 -NoProfile Invoke-Build PesterTests}
-}
-task TestPS4 {
-    exec {powershell.exe -Version 4 -NoProfile Invoke-Build PesterTests}
-}
-task TestPS5 {
-    exec {powershell.exe -Version 5 -NoProfile Invoke-Build PesterTests}
+task TestVersions TestPS
+
+task TestPS {
+    if($env:PShell -eq '7') {
+        exec {pwsh.exe -NoProfile Invoke-Build PesterTests}
+    }else {
+        exec {powershell.exe -NoProfile Invoke-Build PesterTests}
+    }
 }
 
 # Synopsis: Invoke Pester Tests
@@ -192,7 +191,9 @@ task Deploy -If (
     (-not ($env:APPVEYOR_PULL_REQUEST_NUMBER)) -and
     # Do not deploy if the commit contains the string "skip-deploy"
     # Meant for major/minor version publishes with a .0 build/patch version (like 2.1.0)
-    $env:APPVEYOR_REPO_COMMIT_MESSAGE -notlike '*skip-deploy*'
+    $env:APPVEYOR_REPO_COMMIT_MESSAGE -notlike '*skip-deploy*' -and
+    # publish from one powershell version is enought
+    $env:PShell -eq '5'
 ) {
     Remove-Module SnipeitPS -ErrorAction SilentlyContinue
 }, PublishToGallery
