@@ -88,15 +88,14 @@ task GitStatus -If (Test-Path .git) {
     }
 }
 
-task TestVersions TestPS3, TestPS4, TestPS4, TestPS5
-task TestPS3 {
-    exec {powershell.exe -Version 3 -NoProfile Invoke-Build PesterTests}
-}
-task TestPS4 {
-    exec {powershell.exe -Version 4 -NoProfile Invoke-Build PesterTests}
-}
-task TestPS5 {
-    exec {powershell.exe -Version 5 -NoProfile Invoke-Build PesterTests}
+task TestVersions TestPS
+
+task TestPS {
+    if($env:PShell -eq '7') {
+        exec {pwsh.exe -NoProfile Invoke-Build PesterTests}
+    }else {
+        exec {powershell.exe -NoProfile Invoke-Build PesterTests}
+    }
 }
 
 # Synopsis: Invoke Pester Tests
