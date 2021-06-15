@@ -68,8 +68,6 @@ function New-SnipeitCategory()
         }
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -77,7 +75,7 @@ function New-SnipeitCategory()
         $Parameters = @{
             Uri    = "$url/api/v1/categories"
             Method = 'POST'
-            Body   = $Body
+            Body   = $Values
             Token  = $apiKey
         }
 

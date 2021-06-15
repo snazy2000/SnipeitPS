@@ -89,12 +89,10 @@ function New-SnipeitLocation() {
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/locations"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

@@ -41,12 +41,10 @@ function New-SnipeitCompany()
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/companies"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

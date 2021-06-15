@@ -41,7 +41,7 @@ function Remove-SnipeitUser ()
             $Parameters = @{
                 Uri    = "$url/api/v1/users/$user_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

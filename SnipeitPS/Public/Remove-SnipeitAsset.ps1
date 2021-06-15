@@ -42,7 +42,7 @@ function Remove-SnipeitAsset ()
             $Parameters = @{
                 Uri    = "$url/api/v1/hardware/$asset_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

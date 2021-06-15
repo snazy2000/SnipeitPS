@@ -134,8 +134,8 @@ function Set-SnipeitAsset()
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
         if ($customfields)
@@ -143,7 +143,6 @@ function Set-SnipeitAsset()
             $Values += $customfields
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -151,7 +150,7 @@ function Set-SnipeitAsset()
             $Parameters = @{
                 Uri    = "$url/api/v1/hardware/$asset_id"
                 Method = $RequestType
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

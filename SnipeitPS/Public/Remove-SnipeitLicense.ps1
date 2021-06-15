@@ -41,7 +41,7 @@ function Remove-SnipeitLicense ()
             $Parameters = @{
                 Uri    = "$url/api/v1/licenses/$license_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

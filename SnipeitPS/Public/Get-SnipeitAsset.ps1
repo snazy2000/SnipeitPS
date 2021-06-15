@@ -177,7 +177,6 @@ function Get-SnipeitAsset() {
         'Assets overdue for auditing' {$apiurl = "$url/api/v1/hardware/audit/overdue"}
     }
 
-
     $Parameters = @{
         Uri           = $apiurl
         Method        = 'Get'

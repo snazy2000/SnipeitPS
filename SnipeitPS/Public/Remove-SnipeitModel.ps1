@@ -41,7 +41,7 @@ function Remove-SnipeitModel ()
             $Parameters = @{
                 Uri    = "$url/api/v1/models/$model_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

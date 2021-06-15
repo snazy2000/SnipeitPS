@@ -41,7 +41,7 @@ function Remove-SnipeitDepartment ()
             $Parameters = @{
                 Uri    = "$url/api/v1/departments/$department_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

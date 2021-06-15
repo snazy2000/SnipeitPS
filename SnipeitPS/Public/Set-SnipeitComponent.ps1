@@ -77,13 +77,11 @@ function Set-SnipeitComponent()
     begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-        $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
-
-        $Body = $values | ConvertTo-Json;
     }
 
     process {
@@ -91,7 +89,7 @@ function Set-SnipeitComponent()
         $Parameters = @{
             Uri    = "$url/api/v1/components/$component_id"
             Method = 'Patch'
-            Body   = $Body
+            Body   = $Values
             Token  = $apiKey
         }
 

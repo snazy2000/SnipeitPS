@@ -117,12 +117,10 @@ function New-SnipeitUser() {
             $Values['password_confirmation'] = $password
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/users"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

@@ -17,7 +17,7 @@
 
         # Body of the request
         [ValidateNotNullOrEmpty()]
-        [string]$Body,
+        [Hashtable]$Body,
 
         [string] $Token,
 
@@ -33,6 +33,9 @@
             $exception = New-Object -TypeName System.ArgumentException -ArgumentList $message
             Throw $exception
         }
+
+        #To support images "image" property have be handled before this
+        $Body = $Body | ConvertTo-Json
 
         $_headers = @{
             "Authorization" = "Bearer $($token)"

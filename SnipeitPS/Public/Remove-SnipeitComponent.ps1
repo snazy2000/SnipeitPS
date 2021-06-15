@@ -41,7 +41,7 @@ function Remove-SnipeitComponent ()
             $Parameters = @{
                 Uri    = "$url/api/v1/components/$component_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

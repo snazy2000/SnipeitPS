@@ -137,12 +137,10 @@ function New-SnipeitAsset()
         $Values += $customfields
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/hardware"
         Method = 'Post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

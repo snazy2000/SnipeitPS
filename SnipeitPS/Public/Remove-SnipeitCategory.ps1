@@ -41,7 +41,7 @@ function Remove-SnipeitCategory ()
             $Parameters = @{
                 Uri    = "$url/api/v1/categories/$category_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

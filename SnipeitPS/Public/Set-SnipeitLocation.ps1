@@ -99,8 +99,6 @@ function Set-SnipeitLocation() {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process{
@@ -108,7 +106,7 @@ function Set-SnipeitLocation() {
             $Parameters = @{
                 Uri    = "$url/api/v1/locations/$location_id"
                 Method = 'PUT'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

@@ -42,13 +42,10 @@ function New-SnipeitManufacturer()
         "name" = $Name
     }
 
-    #Convert Values to JSON format
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/manufacturers"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

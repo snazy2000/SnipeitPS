@@ -114,18 +114,16 @@ function New-SnipeitConsumable()
     begin {
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
+        if ($Values['purchase_date']) {
             $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
         $Parameters = @{
             Uri    = "$url/api/v1/consumables"
             Method = 'Post'
-            Body   = $Body
+            Body   = $Values
             Token  = $apiKey
         }
 

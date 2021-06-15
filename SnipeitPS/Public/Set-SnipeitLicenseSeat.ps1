@@ -61,8 +61,6 @@ function Set-SnipeitLicenseSeat()
 
     begin{
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process{
@@ -70,7 +68,7 @@ function Set-SnipeitLicenseSeat()
             $Parameters = @{
                 Uri    = "$url/api/v1/licenses/$license_id/seats/$seat_id"
                 Method = 'Patch'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

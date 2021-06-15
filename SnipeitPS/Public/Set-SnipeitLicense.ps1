@@ -135,19 +135,18 @@ function Set-SnipeitLicense() {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['expiration_date']) {
-            $values['expiration_date'] = $values['expiration_date'].ToString("yyyy-MM-dd")
+        if ($Values['expiration_date']) {
+            $Values['expiration_date'] = $Values['expiration_date'].ToString("yyyy-MM-dd")
         }
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
-        if ($values['termination_date']) {
-            $values['termination_date'] = $values['termination_date'].ToString("yyyy-MM-dd")
+        if ($Values['termination_date']) {
+            $Values['termination_date'] = $Values['termination_date'].ToString("yyyy-MM-dd")
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -155,7 +154,7 @@ function Set-SnipeitLicense() {
             $Parameters = @{
                 Uri    = "$url/api/v1/licenses/$license_id"
                 Method = 'PUT'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

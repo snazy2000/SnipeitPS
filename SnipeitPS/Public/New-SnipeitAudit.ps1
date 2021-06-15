@@ -48,12 +48,10 @@ function New-SnipeitAudit()
         $Values += @{"asset_tag" = $tag}
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/hardware/audit"
         Method = 'Post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

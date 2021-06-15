@@ -108,12 +108,10 @@ function Set-SnipeitAccessory() {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
-        $Body = $Values | ConvertTo-Json;
-        Write-Verbose "Body: $Body"
         }
 
     process {
@@ -121,7 +119,7 @@ function Set-SnipeitAccessory() {
             $Parameters = @{
                 Uri    = "$url/api/v1/accessories/$accessory_id"
                 Method = 'Patch'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

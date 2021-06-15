@@ -41,7 +41,7 @@ function Remove-SnipeitCustomField ()
             $Parameters = @{
                 Uri    = "$url/api/v1/fields/$field_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 

@@ -45,9 +45,7 @@ function Set-SnipeitCompany()
     )
 
     begin{
-        $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $values | ConvertTo-Json;
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
     }
 
     process{
@@ -55,7 +53,7 @@ function Set-SnipeitCompany()
             $Parameters = @{
                 Uri    = "$url/api/v1/companies/$company_id"
                 Method = 'Patch'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

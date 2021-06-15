@@ -57,12 +57,10 @@ function Reset-SnipeitAssetOwner() {
     if ($PSBoundParameters.ContainsKey('location_id')) { $Values.Add("location_id", $location_id) }
     if ($PSBoundParameters.ContainsKey('status_id')) { $Values.Add("status_id", $status_id) }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/hardware/$id/checkin"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

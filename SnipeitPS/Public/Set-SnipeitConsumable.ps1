@@ -124,7 +124,6 @@ function Set-SnipeitConsumable()
             $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -132,7 +131,7 @@ function Set-SnipeitConsumable()
             $Parameters = @{
                 Uri    = "$url/api/v1/consumables/$consumable_id"
                 Method = 'Put'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

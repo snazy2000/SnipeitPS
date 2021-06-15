@@ -111,7 +111,6 @@ function Set-SnipeitUser() {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process{
@@ -119,7 +118,7 @@ function Set-SnipeitUser() {
             $Parameters = @{
                 Uri    = "$url/api/v1/users/$user_id"
                 Method = 'PATCH'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

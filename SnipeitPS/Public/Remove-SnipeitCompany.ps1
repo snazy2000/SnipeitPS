@@ -41,7 +41,7 @@ function Remove-SnipeitCompany ()
             $Parameters = @{
                 Uri    = "$url/api/v1/companies/$company_id"
                 Method = 'Delete'
-                Body   = '{}'
+                Body   = '@{}'
                 Token  = $apiKey
             }
 
