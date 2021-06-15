@@ -69,7 +69,7 @@ for:
       only:
         - image: Visual Studio 2019
       environment:
-        - PShell: '7'
+        PShell: '7'
       install:
         - pwsh: |
             Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force | Out-Null
