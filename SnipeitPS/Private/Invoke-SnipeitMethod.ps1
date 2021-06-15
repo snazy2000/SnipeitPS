@@ -35,7 +35,7 @@
         }
 
         #To support images "image" property have be handled before this
-        $Body = $Body | ConvertTo-Json
+        if($Body) { $body = $Body | ConvertTo-Json }
 
         $_headers = @{
             "Authorization" = "Bearer $($token)"
@@ -66,7 +66,7 @@
 
         $script:PSDefaultParameterValues = $global:PSDefaultParameterValues
 
-        Write-Debug $Body
+        Write-Debug "$($Body | ConvertTo-Json)"
 
         # Invoke the API
         try {
