@@ -52,11 +52,10 @@ function Set-SnipeitModel() {
 
         [int]$manufacturer_id,
 
-        [ValidateRange(1, 240)]
-        [int]$eol,
+        [Nullable[System.Int32]]$eol,
 
         [Alias("fieldset_id")]
-        [int]$custom_fieldset_id,
+        [Nullable[System.Int32]]$custom_fieldset_id,
 
         [parameter(mandatory = $true)]
         [string]$url,

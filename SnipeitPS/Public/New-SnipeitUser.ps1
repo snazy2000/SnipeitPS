@@ -17,6 +17,9 @@
     .PARAMETER active
     Can user log in to snipe-it?
 
+    .PARAMETER password
+    Password for user
+
     .PARAMETER notes
     User Notes
 

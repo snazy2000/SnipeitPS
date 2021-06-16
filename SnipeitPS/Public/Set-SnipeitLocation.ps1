@@ -82,11 +82,11 @@ function Set-SnipeitLocation() {
 
         [string]$currency,
 
-        [int]$manager_id,
+        [Nullable[System.Int32]]$manager_id,
 
         [string]$ldap_ou,
 
-        [int]$parent_id,
+        [Nullable[System.Int32]]$parent_id,
 
         [parameter(mandatory = $true)]
         [string]$url,

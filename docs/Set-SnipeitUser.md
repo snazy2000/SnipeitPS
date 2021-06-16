@@ -14,7 +14,7 @@ Creates a new user
 
 ```
 Set-SnipeitUser [-id] <Int32[]> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
- [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-company_id] <Int32>]
+ [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-password] <String>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
  [[-activated] <Boolean>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -42,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 14
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -57,7 +57,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 16
+Position: 17
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -72,8 +72,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
-Default value: 0
+Position: 9
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,8 +87,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
-Default value: 0
+Position: 11
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,7 +117,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -192,8 +192,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
-Default value: 0
+Position: 10
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -207,8 +207,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
-Default value: 0
+Position: 12
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,7 +222,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: 15
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -password
+{{ Fill password Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -252,7 +267,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 15
+Position: 16
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
