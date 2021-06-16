@@ -172,7 +172,7 @@ function Get-SnipeitAsset() {
         'Search' { $apiurl = "$url/api/v1/hardware" }
         'Get with id'  {$apiurl= "$url/api/v1/hardware/$id"}
         'Get with asset tag' {$apiurl= "$url/api/v1/hardware/bytag/$asset_tag"}
-        'Get with serial' { $apiurl= "$url/api/v1/hardware/byserial/$asset_serial"}
+        'Get with serial' { $apiurl= "$url/api/v1/hardware/byserial/$serial"}
         'Assets due auditing soon' {$apiurl = "$url/api/v1/hardware/audit/due"}
         'Assets overdue for auditing' {$apiurl = "$url/api/v1/hardware/audit/overdue"}
     }
