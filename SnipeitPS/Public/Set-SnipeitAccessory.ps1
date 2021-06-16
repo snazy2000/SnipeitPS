@@ -14,6 +14,9 @@ Notes about the accessory
 .PARAMETER qty
 Quantity of the accessory you have
 
+.PARAMETER min_amt
+Minimum amount of the accessory, before alert is triggered
+
 .PARAMETER category_id
 ID number of the category the accessory belongs to
 
@@ -78,11 +81,9 @@ function Set-SnipeitAccessory() {
         [ValidateRange(1, [int]::MaxValue)]
         [int]$category_id,
 
-        [ValidateRange(1, [int]::MaxValue)]
-        [int]$company_id,
+        [Nullable[System.Int32]]$company_id,
 
-        [ValidateRange(1, [int]::MaxValue)]
-        [int]$manufacturer_id,
+        [Nullable[System.Int32]]$manufacturer_id,
 
 
         [string]$order_number,
@@ -91,10 +92,9 @@ function Set-SnipeitAccessory() {
 
         [datetime]$purchase_date,
 
-        [bool]$min_qty,
+        [Nullable[System.Int32]]$min_amt,
 
-        [ValidateRange(1, [int]::MaxValue)]
-        [int]$supplier_id,
+        [Nullable[System.Int32]]$supplier_id,
 
         [parameter(mandatory = $true)]
         [string]$url,
