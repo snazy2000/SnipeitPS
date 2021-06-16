@@ -58,13 +58,13 @@ function Set-SnipeitComponent()
         [parameter(mandatory = $true)]
         [int]$qty,
 
-        [int]$min_amt,
+        [Nullable[System.Int32]]$min_amt,
 
         [string]$name,
 
-        [int]$company_id,
+        [Nullable[System.Int32]]$company_id,
 
-        [int]$location_id,
+        [Nullable[System.Int32]]$location_id,
 
 
         [string]$order_number,

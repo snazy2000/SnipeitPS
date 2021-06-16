@@ -89,12 +89,11 @@ function Set-SnipeitLicense() {
         [ValidateRange(1, [int]::MaxValue)]
         [int]$category_id,
 
-        [ValidateRange(1, [int]::MaxValue)]
-        [int]$company_id,
+
+        [Nullable[System.Int32]]$company_id,
 
         [datetime]$expiration_date,
 
-        [ValidateLength(1, 120)]
         [mailaddress]$license_email,
 
         [ValidateLength(1, 100)]
@@ -118,8 +117,7 @@ function Set-SnipeitLicense() {
 
         [string]$serial,
 
-        [ValidateRange(1, [int]::MaxValue)]
-        [int]$supplier_id,
+        [Nullable[System.Int32]]$supplier_id,
 
         [datetime]$termination_date,
 
