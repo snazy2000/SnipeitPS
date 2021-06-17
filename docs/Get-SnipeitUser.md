@@ -24,6 +24,11 @@ Get-SnipeitUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] 
 Get-SnipeitUser [-id <String>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
+### Get users a specific accessory id has been checked out to
+```
+Get-SnipeitUser [-accessory_id <String>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 {{ Fill in the Description }}
 
@@ -49,14 +54,35 @@ Get-SnipeitUser -username someuser
 Get-SnipeitUser -email user@somedomain.com
 ```
 
+### EXAMPLE 5
+```
+Get-SnipeitUser -accessory_id 3
+Get users with accessory id 3 has been checked out to
+```
+
 ## PARAMETERS
+
+### -accessory_id
+{{ Fill accessory_id Description }}
+
+```yaml
+Type: String
+Parameter Sets: Get users a specific accessory id has been checked out to
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -all
 A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Search
+Parameter Sets: Search, Get users a specific accessory id has been checked out to
 Aliases:
 
 Required: False

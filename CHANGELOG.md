@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+
+# [v.1.8.x] - 2021-06-17
+
+## Support for new Snipe it endpoints
+
+## New features
+
+Get-SnipeitAccessories -user_id
+returns accessories checked out to user id
+
+Get-SnipeitAsset -user_id
+Return Assets checked out to user id
+
+Get-SnipeitAsset -component_id
+Returns assets with specific component id
+
+Get-SnipeitLicense -user_id
+Get licenses checked out to user ID
+
+Get-SnipeitLicense -asset_id
+Get licenses checked out to asset ID
+
+Get-SnipeitUser -accessory_id
+Get users that have specific accessory id checked out
+
 # [v.1.7.x] - 2021-06-14
 
 ## Consumables

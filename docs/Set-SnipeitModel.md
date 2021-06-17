@@ -70,7 +70,7 @@ Aliases: fieldset_id
 
 Required: False
 Position: 7
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -85,7 +85,7 @@ Aliases:
 
 Required: False
 Position: 6
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

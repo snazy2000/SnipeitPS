@@ -41,6 +41,12 @@ function Get-SnipeitLicense() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Get licenses checked out to user ID')]
+        [int]$user_id,
+
+        [parameter(ParameterSetName='Get licenses checked out to asset ID')]
+        [int]$asset_id,
+
         [parameter(ParameterSetName='Search')]
         [string]$name,
 
@@ -87,7 +93,8 @@ function Get-SnipeitLicense() {
 
         [parameter(ParameterSetName='Search')]
         [int]$offset,
-
+        [parameter(ParameterSetName='Get licenses checked out to user ID')]
+        [parameter(ParameterSetName='Get licenses checked out to asset ID')]
         [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
@@ -102,14 +109,11 @@ function Get-SnipeitLicense() {
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $apiurl = "$url/api/v1/licenses"
-
-    if ($search -and $id ) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
-    }
-
-    if ($id) {
-       $apiurl= "$url/api/v1/licenses/$id"
+    switch($PsCmdlet.ParameterSetName) {
+        'Search' {$apiurl = "$url/api/v1/licenses"}
+        'Get with ID' {$apiurl= "$url/api/v1/licenses/$id"}
+        'Get licenses checked out to user ID' {$apiurl= "$url/api/v1/users/$user_id/licenses"}
+        'Get licenses checked out to asset ID' {$apiurl= "$url/api/v1/hardware/$asset_id/licenses"}
     }
 
     $Parameters = @{

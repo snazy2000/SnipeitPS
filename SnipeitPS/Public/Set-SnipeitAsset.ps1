@@ -89,21 +89,23 @@ function Set-SnipeitAsset()
 
         [string]$name,
 
+        [ValidateRange(1, [int]::MaxValue)]
         [int]$status_id,
 
+        [ValidateRange(1, [int]::MaxValue)]
         [int]$model_id,
 
         [DateTime]$last_checkout,
 
-        [int]$assigned_to,
+        [Nullable[System.Int32]]$assigned_to,
 
-        [int]$company_id,
+        [Nullable[System.Int32]]$company_id,
 
         [string]$serial,
 
         [string]$order_number,
 
-        [int]$warranty_months,
+        [Nullable[System.Int32]]$warranty_months,
 
         [double]$purchase_cost,
 
@@ -113,7 +115,7 @@ function Set-SnipeitAsset()
 
         [bool]$archived,
 
-        [int]$rtd_location_id,
+        [Nullable[System.Int32]]$rtd_location_id,
 
         [string]$notes,
 

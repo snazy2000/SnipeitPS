@@ -13,9 +13,9 @@ Updates component
 ## SYNTAX
 
 ```
-Set-SnipeitComponent [-id] <Int32> [-qty] <Int32> [[-name] <String>] [[-company_id] <Int32>]
- [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
- [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeitComponent [-id] <Int32[]> [-qty] <Int32> [[-min_amt] <Int32>] [[-name] <String>]
+ [[-company_id] <Int32>] [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>]
+ [[-purchase_cost] <Single>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -54,8 +54,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: 0
+Position: 5
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -64,14 +64,14 @@ Accept wildcard characters: False
 ID number of  name
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
-Default value: 0
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -84,8 +84,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
-Default value: 0
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -min_amt
+Minimum Quantity of the components before alert is triggered
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -99,7 +114,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +129,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,7 +144,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 9
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -144,7 +159,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -174,7 +189,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

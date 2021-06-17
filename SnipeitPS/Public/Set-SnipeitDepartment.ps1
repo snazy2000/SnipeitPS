@@ -43,11 +43,11 @@ function Set-SnipeitDepartment() {
 
         [string]$name,
 
-        [int]$company_id,
+        [Nullable[System.Int32]]$company_id,
 
-        [int]$location_id,
+        [Nullable[System.Int32]]$location_id,
 
-        [int]$manager_id,
+        [Nullable[System.Int32]]$manager_id,
 
         [string]$notes,
 

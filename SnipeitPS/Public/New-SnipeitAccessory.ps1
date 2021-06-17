@@ -23,6 +23,9 @@ ID Number of the company the accessory is assigned to
 .PARAMETER manufacturer_id
 ID number of the manufacturer for this accessory.
 
+.PARAMETER model_number
+Model number for this accessory
+
 .PARAMETER order_number
 Order number for this accessory.
 
@@ -47,7 +50,7 @@ ID number of the supplier for this accessory
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
 
-.PARAMETER min_qty
+.PARAMETER min_amt
 Min quantity of the accessory before alert is triggered
 
 .PARAMETER url
@@ -86,11 +89,13 @@ function New-SnipeitAccessory() {
 
         [string]$order_number,
 
+        [string]$model_number,
+
         [float]$purchase_cost,
 
         [datetime]$purchase_date,
 
-        [int]$min_qty,
+        [int]$min_amt,
 
         [ValidateRange(1, [int]::MaxValue)]
         [int]$supplier_id,

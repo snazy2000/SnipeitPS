@@ -75,25 +75,27 @@ function Set-SnipeitConsumable()
         [string]$name,
 
         [parameter(mandatory = $false)]
+        [ValidateRange(1, [int]::MaxValue)]
         [int]$qty,
 
         [parameter(mandatory = $false)]
+        [ValidateRange(1, [int]::MaxValue)]
         [int]$category_id,
 
         [parameter(mandatory = $false)]
-        [int]$min_amt,
+        [Nullable[System.Int32]]$min_amt,
 
         [parameter(mandatory = $false)]
-        [int]$company_id,
+        [Nullable[System.Int32]]$company_id,
 
         [parameter(mandatory = $false)]
         [string]$order_number,
 
         [parameter(mandatory = $false)]
-        [int]$manufacturer_id,
+        [Nullable[System.Int32]]$manufacturer_id,
 
         [parameter(mandatory = $false)]
-        [int]$location_id,
+        [Nullable[System.Int32]]$location_id,
 
         [parameter(mandatory = $false)]
         [bool]$requestable,

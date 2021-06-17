@@ -24,14 +24,20 @@ Checkout specific license seat to user, asset or both
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3
 Checkout licence to user id 3
 ```
 
 ### EXAMPLE 2
 ```
-Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3
 Checkout licence to asset id 3
+```
+
+### EXAMPLE 3
+```
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id $null -assigned_id $null
+Checkin licence seat id 1 of licence id 1
 ```
 
 ## PARAMETERS
@@ -61,7 +67,7 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,7 +82,7 @@ Aliases: assigned_id
 
 Required: False
 Position: 3
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

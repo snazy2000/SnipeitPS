@@ -20,6 +20,9 @@
     .PARAMETER activated
     Can user log in to snipe-it?
 
+    .PARAMETER password
+    Password for user
+
     .PARAMETER notes
     User Notes
 
@@ -74,10 +77,12 @@ function Set-SnipeitUser() {
         [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
         [int[]]$id,
 
+        [ValidateLength(1,256)]
         [string]$first_name,
 
         [string]$last_name,
 
+        [ValidateLength(1,256)]
         [string]$userName,
 
         [string]$jobtitle,
@@ -86,13 +91,15 @@ function Set-SnipeitUser() {
 
         [string]$phone,
 
-        [int]$company_id,
+        [string]$password,
 
-        [int]$location_id,
+        [Nullable[System.Int32]]$company_id,
 
-        [int]$department_id,
+        [Nullable[System.Int32]]$location_id,
 
-        [int]$manager_id,
+        [Nullable[System.Int32]]$department_id,
+
+        [Nullable[System.Int32]]$manager_id,
 
         [string]$employee_num,
 
@@ -110,6 +117,10 @@ function Set-SnipeitUser() {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+
+        if ($password) {
+            $Values['password_confirmation'] = $password
+        }
 
     }
 

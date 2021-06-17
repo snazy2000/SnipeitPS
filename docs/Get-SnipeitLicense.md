@@ -26,6 +26,16 @@ Get-SnipeitLicense [-search <String>] [-name <String>] [-company_id <Int32>] [-p
 Get-SnipeitLicense [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
+### Get licenses checked out to user ID
+```
+Get-SnipeitLicense [-user_id <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Get licenses checked out to asset ID
+```
+Get-SnipeitLicense [-asset_id <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 {{ Fill in the Description }}
 
@@ -48,7 +58,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Search
+Parameter Sets: Search, Get licenses checked out to user ID, Get licenses checked out to asset ID
 Aliases:
 
 Required: False
@@ -69,6 +79,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -asset_id
+{{ Fill asset_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Get licenses checked out to asset ID
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -341,6 +366,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -user_id
+{{ Fill user_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Get licenses checked out to user ID
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
