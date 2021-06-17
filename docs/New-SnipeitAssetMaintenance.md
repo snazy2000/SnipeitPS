@@ -31,6 +31,21 @@ New-SnipeitAssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard"
 
 ## PARAMETERS
 
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -asset_id
 Required ID of the asset, this can be got using Get-Asset
 
@@ -41,21 +56,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -supplier_id
-Required maintenance supplier
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -76,16 +76,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -title
-Required Title of maintenance
+### -completion_date
+{{ Fill completion_date Description }}
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -cost
+Optional cost
+
+```yaml
+Type: Decimal
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -is_warranty
+Optional Maintenance done under warranty
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+Optional cost
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 4
+Required: False
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -106,61 +151,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -completion_date
-{{ Fill completion_date Description }}
+### -supplier_id
+Required maintenance supplier
 
 ```yaml
-Type: DateTime
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -is_warranty
-Optional Maintenance done under warranty
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -cost
-Optional cost
-
-```yaml
-Type: Decimal
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
+Required: True
+Position: 2
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
-Optional cost
+### -title
+Required Title of maintenance
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 9
+Required: True
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -181,16 +196,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 11
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -204,21 +219,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

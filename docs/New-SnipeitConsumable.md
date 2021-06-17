@@ -33,8 +33,8 @@ Create consumable with stock count 20 , alert when stock is  5 or lower
 
 ## PARAMETERS
 
-### -name
-Required  Name of the Consumable
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -42,23 +42,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 15
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -qty
-Required Quantity of comsumable
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -73,21 +58,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -min_amt
-Optional minimum quantity of comsumable
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -108,8 +78,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order_number
-Optional Order number
+### -item_no
+Item number for the consumable
 
 ```yaml
 Type: String
@@ -117,23 +87,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 13
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-Manufaturer id number of the consumable
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,31 +108,76 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -requestable
-Is consumable requestable?
+### -manufacturer_id
+Manufaturer id number of the consumable
 
 ```yaml
-Type: Boolean
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
-Default value: False
+Position: 7
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -purchase_date
-Optional Purchase cost of the consumable
+### -min_amt
+Optional minimum quantity of comsumable
 
 ```yaml
-Type: DateTime
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 4
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -model_number
+Model number of the consumable in months
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Required  Name of the Consumable
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order_number
+Optional Order number
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -198,32 +198,47 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -model_number
-Model number of the consumable in months
+### -purchase_date
+Optional Purchase cost of the consumable
 
 ```yaml
-Type: String
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -item_no
-Item number for the consumable
+### -qty
+Required Quantity of comsumable
 
 ```yaml
-Type: String
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -requestable
+Is consumable requestable?
+
+```yaml
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
-Default value: None
+Position: 9
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -243,16 +258,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 15
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -266,21 +281,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: SnipeitPS-help.xml
 Module Name: SnipeitPS
 online version:
@@ -62,36 +62,6 @@ Get users with accessory id 3 has been checked out to
 
 ## PARAMETERS
 
-### -search
-A text string to search the User data
-
-```yaml
-Type: String
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-A id of specific User
-
-```yaml
-Type: String
-Parameter Sets: Get with ID
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -accessory_id
 {{ Fill accessory_id Description }}
 
@@ -107,38 +77,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -all
+A return all results, works with -offset and other parameters
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Search, Get users a specific accessory id has been checked out to
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -company_id
 {{ Fill company_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{ Fill location_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -group_id
-{{ Fill group_id Description }}
 
 ```yaml
 Type: Int32
@@ -167,21 +137,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -username
-Search string for username field
-
-```yaml
-Type: String
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -email
 Search string for email field
 
@@ -197,17 +152,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -group_id
+{{ Fill group_id Description }}
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: Search
 Aliases:
 
 Required: False
 Position: Named
-Default value: Desc
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -id
+A id of specific User
+
+```yaml
+Type: String
+Parameter Sets: Get with ID
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,6 +199,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -location_id
+{{ Fill location_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -offset
 Offset to use
 
@@ -244,17 +229,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -all
-A return all results, works with -offset and other parameters
+### -order
+{{ Fill order Description }}
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Search, Get users a specific accessory id has been checked out to
+Type: String
+Parameter Sets: Search
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: Desc
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -search
+A text string to search the User data
+
+```yaml
+Type: String
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -274,15 +274,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -username
+Search string for username field
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Search
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

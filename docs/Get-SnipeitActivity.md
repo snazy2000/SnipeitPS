@@ -35,8 +35,9 @@ Get-SnipeitAccessory -id 1
 
 ## PARAMETERS
 
-### -search
-A text string to search the Activity history
+### -action_type
+Type of action.
+One from following list "add seats", "checkin from", 'checkout' or 'update'
 
 ```yaml
 Type: String
@@ -44,54 +45,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -target_type
-Type of target.
-One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
+### -all
+A return all results, works with -offset and other parameters
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -target_id
-Needed if target_type is specified
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -item_type
-Type of target.
-One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
+Required: True
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,9 +96,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -action_type
-Type of action.
-One from following list "add seats", "checkin from", 'checkout' or 'update'
+### -item_type
+Type of target.
+One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
 
 ```yaml
 Type: String
@@ -122,7 +106,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -158,17 +142,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -all
-A return all results, works with -offset and other parameters
+### -search
+A text string to search the Activity history
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -target_id
+Needed if target_type is specified
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -target_type
+Type of target.
+One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -183,21 +198,6 @@ Aliases:
 
 Required: True
 Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

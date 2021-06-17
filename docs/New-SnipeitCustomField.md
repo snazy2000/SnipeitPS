@@ -30,8 +30,8 @@ New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "I
 
 ## PARAMETERS
 
-### -name
-The field's name, which is also the form label
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -39,14 +39,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -help_text
-Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
+### -custom_format
+In the case of format 'CUSTOM REGEX', this should be validation regex this field
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,36 +70,6 @@ Aliases:
 
 Required: True
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -format
-How the field should be validated
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -field_values
-In the case of list boxes, etc, this should be a list of the options available
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -121,6 +91,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -field_values
+In the case of list boxes, etc, this should be a list of the options available
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -format
+How the field should be validated
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -help_text
+Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+The field's name, which is also the form label
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -show_in_email
 Whether or not to show the custom field in email notifications
 
@@ -132,21 +162,6 @@ Aliases:
 Required: False
 Position: 7
 Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -custom_format
-In the case of format 'CUSTOM REGEX', this should be validation regex this field
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,16 +181,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
-Required: True
-Position: 10
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -189,21 +204,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
