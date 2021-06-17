@@ -31,7 +31,7 @@
     Checkout licence to asset id 3
 
     .EXAMPLE
-    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id $null -assigned_id 3
+    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id $null -assigned_id $null
     Checkin licence seat id 1 of licence id 1
 
 #>
