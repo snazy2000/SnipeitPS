@@ -32,6 +32,10 @@ Get-SnipeitAccessory -search Keyboard
 .EXAMPLE
 Get-SnipeitAccessory -id 1
 
+.EXAMPLE
+Get-SnipeitAccessory -user_id 1
+Get accessories checked out to user ID 1
+
 #>
 
 function Get-SnipeitAccessory() {
@@ -42,6 +46,9 @@ function Get-SnipeitAccessory() {
 
         [parameter(ParameterSetName='Get by ID')]
         [int]$id,
+
+        [parameter(ParameterSetName='Accessories checked out to user id')]
+        [int]$user_id,
 
         [parameter(ParameterSetName='Search')]
         [int]$company_id,
@@ -69,6 +76,7 @@ function Get-SnipeitAccessory() {
         [int]$offset,
 
         [parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Accessories checked out to user id')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]
@@ -79,21 +87,19 @@ function Get-SnipeitAccessory() {
     )
     Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    if ($id -and $search){
-        throw "Please specify only one of -id or -search parameter"
+    switch($PsCmdlet.ParameterSetName) {
+        'Search' {$apiurl = "$url/api/v1/accessories"}
+        'Get by ID' {$apiurl= "$url/api/v1/accessories/$id"}
+        'Accessories checked out to user id' {$apiurl = "$url/api/v1/users/$user_id/accessories"}
     }
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     $Parameters = @{
-        Uri           = "$url/api/v1/accessories"
+        Uri           = $apiurl
         Method        = 'Get'
         GetParameters = $SearchParameter
         Token         = $apiKey
-    }
-
-    if($id){
-        $Parameters.Uri ="$url/api/v1/accessories/$id"
     }
 
     if ($all) {

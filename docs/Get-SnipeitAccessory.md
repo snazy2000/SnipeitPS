@@ -24,6 +24,11 @@ Get-SnipeitAccessory [-search <String>] [-company_id <Int32>] [-category_id <Int
 Get-SnipeitAccessory [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
+### Accessories checked out to user id
+```
+Get-SnipeitAccessory [-user_id <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets a list of Snipe-it Accessories
 
@@ -39,6 +44,12 @@ Get-SnipeitAccessory -search Keyboard
 Get-SnipeitAccessory -id 1
 ```
 
+### EXAMPLE 3
+```
+Get-SnipeitAccessory -user_id 1
+Get accessories checked out to user ID 1
+```
+
 ## PARAMETERS
 
 ### -all
@@ -46,7 +57,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Search
+Parameter Sets: Search, Accessories checked out to user id
 Aliases:
 
 Required: False
@@ -234,6 +245,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -user_id
+{{ Fill user_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Accessories checked out to user id
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -26,6 +26,9 @@ ID Number of the company the accessory is assigned to
 .PARAMETER manufacturer_id
 ID number of the manufacturer for this accessory.
 
+.PARAMETER model_number
+Model number for this accessory
+
 .PARAMETER order_number
 Order number for this accessory.
 
@@ -85,6 +88,7 @@ function Set-SnipeitAccessory() {
 
         [Nullable[System.Int32]]$manufacturer_id,
 
+        [string]$model_number,
 
         [string]$order_number,
 
@@ -120,7 +124,7 @@ function Set-SnipeitAccessory() {
         foreach($accessory_id in $id){
             $Parameters = @{
                 Uri    = "$url/api/v1/accessories/$accessory_id"
-                Method = 'Patch'
+                Method = 'Put'
                 Body   = $Body
                 Token  = $apiKey
             }
