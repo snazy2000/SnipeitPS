@@ -47,6 +47,18 @@ Get-SnipeitAsset [-audit_overdue] [-sort <String>] [-order <String>] [-limit <In
  -url <String> -apiKey <String> [<CommonParameters>]
 ```
 
+### Assets checked out to user id
+```
+Get-SnipeitAsset [-user_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>]
+ [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
+### Assets with component id
+```
+Get-SnipeitAsset [-component_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>]
+ [-all] -url <String> -apiKey <String> [<CommonParameters>]
+```
+
 ## DESCRIPTION
 {{ Fill in the Description }}
 
@@ -54,22 +66,56 @@ Get-SnipeitAsset [-audit_overdue] [-sort <String>] [-order <String>] [-limit <In
 
 ### EXAMPLE 1
 ```
-Get-SnipeitAsset -url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -all -url "https://assets.example.com"-token "token..."
+Returens all assets
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -search "myMachine"
+Search for specific asset
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -id 3
+Get asset with id number 3
 ```
 
 ### EXAMPLE 4
 ```
-Get-SnipeitAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -asset_tag snipe0003
+Get asset with asset tag snipe00033
+```
+
+### EXAMPLE 5
+```
+Get-SnipeitAsset -serial 1234
+Get asset with searial number 1234
+```
+
+### EXAMPLE 6
+```
+Get-SnipeitAsser -audit_due
+Get Assets due auditing soon
+```
+
+### EXAMPLE 7
+```
+Get-SnipeitAsser -audit_overdue
+Get Assets overdue for auditing
+```
+
+### EXAMPLE 8
+```
+Get-AnipeitAsset -user_id 4
+Get Assets checked out to user id 4
+```
+
+### EXAMPLE 9
+```
+Get-SnipeitAsset -component_id 5
+Get Assets with component id 5
 ```
 
 ## PARAMETERS
@@ -79,7 +125,7 @@ A return all results, works with -offset and other parameters
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing, Assets checked out to user id, Assets with component id
 Aliases:
 
 Required: False
@@ -179,6 +225,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -component_id
+{{ Fill component_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Assets with component id
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -depreciation_id
 {{ Fill depreciation_id Description }}
 
@@ -216,7 +277,7 @@ Defines batch size for -all
 
 ```yaml
 Type: Int32
-Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing, Assets checked out to user id, Assets with component id
 Aliases:
 
 Required: False
@@ -276,7 +337,7 @@ Offset to use
 
 ```yaml
 Type: Int32
-Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing, Assets checked out to user id, Assets with component id
 Aliases:
 
 Required: False
@@ -291,7 +352,7 @@ Specify the order (asc or desc) you wish to order by on your sort column
 
 ```yaml
 Type: String
-Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing, Assets checked out to user id, Assets with component id
 Aliases:
 
 Required: False
@@ -366,7 +427,7 @@ Specify the column name you wish to sort by
 
 ```yaml
 Type: String
-Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing
+Parameter Sets: Search, Assets due auditing soon, Assets overdue for auditing, Assets checked out to user id, Assets with component id
 Aliases:
 
 Required: False
@@ -417,6 +478,21 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -user_id
+{{ Fill user_id Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: Assets checked out to user id
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
