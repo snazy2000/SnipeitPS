@@ -23,12 +23,16 @@
     User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
+    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3
     Checkout licence to user id 3
 
     .EXAMPLE
-    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
+    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3
     Checkout licence to asset id 3
+
+    .EXAMPLE
+    Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id $null -assigned_id 3
+    Checkin licence seat id 1 of licence id 1
 
 #>
 function Set-SnipeitLicenseSeat()
