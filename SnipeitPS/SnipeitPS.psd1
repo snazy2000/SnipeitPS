@@ -12,7 +12,7 @@
 RootModule = 'SnipeitPS'
 
 # Version number of this module.
-ModuleVersion = '1.7'
+ModuleVersion = '1.8'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
