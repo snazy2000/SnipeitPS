@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## New features
 
-Get-SnipeitAccessories -user id
+Get-SnipeitAccessories -user_id
 returns accessories checked out to user id
 
 Get-SnipeitAsset -user_id
