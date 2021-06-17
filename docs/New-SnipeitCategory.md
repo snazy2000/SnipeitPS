@@ -30,8 +30,8 @@ New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here
 
 ## PARAMETERS
 
-### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -name
+Name of new category to be created
 
 ```yaml
 Type: String
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -60,21 +60,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -checkin_email
-If switch is present, send email to user on checkin/checkout
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -eula_text
 This allows you to customize your EULAs for specific types of assets
 
@@ -90,23 +75,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Name of new category to be created
+### -use_default_eula
+If switch is present, use the primary default EULA
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
-Default value: None
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -require_acceptance
 If switch is present, require users to confirm acceptance of assets in this category
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -checkin_email
+If switch is present, send email to user on checkin/checkout
 
 ```yaml
 Type: SwitchParameter
@@ -135,31 +135,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -use_default_eula
-If switch is present, use the primary default EULA
+### -apiKey
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
+Required: True
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -173,6 +158,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

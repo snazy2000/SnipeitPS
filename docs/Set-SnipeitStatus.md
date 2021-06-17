@@ -35,51 +35,6 @@ Set-SnipeitStatus -id 3 -name 'Waiting for arrival' -type pending
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -color
-Hex code showing what color the status label should be on the pie chart in the dashboard
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -default_label
-1 or 0 - determine whether it should be bubbled up to the top of the list of available statuses
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -id
 A id of specific Status Label
 
@@ -110,6 +65,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -type
+{{ Fill type Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -notes
 {{ Fill notes Description }}
 
@@ -120,6 +90,21 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -color
+Hex code showing what color the status label should be on the pie chart in the dashboard
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -140,17 +125,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -type
-{{ Fill type Description }}
+### -default_label
+1 or 0 - determine whether it should be bubbled up to the top of the list of available statuses
 
 ```yaml
-Type: String
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 3
-Default value: None
+Required: False
+Position: 7
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,16 +155,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -193,6 +178,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

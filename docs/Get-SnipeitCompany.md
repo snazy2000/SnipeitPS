@@ -42,30 +42,15 @@ Gets specific company
 
 ## PARAMETERS
 
-### -all
-A return all results, works with -offset and other parameters
+### -search
+A text string to search the Companies data
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: Search
 Aliases:
 
 Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,6 +68,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -order
+{{ Fill order Description }}
+
+```yaml
+Type: String
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: Desc
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -119,38 +119,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order
-{{ Fill order Description }}
+### -all
+A return all results, works with -offset and other parameters
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: Search
 Aliases:
 
 Required: False
 Position: Named
-Default value: Desc
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -search
-A text string to search the Companies data
-
-```yaml
-Type: String
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

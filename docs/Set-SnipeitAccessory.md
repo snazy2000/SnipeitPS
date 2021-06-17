@@ -31,17 +31,47 @@ Set-SnipeitAccessory -id 1 -qty 3
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfoeItInfo command
+### -id
+{{ Fill id Description }}
+
+```yaml
+Type: Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -name
+ID number of Accessory or array of IDs on Snipe-It system
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 14
+Required: False
+Position: 2
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -qty
+Quantity of the accessory you have
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,21 +106,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -id
-{{ Fill id Description }}
-
-```yaml
-Type: Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -manufacturer_id
 ID number of the manufacturer for this accessory.
 
@@ -106,21 +121,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -min_amt
-Minimum amount of the accessory, before alert is triggered
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -model_number
 Model number for this accessory
 
@@ -131,21 +131,6 @@ Aliases:
 
 Required: False
 Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-ID number of Accessory or array of IDs on Snipe-It system
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -196,8 +181,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -qty
-Quantity of the accessory you have
+### -min_amt
+Minimum amount of the accessory, before alert is triggered
 
 ```yaml
 Type: Int32
@@ -205,8 +190,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: 0
+Position: 11
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -241,16 +226,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfoeItInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 14
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -264,6 +249,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

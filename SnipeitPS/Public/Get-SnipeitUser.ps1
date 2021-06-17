@@ -40,6 +40,10 @@ Get-SnipeitUser -username someuser
 
 .EXAMPLE
 Get-SnipeitUser -email user@somedomain.com
+
+.EXAMPLE
+Get-SnipeitUser -accessory_id 3
+Get users with accessory id 3 has been checked out to
 #>
 
 function Get-SnipeitUser() {
@@ -50,6 +54,9 @@ function Get-SnipeitUser() {
 
         [parameter(ParameterSetName='Get with ID')]
         [string]$id,
+
+        [parameter(ParameterSetName='Get users a specific accessory id has been checked out to')]
+        [string]$accessory_id,
 
         [parameter(ParameterSetName='Search')]
         [int]$company_id,
@@ -80,6 +87,7 @@ function Get-SnipeitUser() {
         [int]$offset,
 
         [parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Get users a specific accessory id has been checked out to')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]
@@ -92,16 +100,12 @@ function Get-SnipeitUser() {
     Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-    $apiurl = "$url/api/v1/users"
-
-    if ($search -and $id ) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
+    switch ($PsCmdlet.ParameterSetName) {
+        'Search' { $apiurl = "$url/api/v1/users"}
+        'Get with id'  {$apiurl= "$url/api/v1/users/$id"}
+        'Get users a specific accessory id has been checked out to' {$apiurl= "$url/api/v1/accessories/$accessory_id/checkedout"}
     }
 
-    if ($id) {
-       $apiurl= "$url/api/v1/users/$id"
-    }
     $Parameters = @{
         Uri           = $apiurl
         Method        = 'Get'

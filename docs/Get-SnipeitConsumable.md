@@ -49,30 +49,30 @@ Returns specific consumable
 
 ## PARAMETERS
 
-### -all
-A return all results
+### -search
+A text string to search the consumables
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: Search
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -id
+A id of specific consumable
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: Int32[]
+Parameter Sets: Get with ID
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,68 +109,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -expand
-Whether to include detailed information on categories, etc (true) or just the text name (false)
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-A id of specific consumable
-
-```yaml
-Type: Int32[]
-Parameter Sets: Get with ID
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -limit
-Specify the number of results you wish to return.
-Defaults to 50.
-Defines batch size for -all
-
-```yaml
-Type: Int32
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: 50
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -location_id
-{{ Fill location_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -manufacturer_id
 Id number of manufacturer
 
@@ -186,8 +124,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -offset
-Offset to use
+### -location_id
+{{ Fill location_id Description }}
 
 ```yaml
 Type: Int32
@@ -216,21 +154,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -search
-A text string to search the consumables
-
-```yaml
-Type: String
-Parameter Sets: Search
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -sort
 Sort results by column
 
@@ -246,8 +169,85 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -expand
+Whether to include detailed information on categories, etc (true) or just the text name (false)
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -limit
+Specify the number of results you wish to return.
+Defaults to 50.
+Defines batch size for -all
+
+```yaml
+Type: Int32
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: 50
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -offset
+Offset to use
+
+```yaml
+Type: Int32
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -all
+A return all results
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Search
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system,can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String

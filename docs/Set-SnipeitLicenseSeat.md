@@ -24,62 +24,23 @@ Checkout specific license seat to user, asset or both
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3  -Verbose
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3
 Checkout licence to user id 3
 ```
 
 ### EXAMPLE 2
 ```
-Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3  -Verbose
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id 3
 Checkout licence to asset id 3
 ```
 
+### EXAMPLE 3
+```
+Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -asset_id $null -assigned_id $null
+Checkin licence seat id 1 of licence id 1
+```
+
 ## PARAMETERS
-
-### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -asset_id
-Id of target asset
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -assigned_to
-Id of target user
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: assigned_id
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -id
 Unique ID For license to checkout or array of IDs
@@ -91,21 +52,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -note
-Notes about checkout
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -126,6 +72,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -assigned_to
+Id of target user
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: assigned_id
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -asset_id
+Id of target asset
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -note
+Notes about checkout
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -141,16 +132,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -apiKey
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -164,6 +155,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

@@ -66,16 +66,42 @@ URL of Snipeit system, can be set using Set-SnipeitInfo command
 Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
-Get-SnipeitAsset -url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -all -url "https://assets.example.com"-token "token..."
+Returens all assets
 
 .EXAMPLE
-Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -search "myMachine"
+Search for specific asset
 
 .EXAMPLE
-Get-SnipeitAsset -search "myMachine"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -id 3
+Get asset with id number 3
 
 .EXAMPLE
-Get-SnipeitAsset -asset_tag "myAssetTag"-url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -asset_tag snipe0003
+Get asset with asset tag snipe00033
+
+.EXAMPLE
+Get-SnipeitAsset -serial 1234
+Get asset with searial number 1234
+
+.EXAMPLE
+Get-SnipeitAsser -audit_due
+Get Assets due auditing soon
+
+.EXAMPLE
+Get-SnipeitAsser -audit_overdue
+Get Assets overdue for auditing
+
+.EXAMPLE
+Get-AnipeitAsset -user_id 4
+Get Assets checked out to user id 4
+
+.EXAMPLE
+Get-SnipeitAsset -component_id 5
+Get Assets with component id 5
+
+
 #>
 
 function Get-SnipeitAsset() {
@@ -99,6 +125,12 @@ function Get-SnipeitAsset() {
 
         [parameter(ParameterSetName='Assets overdue for auditing')]
         [switch]$audit_overdue,
+
+        [parameter(ParameterSetName='Assets checked out to user id')]
+        [int]$user_id,
+
+        [parameter(ParameterSetName='Assets with component id')]
+        [int]$component_id,
 
         [parameter(ParameterSetName='Search')]
         [string]$order_number,
@@ -133,28 +165,38 @@ function Get-SnipeitAsset() {
         [parameter(ParameterSetName='Search')]
         [parameter(ParameterSetName='Assets due auditing soon')]
         [parameter(ParameterSetName='Assets overdue for auditing')]
+        [parameter(ParameterSetName='Assets checked out to user id')]
+        [parameter(ParameterSetName='Assets with component id')]
         [ValidateSet('id','created_at','asset_tag','serial','order_number','model_id','category_id','manufacturer_id','company_id','location_id','status','status_id')]
         [string]$sort,
 
         [parameter(ParameterSetName='Search')]
         [parameter(ParameterSetName='Assets due auditing soon')]
         [parameter(ParameterSetName='Assets overdue for auditing')]
+        [parameter(ParameterSetName='Assets checked out to user id')]
+        [parameter(ParameterSetName='Assets with component id')]
         [ValidateSet("asc", "desc")]
         [string]$order,
 
         [parameter(ParameterSetName='Search')]
         [parameter(ParameterSetName='Assets due auditing soon')]
         [parameter(ParameterSetName='Assets overdue for auditing')]
+        [parameter(ParameterSetName='Assets checked out to user id')]
+        [parameter(ParameterSetName='Assets with component id')]
         [int]$limit = 50,
 
         [parameter(ParameterSetName='Search')]
         [parameter(ParameterSetName='Assets due auditing soon')]
         [parameter(ParameterSetName='Assets overdue for auditing')]
+        [parameter(ParameterSetName='Assets checked out to user id')]
+        [parameter(ParameterSetName='Assets with component id')]
         [int]$offset,
 
         [parameter(ParameterSetName='Search')]
         [parameter(ParameterSetName='Assets due auditing soon')]
         [parameter(ParameterSetName='Assets overdue for auditing')]
+        [parameter(ParameterSetName='Assets checked out to user id')]
+        [parameter(ParameterSetName='Assets with component id')]
         [switch]$all = $false,
 
         [parameter(mandatory = $true)]
@@ -175,6 +217,8 @@ function Get-SnipeitAsset() {
         'Get with serial' { $apiurl= "$url/api/v1/hardware/byserial/$serial"}
         'Assets due auditing soon' {$apiurl = "$url/api/v1/hardware/audit/due"}
         'Assets overdue for auditing' {$apiurl = "$url/api/v1/hardware/audit/overdue"}
+        'Assets checked out to user id'{$apiurl = "$url/api/v1/users/$user_id/assets"}
+        'Assets with component id' {$apiurl = "$url/api/v1/components/$component_id/assets"}
     }
 
 
