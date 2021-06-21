@@ -38,23 +38,11 @@ Cost of item being purchased.
 .PARAMETER purchase_date
 Date accessory was purchased
 
-.PARAMETER order_number
-Order number for this accessory.
-
-.PARAMETER purchase_cost
-Cost of item being purchased.
-
-.PARAMETER purchase_date
-Date accessory was purchased
-
 .PARAMETER supplier_id
 ID number of the supplier for this accessory
 
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
-
-.PARAMETER min_qty
-Min quantity of the accessory before alert is triggered
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
@@ -99,6 +87,8 @@ function Set-SnipeitAccessory() {
         [Nullable[System.Int32]]$min_amt,
 
         [Nullable[System.Int32]]$supplier_id,
+
+        [Nullable[System.Int32]]$location_id,
 
         [parameter(mandatory = $true)]
         [string]$url,

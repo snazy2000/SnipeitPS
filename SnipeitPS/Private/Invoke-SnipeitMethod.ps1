@@ -35,7 +35,6 @@
         }
 
         #To support images "image" property have be handled before this
-        if($Body) { $body = $Body | ConvertTo-Json }
 
         $_headers = @{
             "Authorization" = "Bearer $($token)"
@@ -60,9 +59,24 @@
             Headers         = $_headers
             UseBasicParsing = $true
             ErrorAction     = 'SilentlyContinue'
+            Proxy           = 'http://localhost:8080'
         }
 
-        if ($Body) {$splatParameters["Body"] = [System.Text.Encoding]::UTF8.GetBytes($Body)}
+        #Place holder for intended image manipulation
+        # if and when snipe it API gets support for images
+        if($null -ne $body -and $Body.Keys -contains 'image' ){
+            if($PSVersionTable.PSVersion -ge 7){
+                $Body['image'] = get-item $body['image']
+                $splatParameters["Form"] = $Body
+            } else {
+                    write-warning "Setting images is supported only with powershell version 7 or greater"
+                    $Body.Remove('image')
+            }
+        }
+
+        if ($Body -and $splatParameters.Keys -notcontains 'Form') {
+            $splatParameters["Body"] = $Body | Convertto-Json
+        }
 
         $script:PSDefaultParameterValues = $global:PSDefaultParameterValues
 
@@ -72,7 +86,7 @@
         try {
             Write-Verbose "[$($MyInvocation.MyCommand.Name)] Invoking method $Method to URI $URi"
             Write-Debug "[$($MyInvocation.MyCommand.Name)] Invoke-WebRequest with: $($splatParameters | Out-String)"
-            $webResponse = Invoke-WebRequest @splatParameters
+            $webResponse = Invoke-RestMethod @splatParameters
         }
         catch {
             Write-Verbose "[$($MyInvocation.MyCommand.Name)] Failed to get an answer from the server"
@@ -84,27 +98,27 @@
         if ($webResponse) {
             Write-Verbose "[$($MyInvocation.MyCommand.Name)] Status code: $($webResponse.StatusCode)"
 
-            if ($webResponse.Content) {
-                 Write-Verbose $webResponse.Content
+            if ($webResponse) {
+                 Write-Verbose $webResponse
 
                 # API returned a Content: lets work wit it
                 try{
-                    $response = ConvertFrom-Json -InputObject $webResponse.Content
 
-                    if ($response.status -eq "error") {
+                    if ($webResponse.status -eq "error") {
                         Write-Verbose "[$($MyInvocation.MyCommand.Name)] An error response was received from; resolving"
                         # This could be handled nicely in an function such as:
                         # ResolveError $response -WriteError
-                        Write-Error $($response.messages | Out-String)
+                        Write-Error $($webResponse.messages | Out-String)
                     }
                     else {
-                        $result = $response
-                        if (($response) -and ($response | Get-Member -Name payload))
-                        {
-                            $result = $response.payload
+
+                        if ($webResponse.payload){
+                            $result = $webResponse.payload
                         }
-                        elseif (($response) -and ($response | Get-Member -Name rows)) {
-                            $result = $response.rows
+                        elseif ($webResponse.rows) {
+                            $result = $webResponse.rows
+                        } else {
+                            $result = $webResponse
                         }
 
                         $result
