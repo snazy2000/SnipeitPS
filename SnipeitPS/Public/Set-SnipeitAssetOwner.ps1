@@ -71,11 +71,11 @@ function Set-SnipeitAssetOwner()
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         if ($Values['expected_checkin']) {
-            $Values['expected_checkin'] = $values['expected_checkin'].ToString("yyyy-MM-dd")
+            $Values['expected_checkin'] = $Values['expected_checkin'].ToString("yyyy-MM-dd")
         }
 
         if ($Values['checkout_at']) {
-            $Values['checkout_at'] = $values['checkout_at'].ToString("yyyy-MM-dd")
+            $Values['checkout_at'] = $Values['checkout_at'].ToString("yyyy-MM-dd")
         }
 
         switch ($checkout_to_type)
@@ -88,8 +88,6 @@ function Set-SnipeitAssetOwner()
         #This can be removed now
         if($Values.ContainsKey('assigned_id')){$Values.Remove('assigned_id')}
 
-        $Body = $Values | ConvertTo-Json;
-
     }
 
     process{
@@ -97,7 +95,7 @@ function Set-SnipeitAssetOwner()
             $Parameters = @{
                 Uri    = "$url/api/v1/hardware/$asset_id/checkout"
                 Method = 'POST'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

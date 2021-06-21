@@ -57,12 +57,10 @@ function New-SnipeitDepartment() {
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/departments"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

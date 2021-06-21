@@ -122,7 +122,6 @@ function Set-SnipeitUser() {
             $Values['password_confirmation'] = $password
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process{
@@ -130,7 +129,7 @@ function Set-SnipeitUser() {
             $Parameters = @{
                 Uri    = "$url/api/v1/users/$user_id"
                 Method = 'PATCH'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

@@ -76,16 +76,14 @@ function New-SnipeitComponent() {
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+    if ($Values['purchase_date']) {
+        $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
     }
-
-    $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
         Uri    = "$url/api/v1/components"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

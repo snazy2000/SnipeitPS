@@ -46,8 +46,6 @@ function Set-SnipeitAccessoryOwner()
     )
     begin{
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -55,7 +53,7 @@ function Set-SnipeitAccessoryOwner()
             $Parameters = @{
                 Uri    = "$url/api/v1/accessories/$accessory_id/checkout"
                 Method = 'POST'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

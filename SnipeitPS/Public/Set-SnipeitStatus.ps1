@@ -62,7 +62,6 @@ function Set-SnipeitStatus()
 
     begin {
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-        $Body = $Values | ConvertTo-Json
     }
 
     process {
@@ -70,7 +69,7 @@ function Set-SnipeitStatus()
             $Parameters = @{
                 Uri           = "$url/api/v1/statuslabels/$status_id"
                 Method        = 'Put'
-                Body          = $Body
+                Body          = $Values
                 Token         = $apiKey
             }
 

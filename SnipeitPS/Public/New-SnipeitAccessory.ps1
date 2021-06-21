@@ -118,12 +118,10 @@ function New-SnipeitAccessory() {
         $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/accessories"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

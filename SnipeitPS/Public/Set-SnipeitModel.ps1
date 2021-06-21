@@ -69,14 +69,13 @@ function Set-SnipeitModel() {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        $Body = $Values | ConvertTo-Json;
     }
     process {
         foreach ($model_id in $id) {
             $Parameters = @{
                 Uri    = "$url/api/v1/models/$model_id"
                 Method = 'put'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

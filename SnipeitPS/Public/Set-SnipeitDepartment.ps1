@@ -61,8 +61,6 @@ function Set-SnipeitDepartment() {
     begin {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -70,7 +68,7 @@ function Set-SnipeitDepartment() {
             $Parameters = @{
                 Uri    = "$url/api/v1/departments/$department_id"
                 Method = 'Put'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

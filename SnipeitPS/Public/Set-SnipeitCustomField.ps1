@@ -82,9 +82,6 @@ function Set-SnipeitCustomField()
         }
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
-
     }
 
     process{
@@ -92,7 +89,7 @@ function Set-SnipeitCustomField()
             $Parameters = @{
                 Uri    = "$url/api/v1/fields/$field_id"
                 Method = 'Put'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

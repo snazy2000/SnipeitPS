@@ -46,7 +46,7 @@ function Reset-SnipeitAccessoryOwner()
     $Parameters = @{
         Uri    = "$url/api/v1/accessories/$assigned_pivot_id/checkin"
         Method = 'Post'
-        Body   = '{}'
+        Body   = @{}
         Token  = $apiKey
     }
 

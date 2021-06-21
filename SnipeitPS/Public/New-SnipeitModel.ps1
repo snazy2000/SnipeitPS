@@ -73,12 +73,11 @@ function New-SnipeitModel()
     if ($PSBoundParameters.ContainsKey('model_number')) { $Values.Add("model_number", $model_number) }
     if ($PSBoundParameters.ContainsKey('eol')) { $Values.Add("eol", $eol) }
 
-    $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
         Uri    = "$url/api/v1/models"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 
