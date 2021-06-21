@@ -46,7 +46,6 @@ function Remove-SnipeitAssetMaintenance {
             $Parameters = @{
                 Uri    = "$url/api/v1/maintenances/$maintenance_id"
                 Method = 'Delete'
-                Body   = '@{}'
                 Token  = $apiKey
             }
 

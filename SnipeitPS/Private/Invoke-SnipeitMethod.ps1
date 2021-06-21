@@ -111,17 +111,30 @@
                         Write-Error $($webResponse.messages | Out-String)
                     }
                     else {
-
+                        #update operations return payload
                         if ($webResponse.payload){
                             $result = $webResponse.payload
                         }
+                        #Search operations return rows
                         elseif ($webResponse.rows) {
                             $result = $webResponse.rows
-                        } else {
+                        }
+                        #Remove operations returns status and message
+                        elseif ($webResponse.status -eq 'success'){
+                            $result = $webResponse.payload
+                        }
+                        #get operations with id returns just one object
+                        else {
                             $result = $webResponse
                         }
 
+                        Write-Verbose "Status: $($webResponse.status)"
+                        Write-Verbose "Messages: $($webResponse.messages)"
+
                         $result
+
+
+
                     }
                 }
                 catch {

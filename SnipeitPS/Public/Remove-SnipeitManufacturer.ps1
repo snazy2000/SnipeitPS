@@ -41,7 +41,6 @@ function Remove-SnipeitManufacturer ()
             $Parameters = @{
                 Uri    = "$url/api/v1/manufacturers/$manufacturer_id_id"
                 Method = 'Delete'
-                Body   = '@{}'
                 Token  = $apiKey
             }
 

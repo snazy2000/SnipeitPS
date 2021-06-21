@@ -42,7 +42,6 @@ function Remove-SnipeitConsumable ()
             $Parameters = @{
                 Uri    = "$url/api/v1/consumables/$consumable_id"
                 Method = 'Delete'
-                Body   = '@{}'
                 Token  = $apiKey
             }
 

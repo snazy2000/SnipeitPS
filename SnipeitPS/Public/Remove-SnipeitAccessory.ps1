@@ -41,7 +41,6 @@ function Remove-SnipeitAccessory ()
             $Parameters = @{
                 Uri    = "$url/api/v1/accessories/$accessory_id"
                 Method = 'Delete'
-                Body   = @{}
                 Token  = $apiKey
             }
 
