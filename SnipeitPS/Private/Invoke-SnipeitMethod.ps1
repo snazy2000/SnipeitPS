@@ -59,7 +59,6 @@
             Headers         = $_headers
             UseBasicParsing = $true
             ErrorAction     = 'SilentlyContinue'
-            Proxy           = 'http://localhost:8080'
         }
 
         #Place holder for intended image manipulation
