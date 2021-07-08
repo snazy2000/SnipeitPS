@@ -57,5 +57,13 @@ function Get-ParameterValue {
         }
         finally {}
     }
+
+    #Convert switch parameters to booleans so it converts nicely to json
+    foreach ( $key in @($ParameterValues.Keys)) {
+      if ($true -eq $ParameterValues[$key].IsPresent){
+        $ParameterValues[$key]=$true;
+      }
+    }
+
     return $ParameterValues
 }
