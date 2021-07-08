@@ -23,6 +23,12 @@
     .PARAMETER fieldset_id
     Fieldset ID that the asset uses (Custom fields)
 
+    .PARAMETER image
+    Image file name and path for item
+
+    .PARAMETER image_delete
+    Remove current image
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -56,6 +62,11 @@ function Set-SnipeitModel() {
 
         [Alias("fieldset_id")]
         [Nullable[System.Int32]]$custom_fieldset_id,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

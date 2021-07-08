@@ -64,12 +64,14 @@
         #Place holder for intended image manipulation
         # if and when snipe it API gets support for images
         if($null -ne $body -and $Body.Keys -contains 'image' ){
-            if($PSVersionTable.PSVersion -ge 7){
+            if($PSVersionTable.PSVersion -ge '7.0'){
                 $Body['image'] = get-item $body['image']
                 $splatParameters["Form"] = $Body
             } else {
-                    write-warning "Setting images is supported only with powershell version 7 or greater"
-                    $Body.Remove('image')
+                    # use base64 encoded images for powershell  version < 7
+                    Add-Type -AssemblyName "System.Web"
+                    $mimetype = [System.Web.MimeMapping]::GetMimeMapping($body['image'])
+                    $Body['image'] = 'data:@'+$mimetype+';base64,'+[Convert]::ToBase64String([IO.File]::ReadAllBytes($Body['image']))
             }
         }
 

@@ -38,6 +38,12 @@
     .PARAMETER manager_id
     The manager ID of the location
 
+    .PARAMETER image
+    Image file name and path for item
+
+    .PARAMETER image_delete
+    Remove current image
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -77,6 +83,11 @@ function New-SnipeitLocation() {
         [int]$manager_id,
 
         [string]$ldap_ou,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

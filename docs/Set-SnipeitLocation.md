@@ -15,8 +15,8 @@ Updates Location in Snipe-it asset system
 ```
 Set-SnipeitLocation [-id] <Int32[]> [[-name] <String>] [[-address] <String>] [[-address2] <String>]
  [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-city] <String>] [[-currency] <String>]
- [[-manager_id] <Int32>] [[-ldap_ou] <String>] [[-parent_id] <Int32>] [-url] <String> [-apiKey] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-manager_id] <Int32>] [[-ldap_ou] <String>] [[-parent_id] <Int32>] [[-image] <String>] [-image_delete]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 14
+Position: 15
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -133,6 +133,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -220,7 +250,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 13
+Position: 14
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
