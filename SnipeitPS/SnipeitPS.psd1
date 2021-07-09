@@ -135,6 +135,7 @@ FunctionsToExport = @(
         'Set-SnipeitLicense',
         'Set-SnipeitLicenseSeat',
         'Set-SnipeitLocation',
+        'Set-SnipeitManufacturer',
         'Set-SnipeitModel',
         'Set-SnipeitStatus',
         'Set-SnipeitUser',
