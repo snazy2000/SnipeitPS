@@ -44,6 +44,12 @@ ID number of the supplier for this accessory
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
 
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
 
@@ -89,6 +95,11 @@ function Set-SnipeitAccessory() {
         [Nullable[System.Int32]]$supplier_id,
 
         [Nullable[System.Int32]]$location_id,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

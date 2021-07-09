@@ -15,7 +15,8 @@ Create a new component
 ```
 New-SnipeitComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
- [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -71,6 +72,36 @@ Aliases:
 Required: False
 Position: 4
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -174,7 +205,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

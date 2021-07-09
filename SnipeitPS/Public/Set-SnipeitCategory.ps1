@@ -8,12 +8,6 @@ Name of new category to be created
 .PARAMETER type
 Type of new category to be created (asset, accessory, consumable, component, license)
 
-.PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
-
-.PARAMETER apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
-
 .PARAMETER use_default_eula
 If switch is present, use the primary default EULA
 
@@ -25,6 +19,18 @@ If switch is present, require users to confirm acceptance of assets in this cate
 
 .PARAMETER checkin_email
 Should the user be emailed the EULA and/or an acceptance confirmation email when this item is checked in?
+
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
+.PARAMETER url
+URL of Snipeit system, can be set using Set-SnipeitInfo command
+
+.PARAMETER apiKey
+User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 .EXAMPLE
 Set-SnipeitCategory -id 4 -name "Laptops"
@@ -53,6 +59,11 @@ function Set-SnipeitCategory()
         [bool]$require_acceptance,
 
         [bool]$checkin_email,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

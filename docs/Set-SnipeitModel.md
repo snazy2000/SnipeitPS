@@ -14,8 +14,8 @@ Updates Model on Snipe-it asset system
 
 ```
 Set-SnipeitModel [-id] <Int32[]> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
- [[-manufacturer_id] <Int32>] [[-eol] <Int32>] [[-custom_fieldset_id] <Int32>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-manufacturer_id] <Int32>] [[-eol] <Int32>] [[-custom_fieldset_id] <Int32>] [[-image] <String>]
+ [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -105,6 +105,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -manufacturer_id
 Manufacturer ID that the asset belongs to this can be got using Get-Manufacturer
 
@@ -159,7 +189,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

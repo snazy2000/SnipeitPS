@@ -20,6 +20,12 @@ If switch is present, require users to confirm acceptance of assets in this cate
 .PARAMETER checkin_email
 If switch is present, send email to user on checkin/checkout
 
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -47,12 +53,17 @@ function New-SnipeitCategory()
 
         [string]$eula_text,
 
-
         [switch]$use_default_eula,
 
         [switch]$require_acceptance,
 
         [switch]$checkin_email,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 

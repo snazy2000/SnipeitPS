@@ -17,8 +17,8 @@ Set-SnipeitAsset [-id] <Int32[]> [[-name] <String>] [[-status_id] <Int32>] [[-mo
  [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
  [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
  [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
- [[-notes] <String>] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [[-customfields] <Hashtable>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-notes] <String>] [[-RequestType] <String>] [[-image] <String>] [-image_delete] [-url] <String>
+ [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +52,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 19
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,7 +113,7 @@ Parameter Sets: (All)
 Aliases: CustomValues
 
 Required: False
-Position: 20
+Position: 21
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -131,6 +131,36 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 18
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -256,7 +286,7 @@ Accept wildcard characters: False
 
 ### -RequestType
 Http request type to send Snipe IT system.
-Defaults to Put youc use Patch if needed
+Defaults to Patch you could use Put if needed.
 
 ```yaml
 Type: String
@@ -324,7 +354,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 18
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

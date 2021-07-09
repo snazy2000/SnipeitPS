@@ -14,7 +14,8 @@ Creates a department
 
 ```
 New-SnipeitDepartment [-name] <String> [[-company_id] <Int32>] [[-location_id] <Int32>] [[-manager_id] <Int32>]
- [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-notes] <String>] [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,6 +56,36 @@ Aliases:
 Required: False
 Position: 2
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -128,7 +159,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

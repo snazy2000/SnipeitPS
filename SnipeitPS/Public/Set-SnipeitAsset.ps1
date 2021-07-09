@@ -53,8 +53,14 @@
     .PARAMETER notes
     Notes about asset
 
+    .PARAMETER image
+    Image file name and path for item
+
+    .PARAMETER image_delete
+    Remove current image
+
     .PARAMETER RequestType
-    Http request type to send Snipe IT system. Defaults to Put youc use Patch if needed
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
@@ -121,6 +127,11 @@ function Set-SnipeitAsset()
 
         [ValidateSet("Put","Patch")]
         [string]$RequestType = "Patch",
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

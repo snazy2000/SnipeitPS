@@ -13,8 +13,8 @@ Creates a new Company
 ## SYNTAX
 
 ```
-New-SnipeitCompany [-name] <String> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-SnipeitCompany [-name] <String> [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,8 +38,38 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 4
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -68,7 +98,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
