@@ -104,6 +104,7 @@ FunctionsToExport = @(
         'New-SnipeitLocation',
         'New-SnipeitManufacturer',
         'New-SnipeitModel',
+        'New-SnipeitSupplier',
         'New-SnipeitUser',
         'Remove-SnipeitAccessory',
         'Remove-SnipeitAsset',
@@ -118,6 +119,7 @@ FunctionsToExport = @(
         'Remove-SnipeitLocation',
         'Remove-SnipeitManufacturer',
         'Remove-SnipeitModel',
+        'Remove-SnipeitSupplier',
         'Remove-SnipeitUser',
         'Reset-SnipeitAccessoryOwner',
         'Reset-SnipeitAssetOwner',
@@ -137,6 +139,7 @@ FunctionsToExport = @(
         'Set-SnipeitLocation',
         'Set-SnipeitModel',
         'Set-SnipeitStatus',
+        'Set-SnipeitSupplier',
         'Set-SnipeitUser',
         'Update-SnipeitAlias'
 )
