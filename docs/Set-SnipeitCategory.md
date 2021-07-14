@@ -15,8 +15,8 @@ Create a new Snipe-IT Category
 ```
 Set-SnipeitCategory [-id] <Int32[]> [[-name] <String>] [[-category_type] <String>] [[-eula_text] <String>]
  [[-use_default_eula] <Boolean>] [[-require_acceptance] <Boolean>] [[-checkin_email] <Boolean>]
- [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-image] <String>] [-image_delete] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -151,6 +151,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -require_acceptance
 If switch is present, require users to confirm acceptance of assets in this category
 
@@ -175,7 +191,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

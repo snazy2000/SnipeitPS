@@ -13,8 +13,8 @@ Updates company name
 ## SYNTAX
 
 ```
-Set-SnipeitCompany [-id] <Int32[]> [-name] <String> [[-image] <String>] [-image_delete] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SnipeitCompany [-id] <Int32[]> [-name] <String> [[-image] <String>] [-image_delete]
+ [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,6 +104,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -113,7 +129,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

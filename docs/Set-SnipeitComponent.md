@@ -15,8 +15,8 @@ Updates component
 ```
 Set-SnipeitComponent [-id] <Int32[]> [-qty] <Int32> [[-min_amt] <Int32>] [[-name] <String>]
  [[-company_id] <Int32>] [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>]
- [[-purchase_cost] <Single>] [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-purchase_cost] <Single>] [[-image] <String>] [-image_delete] [[-RequestType] <String>] [-url] <String>
+ [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 12
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -211,6 +211,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -220,7 +236,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

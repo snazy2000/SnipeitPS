@@ -16,8 +16,8 @@ Creates a new user
 Set-SnipeitUser [-id] <Int32[]> [[-first_name] <String>] [[-last_name] <String>] [[-userName] <String>]
  [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-password] <String>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
- [[-activated] <Boolean>] [[-notes] <String>] [[-image] <String>] [-image_delete] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-activated] <Boolean>] [[-notes] <String>] [[-image] <String>] [-image_delete] [[-RequestType] <String>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 18
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -288,6 +288,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 17
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -297,7 +313,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 17
+Position: 18
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,8 +14,8 @@ Sets  Snipe-it Status Labels
 
 ```
 Set-SnipeitStatus [-id] <Int32[]> [[-name] <String>] [-type] <String> [[-notes] <String>] [[-color] <String>]
- [[-show_in_nav] <Boolean>] [[-default_label] <Boolean>] [-url] <String> [-apiKey] <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [[-show_in_nav] <Boolean>] [[-default_label] <Boolean>] [[-RequestType] <String>] [-url] <String>
+ [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 9
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -125,6 +125,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -show_in_nav
 1 or 0 - determine whether the status label should show in the left-side nav of the web GUI
 
@@ -164,7 +180,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 8
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

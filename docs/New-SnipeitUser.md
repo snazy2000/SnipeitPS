@@ -16,8 +16,8 @@ Creates a new user
 New-SnipeitUser [-first_name] <String> [-last_name] <String> [-username] <String> [[-password] <String>]
  [[-activated] <Boolean>] [[-notes] <String>] [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>]
  [[-company_id] <Int32>] [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>]
- [[-employee_num] <String>] [[-ldap_import] <Boolean>] [[-image] <String>] [-image_delete] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-employee_num] <String>] [[-ldap_import] <Boolean>] [[-image] <String>] [-url] <String> [-apiKey] <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+User Image file name and path
 
 ```yaml
 Type: String
@@ -149,21 +149,6 @@ Aliases:
 Required: False
 Position: 16
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -image_delete
-Remove current image
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

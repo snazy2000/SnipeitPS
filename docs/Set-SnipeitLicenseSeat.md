@@ -14,7 +14,8 @@ Set license seat or checkout license seat
 
 ```
 Set-SnipeitLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_to] <Int32>] [[-asset_id] <Int32>]
- [[-note] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-note] <String>] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +52,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 7
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -117,6 +118,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -seat_id
 {{ Fill seat_id Description }}
 
@@ -141,7 +158,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
