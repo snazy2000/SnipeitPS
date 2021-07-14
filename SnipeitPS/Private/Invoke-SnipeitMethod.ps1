@@ -61,11 +61,15 @@
             ErrorAction     = 'SilentlyContinue'
         }
 
-        #Place holder for intended image manipulation
+        # Place holder for intended image manipulation
         # if and when snipe it API gets support for images
         if($null -ne $body -and $Body.Keys -contains 'image' ){
             if($PSVersionTable.PSVersion -ge '7.0'){
                 $Body['image'] = get-item $body['image']
+                # As multipart/form-data is always POST we need add
+                # requested method for laravel named as '_method'
+                $Body['_method'] = $Method
+                $splatParameters["Method"] = 'POST'
                 $splatParameters["Form"] = $Body
             } else {
                     # use base64 encoded images for powershell  version < 7
