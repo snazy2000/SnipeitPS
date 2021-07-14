@@ -18,10 +18,7 @@
     ID number of manager
 
     .PARAMETER image
-    Image file name and path for item
-
-    .PARAMETER image_delete
-    Remove current image
+    Department Image filename and path
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
