@@ -59,6 +59,9 @@
     .PARAMETER image_delete
     Remove current image
 
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -117,6 +120,9 @@ function Set-SnipeitUser() {
         [string]$image,
 
         [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
 
         [parameter(mandatory = $true)]
         [string]$url,

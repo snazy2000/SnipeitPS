@@ -59,6 +59,9 @@
     .PARAMETER termination_date
     Termination date for license.
 
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -121,6 +124,9 @@ function Set-SnipeitLicense() {
 
         [datetime]$termination_date,
 
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -151,7 +157,7 @@ function Set-SnipeitLicense() {
         foreach($license_id in $id){
             $Parameters = @{
                 Uri    = "$url/api/v1/licenses/$license_id"
-                Method = 'PUT'
+                Method = $RequestType
                 Body   = $Values
                 Token  = $apiKey
             }

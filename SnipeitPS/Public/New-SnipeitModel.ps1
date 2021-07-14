@@ -23,8 +23,6 @@
     .PARAMETER image
     Asset model Image filename and path
 
-
-
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
