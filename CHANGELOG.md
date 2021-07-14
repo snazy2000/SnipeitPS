@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v.1.9.x] - 2021-07-14
+
+## Image uploads
+
+## New features
+Support for image upload and removes. Just specify filename for -image para-
+meter to upload image when creating or updating item on snipe.
+to remove image use -image_delete parameter
+
+Most of set-commands have new -RequestType parameter that defaults to Patch.
+If needed request method can be changed from default.
+
+## New Functions
+Following new commands have been added to SnipeitPS:
+- New-Supplier
+- Set-Supplier
+- Remove-Supplier
+- Set-Manufacturer
+
 
 # [v.1.8.x] - 2021-06-17
 

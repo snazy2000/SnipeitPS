@@ -17,7 +17,7 @@ environment:
     secure: UdM6qhf5B0G8liHhUrwWERCZr44iSqmg4jUq0lwlTjZs4KyeoiwnBzdej0phqIAm
   PShell: '5'
 
-version: 1.8.{build}
+version: 1.9.{build}
 
 # Don't rebuild when I tag a release on GitHub
 skip_tags: true
