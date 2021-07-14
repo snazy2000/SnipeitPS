@@ -11,8 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## New features
 Support for image upload and removes. Just specify filename for -image para-
-meter to upload image when creating or updating item on snipe.
-to remove image use -image_delete parameter
+meter when creating or updating item on snipe.
+Remove image use -image_delete parameter.
+
+*Snipe It version greater than 5.1.8 is needed to support image parameters.*
 
 Most of set-commands have new -RequestType parameter that defaults to Patch.
 If needed request method can be changed from default.
