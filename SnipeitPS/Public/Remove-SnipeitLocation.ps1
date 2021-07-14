@@ -41,7 +41,6 @@ function Remove-SnipeitLocation ()
             $Parameters = @{
                 Uri    = "$url/api/v1/locations/$asset_id"
                 Method = 'Delete'
-                Body   = '{}'
                 Token  = $apiKey
             }
 

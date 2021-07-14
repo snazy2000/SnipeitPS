@@ -1,24 +1,48 @@
 <#
     .SYNOPSIS
-    Creates a department
+    Creates a supplier
 
     .DESCRIPTION
-    Creates a new department on Snipe-It system
+    Creates a new supplier on Snipe-It system
 
     .PARAMETER name
     Department Name
 
-    .PARAMETER company_id
-    ID number of company
+    .PARAMETER address
+    Address line 1 of supplier
 
-    .PARAMETER location_id
-    ID number of location
+    .PARAMETER address2
+    Address line 1 of supplier
 
-    .PARAMETER manager_id
-    ID number of manager
+    .PARAMETER city
+    City
 
-    .PARAMETER image
-    Department Image filename and path
+    .PARAMETER state
+    State
+
+    .PARAMETER country
+    Country
+
+    .PARAMETER zip
+    Zip code
+
+    .PARAMETER phone
+    Phone number
+
+    .PARAMETER fax
+    Fax number
+
+    .PARAMETER email
+    Email address
+
+    .PARAMETER contact
+    Contact person
+
+    .PARAMETER notes
+    Email address
+
+     .PARAMETER image
+    Image file name and path for item
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
@@ -31,7 +55,7 @@
 
 #>
 
-function New-SnipeitDepartment() {
+function New-SnipeitSupplier() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -41,18 +65,30 @@ function New-SnipeitDepartment() {
         [parameter(mandatory = $true)]
         [string]$name,
 
-        [int]$company_id,
+        [string]$address,
 
-        [int]$location_id,
+        [string]$address2,
 
-        [int]$manager_id,
+        [string]$city,
+
+        [string]$state,
+
+        [string]$country,
+
+        [string]$zip,
+
+        [string]$phone,
+
+        [string]$fax,
+
+        [string]$email,
+
+        [string]$contact,
 
         [string]$notes,
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
-
-        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -66,7 +102,7 @@ function New-SnipeitDepartment() {
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     $Parameters = @{
-        Uri    = "$url/api/v1/departments"
+        Uri    = "$url/api/v1/suppilers"
         Method = 'POST'
         Body   = $Values
         Token  = $apiKey

@@ -20,6 +20,9 @@ If switch is present, require users to confirm acceptance of assets in this cate
 .PARAMETER checkin_email
 If switch is present, send email to user on checkin/checkout
 
+.PARAMETER image
+Category image filename and path
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -47,12 +50,15 @@ function New-SnipeitCategory()
 
         [string]$eula_text,
 
-
         [switch]$use_default_eula,
 
         [switch]$require_acceptance,
 
         [switch]$checkin_email,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -68,8 +74,6 @@ function New-SnipeitCategory()
         }
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -77,7 +81,7 @@ function New-SnipeitCategory()
         $Parameters = @{
             Uri    = "$url/api/v1/categories"
             Method = 'POST'
-            Body   = $Body
+            Body   = $Values
             Token  = $apiKey
         }
 

@@ -53,8 +53,14 @@
     .PARAMETER notes
     Notes about asset
 
+    .PARAMETER image
+    Image file name and path for item
+
+    .PARAMETER image_delete
+    Remove current image
+
     .PARAMETER RequestType
-    Http request type to send Snipe IT system. Defaults to Put youc use Patch if needed
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
 
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
@@ -122,6 +128,11 @@ function Set-SnipeitAsset()
         [ValidateSet("Put","Patch")]
         [string]$RequestType = "Patch",
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -136,8 +147,8 @@ function Set-SnipeitAsset()
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
         if ($customfields)
@@ -145,7 +156,6 @@ function Set-SnipeitAsset()
             $Values += $customfields
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
@@ -153,7 +163,7 @@ function Set-SnipeitAsset()
             $Parameters = @{
                 Uri    = "$url/api/v1/hardware/$asset_id"
                 Method = $RequestType
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

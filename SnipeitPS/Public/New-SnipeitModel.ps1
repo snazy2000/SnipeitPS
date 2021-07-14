@@ -20,6 +20,9 @@
     .PARAMETER fieldset_id
     Fieldset ID that the asset uses (Custom fields)
 
+    .PARAMETER image
+    Asset model Image filename and path
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -54,6 +57,9 @@ function New-SnipeitModel()
         [parameter(mandatory = $true)]
         [int]$fieldset_id,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -73,12 +79,11 @@ function New-SnipeitModel()
     if ($PSBoundParameters.ContainsKey('model_number')) { $Values.Add("model_number", $model_number) }
     if ($PSBoundParameters.ContainsKey('eol')) { $Values.Add("eol", $eol) }
 
-    $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
         Uri    = "$url/api/v1/models"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

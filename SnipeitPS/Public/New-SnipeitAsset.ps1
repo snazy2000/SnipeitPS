@@ -42,6 +42,9 @@ Optional Purchase cost of the Asset
 .PARAMETER rtd_location_id
 Optional Default location id for the asset
 
+.PARAMETER image
+Asset image filename and path
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -114,6 +117,9 @@ function New-SnipeitAsset()
         [parameter(mandatory = $false)]
         [int]$rtd_location_id,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -137,12 +143,10 @@ function New-SnipeitAsset()
         $Values += $customfields
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/hardware"
         Method = 'Post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

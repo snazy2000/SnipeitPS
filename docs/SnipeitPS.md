@@ -104,6 +104,9 @@ Add a new Manufacturer to Snipe-it asset system
 ### [New-SnipeitModel](New-SnipeitModel.md)
 Add a new Model to Snipe-it asset system
 
+### [New-SnipeitSupplier](New-SnipeitSupplier.md)
+Creates a supplier
+
 ### [New-SnipeitUser](New-SnipeitUser.md)
 Creates a new user
 
@@ -145,6 +148,9 @@ Removes manufacturer from Snipe-it asset system
 
 ### [Remove-SnipeitModel](Remove-SnipeitModel.md)
 Removes Asset model from Snipe-it asset system
+
+### [Remove-SnipeitSupplier](Remove-SnipeitSupplier.md)
+Removes supplier from Snipe-it asset system
 
 ### [Remove-SnipeitUser](Remove-SnipeitUser.md)
 Removes User from Snipe-it asset system
@@ -197,11 +203,17 @@ Set license seat or checkout license seat
 ### [Set-SnipeitLocation](Set-SnipeitLocation.md)
 Updates Location in Snipe-it asset system
 
+### [Set-SnipeitManufacturer](Set-SnipeitManufacturer.md)
+Add a new Manufacturer to Snipe-it asset system
+
 ### [Set-SnipeitModel](Set-SnipeitModel.md)
 Updates Model on Snipe-it asset system
 
 ### [Set-SnipeitStatus](Set-SnipeitStatus.md)
 Sets  Snipe-it Status Labels
+
+### [Set-SnipeitSupplier](Set-SnipeitSupplier.md)
+Modify the supplier
 
 ### [Set-SnipeitUser](Set-SnipeitUser.md)
 Creates a new user

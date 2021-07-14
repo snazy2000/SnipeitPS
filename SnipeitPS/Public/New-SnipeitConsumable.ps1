@@ -44,6 +44,9 @@ Model number of the consumable in months
 .PARAMETER item_no
 Item number for the consumable
 
+.PARAMETER image
+Consumable Image filename and path
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -104,6 +107,9 @@ function New-SnipeitConsumable()
         [parameter(mandatory = $false)]
         [string]$item_no,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -114,18 +120,16 @@ function New-SnipeitConsumable()
     begin {
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
+        if ($Values['purchase_date']) {
             $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
-
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
         $Parameters = @{
             Uri    = "$url/api/v1/consumables"
             Method = 'Post'
-            Body   = $Body
+            Body   = $Values
             Token  = $apiKey
         }
 

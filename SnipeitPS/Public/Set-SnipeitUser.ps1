@@ -53,6 +53,15 @@
     .PARAMETER ldap_import
     Mark user as import from ldap
 
+    .PARAMETER image
+    Image file name and path for item
+
+    .PARAMETER image_delete
+    Remove current image
+
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -107,6 +116,14 @@ function Set-SnipeitUser() {
 
         [string]$notes,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -122,7 +139,6 @@ function Set-SnipeitUser() {
             $Values['password_confirmation'] = $password
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process{
@@ -130,7 +146,7 @@ function Set-SnipeitUser() {
             $Parameters = @{
                 Uri    = "$url/api/v1/users/$user_id"
                 Method = 'PATCH'
-                Body   = $Body
+                Body   = $Values
                 Token  = $apiKey
             }
 

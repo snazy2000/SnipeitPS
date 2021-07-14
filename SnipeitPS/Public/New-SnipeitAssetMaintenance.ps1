@@ -81,20 +81,19 @@ function New-SnipeitAssetMaintenance() {
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    if ($values['start_date']) {
-        $values['start_date'] = $values['start_date'].ToString("yyyy-MM-dd")
+    if ($Values['start_date']) {
+        $Values['start_date'] = $Values['start_date'].ToString("yyyy-MM-dd")
     }
 
-    if ($values['completion_date']) {
-        $values['completion_date'] = $values['completion_date'].ToString("yyyy-MM-dd")
+    if ($Values['completion_date']) {
+        $Values['completion_date'] = $Values['completion_date'].ToString("yyyy-MM-dd")
     }
 
-    $Body = $Values | ConvertTo-Json;
 
     $Parameters = @{
         Uri    = "$url/api/v1/maintenances"
         Method = 'Post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

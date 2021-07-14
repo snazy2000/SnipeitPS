@@ -221,7 +221,6 @@ function Get-SnipeitAsset() {
         'Assets with component id' {$apiurl = "$url/api/v1/components/$component_id/assets"}
     }
 
-
     $Parameters = @{
         Uri           = $apiurl
         Method        = 'Get'

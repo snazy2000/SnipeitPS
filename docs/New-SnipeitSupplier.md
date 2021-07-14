@@ -5,171 +5,34 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-SnipeitLicense
+# New-SnipeitSupplier
 
 ## SYNOPSIS
-Updates a licence
+Creates a supplier
 
 ## SYNTAX
 
 ```
-Set-SnipeitLicense [-id] <Int32[]> [[-name] <String>] [[-seats] <Int32>] [[-category_id] <Int32>]
- [[-company_id] <Int32>] [[-expiration_date] <DateTime>] [[-license_email] <MailAddress>]
- [[-license_name] <String>] [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>]
- [[-order_number] <String>] [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>]
- [[-reassignable] <Boolean>] [[-serial] <String>] [[-supplier_id] <Int32>] [[-termination_date] <DateTime>]
- [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeitSupplier [-name] <String> [[-address] <String>] [[-address2] <String>] [[-city] <String>]
+ [[-state] <String>] [[-country] <String>] [[-zip] <String>] [[-phone] <String>] [[-fax] <String>]
+ [[-email] <String>] [[-contact] <String>] [[-notes] <String>] [[-image] <String>] [-url] <String>
+ [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates licence on Snipe-It system
+Creates a new supplier on Snipe-It system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Set-SnipeitLicence -name "License" -seats 3 -company_id 1
+New-SnipeitDepartment -name "Department1" -company_id 1 -localtion_id 1 -manager_id 3
 ```
 
 ## PARAMETERS
 
-### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 21
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -category_id
-{{ Fill category_id Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -company_id
-Id number of company license belongs to
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -expiration_date
-Date of license expiration
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -id
-ID number of license or array of license IDs
-
-```yaml
-Type: Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -license_email
-Email address associated with license
-
-```yaml
-Type: MailAddress
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -license_name
-Name of license contact person
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -maintained
-Maintained status of license
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -manufacturer_id
-ID number of manufacturer of license.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Name of license
+### -address
+Address line 1 of supplier
 
 ```yaml
 Type: String
@@ -183,8 +46,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
-License Notes
+### -address2
+Address line 1 of supplier
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -apiKey
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 15
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -city
+City
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -contact
+Contact person
 
 ```yaml
 Type: String
@@ -198,8 +106,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -order_number
-Order number of license purchase
+### -country
+Country
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -email
+Email address
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -fax
+Fax number
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -image
+Image file name and path for item
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 13
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -name
+Department Name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -notes
+Email address
 
 ```yaml
 Type: String
@@ -213,54 +196,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -purchase_cost
-Cost of license
-
-```yaml
-Type: Single
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 13
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -purchase_date
-Date of license purchase
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 14
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -reassignable
-Is license reassignable?
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 15
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RequestType
-Http request type to send Snipe IT system.
-Defaults to Patch you could use Put if needed.
+### -phone
+Phone number
 
 ```yaml
 Type: String
@@ -268,29 +205,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 19
-Default value: Patch
+Position: 8
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -seats
-Number of license seats owned.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -serial
-Serialnumber  of license
+### -state
+State
 
 ```yaml
 Type: String
@@ -298,37 +220,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 16
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -supplier_id
-ID number of license supplier
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 17
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -termination_date
-Termination date for license.
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 18
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -343,7 +235,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 20
+Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -zip
+Zip code
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

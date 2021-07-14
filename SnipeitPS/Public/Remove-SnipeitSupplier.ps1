@@ -1,10 +1,10 @@
 <#
     .SYNOPSIS
-    Removes category from Snipe-it asset system
+    Removes supplier from Snipe-it asset system
     .DESCRIPTION
-    Removes category or multiple categories from Snipe-it asset system
+    Removes supplier or multiple manufacturers from Snipe-it asset system
     .PARAMETER ID
-    Unique ID For categoryto be removed
+    Unique ID For supplier to be removed
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -12,13 +12,13 @@
     User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Remove-SnipeitCategory -ID 44 -Verbose
+    Remove-SnipeitSupplier -ID 44
 
     .EXAMPLE
-    Get-SnipeitCategory -search something  | Remove-SnipeitCategory
+    Get-SnipeitSupplier | Where-object {$_.name -like '*something*'}  | Remove-SnipeitSupplier
 #>
 
-function Remove-SnipeitCategory ()
+function Remove-SnipeitSupplier ()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
@@ -37,9 +37,9 @@ function Remove-SnipeitCategory ()
     begin {
     }
     process {
-        foreach($category_id in $id){
+        foreach($suppliers_id in $id){
             $Parameters = @{
-                Uri    = "$url/api/v1/categories/$category_id"
+                Uri    = "$url/api/v1/suppliers/$supplier_id"
                 Method = 'Delete'
                 Token  = $apiKey
             }

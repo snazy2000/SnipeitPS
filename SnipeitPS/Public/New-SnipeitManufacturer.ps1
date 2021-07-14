@@ -8,6 +8,12 @@
     .PARAMETER Name
     Name of the Manufacturer
 
+    .PARAMETER image
+    Manufacturer Image filename and path
+
+    .PARAMETER image_delete
+    Remove current image
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -29,6 +35,11 @@ function New-SnipeitManufacturer()
         [parameter(mandatory = $true)]
         [string]$Name,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -42,13 +53,10 @@ function New-SnipeitManufacturer()
         "name" = $Name
     }
 
-    #Convert Values to JSON format
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/manufacturers"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

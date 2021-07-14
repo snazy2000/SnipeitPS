@@ -29,6 +29,9 @@
     .PARAMETER help_text
     Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
 
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Put you could use Patch if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -69,6 +72,9 @@ function Set-SnipeitCustomField()
 
         [string]$custom_format,
 
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Put",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -82,17 +88,14 @@ function Set-SnipeitCustomField()
         }
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $Values | ConvertTo-Json;
-
     }
 
     process{
         foreach($field_id in $id) {
             $Parameters = @{
                 Uri    = "$url/api/v1/fields/$field_id"
-                Method = 'Put'
-                Body   = $Body
+                Method = $RequestType
+                Body   = $Values
                 Token  = $apiKey
             }
 

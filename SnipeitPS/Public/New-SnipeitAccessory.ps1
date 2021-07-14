@@ -53,6 +53,9 @@ ID number of the location the accessory is assigned to
 .PARAMETER min_amt
 Min quantity of the accessory before alert is triggered
 
+.PARAMETER image
+Accessory image fileame and path
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -103,6 +106,9 @@ function New-SnipeitAccessory() {
         [ValidateRange(1, [int]::MaxValue)]
         [int]$location_id,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -118,12 +124,10 @@ function New-SnipeitAccessory() {
         $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/accessories"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

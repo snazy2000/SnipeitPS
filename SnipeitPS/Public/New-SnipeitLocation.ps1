@@ -38,6 +38,9 @@
     .PARAMETER manager_id
     The manager ID of the location
 
+    .PARAMETER image
+    Location Image filename and path
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -78,6 +81,11 @@ function New-SnipeitLocation() {
 
         [string]$ldap_ou,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -89,12 +97,10 @@ function New-SnipeitLocation() {
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/locations"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

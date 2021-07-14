@@ -50,6 +50,9 @@
     .PARAMETER ldap_import
     Mark user as import from ldap
 
+    .PARAMETER image
+    User Image file name and path
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -104,6 +107,8 @@ function New-SnipeitUser() {
 
         [bool]$ldap_import = $false,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
 
         [parameter(mandatory = $true)]
         [string]$url,
@@ -120,12 +125,10 @@ function New-SnipeitUser() {
             $Values['password_confirmation'] = $password
     }
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/users"
         Method = 'post'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

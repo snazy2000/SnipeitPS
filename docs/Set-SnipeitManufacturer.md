@@ -5,32 +5,32 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeitCompany
+# Set-SnipeitManufacturer
 
 ## SYNOPSIS
-Creates a new Company
+Add a new Manufacturer to Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-SnipeitCompany [-name] <String> [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-SnipeitManufacturer [-Name] <String> [[-image] <String>] [-image_delete] [[-RequestType] <String>]
+ [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates new company on Snipe-It system
+Long description
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-SnipeitCompany -name "Acme Company"
+New-SnipeitManufacturer -name "HP"
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
 Type: String
@@ -38,14 +38,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -image
-Company image filename and path
+Image file name and path for item
 
 ```yaml
 Type: String
@@ -59,8 +59,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -name
-Comapany name
+### -image_delete
+Remove current image
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the Manufacturer
 
 ```yaml
 Type: String
@@ -74,6 +89,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -83,7 +114,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

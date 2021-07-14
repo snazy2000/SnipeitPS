@@ -38,23 +38,20 @@ Cost of item being purchased.
 .PARAMETER purchase_date
 Date accessory was purchased
 
-.PARAMETER order_number
-Order number for this accessory.
-
-.PARAMETER purchase_cost
-Cost of item being purchased.
-
-.PARAMETER purchase_date
-Date accessory was purchased
-
 .PARAMETER supplier_id
 ID number of the supplier for this accessory
 
 .PARAMETER location_id
 ID number of the location the accessory is assigned to
 
-.PARAMETER min_qty
-Min quantity of the accessory before alert is triggered
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
+.PARAMETER RequestType
+Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
@@ -100,6 +97,16 @@ function Set-SnipeitAccessory() {
 
         [Nullable[System.Int32]]$supplier_id,
 
+        [Nullable[System.Int32]]$location_id,
+
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -112,20 +119,18 @@ function Set-SnipeitAccessory() {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
-        $Body = $Values | ConvertTo-Json;
-        Write-Verbose "Body: $Body"
         }
 
     process {
         foreach($accessory_id in $id){
             $Parameters = @{
                 Uri    = "$url/api/v1/accessories/$accessory_id"
-                Method = 'Put'
-                Body   = $Body
+                Method = $RequestType
+                Body   = $Values
                 Token  = $apiKey
             }
 

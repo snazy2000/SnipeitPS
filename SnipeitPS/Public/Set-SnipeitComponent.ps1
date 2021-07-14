@@ -32,6 +32,15 @@ Date accessory was purchased
 .PARAMETER purchase_cost
 Cost of item being purchased.
 
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
+.PARAMETER RequestType
+Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -73,6 +82,14 @@ function Set-SnipeitComponent()
 
         [float]$purchase_cost,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -82,21 +99,19 @@ function Set-SnipeitComponent()
     begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-        $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        if ($values['purchase_date']) {
-            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
-
-        $Body = $values | ConvertTo-Json;
     }
 
     process {
         foreach($component_id in $id){
         $Parameters = @{
             Uri    = "$url/api/v1/components/$component_id"
-            Method = 'Patch'
-            Body   = $Body
+            Method = $RequestType
+            Body   = $Values
             Token  = $apiKey
         }
 

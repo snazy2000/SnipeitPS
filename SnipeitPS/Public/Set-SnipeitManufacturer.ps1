@@ -1,24 +1,12 @@
 <#
     .SYNOPSIS
-    Updates a department
+    Add a new Manufacturer to Snipe-it asset system
 
     .DESCRIPTION
-    Updates the department on Snipe-It system
+    Long description
 
-    .PARAMETER id
-    Id number of Department
-
-    .PARAMETER name
-    Department Name
-
-    .PARAMETER company_id
-    ID number of company
-
-    .PARAMETER location_id
-    ID number of location
-
-    .PARAMETER manager_id
-    ID number of manager
+    .PARAMETER Name
+    Name of the Manufacturer
 
     .PARAMETER image
     Image file name and path for item
@@ -36,29 +24,19 @@
     Users API Key for Snipeit, can be set using Set-SnipeitInfo command
 
     .EXAMPLE
-    Set-SnipeitDepartment -id 4  -manager_id 3
-
+    New-SnipeitManufacturer -name "HP"
 #>
 
-function Set-SnipeitDepartment() {
+function Set-SnipeitManufacturer()
+{
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
     )]
 
     Param(
-        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
-        [int[]]$id,
-
-        [string]$name,
-
-        [Nullable[System.Int32]]$company_id,
-
-        [Nullable[System.Int32]]$location_id,
-
-        [Nullable[System.Int32]]$manager_id,
-
-        [string]$notes,
+        [parameter(mandatory = $true)]
+        [string]$Name,
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
@@ -75,15 +53,16 @@ function Set-SnipeitDepartment() {
         [string]$apiKey
     )
 
-    begin {
+    begin{
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
     }
 
-    process {
-        foreach ($department_id in $id) {
+    process{
+        foreach ($manufacturer_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/departments/$department_id"
+                Uri    = "$url/api/v1/manufacturers/$manufacturer_id"
                 Method = $RequestType
                 Body   = $Values
                 Token  = $apiKey
@@ -97,4 +76,3 @@ function Set-SnipeitDepartment() {
         }
     }
 }
-

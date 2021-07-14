@@ -47,6 +47,15 @@ Model number of the consumable in months
 .PARAMETER item_no
 Item number for the consumable
 
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
+.PARAMETER RequestType
+Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -112,6 +121,14 @@ function Set-SnipeitConsumable()
         [parameter(mandatory = $false)]
         [string]$item_no,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -126,15 +143,14 @@ function Set-SnipeitConsumable()
             $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
-        $Body = $Values | ConvertTo-Json;
     }
 
     process {
         foreach($consumable_id in $id ){
             $Parameters = @{
                 Uri    = "$url/api/v1/consumables/$consumable_id"
-                Method = 'Put'
-                Body   = $Body
+                Method = $RequestType
+                Body   = $Values
                 Token  = $apiKey
             }
 

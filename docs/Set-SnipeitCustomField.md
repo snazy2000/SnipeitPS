@@ -15,7 +15,8 @@ Add a new Custom Field to Snipe-it asset system
 ```
 Set-SnipeitCustomField [-id] <Int32[]> [[-name] <String>] [[-help_text] <String>] [-element] <String>
  [[-format] <String>] [[-field_values] <String>] [[-field_encrypted] <Boolean>] [[-show_in_email] <Boolean>]
- [[-custom_format] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-custom_format] <String>] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 11
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -166,6 +167,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Put you could use Patch if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: Put
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -show_in_email
 Whether or not to show the custom field in email notifications
 
@@ -190,7 +207,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 10
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

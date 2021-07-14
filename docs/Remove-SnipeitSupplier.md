@@ -5,31 +5,36 @@ online version:
 schema: 2.0.0
 ---
 
-# New-SnipeitCompany
+# Remove-SnipeitSupplier
 
 ## SYNOPSIS
-Creates a new Company
+Removes supplier from Snipe-it asset system
 
 ## SYNTAX
 
 ```
-New-SnipeitCompany [-name] <String> [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+Remove-SnipeitSupplier [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates new company on Snipe-It system
+Removes supplier or multiple manufacturers from Snipe-it asset system
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-New-SnipeitCompany -name "Acme Company"
+Remove-SnipeitSupplier -ID 44
+```
+
+### EXAMPLE 2
+```
+Get-SnipeitSupplier | Where-object {$_.name -like '*something*'}  | Remove-SnipeitSupplier
 ```
 
 ## PARAMETERS
 
-### -apiKey
+### -APIKey
 User's API Key for Snipeit, can be set using Set-SnipeitInfo command
 
 ```yaml
@@ -38,43 +43,28 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -image
-Company image filename and path
+### -id
+Unique ID For supplier to be removed
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -name
-Comapany name
-
-```yaml
-Type: String
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -url
+### -URL
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
 ```yaml
@@ -83,7 +73,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

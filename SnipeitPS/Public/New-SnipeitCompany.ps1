@@ -8,6 +8,9 @@ Creates new company on Snipe-It system
 .PARAMETER name
 Comapany name
 
+.PARAMETER image
+Company image filename and path
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -30,6 +33,9 @@ function New-SnipeitCompany()
         [parameter(mandatory = $true)]
         [string]$name,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -41,12 +47,10 @@ function New-SnipeitCompany()
 
     $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Body = $Values | ConvertTo-Json;
-
     $Parameters = @{
         Uri    = "$url/api/v1/companies"
         Method = 'POST'
-        Body   = $Body
+        Body   = $Values
         Token  = $apiKey
     }
 

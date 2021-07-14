@@ -23,6 +23,15 @@
     .PARAMETER fieldset_id
     Fieldset ID that the asset uses (Custom fields)
 
+    .PARAMETER image
+    Image file name and path for item
+
+    .PARAMETER image_delete
+    Remove current image
+
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -57,6 +66,14 @@ function Set-SnipeitModel() {
         [Alias("fieldset_id")]
         [Nullable[System.Int32]]$custom_fieldset_id,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -69,14 +86,13 @@ function Set-SnipeitModel() {
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-        $Body = $Values | ConvertTo-Json;
     }
     process {
         foreach ($model_id in $id) {
             $Parameters = @{
                 Uri    = "$url/api/v1/models/$model_id"
-                Method = 'put'
-                Body   = $Body
+                Method = $RequestType
+                Body   = $Values
                 Token  = $apiKey
             }
 

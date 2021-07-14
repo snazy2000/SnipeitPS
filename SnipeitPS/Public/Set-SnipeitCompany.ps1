@@ -11,6 +11,15 @@ ID number of company
 .PARAMETER name
 Company name
 
+.PARAMETER image
+Image file name and path for item
+
+.PARAMETER image_delete
+Remove current image
+
+.PARAMETER RequestType
+Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -37,6 +46,14 @@ function Set-SnipeitCompany()
         [parameter(mandatory = $true)]
         [string]$name,
 
+        [ValidateScript({Test-Path $_})]
+        [string]$image,
+
+        [switch]$image_delete=$false,
+
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -45,17 +62,15 @@ function Set-SnipeitCompany()
     )
 
     begin{
-        $values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-        $Body = $values | ConvertTo-Json;
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
     }
 
     process{
         foreach($company_id in $id){
             $Parameters = @{
                 Uri    = "$url/api/v1/companies/$company_id"
-                Method = 'Patch'
-                Body   = $Body
+                Method = $RequestType
+                Body   = $Values
                 Token  = $apiKey
             }
 
