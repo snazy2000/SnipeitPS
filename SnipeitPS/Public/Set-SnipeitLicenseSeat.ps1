@@ -16,6 +16,9 @@
     .PARAMETER note
     Notes about checkout
 
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -58,6 +61,9 @@ function Set-SnipeitLicenseSeat()
 
         [string]$note,
 
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -73,7 +79,7 @@ function Set-SnipeitLicenseSeat()
         foreach($license_id in $id) {
             $Parameters = @{
                 Uri    = "$url/api/v1/licenses/$license_id/seats/$seat_id"
-                Method = 'Patch'
+                Method = $RequestType
                 Body   = $Values
                 Token  = $apiKey
             }

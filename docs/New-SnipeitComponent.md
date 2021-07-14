@@ -15,8 +15,7 @@ Create a new component
 ```
 New-SnipeitComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
- [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Component image filename and path
 
 ```yaml
 Type: String
@@ -87,21 +86,6 @@ Aliases:
 Required: False
 Position: 9
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -image_delete
-Remove current image
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

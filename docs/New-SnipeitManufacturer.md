@@ -45,7 +45,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Manufacturer Image filename and path
 
 ```yaml
 Type: String

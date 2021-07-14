@@ -43,10 +43,7 @@ Optional Purchase cost of the Asset
 Optional Default location id for the asset
 
 .PARAMETER image
-Image file name and path for item
-
-.PARAMETER image_delete
-Remove current image
+Asset image filename and path
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
@@ -122,8 +119,6 @@ function New-SnipeitAsset()
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
-
-        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

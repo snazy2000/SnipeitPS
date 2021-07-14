@@ -50,6 +50,9 @@
     .PARAMETER image_delete
     Remove current image
 
+    .PARAMETER RequestType
+    Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
     .PARAMETER url
     URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -99,6 +102,9 @@ function Set-SnipeitLocation() {
 
         [switch]$image_delete=$false,
 
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -116,7 +122,7 @@ function Set-SnipeitLocation() {
         foreach ($location_id in $id) {
             $Parameters = @{
                 Uri    = "$url/api/v1/locations/$location_id"
-                Method = 'PUT'
+                Method = $RequestType
                 Body   = $Values
                 Token  = $apiKey
             }

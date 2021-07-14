@@ -1,4 +1,4 @@
----
+﻿---
 external help file: SnipeitPS-help.xml
 Module Name: SnipeitPS
 online version:

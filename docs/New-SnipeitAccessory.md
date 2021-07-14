@@ -16,8 +16,7 @@ Creates new accessory on Snipe-It system
 New-SnipeitAccessory [-name] <String> [-qty] <Int32> [-category_id] <Int32> [[-company_id] <Int32>]
  [[-manufacturer_id] <Int32>] [[-order_number] <String>] [[-model_number] <String>] [[-purchase_cost] <Single>]
  [[-purchase_date] <DateTime>] [[-min_amt] <Int32>] [[-supplier_id] <Int32>] [[-location_id] <Int32>]
- [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Accessory image fileame and path
 
 ```yaml
 Type: String
@@ -88,21 +87,6 @@ Aliases:
 Required: False
 Position: 13
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -image_delete
-Remove current image
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

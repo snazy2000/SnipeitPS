@@ -18,7 +18,7 @@ Set-SnipeitLicense [-id] <Int32[]> [[-name] <String>] [[-seats] <Int32>] [[-cate
  [[-license_name] <String>] [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>]
  [[-order_number] <String>] [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>]
  [[-reassignable] <Boolean>] [[-serial] <String>] [[-supplier_id] <Int32>] [[-termination_date] <DateTime>]
- [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 20
+Position: 21
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -258,6 +258,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RequestType
+Http request type to send Snipe IT system.
+Defaults to Patch you could use Put if needed.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 19
+Default value: Patch
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -seats
 Number of license seats owned.
 
@@ -327,7 +343,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 19
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

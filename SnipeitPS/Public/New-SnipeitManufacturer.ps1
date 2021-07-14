@@ -9,7 +9,7 @@
     Name of the Manufacturer
 
     .PARAMETER image
-    Image file name and path for item
+    Manufacturer Image filename and path
 
     .PARAMETER image_delete
     Remove current image

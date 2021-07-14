@@ -54,10 +54,7 @@ ID number of the location the accessory is assigned to
 Min quantity of the accessory before alert is triggered
 
 .PARAMETER image
-Image file name and path for item
-
-.PARAMETER image_delete
-Remove current image
+Accessory image fileame and path
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
@@ -111,8 +108,6 @@ function New-SnipeitAccessory() {
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
-
-        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

@@ -16,8 +16,8 @@ Add a new Asset to Snipe-it asset system
 New-SnipeitAsset [-status_id] <Int32> [-model_id] <Int32> [[-name] <String>] [[-asset_tag] <String>]
  [[-serial] <String>] [[-company_id] <Int32>] [[-order_number] <String>] [[-notes] <String>]
  [[-warranty_months] <Int32>] [[-purchase_cost] <String>] [[-purchase_date] <DateTime>]
- [[-supplier_id] <Int32>] [[-rtd_location_id] <Int32>] [[-image] <String>] [-image_delete] [-url] <String>
- [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-supplier_id] <Int32>] [[-rtd_location_id] <Int32>] [[-image] <String>] [-url] <String> [-apiKey] <String>
+ [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Asset image filename and path
 
 ```yaml
 Type: String
@@ -117,21 +117,6 @@ Aliases:
 Required: False
 Position: 14
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -image_delete
-Remove current image
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

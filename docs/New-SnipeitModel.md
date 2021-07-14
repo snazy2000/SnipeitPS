@@ -14,8 +14,8 @@ Add a new Model to Snipe-it asset system
 
 ```
 New-SnipeitModel [-name] <String> [[-model_number] <String>] [-category_id] <Int32> [-manufacturer_id] <Int32>
- [[-eol] <Int32>] [-fieldset_id] <Int32> [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-eol] <Int32>] [-fieldset_id] <Int32> [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Asset model Image filename and path
 
 ```yaml
 Type: String
@@ -101,21 +101,6 @@ Aliases:
 Required: False
 Position: 7
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -image_delete
-Remove current image
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

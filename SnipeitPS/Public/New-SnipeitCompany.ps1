@@ -9,10 +9,7 @@ Creates new company on Snipe-It system
 Comapany name
 
 .PARAMETER image
-Image file name and path for item
-
-.PARAMETER image_delete
-Remove current image
+Company image filename and path
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
@@ -38,8 +35,6 @@ function New-SnipeitCompany()
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
-
-        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

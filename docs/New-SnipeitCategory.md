@@ -14,8 +14,8 @@ Create a new Snipe-IT Category
 
 ```
 New-SnipeitCategory [-name] <String> [-category_type] <String> [[-eula_text] <String>] [-use_default_eula]
- [-require_acceptance] [-checkin_email] [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-require_acceptance] [-checkin_email] [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Category image filename and path
 
 ```yaml
 Type: String
@@ -101,21 +101,6 @@ Aliases:
 Required: False
 Position: 4
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -image_delete
-Remove current image
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

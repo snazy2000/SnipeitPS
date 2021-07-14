@@ -45,10 +45,7 @@ Model number of the consumable in months
 Item number for the consumable
 
 .PARAMETER image
-Image file name and path for item
-
-.PARAMETER image_delete
-Remove current image
+Consumable Image filename and path
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
@@ -112,8 +109,6 @@ function New-SnipeitConsumable()
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
-
-        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

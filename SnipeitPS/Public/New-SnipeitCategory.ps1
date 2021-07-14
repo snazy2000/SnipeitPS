@@ -21,10 +21,7 @@ If switch is present, require users to confirm acceptance of assets in this cate
 If switch is present, send email to user on checkin/checkout
 
 .PARAMETER image
-Image file name and path for item
-
-.PARAMETER image_delete
-Remove current image
+Category image filename and path
 
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
@@ -61,8 +58,6 @@ function New-SnipeitCategory()
 
         [ValidateScript({Test-Path $_})]
         [string]$image,
-
-        [switch]$image_delete=$false,
 
         [parameter(mandatory = $true)]
         [string]$url,

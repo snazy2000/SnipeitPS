@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -image
-Image file name and path for item
+Department Image filename and path
 
 ```yaml
 Type: String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -image_delete
-Remove current image
+{{ Fill image_delete Description }}
 
 ```yaml
 Type: SwitchParameter

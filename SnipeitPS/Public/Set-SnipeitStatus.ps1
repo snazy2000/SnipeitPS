@@ -15,6 +15,9 @@ Hex code showing what color the status label should be on the pie chart in the d
 .PARAMETER default_label
 1 or 0 - determine whether it should be bubbled up to the top of the list of available statuses
 
+.PARAMETER RequestType
+Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -53,6 +56,9 @@ function Set-SnipeitStatus()
 
         [bool]$default_label,
 
+        [ValidateSet("Put","Patch")]
+        [string]$RequestType = "Patch",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -68,7 +74,7 @@ function Set-SnipeitStatus()
         foreach($status_id in $id) {
             $Parameters = @{
                 Uri           = "$url/api/v1/statuslabels/$status_id"
-                Method        = 'Put'
+                Method        = $RequestType
                 Body          = $Values
                 Token         = $apiKey
             }
