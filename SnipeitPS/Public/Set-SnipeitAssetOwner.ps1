@@ -10,6 +10,9 @@
     .PARAMETER assigned_id
     Id of target user , location or asset
 
+    .PARAMETER checkout_to_type
+    Checkout asset to one of following types user, location, asset
+
     .PARAMETER note
     Notes about checkout
 
