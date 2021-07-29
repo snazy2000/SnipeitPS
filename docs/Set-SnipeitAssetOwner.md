@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -checkout_to_type
-{{ Fill checkout_to_type Description }}
+Checkout asset to one of following types user, location, asset
 
 ```yaml
 Type: String
