@@ -199,10 +199,10 @@ function Get-SnipeitAsset() {
         [parameter(ParameterSetName='Assets with component id')]
         [switch]$all = $false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

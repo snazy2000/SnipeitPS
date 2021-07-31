@@ -135,10 +135,10 @@ function New-SnipeitAsset()
         [ValidateSet("location","asset","user")]
         [string] $checkout_to_type = "user",
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey,
 
         [Alias('CustomValues')]

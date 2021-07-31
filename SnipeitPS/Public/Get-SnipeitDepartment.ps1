@@ -61,10 +61,10 @@ function Get-SnipeitDepartment()
         [ValidateSet('id', 'name', 'image', 'users_count', 'created_at')]
         [string]$sort = "created_at",
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

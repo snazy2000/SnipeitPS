@@ -27,10 +27,10 @@ function Get-SnipeitAccessoryOwner()
         [parameter(mandatory = $true)]
         [int]$id,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

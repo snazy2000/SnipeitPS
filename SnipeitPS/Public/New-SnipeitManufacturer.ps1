@@ -40,10 +40,10 @@ function New-SnipeitManufacturer()
 
         [switch]$image_delete=$false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

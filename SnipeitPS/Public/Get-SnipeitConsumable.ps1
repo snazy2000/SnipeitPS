@@ -96,10 +96,10 @@ function Get-SnipeitConsumable() {
         [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
     begin {

@@ -36,10 +36,10 @@ function New-SnipeitCompany()
         [ValidateScript({Test-Path $_})]
         [string]$image,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

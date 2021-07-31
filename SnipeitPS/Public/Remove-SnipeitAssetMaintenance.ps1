@@ -23,24 +23,21 @@ function Remove-SnipeitAssetMaintenance {
         ConfirmImpact = "Low"
     )]
     param (
-        # Asset maintenance ID
         [Parameter(Mandatory = $true,ValueFromPipelineByPropertyName)]
         [int[]]
         $id,
 
-        # Snipeit URL
-        [Parameter(Mandatory = $true)]
-        [string]
-        $url,
+        [parameter(mandatory = $false)]
+        [string]$url,
 
-        # Snipeit ApiKey
-        [Parameter(Mandatory = $true)]
-        [string]
-        $apiKey
+        [parameter(mandatory = $false)]
+        [string]$apiKey
     )
+
     begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
     }
+
     process {
         foreach($maintenance_id in $id){
             $Parameters = @{

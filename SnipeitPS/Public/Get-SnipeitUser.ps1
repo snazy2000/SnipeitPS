@@ -90,10 +90,10 @@ function Get-SnipeitUser() {
         [parameter(ParameterSetName='Get users a specific accessory id has been checked out to')]
         [switch]$all = $false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

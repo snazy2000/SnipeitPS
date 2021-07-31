@@ -36,10 +36,10 @@ function Reset-SnipeitAccessoryOwner()
         [parameter(mandatory = $true)]
         [int]$assigned_pivot_id,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 

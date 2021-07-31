@@ -24,14 +24,16 @@ function Remove-SnipeitUser ()
     )]
 
     Param(
-    [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
-        [int]$id,
-    [parameter(mandatory = $true)]
-        [string]$URL,
-    [parameter(mandatory = $true)]
-        [string]$APIKey
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [int[]]$id,
 
+        [parameter(mandatory = $false)]
+        [string]$url,
+
+        [parameter(mandatory = $false)]
+        [string]$apiKey
     )
+
     begin{
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
     }

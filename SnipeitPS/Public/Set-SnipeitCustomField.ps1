@@ -75,10 +75,10 @@ function Set-SnipeitCustomField()
         [ValidateSet("Put","Patch")]
         [string]$RequestType = "Put",
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
     begin {

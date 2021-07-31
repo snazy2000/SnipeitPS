@@ -26,16 +26,19 @@ function Remove-SnipeitManufacturer ()
     )]
 
     Param(
-    [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
+        [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
         [int[]]$id,
-    [parameter(mandatory = $true)]
-        [string]$URL,
-    [parameter(mandatory = $true)]
-        [string]$APIKey
 
+        [parameter(mandatory = $false)]
+        [string]$url,
+
+        [parameter(mandatory = $false)]
+        [string]$apiKey
     )
+
     begin {
     }
+
     process {
         foreach($manufacturer_id in $id){
             $Parameters = @{

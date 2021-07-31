@@ -38,10 +38,10 @@ function Set-SnipeitAccessoryOwner()
 
         [string] $note,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
     begin{
