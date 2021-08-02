@@ -36,10 +36,10 @@ Offset to use
 A return all results
 
 .PARAMETER url
-URL of Snipeit system,can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitConsumable -all
@@ -111,14 +111,23 @@ function Get-SnipeitConsumable() {
         switch ($PSCmdlet.ParameterSetName) {
             'Search' {
                 $Parameters = @{
-                    Uri           = "$url/api/v1/consumables"
+                    Api           = "/api/v1/consumables"
                     Method        = 'Get'
-                    Token         = $apiKey
                     GetParameters = $SearchParameter
                 }
 
+                if ($PSBoundParameters.ContainsKey('apiKey')) {
+                    Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                    Set-SnipeitPSSessionApiKey -apiKey $apikey
+                }
+
+                if ($PSBoundParameters.ContainsKey('url')) {
+                    Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                    Set-SnipeitPSSessionApiKey -url $url
+                }
+
                 if ($all) {
-                    $offstart = $(if($offset){$offset} Else {0})
+                    $offstart = $(if ($offset) {$offset} Else {0})
                     $callargs = $SearchParameter
                     $callargs.Remove('all')
 
@@ -141,11 +150,21 @@ function Get-SnipeitConsumable() {
             'Get with ID' {
                 foreach($consumable_id in $id) {
                     $Parameters = @{
-                        Uri           =  "$url/api/v1/consumables/$consumable_id"
+                        Api           =  "$url/api/v1/consumables/$consumable_id"
                         Method        = 'Get'
-                        Token         = $apiKey
                         GetParameters = $SearchParameter
                     }
+
+                    if ($PSBoundParameters.ContainsKey('apiKey')) {
+                        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                        Set-SnipeitPSSessionApiKey -apiKey $apikey
+                    }
+
+                    if ($PSBoundParameters.ContainsKey('url')) {
+                        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                        Set-SnipeitPSSessionApiKey -url $url
+                    }
+
                     $result = Invoke-SnipeitMethod @Parameters
                     $result
                 }

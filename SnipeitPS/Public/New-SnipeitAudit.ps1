@@ -16,8 +16,7 @@ New-SnipeitAudit -tag 1 -location_id 1
 
 #>
 
-function New-SnipeitAudit()
-{
+function New-SnipeitAudit() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -43,20 +42,27 @@ function New-SnipeitAudit()
         "location_id" = $location_id
     }
 
-    if ($PSBoundParameters.ContainsKey('tag'))
-    {
+    if ($PSBoundParameters.ContainsKey('tag')) {
         $Values += @{"asset_tag" = $tag}
     }
 
     $Parameters = @{
-        Uri    = "$url/api/v1/hardware/audit"
+        Api    = "/api/v1/hardware/audit"
         Method = 'Post'
         Body   = $Values
-        Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
+    if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
+    }
+
+    if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 

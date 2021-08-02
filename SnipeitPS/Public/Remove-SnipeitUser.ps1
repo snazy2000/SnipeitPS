@@ -7,17 +7,16 @@
     Unique ID For User to be removed
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
 
     .EXAMPLE
     Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
 #>
 
-function Remove-SnipeitUser ()
-{
+function Remove-SnipeitUser () {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -41,13 +40,21 @@ function Remove-SnipeitUser ()
     process {
         foreach($user_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/users/$user_id"
+                Api    = "/api/v1/users/$user_id"
                 Method = 'Delete'
-                Token  = $apiKey
             }
 
-            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-            {
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
                 $result = Invoke-SnipeitMethod @Parameters
             }
 

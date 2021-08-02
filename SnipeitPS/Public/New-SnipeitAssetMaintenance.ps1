@@ -31,10 +31,10 @@ Optional completion date
 Optional cost
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 New-SnipeitAssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard" -start_date 2021-01-01
@@ -91,13 +91,22 @@ function New-SnipeitAssetMaintenance() {
 
 
     $Parameters = @{
-        Uri    = "$url/api/v1/maintenances"
+        Api    = "/api/v1/maintenances"
         Method = 'Post'
         Body   = $Values
-        Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+    if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
+    }
+
+    if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 

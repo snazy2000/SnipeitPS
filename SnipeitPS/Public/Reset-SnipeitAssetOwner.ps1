@@ -17,13 +17,11 @@
     Notes about checkin
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
-
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeitInfoeItInfo command
-
+    Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
     .EXAMPLE
-    Remove-SnipeitUser -ID 44 -url $url -apiKey $secret -Verbose
+    Remove-SnipeitUser -ID 44
 #>
 function Reset-SnipeitAssetOwner() {
     [CmdletBinding(
@@ -58,13 +56,22 @@ function Reset-SnipeitAssetOwner() {
     if ($PSBoundParameters.ContainsKey('status_id')) { $Values.Add("status_id", $status_id) }
 
     $Parameters = @{
-        Uri    = "$url/api/v1/hardware/$id/checkin"
+        Api    = "/api/v1/hardware/$id/checkin"
         Method = 'POST'
         Body   = $Values
-        Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+    if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
+    }
+
+    if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 

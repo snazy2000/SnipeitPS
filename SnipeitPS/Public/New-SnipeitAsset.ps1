@@ -52,10 +52,10 @@ Id of target user , location or asset
 Checkout asset when creating to one of following types user, location or asset.
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .PARAMETER customfields
 Hastable of custom fields and extra fields that need passing through to Snipeit.
@@ -74,8 +74,7 @@ New-SnipeitAsset -status_id 1 -model_id 1 -name "Machine1" -customfields = @{ "_
 Using customfields when creating asset.
 #>
 
-function New-SnipeitAsset()
-{
+function New-SnipeitAsset() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low",
@@ -153,33 +152,40 @@ function New-SnipeitAsset()
         $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
     }
 
-    if ($customfields)
-    {
+    if ($customfields) {
         $Values += $customfields
     }
 
     #Checkout asset when creating it
-    if ($PsCmdlet.ParameterSetName -eq 'Checkout asset when creating'){
-        switch ($checkout_to_type){
+    if ($PsCmdlet.ParameterSetName -eq 'Checkout asset when creating') {
+        switch ($checkout_to_type) {
                 'location' { $Values += @{ "assigned_location" = $assigned_id } }
                 'user' { $Values += @{ "assigned_user" = $assigned_id } }
                 'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
         }
 
         #This are not needed for API
-        if($Values.ContainsKey('assigned_id')){$Values.Remove('assigned_id')}
-        if($Values.ContainsKey('checkout_to_type')){$Values.Remove('checkout_to_type')}
+        if ($Values.ContainsKey('assigned_id')) {$Values.Remove('assigned_id')}
+        if ($Values.ContainsKey('checkout_to_type')) {$Values.Remove('checkout_to_type')}
     }
 
     $Parameters = @{
-        Uri    = "$url/api/v1/hardware"
+        Api    = "/api/v1/hardware"
         Method = 'Post'
         Body   = $Values
-        Token  = $apiKey
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
+    if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
+    }
+
+    if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
         $result = Invoke-SnipeitMethod @Parameters
     }
 

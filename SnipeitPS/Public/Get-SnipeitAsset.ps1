@@ -60,13 +60,13 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
-Get-SnipeitAsset -all -url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -all
 Returens all assets
 
 .EXAMPLE
@@ -211,25 +211,34 @@ function Get-SnipeitAsset() {
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
     switch ($PsCmdlet.ParameterSetName) {
-        'Search' { $apiurl = "$url/api/v1/hardware" }
-        'Get with id'  {$apiurl= "$url/api/v1/hardware/$id"}
-        'Get with asset tag' {$apiurl= "$url/api/v1/hardware/bytag/$asset_tag"}
-        'Get with serial' { $apiurl= "$url/api/v1/hardware/byserial/$serial"}
-        'Assets due auditing soon' {$apiurl = "$url/api/v1/hardware/audit/due"}
-        'Assets overdue for auditing' {$apiurl = "$url/api/v1/hardware/audit/overdue"}
-        'Assets checked out to user id'{$apiurl = "$url/api/v1/users/$user_id/assets"}
-        'Assets with component id' {$apiurl = "$url/api/v1/components/$component_id/assets"}
+        'Search' { $api = "/api/v1/hardware" }
+        'Get with id'  {$api= "/api/v1/hardware/$id"}
+        'Get with asset tag' {$api= "/api/v1/hardware/bytag/$asset_tag"}
+        'Get with serial' { $api= "/api/v1/hardware/byserial/$serial"}
+        'Assets due auditing soon' {$api = "/api/v1/hardware/audit/due"}
+        'Assets overdue for auditing' {$api = "/api/v1/hardware/audit/overdue"}
+        'Assets checked out to user id'{$api = "/api/v1/users/$user_id/assets"}
+        'Assets with component id' {$api = "/api/v1/components/$component_id/assets"}
     }
 
     $Parameters = @{
-        Uri           = $apiurl
+        Api           = $api
         Method        = 'Get'
         GetParameters = $SearchParameter
-        Token         = $apiKey
+     }
+
+     if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
     }
 
     if ($all) {
-        $offstart = $(if ($offset){$offset} Else {0})
+        $offstart = $(if ($offset) {$offset} Else {0})
         $callargs = $SearchParameter
         Write-Verbose "Callargs: $($callargs | convertto-json)"
         $callargs.Remove('all')

@@ -6,18 +6,23 @@
     A id of specific field
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
     .EXAMPLE
-    Get-SnipeitCustomField -url "https://assets.example.com" -token "token..."
+    Get-SnipeitCustomField
+    Get all custom fields
+
+    .EXAMPLE
+    Get-SnipeitCustomField -id 1
+    Get custom field with ID 1
+
 
 #>
 
-function Get-SnipeitCustomField()
-{
+function Get-SnipeitCustomField() {
     Param(
         [int]$id,
 
@@ -31,16 +36,26 @@ function Get-SnipeitCustomField()
     Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     if ($id) {
-        $apiurl= "$url/api/v1/fields/$id"
+        $api= "/api/v1/fields/$id"
     } else {
-        $apiurl = "$url/api/v1/fields"
+        $api = "/api/v1/fields"
     }
 
     $Parameters = @{
-        Uri           = $apiurl
+        Api           = $api
         Method        = 'Get'
-        Token         = $apiKey
+     }
+
+     if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
     }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
+    }
+
 
 
     $result = Invoke-SnipeitMethod @Parameters

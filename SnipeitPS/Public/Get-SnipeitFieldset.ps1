@@ -6,16 +6,18 @@ Returns a fieldset or list of Snipe-it Fieldsets
 A id of specific fieldset
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
-Get-SnipeitFieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeitFieldset
+Get all fieldsets
 
 .EXAMPLE
-Get-SnipeitFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeitFieldset  | Where-Object {$_.name -eq "Windows" }
+Gets fieldset by name
 
 #>
 
@@ -33,15 +35,24 @@ function Get-SnipeitFieldset() {
     Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     if ($id) {
-        $apiurl = "$url/api/v1/fieldsets/$id"
+        $api = "/api/v1/fieldsets/$id"
     } else {
-        $apiurl = "$url/api/v1/fieldsets"
+        $api = "/api/v1/fieldsets"
     }
 
     $Parameters = @{
-        Uri           = $apiurl
+        Api           = $api
         Method        = 'Get'
-        Token         = $apiKey
+    }
+
+    if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
     }
 
     $result = Invoke-SnipeitMethod @Parameters

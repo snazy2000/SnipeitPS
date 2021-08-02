@@ -20,10 +20,10 @@
     Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
 
     .EXAMPLE
     Set-SnipeitLicenceSeat -ID 1 -seat_id 1 -assigned_id 3
@@ -38,8 +38,7 @@
     Checkin licence seat id 1 of licence id 1
 
 #>
-function Set-SnipeitLicenseSeat()
-{
+function Set-SnipeitLicenseSeat() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Medium"
@@ -78,14 +77,22 @@ function Set-SnipeitLicenseSeat()
     process{
         foreach($license_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/licenses/$license_id/seats/$seat_id"
+                Api    = "/api/v1/licenses/$license_id/seats/$seat_id"
                 Method = $RequestType
                 Body   = $Values
-                Token  = $apiKey
             }
 
-            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-            {
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
                 $result = Invoke-SnipeitMethod @Parameters
             }
 

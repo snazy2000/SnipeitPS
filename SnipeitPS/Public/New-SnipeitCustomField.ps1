@@ -30,17 +30,16 @@
     Any additional text you wish to display under the new form field to make it clearer what the gauges should be.
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
     .EXAMPLE
     New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "Is AntiVirus installed on Asset"
 #>
 
-function New-SnipeitCustomField()
-{
+function New-SnipeitCustomField() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -84,16 +83,22 @@ function New-SnipeitCustomField()
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         $Parameters = @{
-            Uri    = "$url/api/v1/fields"
+            Api    = "/api/v1/fields"
             Method = 'post'
             Body   = $Values
-            Token  = $apiKey
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Set-SnipeitPSSessionApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Set-SnipeitPSSessionApiKey -url $url
         }
     }
 
     process{
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-        {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
             $result = Invoke-SnipeitMethod @Parameters
         }
 

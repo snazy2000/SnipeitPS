@@ -28,16 +28,15 @@
     Optional date to override the checkout time of now
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
 
     .EXAMPLE
     Set-SnipeitAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing check out to user"
 #>
-function Set-SnipeitAssetOwner()
-{
+function Set-SnipeitAssetOwner() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Medium"
@@ -81,29 +80,36 @@ function Set-SnipeitAssetOwner()
             $Values['checkout_at'] = $Values['checkout_at'].ToString("yyyy-MM-dd")
         }
 
-        switch ($checkout_to_type)
-        {
+        switch ($checkout_to_type) {
             'location' { $Values += @{ "assigned_location" = $assigned_id } }
             'user' { $Values += @{ "assigned_user" = $assigned_id } }
             'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
         }
 
         #This can be removed now
-        if($Values.ContainsKey('assigned_id')){$Values.Remove('assigned_id')}
+        if ($Values.ContainsKey('assigned_id')) {$Values.Remove('assigned_id')}
 
     }
 
     process{
-        foreach($asset_id in $id){
+        foreach($asset_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/hardware/$asset_id/checkout"
+                Api    = "/api/v1/hardware/$asset_id/checkout"
                 Method = 'POST'
                 Body   = $Values
-                Token  = $apiKey
             }
 
-            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-            {
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
                 $result = Invoke-SnipeitMethod @Parameters
             }
 

@@ -19,10 +19,10 @@ Hex code showing what color the status label should be on the pie chart in the d
 Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitStatus -search  "Ready to Deploy"
@@ -32,8 +32,7 @@ Set-SnipeitStatus -id 3 -name 'Waiting for arrival' -type pending
 
 #>
 
-function Set-SnipeitStatus()
-{
+function Set-SnipeitStatus() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Medium"
@@ -73,13 +72,22 @@ function Set-SnipeitStatus()
     process {
         foreach($status_id in $id) {
             $Parameters = @{
-                Uri           = "$url/api/v1/statuslabels/$status_id"
+                Api           = "/api/v1/statuslabels/$status_id"
                 Method        = $RequestType
                 Body          = $Values
-                Token         = $apiKey
             }
 
-            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
                 $result = Invoke-SnipeitMethod @Parameters
             }
             $result

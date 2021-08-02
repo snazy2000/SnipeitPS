@@ -6,10 +6,10 @@
     .PARAMETER ID
     Unique ID For supplier to be removed
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
 
     .EXAMPLE
     Remove-SnipeitSupplier -ID 44
@@ -18,8 +18,7 @@
     Get-SnipeitSupplier | Where-object {$_.name -like '*something*'}  | Remove-SnipeitSupplier
 #>
 
-function Remove-SnipeitSupplier ()
-{
+function Remove-SnipeitSupplier () {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -40,18 +39,27 @@ function Remove-SnipeitSupplier ()
     }
 
     process {
-        foreach($suppliers_id in $id){
+        foreach($suppliers_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/suppliers/$supplier_id"
+                Api    = "/api/v1/suppliers/$supplier_id"
                 Method = 'Delete'
-                Token  = $apiKey
             }
 
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-        {
-            $result = Invoke-SnipeitMethod @Parameters
-        }
-        $result
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+                $result = Invoke-SnipeitMethod @Parameters
+            }
+
+            $result
         }
     }
 }

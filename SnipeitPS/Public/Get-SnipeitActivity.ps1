@@ -30,10 +30,10 @@ Result offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitAccessory -search Keyboard
@@ -78,12 +78,12 @@ function Get-SnipeitActivity() {
         [string]$apiKey
     )
 
-    if(($target_type -and -not $target_id) -or
+    if (($target_type -and -not $target_id) -or
         ($target_id -and -not $target_type)) {
         throw "Please specify both target_type and target_id"
     }
 
-    if(($item_type -and -not $item_id) -or
+    if (($item_type -and -not $item_id) -or
         ($item_id -and -not $item_type)) {
         throw "Please specify both item_type and item_id"
     }
@@ -92,14 +92,23 @@ function Get-SnipeitActivity() {
 
 
     $Parameters = @{
-        Uri           = "$url/api/v1/reports/activity"
+        Api           = "/api/v1/reports/activity"
         Method        = 'Get'
         GetParameters = $SearchParameter
-        Token         = $apiKey
+    }
+
+    if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
     }
 
     if ($all) {
-        $offstart = $(if($offset){$offset} Else {0})
+        $offstart = $(if ($offset) {$offset} Else {0})
         $callargs = $SearchParameter
         $callargs.Remove('all')
 

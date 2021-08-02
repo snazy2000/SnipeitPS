@@ -1,23 +1,23 @@
+<#
+    .SYNOPSIS
+    Remove asset maintenance from Snipe-it asset system
+
+    .DESCRIPTION
+    Removes asset maintenance event or events from Snipe-it asset system by ID
+
+    .PARAMETER ID
+    Unique ID of the asset maintenance to be removed
+
+    .PARAMETER url
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
+    .PARAMETER url
+    Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
+
+    .EXAMPLE
+    Remove-SnipeitAssetMaintenance -ID 44
+#>
 function Remove-SnipeitAssetMaintenance {
-    <#
-        .SYNOPSIS
-        Remove asset maintenance from Snipe-it asset system
 
-        .DESCRIPTION
-        Removes asset maintenance event or events from Snipe-it asset system by ID
-
-        .PARAMETER ID
-        Unique ID of the asset maintenance to be removed
-
-        .PARAMETER url
-        URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
-
-        .PARAMETER apiKey
-        User's API Key for Snipeit, can be set using Set-SnipeitInfo command
-
-        .EXAMPLE
-        Remove-SnipeitAssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
-    #>
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -39,15 +39,23 @@ function Remove-SnipeitAssetMaintenance {
     }
 
     process {
-        foreach($maintenance_id in $id){
+        foreach($maintenance_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/maintenances/$maintenance_id"
+                Api    = "/api/v1/maintenances/$maintenance_id"
                 Method = 'Delete'
-                Token  = $apiKey
             }
 
-            If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-            {
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSSessionApiKey -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
                 $result = Invoke-SnipeitMethod @Parameters
             }
 

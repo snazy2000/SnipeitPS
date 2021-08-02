@@ -24,10 +24,10 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitUser -search SomeSurname
@@ -101,20 +101,29 @@ function Get-SnipeitUser() {
 
     $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
     switch ($PsCmdlet.ParameterSetName) {
-        'Search' { $apiurl = "$url/api/v1/users"}
-        'Get with id'  {$apiurl= "$url/api/v1/users/$id"}
-        'Get users a specific accessory id has been checked out to' {$apiurl= "$url/api/v1/accessories/$accessory_id/checkedout"}
+        'Search' { $api = "/api/v1/users"}
+        'Get with id'  {$api= "/api/v1/users/$id"}
+        'Get users a specific accessory id has been checked out to' {$api= "/api/v1/accessories/$accessory_id/checkedout"}
     }
 
     $Parameters = @{
-        Uri           = $apiurl
+        Api           = $api
         Method        = 'Get'
         GetParameters = $SearchParameter
-        Token         = $apiKey
+     }
+
+     if ($PSBoundParameters.ContainsKey('apiKey')) {
+        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -apiKey $apikey
+    }
+
+    if ($PSBoundParameters.ContainsKey('url')) {
+        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+        Set-SnipeitPSSessionApiKey -url $url
     }
 
     if ($all) {
-        $offstart = $(if($offset){$offset} Else {0})
+        $offstart = $(if ($offset) {$offset} Else {0})
         $callargs = $SearchParameter
         $callargs.Remove('all')
 
