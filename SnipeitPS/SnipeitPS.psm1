@@ -16,3 +16,17 @@ Get-ChildItem $scriptRoot *.ps1 | ForEach-Object {
 
 #Create unprefixed aliases
 Set-SnipeitAlias
+
+#Session variable for storing current session information
+$SnipeitPSSession = [ordered]@{
+    'url' = $null
+    'apiKey' = $null
+}
+New-Variable -Name SnipeitPSSession  -Value $SnipeitPSSession -Scope Script -Force
+
+#Config variable
+$SnipeitPSConfig = [ordered]@{
+    'latest' = $null
+    'connections' = [ordered]@{}
+}
+New-Variable -Name SnipeitPSConfig  -Value $SnipeitPSConfig -Scope Script -Force
