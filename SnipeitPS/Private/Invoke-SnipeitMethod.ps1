@@ -16,7 +16,6 @@
         [string]$Method = "GET",
 
         # Body of the request
-        [ValidateNotNullOrEmpty()]
         [Hashtable]$Body,
 
         [string] $Token,
