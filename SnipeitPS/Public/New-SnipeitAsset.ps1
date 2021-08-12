@@ -45,6 +45,12 @@ Optional Default location id for the asset
 .PARAMETER image
 Asset image filename and path
 
+.PARAMETER assigned_id
+Id of target user , location or asset
+
+ .PARAMETER checkout_to_type
+Checkout asset when creating to one of following types user, location or asset.
+
 .PARAMETER url
 URL of Snipeit system, can be set using Set-SnipeitInfo command
 
@@ -72,12 +78,14 @@ function New-SnipeitAsset()
 {
     [CmdletBinding(
         SupportsShouldProcess = $true,
-        ConfirmImpact = "Low"
+        ConfirmImpact = "Low",
+        DefaultParameterSetName = 'Create asset'
     )]
 
     Param(
 
-        [parameter(mandatory = $true)]
+        [parameter(ParameterSetName='Create asset',mandatory = $true)]
+        [parameter(ParameterSetName='Checkout asset when creating',mandatory = $true)]
         [int]$status_id,
 
         [parameter(mandatory = $true)]
@@ -120,6 +128,13 @@ function New-SnipeitAsset()
         [ValidateScript({Test-Path $_})]
         [string]$image,
 
+        [parameter(ParameterSetName='Checkout asset when creating',mandatory = $true)]
+        [int]$assigned_id,
+
+        [parameter(ParameterSetName='Checkout asset when creating',mandatory = $true)]
+        [ValidateSet("location","asset","user")]
+        [string] $checkout_to_type = "user",
+
         [parameter(mandatory = $true)]
         [string]$url,
 
@@ -141,6 +156,19 @@ function New-SnipeitAsset()
     if ($customfields)
     {
         $Values += $customfields
+    }
+
+    #Checkout asset when creating it
+    if ($PsCmdlet.ParameterSetName -eq 'Checkout asset when creating'){
+        switch ($checkout_to_type){
+                'location' { $Values += @{ "assigned_location" = $assigned_id } }
+                'user' { $Values += @{ "assigned_user" = $assigned_id } }
+                'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
+        }
+
+        #This are not needed for API
+        if($Values.ContainsKey('assigned_id')){$Values.Remove('assigned_id')}
+        if($Values.ContainsKey('checkout_to_type')){$Values.Remove('checkout_to_type')}
     }
 
     $Parameters = @{

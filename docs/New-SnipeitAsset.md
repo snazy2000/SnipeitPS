@@ -12,12 +12,22 @@ Add a new Asset to Snipe-it asset system
 
 ## SYNTAX
 
+### Create asset (Default)
 ```
-New-SnipeitAsset [-status_id] <Int32> [-model_id] <Int32> [[-name] <String>] [[-asset_tag] <String>]
- [[-serial] <String>] [[-company_id] <Int32>] [[-order_number] <String>] [[-notes] <String>]
- [[-warranty_months] <Int32>] [[-purchase_cost] <String>] [[-purchase_date] <DateTime>]
- [[-supplier_id] <Int32>] [[-rtd_location_id] <Int32>] [[-image] <String>] [-url] <String> [-apiKey] <String>
- [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeitAsset -status_id <Int32> -model_id <Int32> [-name <String>] [-asset_tag <String>] [-serial <String>]
+ [-company_id <Int32>] [-order_number <String>] [-notes <String>] [-warranty_months <Int32>]
+ [-purchase_cost <String>] [-purchase_date <DateTime>] [-supplier_id <Int32>] [-rtd_location_id <Int32>]
+ [-image <String>] -url <String> -apiKey <String> [-customfields <Hashtable>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Checkout asset when creating
+```
+New-SnipeitAsset -status_id <Int32> -model_id <Int32> [-name <String>] [-asset_tag <String>] [-serial <String>]
+ [-company_id <Int32>] [-order_number <String>] [-notes <String>] [-warranty_months <Int32>]
+ [-purchase_cost <String>] [-purchase_date <DateTime>] [-supplier_id <Int32>] [-rtd_location_id <Int32>]
+ [-image <String>] -assigned_id <Int32> -checkout_to_type <String> -url <String> -apiKey <String>
+ [-customfields <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +64,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 16
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -69,8 +79,38 @@ Parameter Sets: (All)
 Aliases: tag
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -assigned_id
+Id of target user , location or asset
+
+```yaml
+Type: Int32
+Parameter Sets: Checkout asset when creating
+Aliases:
+
+Required: True
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -checkout_to_type
+Checkout asset when creating to one of following types user, location or asset.
+
+```yaml
+Type: String
+Parameter Sets: Checkout asset when creating
+Aliases:
+
+Required: True
+Position: Named
+Default value: User
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -84,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,7 +140,7 @@ Parameter Sets: (All)
 Aliases: CustomValues
 
 Required: False
-Position: 17
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -115,7 +155,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -130,7 +170,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -145,7 +185,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -160,7 +200,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -175,7 +215,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -190,7 +230,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -205,7 +245,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -220,7 +260,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -235,7 +275,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -250,7 +290,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -265,7 +305,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 12
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -280,7 +320,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 15
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -295,7 +335,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
