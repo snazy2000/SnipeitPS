@@ -93,7 +93,7 @@ function New-SnipeitCustomField() {
         }
 
         if ($PSBoundParameters.ContainsKey('url')) {
-            Set-SnipeitPSSessionApiKey -url $url
+            Set-SnipeitPSSessionUrl -url $url
         }
     }
 

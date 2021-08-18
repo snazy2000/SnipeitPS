@@ -79,7 +79,7 @@ function Set-SnipeitCompany() {
 
             if ($PSBoundParameters.ContainsKey('url')) {
                 Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-                Set-SnipeitPSSessionApiKey -url $url
+                Set-SnipeitPSSessionUrl -url $url
             }
 
             if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {

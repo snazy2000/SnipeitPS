@@ -28,7 +28,6 @@ function Invoke-SnipeitMethod {
         [ValidateSet("GET", "POST", "PUT", "PATCH", "DELETE")]
         [string]$Method = "GET",
 
-        # Body of the request
         [Hashtable]$Body,
 
         [Hashtable]$GetParameters
