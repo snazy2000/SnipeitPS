@@ -127,6 +127,10 @@
                         elseif ($webResponse.status -eq 'success'){
                             $result = $webResponse.payload
                         }
+                        #Search and query result with no results
+                        elseif ($webResponse.total -eq 0){
+                            $result = $null
+                        }
                         #get operations with id returns just one object
                         else {
                             $result = $webResponse
