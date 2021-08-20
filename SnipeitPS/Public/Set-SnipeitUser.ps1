@@ -92,7 +92,7 @@ function Set-SnipeitUser() {
         [string]$last_name,
 
         [ValidateLength(1,256)]
-        [string]$userName,
+        [string]$username,
 
         [string]$jobtitle,
 
