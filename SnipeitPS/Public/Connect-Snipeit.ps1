@@ -18,73 +18,70 @@
 
     .EXAMPLE
     Connect-SnipeitPS -Url $url -apiKey $myapikey
-    Connect to  Snipe it  api and stores connection information.
+    Connect to  Snipe it  api.
 
     .EXAMPLE
-    Connect-SnipeitPS -Url $url -apiKey $myapikey -DontStore
-    Just connects to Snipe it api, connection information is not stored.
+    Connect-SnipeitPS -Url $url -SecureApiKey $myapikey
+    Connects to Snipe it api with apikey stored to securestring
 
     .EXAMPLE
-    Connect-SnipeitPS -Url $url
-    Connects existing Snipe It Url with stored apiKey
+    Connect-SnipeitPS -siteCred (Get-Credential -message "Use site url as username and apikey as password")
+    Connect to Snipe It with PSCredential object
 
     .EXAMPLE
-    Connect-SnipeitPS
-    Connects last used Snipe It Url with stored apikey
+    Build credential with apiakay value from secret vault (Microsoft.PowerShell.SecretManagement)
+    $siteurl = "https://mysnipeitsite.url"
+    $apikey = Get-SecretInfo -Name SnipeItApiKey
+    $siteCred = New-Object -Type PSCredential -Argumentlist $siteurl,$spikey
+    Connect-SnipeitPS -siteCred $siteCred
+
 
 
 #>
 function Connect-SnipeitPS {
     [CmdletBinding(
-        DefaultParameterSetName = 'Connect to existing connection'
+        DefaultParameterSetName = 'Connect with url and apikey'
     )]
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseShouldProcessForStateChangingFunctions', '')]
 
     param (
 
-        [Parameter(ParameterSetName='Setup new connection',Mandatory=$true)]
-        [Parameter(ParameterSetName='Connect to existing connection',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$true)]
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$true)]
         [Uri]$url,
 
-        [Parameter(ParameterSetName='Setup new connection',Mandatory=$true)]
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$true)]
         [String]$apiKey,
 
-        [Parameter(ParameterSetName='Setup new connection')]
-        [switch]$DontStore
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$true)]
+        [SecureString]$SecureApiKey,
+
+
+        [Parameter(ParameterSetName='Connect with credential',Mandatory=$true)]
+        [PSCredertial]$siteCred
+
     )
 
 
     PROCESS {
         switch ($PsCmdlet.ParameterSetName) {
-            'Setup new connection' {
-                try {
+            'Connect with url and apikey' {
                     $SnipeitPSSession.url = $url
-                    $SnipeitPSSession.apiKey = $apiKey
-
-                    #test connection
-                    $Parameters = @{
-                        Api           = '/api/v1/statuslabels'
-                        Method        = 'Get'
-                        GetParameters = @{'limit'=1}
-                    }
-                    Write-Verbose "Testin connection to $url."
-
-                    $contest = Invoke-SnipeitMethod @Parameters
-                    if ( $contest) {
-                        Write-Verbose "Connection to $url tested succesfully."
-                    }
-
-                }
-                catch {
-                    throw "Cannot setup connection to $url. To start troubleshooting, check your url, certificates and apiKey"
-                }
-                # TODO: Save connection information safely on disk
-
+                    $SnipeitPSSession.apiKey = $apiKey | ConvertTo-SecureString -AsPlainText
             }
 
-            'Connect to existing connection' {
-                # TODO: everything
+            'Connect with url and secure apikey' {
+                    $SnipeitPSSession.url = $url
+                    $SnipeitPSSession.apiKey = $secureApiKey
             }
+
+            'Connect with credential' {
+                $SnipeitPSSession.url = $siteCred.Username
+                $SnipeitPSSession.apiKey = $siteCred.GetNetworkCredential().SecurePassword
+            }
+        }
+        if (-not (Test-SnipeitPSConnection)) {
+            throw "Cannot verify connection to snipe it. For the start check url  and provided apikey"
         }
     }
 }
