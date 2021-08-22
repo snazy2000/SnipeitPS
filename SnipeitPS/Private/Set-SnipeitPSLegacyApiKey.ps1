@@ -1,14 +1,14 @@
-function Set-SnipeitPSSessionUrl {
+function Set-SnipeitPSLegacyApiKey {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
     )]
     param(
-        $url
+        [string]$apiKey
     )
     process {
         if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-            $SnipeitPSSession.url = $url
+            $SnipeitPSSession.apiKey = $apiKey  | ConvertTo-SecureString -AsPlainText
         }
     }
 }

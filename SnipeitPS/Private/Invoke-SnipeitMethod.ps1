@@ -34,9 +34,12 @@ function Invoke-SnipeitMethod {
     )
 
     BEGIN {
-        $Url = $SnipeitPSSession.url
-        $Token = $SnipeitPSSession.apiKey
-
+        if ( $null -eq $SnipeitPSSession.url -or $null -eq $SnipeitPSSession.apiKey ) {
+            throw "Cannot connect to Snipe it.Please run Connect-SnipePS to set connection information."
+        } else {
+            $Url = $SnipeitPSSession.url
+            $Token = $SnipeitPSSession.apiKey | ConvertFrom-SecureString -AsPlainText
+        }
         # Validation of parameters
         if (($Method -in ("POST", "PUT", "PATCH")) -and (!($Body))) {
             $message = "The following parameters are required when using the ${Method} parameter: Body."

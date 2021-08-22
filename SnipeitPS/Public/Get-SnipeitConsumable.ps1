@@ -118,12 +118,12 @@ function Get-SnipeitConsumable() {
 
                 if ($PSBoundParameters.ContainsKey('apiKey')) {
                     Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-                    Set-SnipeitPSSessionApiKey -apiKey $apikey
+                    Set-SnipeitPSLegacyApiKey -apiKey $apikey
                 }
 
                 if ($PSBoundParameters.ContainsKey('url')) {
                     Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-                    Set-SnipeitPSSessionUrl -url $url
+                    Set-SnipeitPSLegacyUrl -url $url
                 }
 
                 if ($all) {
@@ -157,12 +157,12 @@ function Get-SnipeitConsumable() {
 
                     if ($PSBoundParameters.ContainsKey('apiKey')) {
                         Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-                        Set-SnipeitPSSessionApiKey -apiKey $apikey
+                        Set-SnipeitPSLegacyApiKey -apiKey $apikey
                     }
 
                     if ($PSBoundParameters.ContainsKey('url')) {
                         Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-                        Set-SnipeitPSSessionUrl -url $url
+                        Set-SnipeitPSLegacyUrl -url $url
                     }
 
                     $result = Invoke-SnipeitMethod @Parameters

@@ -45,7 +45,6 @@ function Connect-SnipeitPS {
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseShouldProcessForStateChangingFunctions', '')]
 
     param (
-
         [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$true)]
         [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$true)]
         [Uri]$url,
@@ -54,12 +53,10 @@ function Connect-SnipeitPS {
         [String]$apiKey,
 
         [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$true)]
-        [SecureString]$SecureApiKey,
-
+        [SecureString]$secureApiKey,
 
         [Parameter(ParameterSetName='Connect with credential',Mandatory=$true)]
         [PSCredertial]$siteCred
-
     )
 
 
@@ -80,8 +77,9 @@ function Connect-SnipeitPS {
                 $SnipeitPSSession.apiKey = $siteCred.GetNetworkCredential().SecurePassword
             }
         }
+
         if (-not (Test-SnipeitPSConnection)) {
-            throw "Cannot verify connection to snipe it. For the start check url  and provided apikey"
+            throw "Cannot verify connection to snipe it. For the start try to check url and provided apikey or credentials"
         }
     }
 }
