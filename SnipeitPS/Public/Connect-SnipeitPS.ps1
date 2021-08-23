@@ -4,7 +4,7 @@
 
     .DESCRIPTION
     Sets apikey and url to connect Snipe-It system.
-    Based on Set-SnipeitInfo command, what is now just combatipility wrapper
+    Based on Set-SnipeitInfo command, what is now just compatibility wrapper
     and calls Connect-SnipeitPS
 
     .PARAMETER url
