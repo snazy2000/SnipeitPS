@@ -71,7 +71,7 @@ function Invoke-SnipeitMethod {
         # This can be done using $Body, maybe some day - PetriAsi
         if ($GetParameters -and ($apiUri -notlike "*\?*")){
             Write-Debug "Using `$GetParameters: $($GetParameters | Out-String)"
-            [string]$URI += (ConvertTo-GetParameter $GetParameters)
+            [string]$apiUri = $apiUri + (ConvertTo-GetParameter $GetParameters)
             # Prevent recursive appends
             $GetParameters = $null
         }
