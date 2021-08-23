@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Remove asset maintenance from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeitAssetMaintenance [-id] <Int32[]> [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+Remove-SnipeitAssetMaintenance [-id] <Int32[]> [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,20 +24,20 @@ Removes asset maintenance event or events from Snipe-it asset system by ID
 
 ### EXAMPLE 1
 ```
-Remove-SnipeitAssetMaintenance -ID 44 -url $url -apiKey $secret -Verbose
+Remove-SnipeitAssetMaintenance -ID 44
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+{{ Fill apiKey Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -60,14 +60,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False

@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Lists Snipe-it Assets Maintenances
 
 ```
 Get-SnipeitAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] <String>] [[-order] <String>]
- [[-limit] <Int32>] [-all] [[-offset] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+ [[-limit] <Int32>] [-all] [[-offset] <Int32>] [[-url] <String>] [[-apiKey] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,17 +24,17 @@ Get-SnipeitAssetMaintenance [[-search] <String>] [[-asset_id] <Int32>] [[-sort] 
 
 ### EXAMPLE 1
 ```
-Get-SnipeitAssetMaintenances -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -search "myMachine"
 ```
 
 ### EXAMPLE 3
 ```
-Get-SnipeitAssetMaintenances -search "myMachine" -url "https://assets.example.com" -token "token..."
+Get-SnipeitAssetMaintenances -search "myMachine"
 ```
 
 ## PARAMETERS
@@ -55,14 +55,15 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 8
 Default value: None
 Accept pipeline input: False
@@ -162,14 +163,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 7
 Default value: None
 Accept pipeline input: False

@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -17,7 +17,7 @@ New-SnipeitLicense [-name] <String> [-seats] <Int32> [[-category_id] <Int32>] [[
  [[-expiration_date] <DateTime>] [[-license_email] <MailAddress>] [[-license_name] <String>]
  [[-maintained] <Boolean>] [[-manufacturer_id] <Int32>] [[-notes] <String>] [[-order_number] <String>]
  [[-purchase_cost] <Single>] [[-purchase_date] <DateTime>] [[-reassignable] <Boolean>] [[-serial] <String>]
- [[-supplier_id] <Int32>] [[-termination_date] <DateTime>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [[-supplier_id] <Int32>] [[-termination_date] <DateTime>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,14 +34,15 @@ New-SnipeitLicence -name "License" -seats 3 -company_id 1
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 19
 Default value: None
 Accept pipeline input: False
@@ -304,14 +305,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 18
 Default value: None
 Accept pipeline input: False
