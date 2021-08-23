@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Create a new Snipe-IT Category
 
 ```
 New-SnipeitCategory [-name] <String> [-category_type] <String> [[-eula_text] <String>] [-use_default_eula]
- [-require_acceptance] [-checkin_email] [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [-require_acceptance] [-checkin_email] [[-image] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,20 +25,21 @@ New-SnipeitCategory [-name] <String> [-category_type] <String> [[-eula_text] <St
 
 ### EXAMPLE 1
 ```
-New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeitCategory -name "Laptops" -category_type asset
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 6
 Default value: None
 Accept pipeline input: False
@@ -136,14 +137,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 5
 Default value: None
 Accept pipeline input: False

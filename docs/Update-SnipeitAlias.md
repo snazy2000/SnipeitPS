@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---

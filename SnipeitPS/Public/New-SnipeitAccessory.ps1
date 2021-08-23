@@ -57,10 +57,10 @@ Min quantity of the accessory before alert is triggered
 Accessory image fileame and path
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 New-SnipeitAccessory -name "Accessory" -qty 3  -category_id 1
@@ -109,32 +109,50 @@ function New-SnipeitAccessory() {
         [ValidateScript({Test-Path $_})]
         [string]$image,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        if ($values['purchase_date']) {
+            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        }
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
+        $Parameters = @{
+            Api    = "/api/v1/accessories"
+            Method = 'POST'
+            Body   = $Values
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    $Parameters = @{
-        Uri    = "$url/api/v1/accessories"
-        Method = 'POST'
-        Body   = $Values
-        Token  = $apiKey
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
+        $result
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
-
-    $result
 }
 

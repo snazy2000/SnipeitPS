@@ -1,31 +1,54 @@
-﻿function Invoke-SnipeitMethod {
-    <#
+﻿<#
     .SYNOPSIS
-    Extracted invokation of the REST method to own function.
-    #>
+    Make api request to Snipe it
+
+    .PARAMETER Api
+    Api part of url. prefix with slash ie. "/api/v1/hardware"
+
+    .PARAMETER Method
+    Method of the invokation, one of following "GET", "POST", "PUT", "PATCH" or "DELETE"
+
+    .PARAMETER Body
+    Request body as hashtable. Needed for post, put and patch
+
+    .PARAMETER GetParameters
+    Get-Parameters as hastable.
+#>
+
+function Invoke-SnipeitMethod {
     [OutputType(
         [PSObject]
     )]
-    param (
-        # REST API to invoke
-        [Parameter(Mandatory = $true)]
-        [Uri]$URi,
 
-        # Method of the invokation
+    param (
+
+        [Parameter(Mandatory = $true)]
+        [string]$Api,
+
         [ValidateSet("GET", "POST", "PUT", "PATCH", "DELETE")]
         [string]$Method = "GET",
 
-        # Body of the request
         [Hashtable]$Body,
 
-        [string] $Token,
-
-        # GET Parameters
         [Hashtable]$GetParameters
-
     )
 
     BEGIN {
+        #use legacy per command based url and apikey
+        if ( $null -ne $SnipeitPSSession.legacyUrl -and $null -ne $SnipeitPSSession.legacyApiKey ) {
+            [string]$Url = $SnipeitPSSession.legacyUrl
+            Write-Debug "Invoke-SnipeitMethod url: $Url"
+            $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.legacyApiKey
+
+        } elseif ($null -ne $SnipeitPSSession.url -and $null -ne $SnipeitPSSession.apiKey) {
+            [string]$Url = $SnipeitPSSession.url
+            Write-Debug "Invoke-SnipeitMethod url: $Url"
+            $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.apiKey
+
+        } else {
+            throw "Please use Connect-SnipeitPS to setup connection before any other commands."
+        }
+
         # Validation of parameters
         if (($Method -in ("POST", "PUT", "PATCH")) -and (!($Body))) {
             $message = "The following parameters are required when using the ${Method} parameter: Body."
@@ -33,35 +56,36 @@
             Throw $exception
         }
 
+        #Build request uri
+        $apiUri = "$Url$Api"
         #To support images "image" property have be handled before this
 
         $_headers = @{
-            "Authorization" = "Bearer $($token)"
+            "Authorization" = "Bearer $($Token)"
             'Content-Type'  = 'application/json; charset=utf-8'
             "Accept" = "application/json"
         }
     }
 
     Process {
-        if ($GetParameters -and ($URi -notlike "*\?*"))
-        {
+        # This can be done using $Body, maybe some day - PetriAsi
+        if ($GetParameters -and ($apiUri -notlike "*\?*")){
             Write-Debug "Using `$GetParameters: $($GetParameters | Out-String)"
-            [string]$URI += (ConvertTo-GetParameter $GetParameters)
+            [string]$apiUri = $apiUri + (ConvertTo-GetParameter $GetParameters)
             # Prevent recursive appends
             $GetParameters = $null
         }
 
         # set mandatory parameters
         $splatParameters = @{
-            Uri             = $URi
+            Uri             = $apiUri
             Method          = $Method
             Headers         = $_headers
             UseBasicParsing = $true
             ErrorAction     = 'SilentlyContinue'
         }
 
-        # Place holder for intended image manipulation
-        # if and when snipe it API gets support for images
+        # Send image requests as multipart/form-data if supported
         if($null -ne $body -and $Body.Keys -contains 'image' ){
             if($PSVersionTable.PSVersion -ge '7.0'){
                 $Body['image'] = get-item $body['image']
@@ -71,10 +95,10 @@
                 $splatParameters["Method"] = 'POST'
                 $splatParameters["Form"] = $Body
             } else {
-                    # use base64 encoded images for powershell  version < 7
-                    Add-Type -AssemblyName "System.Web"
-                    $mimetype = [System.Web.MimeMapping]::GetMimeMapping($body['image'])
-                    $Body['image'] = 'data:@'+$mimetype+';base64,'+[Convert]::ToBase64String([IO.File]::ReadAllBytes($Body['image']))
+                # use base64 encoded images for powershell  version < 7
+                Add-Type -AssemblyName "System.Web"
+                $mimetype = [System.Web.MimeMapping]::GetMimeMapping($body['image'])
+                $Body['image'] = 'data:@'+$mimetype+';base64,'+[Convert]::ToBase64String([IO.File]::ReadAllBytes($Body['image']))
             }
         }
 
@@ -105,18 +129,16 @@
             if ($webResponse) {
                  Write-Verbose $webResponse
 
-                # API returned a Content: lets work wit it
+                # API returned a Content: lets work with it
                 try{
-
                     if ($webResponse.status -eq "error") {
-                        Write-Verbose "[$($MyInvocation.MyCommand.Name)] An error response was received from; resolving"
+                        Write-Verbose "[$($MyInvocation.MyCommand.Name)] An error response was received ... resolving"
                         # This could be handled nicely in an function such as:
                         # ResolveError $response -WriteError
                         Write-Error $($webResponse.messages | Out-String)
-                    }
-                    else {
+                    } else {
                         #update operations return payload
-                        if ($webResponse.payload){
+                        if ($webResponse.payload) {
                             $result = $webResponse.payload
                         }
                         #Search operations return rows
@@ -124,7 +146,7 @@
                             $result = $webResponse.rows
                         }
                         #Remove operations returns status and message
-                        elseif ($webResponse.status -eq 'success'){
+                        elseif ($webResponse.status -eq 'success') {
                             $result = $webResponse.payload
                         }
                         #Search and query result with no results
@@ -140,9 +162,6 @@
                         Write-Verbose "Messages: $($webResponse.messages)"
 
                         $result
-
-
-
                     }
                 }
                 catch {
@@ -151,7 +170,7 @@
 
             }
             elseif ($webResponse.StatusCode -eq "Unauthorized") {
-                Write-Error "[$($MyInvocation.MyCommand.Name)] You are not Authorized to access the resource, check your token is correct"
+                Write-Error "[$($MyInvocation.MyCommand.Name)] You are not Authorized to access the resource, check your apiKey is correct"
             }
             else {
                 # No content, although statusCode < 400
@@ -169,3 +188,4 @@
         Write-Verbose "[$($MyInvocation.MyCommand.Name)] Function ended"
     }
 }
+

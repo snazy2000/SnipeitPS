@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,8 +13,8 @@ Creates a new Company
 ## SYNTAX
 
 ```
-New-SnipeitCompany [-name] <String> [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-SnipeitCompany [-name] <String> [[-image] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,14 +30,15 @@ New-SnipeitCompany -name "Acme Company"
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
@@ -75,14 +76,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False

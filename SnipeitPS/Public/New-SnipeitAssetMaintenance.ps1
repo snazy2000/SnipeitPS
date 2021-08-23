@@ -31,10 +31,10 @@ Optional completion date
 Optional cost
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 New-SnipeitAssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard" -start_date 2021-01-01
@@ -70,36 +70,55 @@ function New-SnipeitAssetMaintenance() {
 
         [string]$notes,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        if ($Values['start_date']) {
+            $Values['start_date'] = $Values['start_date'].ToString("yyyy-MM-dd")
+        }
 
-    if ($Values['start_date']) {
-        $Values['start_date'] = $Values['start_date'].ToString("yyyy-MM-dd")
+        if ($Values['completion_date']) {
+            $Values['completion_date'] = $Values['completion_date'].ToString("yyyy-MM-dd")
+        }
+
+
+        $Parameters = @{
+            Api    = "/api/v1/maintenances"
+            Method = 'Post'
+            Body   = $Values
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    if ($Values['completion_date']) {
-        $Values['completion_date'] = $Values['completion_date'].ToString("yyyy-MM-dd")
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
+
+        $result
     }
 
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/maintenances"
-        Method = 'Post'
-        Body   = $Values
-        Token  = $apiKey
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }

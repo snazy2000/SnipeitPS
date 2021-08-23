@@ -24,17 +24,16 @@
     Asset model Image filename and path
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
     .EXAMPLE
     New-SnipeitModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 #>
 
-function New-SnipeitModel()
-{
+function New-SnipeitModel() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -60,37 +59,56 @@ function New-SnipeitModel()
         [ValidateScript({Test-Path $_})]
         [string]$image,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = @{
-        name            = $name
-        category_id     = $category_id
-        manufacturer_id = $manufacturer_id
-        fieldset_id     = $fieldset_id
+        $Values = @{
+            name            = $name
+            category_id     = $category_id
+            manufacturer_id = $manufacturer_id
+            fieldset_id     = $fieldset_id
+        }
+
+        if ($PSBoundParameters.ContainsKey('model_number')) { $Values.Add("model_number", $model_number) }
+        if ($PSBoundParameters.ContainsKey('eol')) { $Values.Add("eol", $eol) }
+
+
+        $Parameters = @{
+            Api    = "/api/v1/models"
+            Method = 'post'
+            Body   = $Values
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    if ($PSBoundParameters.ContainsKey('model_number')) { $Values.Add("model_number", $model_number) }
-    if ($PSBoundParameters.ContainsKey('eol')) { $Values.Add("eol", $eol) }
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
 
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/models"
-        Method = 'post'
-        Body   = $Values
-        Token  = $apiKey
+        $result
     }
 
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
-
-    $result
 }

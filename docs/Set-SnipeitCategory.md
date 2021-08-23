@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -15,7 +15,7 @@ Create a new Snipe-IT Category
 ```
 Set-SnipeitCategory [-id] <Int32[]> [[-name] <String>] [[-category_type] <String>] [[-eula_text] <String>]
  [[-use_default_eula] <Boolean>] [[-require_acceptance] <Boolean>] [[-checkin_email] <Boolean>]
- [[-image] <String>] [-image_delete] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf]
+ [[-image] <String>] [-image_delete] [[-RequestType] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,14 +32,15 @@ Set-SnipeitCategory -id 4 -name "Laptops"
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 11
 Default value: None
 Accept pipeline input: False
@@ -183,14 +184,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 10
 Default value: None
 Accept pipeline input: False

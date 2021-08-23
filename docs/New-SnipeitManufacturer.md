@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,8 +13,8 @@ Add a new Manufacturer to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeitManufacturer [-Name] <String> [[-image] <String>] [-image_delete] [-url] <String> [-apiKey] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-SnipeitManufacturer [-Name] <String> [[-image] <String>] [-image_delete] [[-url] <String>]
+ [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,14 +30,15 @@ New-SnipeitManufacturer -name "HP"
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
@@ -90,14 +91,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False

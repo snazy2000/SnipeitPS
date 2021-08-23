@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -17,7 +17,7 @@ Set-SnipeitConsumable [-id] <Int32[]> [[-name] <String>] [[-qty] <Int32>] [[-cat
  [[-min_amt] <Int32>] [[-company_id] <Int32>] [[-order_number] <String>] [[-manufacturer_id] <Int32>]
  [[-location_id] <Int32>] [[-requestable] <Boolean>] [[-purchase_date] <DateTime>] [[-purchase_cost] <String>]
  [[-model_number] <String>] [[-item_no] <String>] [[-image] <String>] [-image_delete] [[-RequestType] <String>]
- [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,14 +34,15 @@ Create consumable with stock count 20 , alert when stock is  5 or lower
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 18
 Default value: None
 Accept pipeline input: False
@@ -305,14 +306,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 17
 Default value: None
 Accept pipeline input: False

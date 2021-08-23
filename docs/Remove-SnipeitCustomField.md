@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Removes custom field from Snipe-it asset system
 ## SYNTAX
 
 ```
-Remove-SnipeitCustomField [-id] <Int32[]> [-URL] <String> [-APIKey] <String> [-WhatIf] [-Confirm]
+Remove-SnipeitCustomField [-id] <Int32[]> [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -34,15 +34,16 @@ Get-SnipeitCustomField | Where-object {$_.name -like '*address*'}  | Remove-Snip
 
 ## PARAMETERS
 
-### -APIKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+### -apiKey
+Deprecated parameter, please use Connect-SnipeitPS instead.
+User's API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -64,15 +65,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -URL
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+### -url
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False

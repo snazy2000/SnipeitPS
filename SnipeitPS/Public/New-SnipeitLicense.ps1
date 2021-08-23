@@ -57,10 +57,10 @@
     Termination date for license.
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
     .EXAMPLE
     New-SnipeitLicence -name "License" -seats 3 -company_id 1
@@ -117,40 +117,58 @@ function New-SnipeitLicense() {
 
         [datetime]$termination_date,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        if ($Values['expiration_date']) {
+            $Values['expiration_date'] = $Values['expiration_date'].ToString("yyyy-MM-dd")
+        }
 
-    if ($Values['expiration_date']) {
-        $Values['expiration_date'] = $Values['expiration_date'].ToString("yyyy-MM-dd")
+        if ($Values['purchase_date']) {
+            $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
+        }
+
+        if ($Values['termination_date']) {
+            $Values['termination_date'] = $Values['termination_date'].ToString("yyyy-MM-dd")
+        }
+
+        $Parameters = @{
+            Api    = "/api/v1/licenses"
+            Method = 'POST'
+            Body   = $Values
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    if ($Values['purchase_date']) {
-        $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
-    }
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
 
-    if ($Values['termination_date']) {
-        $Values['termination_date'] = $Values['termination_date'].ToString("yyyy-MM-dd")
+        $result
     }
-
-    $Parameters = @{
-        Uri    = "$url/api/v1/licenses"
-        Method = 'POST'
-        Body   = $Values
-        Token  = $apiKey
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
 }
 

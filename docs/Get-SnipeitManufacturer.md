@@ -1,6 +1,6 @@
 ---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -15,12 +15,12 @@ schema: 2.0.0
 ### Search (Default)
 ```
 Get-SnipeitManufacturer [-search <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
+ [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeitManufacturer [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitManufacturer [-id <Int32>] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,14 +58,15 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,14 +151,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
