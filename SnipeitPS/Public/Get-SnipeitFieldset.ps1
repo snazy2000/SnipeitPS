@@ -31,36 +31,39 @@ function Get-SnipeitFieldset() {
         [parameter(mandatory = $false)]
         [string]$apiKey
     )
+    bagin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        if ($id) {
+            $api = "/api/v1/fieldsets/$id"
+        } else {
+            $api = "/api/v1/fieldsets"
+        }
 
-    if ($id) {
-        $api = "/api/v1/fieldsets/$id"
-    } else {
-        $api = "/api/v1/fieldsets"
+        $Parameters = @{
+            Api           = $api
+            Method        = 'Get'
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
+    process {
+        $result = Invoke-SnipeitMethod @Parameters
 
-    $Parameters = @{
-        Api           = $api
-        Method        = 'Get'
+        $result
     }
-
-    if ($PSBoundParameters.ContainsKey('apiKey')) {
-        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyApiKey -apiKey $apikey
-    }
-
-    if ($PSBoundParameters.ContainsKey('url')) {
-        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyUrl -url $url
-    }
-
-    $result = Invoke-SnipeitMethod @Parameters
-
-    $result
-
-    # reset legacy sessions
-    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
-        Reset-SnipeitPSLegacyApi
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }

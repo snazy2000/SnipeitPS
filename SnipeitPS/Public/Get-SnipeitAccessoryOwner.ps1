@@ -32,30 +32,33 @@ function Get-SnipeitAccessoryOwner() {
         [parameter(mandatory = $false)]
         [string]$apiKey
     )
+    begin {
+        $Parameters = @{
+            Api    = "/api/v1/accessories/$id/checkedout"
+            Method = 'GET'
+        }
 
-    $Parameters = @{
-        Api    = "/api/v1/accessories/$id/checkedout"
-        Method = 'GET'
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
+    }
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
+        $result
     }
 
-    if ($PSBoundParameters.ContainsKey('apiKey')) {
-        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyApiKey -apiKey $apikey
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
-
-    if ($PSBoundParameters.ContainsKey('url')) {
-        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyUrl -url $url
-    }
-
-    if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    # reset legacy sessions
-    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
-        Reset-SnipeitPSLegacyApi
-    }
-
-    return $result
 }

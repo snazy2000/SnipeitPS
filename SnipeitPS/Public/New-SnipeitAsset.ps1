@@ -144,55 +144,61 @@ function New-SnipeitAsset() {
         [hashtable] $customfields
     )
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    if ($values['purchase_date']) {
-        $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
-    }
-
-    if ($customfields) {
-        $Values += $customfields
-    }
-
-    #Checkout asset when creating it
-    if ($PsCmdlet.ParameterSetName -eq 'Checkout asset when creating') {
-        switch ($checkout_to_type) {
-                'location' { $Values += @{ "assigned_location" = $assigned_id } }
-                'user' { $Values += @{ "assigned_user" = $assigned_id } }
-                'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
+        if ($values['purchase_date']) {
+            $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
         }
 
-        #This are not needed for API
-        if ($Values.ContainsKey('assigned_id')) {$Values.Remove('assigned_id')}
-        if ($Values.ContainsKey('checkout_to_type')) {$Values.Remove('checkout_to_type')}
+        if ($customfields) {
+            $Values += $customfields
+        }
+
+        #Checkout asset when creating it
+        if ($PsCmdlet.ParameterSetName -eq 'Checkout asset when creating') {
+            switch ($checkout_to_type) {
+                    'location' { $Values += @{ "assigned_location" = $assigned_id } }
+                    'user' { $Values += @{ "assigned_user" = $assigned_id } }
+                    'asset' { $Values += @{ "assigned_asset" = $assigned_id } }
+            }
+
+            #This are not needed for API
+            if ($Values.ContainsKey('assigned_id')) {$Values.Remove('assigned_id')}
+            if ($Values.ContainsKey('checkout_to_type')) {$Values.Remove('checkout_to_type')}
+        }
+
+        $Parameters = @{
+            Api    = "/api/v1/hardware"
+            Method = 'Post'
+            Body   = $Values
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    $Parameters = @{
-        Api    = "/api/v1/hardware"
-        Method = 'Post'
-        Body   = $Values
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
+
+        $result
     }
 
-    if ($PSBoundParameters.ContainsKey('apiKey')) {
-        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyApiKey -apiKey $apikey
-    }
-
-    if ($PSBoundParameters.ContainsKey('url')) {
-        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyUrl -url $url
-    }
-
-    if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-        $result = Invoke-SnipeitMethod @Parameters
-    }
-
-    $result
-
-    # reset legacy sessions
-    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
-        Reset-SnipeitPSLegacyApi
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }

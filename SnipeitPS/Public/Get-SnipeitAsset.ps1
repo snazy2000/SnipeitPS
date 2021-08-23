@@ -206,61 +206,67 @@ function Get-SnipeitAsset() {
         [string]$apiKey
     )
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    switch ($PsCmdlet.ParameterSetName) {
-        'Search' { $api = "/api/v1/hardware" }
-        'Get with id'  {$api= "/api/v1/hardware/$id"}
-        'Get with asset tag' {$api= "/api/v1/hardware/bytag/$asset_tag"}
-        'Get with serial' { $api= "/api/v1/hardware/byserial/$serial"}
-        'Assets due auditing soon' {$api = "/api/v1/hardware/audit/due"}
-        'Assets overdue for auditing' {$api = "/api/v1/hardware/audit/overdue"}
-        'Assets checked out to user id'{$api = "/api/v1/users/$user_id/assets"}
-        'Assets with component id' {$api = "/api/v1/components/$component_id/assets"}
-    }
-
-    $Parameters = @{
-        Api           = $api
-        Method        = 'Get'
-        GetParameters = $SearchParameter
-     }
-
-     if ($PSBoundParameters.ContainsKey('apiKey')) {
-        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyApiKey -apiKey $apikey
-    }
-
-    if ($PSBoundParameters.ContainsKey('url')) {
-        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyUrl -url $url
-    }
-
-    if ($all) {
-        $offstart = $(if ($offset) {$offset} Else {0})
-        $callargs = $SearchParameter
-        Write-Verbose "Callargs: $($callargs | convertto-json)"
-        $callargs.Remove('all')
-
-        while ($true) {
-            $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit
-            $res=Get-SnipeitAsset @callargs
-            $res
-            if ( $res.count -lt $limit) {
-                break
-            }
-            $offstart = $offstart + $limit
+        switch ($PsCmdlet.ParameterSetName) {
+            'Search' { $api = "/api/v1/hardware" }
+            'Get with id'  {$api= "/api/v1/hardware/$id"}
+            'Get with asset tag' {$api= "/api/v1/hardware/bytag/$asset_tag"}
+            'Get with serial' { $api= "/api/v1/hardware/byserial/$serial"}
+            'Assets due auditing soon' {$api = "/api/v1/hardware/audit/due"}
+            'Assets overdue for auditing' {$api = "/api/v1/hardware/audit/overdue"}
+            'Assets checked out to user id'{$api = "/api/v1/users/$user_id/assets"}
+            'Assets with component id' {$api = "/api/v1/components/$component_id/assets"}
         }
-    } else {
-        $result = Invoke-SnipeitMethod @Parameters
-        $result
+
+        $Parameters = @{
+            Api           = $api
+            Method        = 'Get'
+            GetParameters = $SearchParameter
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    # reset legacy sessions
-    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
-        Reset-SnipeitPSLegacyApi
+    process {
+        if ($all) {
+            $offstart = $(if ($offset) {$offset} Else {0})
+            $callargs = $SearchParameter
+            Write-Verbose "Callargs: $($callargs | convertto-json)"
+            $callargs.Remove('all')
+
+            while ($true) {
+                $callargs['offset'] = $offstart
+                $callargs['limit'] = $limit
+                $res=Get-SnipeitAsset @callargs
+                $res
+                if ( $res.count -lt $limit) {
+                    break
+                }
+                $offstart = $offstart + $limit
+            }
+        } else {
+            $result = Invoke-SnipeitMethod @Parameters
+            $result
+        }
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 
 }

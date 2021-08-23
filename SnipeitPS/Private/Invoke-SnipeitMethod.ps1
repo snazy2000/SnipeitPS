@@ -36,18 +36,17 @@ function Invoke-SnipeitMethod {
     BEGIN {
         #use legacy per command based url and apikey
         if ( $null -ne $SnipeitPSSession.legacyUrl -and $null -ne $SnipeitPSSession.legacyApiKey ) {
-            [string]$Url = $SnipeitPSSession.legacyrl
+            [string]$Url = $SnipeitPSSession.legacyUrl
             Write-Debug "Invoke-SnipeitMethod url: $Url"
             $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.legacyApiKey
 
-            throw "Cannot connect to Snipe it. Please run Connect-SnipePS to set connection information."
         } elseif ($null -ne $SnipeitPSSession.url -and $null -ne $SnipeitPSSession.apiKey) {
-
-        } else {
             [string]$Url = $SnipeitPSSession.url
             Write-Debug "Invoke-SnipeitMethod url: $Url"
             $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.apiKey
 
+        } else {
+            throw "Please use Connect-SnipeitPS to setup connection before any other commands."
         }
 
         # Validation of parameters
@@ -56,9 +55,6 @@ function Invoke-SnipeitMethod {
             $exception = New-Object -TypeName System.ArgumentException -ArgumentList $message
             Throw $exception
         }
-
-        # Double check those old deprecated -url parameters
-        $Url = $Url.TrimEnd('/')
 
         #Build request uri
         $apiUri = "$Url$Api"

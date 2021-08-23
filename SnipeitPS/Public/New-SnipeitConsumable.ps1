@@ -122,9 +122,7 @@ function New-SnipeitConsumable() {
         if ($Values['purchase_date']) {
             $Values['purchase_date'] = $Values['purchase_date'].ToString("yyyy-MM-dd")
         }
-    }
 
-    process {
         $Parameters = @{
             Api    = "/api/v1/consumables"
             Method = 'Post'
@@ -140,7 +138,9 @@ function New-SnipeitConsumable() {
             Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
             Set-SnipeitPSLegacyUrl -url $url
         }
+    }
 
+    process {
         if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
             $result = Invoke-SnipeitMethod @Parameters
         }

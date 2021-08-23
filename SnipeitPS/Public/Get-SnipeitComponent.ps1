@@ -78,58 +78,64 @@ function Get-SnipeitComponent() {
         [string]$apiKey
     )
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $api = "/api/v1/components"
+        $api = "/api/v1/components"
 
-    if ($search -and $id ) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
-    }
-
-    if ($id) {
-       $api= "/api/v1/components/$id"
-    }
-
-    $Parameters = @{
-        Api           = $api
-        Method        = 'Get'
-        GetParameters = $SearchParameter
-    }
-
-    if ($PSBoundParameters.ContainsKey('apiKey')) {
-        Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyApiKey -apiKey $apikey
-    }
-
-    if ($PSBoundParameters.ContainsKey('url')) {
-        Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
-        Set-SnipeitPSLegacyUrl -url $url
-    }
-
-    if ($all) {
-        $offstart = $(if ($offset) {$offset} Else {0})
-        $callargs = $SearchParameter
-        $callargs.Remove('all')
-
-        while ($true) {
-            $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit
-            $res=Get-SnipeitComponent @callargs
-            $res
-            if ($res.count -lt $limit) {
-                break
-            }
-            $offstart = $offstart + $limit
+        if ($search -and $id ) {
+            Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
         }
-    } else {
-        $result = Invoke-SnipeitMethod @Parameters
-        $result
+
+        if ($id) {
+        $api= "/api/v1/components/$id"
+        }
+
+        $Parameters = @{
+            Api           = $api
+            Method        = 'Get'
+            GetParameters = $SearchParameter
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
 
-    # reset legacy sessions
-    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
-        Reset-SnipeitPSLegacyApi
+    process {
+        if ($all) {
+            $offstart = $(if ($offset) {$offset} Else {0})
+            $callargs = $SearchParameter
+            $callargs.Remove('all')
+
+            while ($true) {
+                $callargs['offset'] = $offstart
+                $callargs['limit'] = $limit
+                $res=Get-SnipeitComponent @callargs
+                $res
+                if ($res.count -lt $limit) {
+                    break
+                }
+                $offstart = $offstart + $limit
+            }
+        } else {
+            $result = Invoke-SnipeitMethod @Parameters
+            $result
+        }
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }

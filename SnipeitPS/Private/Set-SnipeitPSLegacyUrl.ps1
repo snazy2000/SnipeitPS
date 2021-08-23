@@ -8,7 +8,7 @@ function Set-SnipeitPSLegacyUrl {
     )
     process {
         if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-            $SnipeitPSSession.legacyUrl = $url
+            $SnipeitPSSession.legacyUrl = $url.TrimEnd('/')
         }
     }
 }
