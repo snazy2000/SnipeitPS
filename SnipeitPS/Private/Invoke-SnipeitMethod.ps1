@@ -34,12 +34,22 @@ function Invoke-SnipeitMethod {
     )
 
     BEGIN {
-        if ( $null -eq $SnipeitPSSession.url -or $null -eq $SnipeitPSSession.apiKey ) {
-            throw "Cannot connect to Snipe it.Please run Connect-SnipePS to set connection information."
+        #use legacy per command based url and apikey
+        if ( $null -ne $SnipeitPSSession.legacyUrl -and $null -ne $SnipeitPSSession.legacyApiKey ) {
+            [string]$Url = $SnipeitPSSession.legacyrl
+            Write-Debug "Invoke-SnipeitMethod url: $Url"
+            $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.legacyApiKey
+
+            throw "Cannot connect to Snipe it. Please run Connect-SnipePS to set connection information."
+        } elseif ($null -ne $SnipeitPSSession.url -and $null -ne $SnipeitPSSession.apiKey) {
+
         } else {
-            $Url = $SnipeitPSSession.url
-            $Token = $SnipeitPSSession.apiKey | ConvertFrom-SecureString -AsPlainText
+            [string]$Url = $SnipeitPSSession.url
+            Write-Debug "Invoke-SnipeitMethod url: $Url"
+            $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.apiKey
+
         }
+
         # Validation of parameters
         if (($Method -in ("POST", "PUT", "PATCH")) -and (!($Body))) {
             $message = "The following parameters are required when using the ${Method} parameter: Body."
@@ -48,7 +58,7 @@ function Invoke-SnipeitMethod {
         }
 
         # Double check those old deprecated -url parameters
-        $Url = $Url.AbsoluteUri.TrimEnd('/')
+        $Url = $Url.TrimEnd('/')
 
         #Build request uri
         $apiUri = "$Url$Api"

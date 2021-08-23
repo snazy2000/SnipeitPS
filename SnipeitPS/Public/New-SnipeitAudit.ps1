@@ -67,4 +67,9 @@ function New-SnipeitAudit() {
     }
 
     $result
+
+    # reset legacy sessions
+    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+        Reset-SnipeitPSLegacyApi
+    }
 }

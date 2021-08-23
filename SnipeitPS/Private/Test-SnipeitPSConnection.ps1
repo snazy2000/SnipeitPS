@@ -5,11 +5,12 @@ function Test-SnipeitPSConnection {
         Method        = 'Get'
         GetParameters = @{'limit'=1}
     }
-    Write-Verbose "Testing connection to $url."
+    Write-Verbose "Testing connection to $($SnipeitPSSession.url)."
 
     $contest = Invoke-SnipeitMethod @Parameters
+
     if ( $contest) {
-        Write-Verbose "Connection to $url tested succesfully."
+        Write-Verbose "Connection to $($SnipeitPSSession.url) tested succesfully."
         return $true
     } else {
         return $false

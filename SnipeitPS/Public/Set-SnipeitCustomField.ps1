@@ -114,5 +114,11 @@ function Set-SnipeitCustomField() {
             $result
         }
     }
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
+    }
 }
 

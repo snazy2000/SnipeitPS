@@ -52,5 +52,10 @@ function Get-SnipeitAccessoryOwner() {
         $result = Invoke-SnipeitMethod @Parameters
     }
 
+    # reset legacy sessions
+    if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+        Reset-SnipeitPSLegacyApi
+    }
+
     return $result
 }

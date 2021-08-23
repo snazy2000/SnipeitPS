@@ -3,8 +3,8 @@
     Sets authetication information
 
     .DESCRIPTION
-    Set and stores apikey and url user to connect Snipe-It system.
-    Based on Set-SnipeitInfo command, that's now just combatipility wrapper
+    Sets apikey and url to connect Snipe-It system.
+    Based on Set-SnipeitInfo command, what is now just combatipility wrapper
     and calls Connect-SnipeitPS
 
     .PARAMETER url
@@ -13,78 +13,81 @@
     .PARAMETER apiKey
     User's API Key for Snipeit.
 
-    .PARAMETER DontStore
-    Don't store connection information just connect to Url
+    .PARAMETER secureApiKey
+    Snipe it Api key as securestring
+
+    .PARAMETER siteCred
+    PSCredential where username shoul be snipe it url and password should be
+    snipe it apikey.
 
     .EXAMPLE
     Connect-SnipeitPS -Url $url -apiKey $myapikey
-    Connect to  Snipe it  api and stores connection information.
+    Connect to  Snipe it  api.
 
     .EXAMPLE
-    Connect-SnipeitPS -Url $url -apiKey $myapikey -DontStore
-    Just connects to Snipe it api, connection information is not stored.
+    Connect-SnipeitPS -Url $url -SecureApiKey $myapikey
+    Connects to Snipe it api with apikey stored to securestring
 
     .EXAMPLE
-    Connect-SnipeitPS -Url $url
-    Connects existing Snipe It Url with stored apiKey
+    Connect-SnipeitPS -siteCred (Get-Credential -message "Use site url as username and apikey as password")
+    Connect to Snipe It with PSCredential object.
+    To use saved creadentials yu can use export-clixml and import-clixml commandlets.
 
     .EXAMPLE
-    Connect-SnipeitPS
-    Connects last used Snipe It Url with stored apikey
+    Build credential with apikey value from secret vault (Microsoft.PowerShell.SecretManagement)
+    $siteurl = "https://mysnipeitsite.url"
+    $apikey = Get-SecretInfo -Name SnipeItApiKey
+    $siteCred = New-Object -Type PSCredential -Argumentlist $siteurl,$spikey
+    Connect-SnipeitPS -siteCred $siteCred
+
 
 
 #>
 function Connect-SnipeitPS {
     [CmdletBinding(
-        DefaultParameterSetName = 'Connect to existing connection'
+        DefaultParameterSetName = 'Connect with url and apikey'
     )]
     [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseShouldProcessForStateChangingFunctions', '')]
 
     param (
-
-        [Parameter(ParameterSetName='Setup new connection',Mandatory=$true)]
-        [Parameter(ParameterSetName='Connect to existing connection',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$true)]
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$true)]
         [Uri]$url,
 
-        [Parameter(ParameterSetName='Setup new connection',Mandatory=$true)]
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$true)]
         [String]$apiKey,
 
-        [Parameter(ParameterSetName='Setup new connection')]
-        [switch]$DontStore
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$true)]
+        [SecureString]$secureApiKey,
+
+        [Parameter(ParameterSetName='Connect with credential',Mandatory=$true)]
+        [PSCredential]$siteCred
     )
 
 
     PROCESS {
         switch ($PsCmdlet.ParameterSetName) {
-            'Setup new connection' {
-                try {
-                    $SnipeitPSSession.url = $url
-                    $SnipeitPSSession.apiKey = $apiKey
-
-                    #test connection
-                    $Parameters = @{
-                        Api           = '/api/v1/statuslabels'
-                        Method        = 'Get'
-                        GetParameters = @{'limit'=1}
-                    }
-                    Write-Verbose "Testin connection to $url."
-
-                    $contest = Invoke-SnipeitMethod @Parameters
-                    if ( $contest) {
-                        Write-Verbose "Connection to $url tested succesfully."
-                    }
-
-                }
-                catch {
-                    throw "Cannot setup connection to $url. To start troubleshooting, check your url, certificates and apiKey"
-                }
-                # TODO: Save connection information safely on disk
-
+            'Connect with url and apikey' {
+                $SnipeitPSSession.url = $url.TrimEnd('/')
+                $SnipeitPSSession.apiKey = $apiKey | ConvertTo-SecureString -AsPlainText
             }
 
-            'Connect to existing connection' {
-                # TODO: everything
+            'Connect with url and secure apikey' {
+                $SnipeitPSSession.url = $url.TrimEnd('/')
+                $SnipeitPSSession.apiKey = $secureApiKey
             }
+
+            'Connect with credential' {
+                $SnipeitPSSession.url = ($siteCred.GetNetworkCredential().UserName).TrimEnd('/')
+                $SnipeitPSSession.apiKey = $siteCred.GetNetworkCredential().SecurePassword
+            }
+        }
+
+        Write-Debug "Site-url $($SnipeitPSSession.url)"
+        Write-Debug "Site apikey: $($SnipeitPSSession.apiKey)"
+
+        if (-not (Test-SnipeitPSConnection)) {
+            throw "Cannot verify connection to snipe it. For the start try to check url and provided apikey or credential parameters"
         }
     }
 }
