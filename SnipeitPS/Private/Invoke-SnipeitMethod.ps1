@@ -38,13 +38,21 @@ function Invoke-SnipeitMethod {
         if ( $null -ne $SnipeitPSSession.legacyUrl -and $null -ne $SnipeitPSSession.legacyApiKey ) {
             [string]$Url = $SnipeitPSSession.legacyUrl
             Write-Debug "Invoke-SnipeitMethod url: $Url"
-            $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.legacyApiKey
-
+            if($PSVersionTable.PSVersion -ge '7.0'){
+                $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.legacyApiKey
+            } else {
+                #convert to plaintext via credential
+                $Token =  (New-Object PSCredential "user",$SnipeitPSSession.legacyApiKey).GetNetworkCredential().Password
+            }
         } elseif ($null -ne $SnipeitPSSession.url -and $null -ne $SnipeitPSSession.apiKey) {
             [string]$Url = $SnipeitPSSession.url
             Write-Debug "Invoke-SnipeitMethod url: $Url"
-            $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.apiKey
-
+            if($PSVersionTable.PSVersion -ge '7.0'){
+                $Token =  ConvertFrom-SecureString -AsPlainText -SecureString $SnipeitPSSession.apiKey
+            } else {
+                #convert to plaintext via credential
+                $Token =  (New-Object PSCredential "user",$SnipeitPSSession.apiKey).GetNetworkCredential().Password
+            }
         } else {
             throw "Please use Connect-SnipeitPS to setup connection before any other commands."
         }

@@ -8,7 +8,11 @@ function Set-SnipeitPSLegacyApiKey {
     )
     process {
         if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-            $SnipeitPSSession.legacyApiKey = ConvertTo-SecureString -AsPlainText -String $apiKey
+            if($PSVersionTable.PSVersion -ge '7.0'){
+                $SnipeitPSSession.legacyApiKey = ConvertTo-SecureString -AsPlainText -String $apiKey
+            } else {
+                $SnipeitPSSession.legacyApiKey = ConvertTo-SecureString -Force -AsPlainText -String $apiKey
+            }
         }
     }
 }

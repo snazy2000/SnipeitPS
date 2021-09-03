@@ -69,7 +69,11 @@ function Connect-SnipeitPS {
         switch ($PsCmdlet.ParameterSetName) {
             'Connect with url and apikey' {
                 $SnipeitPSSession.url = $url.AbsoluteUri.TrimEnd('/')
-                $SnipeitPSSession.apiKey = ConvertTo-SecureString -AsPlainText -String $apiKey
+                if($PSVersionTable.PSVersion -ge '7.0'){
+                    $SnipeitPSSession.apiKey = ConvertTo-SecureString -AsPlainText -String $apiKey
+                } else {
+                    $SnipeitPSSession.apiKey = ConvertTo-SecureString -String $apiKey -AsPlainText -Force
+                }
             }
 
             'Connect with url and secure apikey' {

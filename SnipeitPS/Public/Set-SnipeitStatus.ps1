@@ -77,12 +77,12 @@ function Set-SnipeitStatus() {
                 Body          = $Values
             }
 
-            if ($PSBoundParameters.ContainsKey('apiKey')) {
+            if ($PSBoundParameters.ContainsKey('apiKey') -and '' -ne [string]$apiKey) {
                 Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
                 Set-SnipeitPSLegacyApiKey -apiKey $apikey
             }
 
-            if ($PSBoundParameters.ContainsKey('url')) {
+            if ($PSBoundParameters.ContainsKey('url') -and '' -ne [string]$url) {
                 Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
                 Set-SnipeitPSLegacyUrl -url $url
             }
@@ -96,7 +96,7 @@ function Set-SnipeitStatus() {
 
     end {
         # reset legacy sessions
-        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+        if ($PSBoundParameters.ContainsKey('url') -and '' -ne [string]$url -or $PSBoundParameters.ContainsKey('apiKey') -and '' -ne [string]$apiKey) {
             Reset-SnipeitPSLegacyApi
         }
     }
