@@ -15,17 +15,16 @@
     Remove current image
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
     .EXAMPLE
     New-SnipeitManufacturer -name "HP"
 #>
 
-function New-SnipeitManufacturer()
-{
+function New-SnipeitManufacturer() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -40,30 +39,47 @@ function New-SnipeitManufacturer()
 
         [switch]$image_delete=$false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $Values = @{
-        "name" = $Name
+        $Values = @{
+            "name" = $Name
+        }
+
+        $Parameters = @{
+            Api    = "/api/v1/manufacturers"
+            Method = 'post'
+            Body   = $Values
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
+    process {
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            $result = Invoke-SnipeitMethod @Parameters
+        }
 
-    $Parameters = @{
-        Uri    = "$url/api/v1/manufacturers"
-        Method = 'post'
-        Body   = $Values
-        Token  = $apiKey
+        $result
     }
-
-    If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-    {
-        $result = Invoke-SnipeitMethod @Parameters
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
-
-    $result
 }

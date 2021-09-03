@@ -18,10 +18,10 @@ Offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitModel -search "DL380"
@@ -31,8 +31,7 @@ Get-SnipeitModel -id 1
 
 #>
 
-function Get-SnipeitModel()
-{
+function Get-SnipeitModel() {
     [CmdletBinding(DefaultParameterSetName = 'Search')]
     Param(
         [parameter(ParameterSetName='Search')]
@@ -54,51 +53,71 @@ function Get-SnipeitModel()
         [parameter(ParameterSetName='Search')]
         [switch]$all = $false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+        $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
-    $apiurl = "$url/api/v1/models"
+        $api = "/api/v1/models"
 
-    if ($search -and $id ) {
-         Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
-    }
-
-    if ($id) {
-       $apiurl= "$url/api/v1/models/$id"
-    }
-
-    $Parameters = @{
-        Uri           = $apiurl
-        Method        = 'Get'
-        Token         = $apiKey
-        GetParameters = $SearchParameter
-    }
-
-    if ($all) {
-        $offstart = $(if($offset){$offset} Else {0})
-        $callargs = $SearchParameter
-        $callargs.Remove('all')
-
-        while ($true) {
-            $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit
-            $res=Get-SnipeitModel @callargs
-            $res
-            if ($res.count -ne $limit ) {
-                break
-            }
-            $offstart = $offstart + $limit
+        if ($search -and $id ) {
+            Throw "[$($MyInvocation.MyCommand.Name)] Please specify only -search or -id parameter , not both "
         }
-    } else {
-        $result = Invoke-SnipeitMethod @Parameters
-        $result
+
+        if ($id) {
+        $api= "/api/v1/models/$id"
+        }
+
+        $Parameters = @{
+            Api           = $api
+            Method        = 'Get'
+            GetParameters = $SearchParameter
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
+    }
+
+    process {
+        if ($all) {
+            $offstart = $(if ($offset) {$offset} Else {0})
+            $callargs = $SearchParameter
+            $callargs.Remove('all')
+
+            while ($true) {
+                $callargs['offset'] = $offstart
+                $callargs['limit'] = $limit
+                $res=Get-SnipeitModel @callargs
+                $res
+                if ($res.count -ne $limit ) {
+                    break
+                }
+                $offstart = $offstart + $limit
+            }
+        } else {
+            $result = Invoke-SnipeitMethod @Parameters
+            $result
+        }
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }

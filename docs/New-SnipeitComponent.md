@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -15,7 +15,7 @@ Create a new component
 ```
 New-SnipeitComponent [-name] <String> [-category_id] <Int32> [-qty] <String> [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-order_number] <String>] [[-purchase_date] <DateTime>] [[-purchase_cost] <Single>]
- [[-image] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-image] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,20 +25,21 @@ Createa new componen on Snipe-It system
 
 ### EXAMPLE 1
 ```
-An example
+New-SnipeitComponent -name 'Display adapter' -catecory_id 3 -qty 10
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 11
 Default value: None
 Accept pipeline input: False
@@ -181,14 +182,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 10
 Default value: None
 Accept pipeline input: False
@@ -234,6 +236,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-General notes
 
 ## RELATED LINKS

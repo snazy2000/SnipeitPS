@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -15,7 +15,7 @@ Updates Model on Snipe-it asset system
 ```
 Set-SnipeitModel [-id] <Int32[]> [[-name] <String>] [[-model_number] <String>] [[-category_id] <Int32>]
  [[-manufacturer_id] <Int32>] [[-eol] <Int32>] [[-custom_fieldset_id] <Int32>] [[-image] <String>]
- [-image_delete] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [-image_delete] [[-RequestType] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,14 +32,15 @@ New-SnipeitModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 11
 Default value: None
 Accept pipeline input: False
@@ -198,14 +199,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 10
 Default value: None
 Accept pipeline input: False

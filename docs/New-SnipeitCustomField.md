@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -15,7 +15,7 @@ Add a new Custom Field to Snipe-it asset system
 ```
 New-SnipeitCustomField [-name] <String> [[-help_text] <String>] [-element] <String> [-format] <String>
  [[-field_values] <String>] [[-field_encrypted] <Boolean>] [[-show_in_email] <Boolean>]
- [[-custom_format] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-custom_format] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,14 +31,15 @@ New-SnipeitCustomField -Name "AntivirusInstalled" -Format "BOOLEAN" -HelpText "I
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 10
 Default value: None
 Accept pipeline input: False
@@ -167,14 +168,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 9
 Default value: None
 Accept pipeline input: False

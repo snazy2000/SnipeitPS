@@ -21,10 +21,10 @@ Result offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitAccessory -search Keyboard
@@ -79,47 +79,67 @@ function Get-SnipeitAccessory() {
         [parameter(ParameterSetName='Accessories checked out to user id')]
         [switch]$all = $false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+    begin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    switch($PsCmdlet.ParameterSetName) {
-        'Search' {$apiurl = "$url/api/v1/accessories"}
-        'Get by ID' {$apiurl= "$url/api/v1/accessories/$id"}
-        'Accessories checked out to user id' {$apiurl = "$url/api/v1/users/$user_id/accessories"}
-    }
-
-    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-    $Parameters = @{
-        Uri           = $apiurl
-        Method        = 'Get'
-        GetParameters = $SearchParameter
-        Token         = $apiKey
-    }
-
-    if ($all) {
-        $offstart = $(if($offset){$offset} Else {0})
-        $callargs = $SearchParameter
-        $callargs.Remove('all')
-
-        while ($true) {
-            $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit
-            $res=Get-SnipeitAccessory @callargs
-            $res
-            if ($res.count -lt $limit) {
-                break
-            }
-            $offstart = $offstart + $limit
+        switch($PsCmdlet.ParameterSetName) {
+            'Search' {$api = "/api/v1/accessories"}
+            'Get by ID' {$api= "/api/v1/accessories/$id"}
+            'Accessories checked out to user id' {$api = "/api/v1/users/$user_id/accessories"}
         }
-    } else {
-        $result = Invoke-SnipeitMethod @Parameters
-        $result
+
+        $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+
+        $Parameters = @{
+            Api           = $api
+            Method        = 'Get'
+            GetParameters = $SearchParameter
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
+    }
+
+    process {
+        if ($all) {
+            $offstart = $(if ($offset) {$offset} Else {0})
+            $callargs = $SearchParameter
+            $callargs.Remove('all')
+
+            while ($true) {
+                $callargs['offset'] = $offstart
+                $callargs['limit'] = $limit
+                $res=Get-SnipeitAccessory @callargs
+                $res
+                if ($res.count -lt $limit) {
+                    break
+                }
+                $offstart = $offstart + $limit
+            }
+        } else {
+            $result = Invoke-SnipeitMethod @Parameters
+            $result
+        }
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }
 

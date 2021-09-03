@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -17,46 +17,46 @@ Gets a list of Snipe-it Assets or specific asset
 Get-SnipeitAsset [-search <String>] [-order_number <String>] [-model_id <Int32>] [-category_id <Int32>]
  [-manufacturer_id <Int32>] [-company_id <Int32>] [-location_id <Int32>] [-depreciation_id <Int32>]
  [-requestable <Boolean>] [-status <String>] [-status_id <Int32>] [-sort <String>] [-order <String>]
- [-limit <Int32>] [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+ [-limit <Int32>] [-offset <Int32>] [-all] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Get with id
 ```
-Get-SnipeitAsset [-id <Int32>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitAsset [-id <Int32>] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Get with asset tag
 ```
-Get-SnipeitAsset [-asset_tag <String>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitAsset [-asset_tag <String>] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Get with serial
 ```
-Get-SnipeitAsset [-serial <String>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitAsset [-serial <String>] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Assets due auditing soon
 ```
 Get-SnipeitAsset [-audit_due] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
+ [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Assets overdue for auditing
 ```
 Get-SnipeitAsset [-audit_overdue] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>] [-all]
- -url <String> -apiKey <String> [<CommonParameters>]
+ [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Assets checked out to user id
 ```
 Get-SnipeitAsset [-user_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>]
- [-all] -url <String> -apiKey <String> [<CommonParameters>]
+ [-all] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Assets with component id
 ```
 Get-SnipeitAsset [-component_id <Int32>] [-sort <String>] [-order <String>] [-limit <Int32>] [-offset <Int32>]
- [-all] -url <String> -apiKey <String> [<CommonParameters>]
+ [-all] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ Get-SnipeitAsset [-component_id <Int32>] [-sort <String>] [-order <String>] [-li
 
 ### EXAMPLE 1
 ```
-Get-SnipeitAsset -all -url "https://assets.example.com"-token "token..."
+Get-SnipeitAsset -all
 Returens all assets
 ```
 
@@ -136,14 +136,15 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -468,14 +469,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

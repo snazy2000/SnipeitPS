@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Add a new Audit to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeitAudit [-tag] <String> [[-location_id] <Int32>] [-url] <String> [-apiKey] <String> [-WhatIf]
+New-SnipeitAudit [-tag] <String> [[-location_id] <Int32>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
@@ -82,7 +82,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False

@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -8,16 +8,18 @@ schema: 2.0.0
 # Set-SnipeitInfo
 
 ## SYNOPSIS
-Sets authetication information
+Sets authetication information.
+Deprecated, use Connect-SnipeitPS instead.
 
 ## SYNTAX
 
 ```
-Set-SnipeitInfo [[-url] <Uri>] [[-apiKey] <String>] [<CommonParameters>]
+Set-SnipeitInfo [-url] <Uri> [-apiKey] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Set apikey and url user to connect Snipe-It system
+Deprecated combatibilty function that Set apikey and url user to connect Snipe-It system.
+Please use Connect-SnipeitPS instead.
 
 ## EXAMPLES
 
@@ -29,14 +31,14 @@ Set-SnipeitInfo -url $url -apiKey -Verbose
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+User's API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
@@ -44,14 +46,14 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+URL of Snipeit system.
 
 ```yaml
 Type: Uri
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False

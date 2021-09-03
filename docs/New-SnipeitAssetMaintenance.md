@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -15,7 +15,7 @@ Add a new Asset maintenence to Snipe-it asset system
 ```
 New-SnipeitAssetMaintenance [-asset_id] <Int32> [-supplier_id] <Int32> [-asset_maintenance_type] <String>
  [-title] <String> [-start_date] <DateTime> [[-completion_date] <DateTime>] [[-is_warranty] <Boolean>]
- [[-cost] <Decimal>] [[-notes] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [[-cost] <Decimal>] [[-notes] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,14 +32,15 @@ New-SnipeitAssetMaintenence -asset_id 1 -supplier_id 1 -title "replace keyboard"
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 11
 Default value: None
 Accept pipeline input: False
@@ -182,14 +183,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 10
 Default value: None
 Accept pipeline input: False

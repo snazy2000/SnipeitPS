@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -17,8 +17,8 @@ Set-SnipeitAsset [-id] <Int32[]> [[-name] <String>] [[-status_id] <Int32>] [[-mo
  [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>] [[-serial] <String>]
  [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
  [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
- [[-notes] <String>] [[-RequestType] <String>] [[-image] <String>] [-image_delete] [-url] <String>
- [-apiKey] <String> [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-notes] <String>] [[-RequestType] <String>] [[-image] <String>] [-image_delete] [[-url] <String>]
+ [[-apiKey] <String>] [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,14 +44,15 @@ Get-SnipeitAsset -serial 12345678 | Set-SnipeitAsset -notes 'Just updated'
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfoeItInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 20
 Default value: None
 Accept pipeline input: False
@@ -346,14 +347,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfoeItInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 19
 Default value: None
 Accept pipeline input: False

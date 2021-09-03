@@ -1,16 +1,19 @@
 ﻿---
-Module Name: SnipeitPS
+Module Name: snipeitps
 Module Guid: f86f4db4-1cb1-45c4-b7bf-6762531bfdeb
 Download Help Link: {{ Update Download Link }}
 Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
 Locale: en-US
 ---
 
-# SnipeitPS Module
+# snipeitps Module
 ## Description
 {{ Fill in the Description }}
 
-## SnipeitPS Cmdlets
+## snipeitps Cmdlets
+### [Connect-SnipeitPS](Connect-SnipeitPS.md)
+Sets authetication information
+
 ### [Get-SnipeitAccessory](Get-SnipeitAccessory.md)
 Gets a list of Snipe-it Accessories
 
@@ -192,7 +195,8 @@ Add a new Custom Field to Snipe-it asset system
 Updates a department
 
 ### [Set-SnipeitInfo](Set-SnipeitInfo.md)
-Sets authetication information
+Sets authetication information.
+Deprecated, use Connect-SnipeitPS instead.
 
 ### [Set-SnipeitLicense](Set-SnipeitLicense.md)
 Updates a licence

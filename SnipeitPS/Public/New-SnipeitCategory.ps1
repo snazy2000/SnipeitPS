@@ -24,17 +24,16 @@ If switch is present, send email to user on checkin/checkout
 Category image filename and path
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key API Key for Snipeit.
 
 .EXAMPLE
-New-SnipeitCategory -name "Laptops" -category_type asset -url "Snipe-IT URL here..." -apiKey "API key here..."
+New-SnipeitCategory -name "Laptops" -category_type asset
 #>
 
-function New-SnipeitCategory()
-{
+function New-SnipeitCategory() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -59,17 +58,17 @@ function New-SnipeitCategory()
         [ValidateScript({Test-Path $_})]
         [string]$image,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
 
     )
     begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-        if($eula_text -and $use_default_eula){
+        if ($eula_text -and $use_default_eula) {
             throw 'Dont use -use_defalt_eula if -eula_text is set'
         }
 
@@ -79,17 +78,32 @@ function New-SnipeitCategory()
     process {
 
         $Parameters = @{
-            Uri    = "$url/api/v1/categories"
+            Api    = "/api/v1/categories"
             Method = 'POST'
             Body   = $Values
-            Token  = $apiKey
         }
 
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?"))
-        {
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
+
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
             $result = Invoke-SnipeitMethod @Parameters
         }
 
         $result
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }

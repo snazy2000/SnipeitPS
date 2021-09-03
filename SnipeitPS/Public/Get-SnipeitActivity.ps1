@@ -30,10 +30,10 @@ Result offset to use
 A return all results, works with -offset and other parameters
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
 Get-SnipeitAccessory -search Keyboard
@@ -71,51 +71,70 @@ function Get-SnipeitActivity() {
 
         [switch]$all = $false,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
-
-    if(($target_type -and -not $target_id) -or
-        ($target_id -and -not $target_type)) {
-        throw "Please specify both target_type and target_id"
-    }
-
-    if(($item_type -and -not $item_id) -or
-        ($item_id -and -not $item_type)) {
-        throw "Please specify both item_type and item_id"
-    }
-
-    $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
-
-
-    $Parameters = @{
-        Uri           = "$url/api/v1/reports/activity"
-        Method        = 'Get'
-        GetParameters = $SearchParameter
-        Token         = $apiKey
-    }
-
-    if ($all) {
-        $offstart = $(if($offset){$offset} Else {0})
-        $callargs = $SearchParameter
-        $callargs.Remove('all')
-
-        while ($true) {
-            $callargs['offset'] = $offstart
-            $callargs['limit'] = $limit
-            $res=Get-SnipeitActivity @callargs
-            $res
-            if ($res.count -lt $limit) {
-                break
-            }
-            $offstart = $offstart + $limit
+    begin {
+        if (($target_type -and -not $target_id) -or
+            ($target_id -and -not $target_type)) {
+            throw "Please specify both target_type and target_id"
         }
-    } else {
-        $result = Invoke-SnipeitMethod @Parameters
-        $result
+
+        if (($item_type -and -not $item_id) -or
+            ($item_id -and -not $item_type)) {
+            throw "Please specify both item_type and item_id"
+        }
+
+        $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+
+
+        $Parameters = @{
+            Api           = "/api/v1/reports/activity"
+            Method        = 'Get'
+            GetParameters = $SearchParameter
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
+    }
+
+    process {
+        if ($all) {
+            $offstart = $(if ($offset) {$offset} Else {0})
+            $callargs = $SearchParameter
+            $callargs.Remove('all')
+
+            while ($true) {
+                $callargs['offset'] = $offstart
+                $callargs['limit'] = $limit
+                $res=Get-SnipeitActivity @callargs
+                $res
+                if ($res.count -lt $limit) {
+                    break
+                }
+                $offstart = $offstart + $limit
+            }
+        } else {
+            $result = Invoke-SnipeitMethod @Parameters
+            $result
+        }
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
     }
 }
 

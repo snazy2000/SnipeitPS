@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Returns specific Snipe-IT custom field or a list of all custom field
 ## SYNTAX
 
 ```
-Get-SnipeitCustomField [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeitCustomField [[-id] <Int32>] [[-url] <String>] [[-apiKey] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,20 +23,28 @@ Get-SnipeitCustomField [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<Comm
 
 ### EXAMPLE 1
 ```
-Get-SnipeitCustomField -url "https://assets.example.com" -token "token..."
+Get-SnipeitCustomField
+Get all custom fields
+```
+
+### EXAMPLE 2
+```
+Get-SnipeitCustomField -id 1
+Get custom field with ID 1
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -59,14 +67,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False

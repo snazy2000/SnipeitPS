@@ -1,6 +1,6 @@
 ---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -16,17 +16,17 @@ schema: 2.0.0
 ```
 Get-SnipeitUser [-search <String>] [-company_id <Int32>] [-location_id <Int32>] [-group_id <Int32>]
  [-department_id <Int32>] [-username <String>] [-email <String>] [-order <String>] [-limit <Int32>]
- [-offset <Int32>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+ [-offset <Int32>] [-all] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Get with ID
 ```
-Get-SnipeitUser [-id <String>] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitUser [-id <String>] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ### Get users a specific accessory id has been checked out to
 ```
-Get-SnipeitUser [-accessory_id <String>] [-all] -url <String> -apiKey <String> [<CommonParameters>]
+Get-SnipeitUser [-accessory_id <String>] [-all] [-url <String>] [-apiKey <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,14 +93,15 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,14 +261,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

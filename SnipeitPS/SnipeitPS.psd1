@@ -12,7 +12,7 @@
 RootModule = 'SnipeitPS'
 
 # Version number of this module.
-ModuleVersion = '1.9'
+ModuleVersion = '1.10'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -70,6 +70,7 @@ PowerShellVersion = '5.1'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
+        'Connect-SnipeitPS',
         'Get-SnipeitAccessory',
         'Get-SnipeitAccessoryOwner',
         'Get-SnipeitActivity',

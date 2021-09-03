@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -14,8 +14,8 @@ Sets  Snipe-it Status Labels
 
 ```
 Set-SnipeitStatus [-id] <Int32[]> [[-name] <String>] [-type] <String> [[-notes] <String>] [[-color] <String>]
- [[-show_in_nav] <Boolean>] [[-default_label] <Boolean>] [[-RequestType] <String>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-show_in_nav] <Boolean>] [[-default_label] <Boolean>] [[-RequestType] <String>] [[-url] <String>]
+ [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,14 +36,15 @@ Set-SnipeitStatus -id 3 -name 'Waiting for arrival' -type pending
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 10
 Default value: None
 Accept pipeline input: False
@@ -172,14 +173,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 9
 Default value: None
 Accept pipeline input: False

@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -16,8 +16,8 @@ Creates a new user
 New-SnipeitUser [-first_name] <String> [-last_name] <String> [-username] <String> [[-password] <String>]
  [[-activated] <Boolean>] [[-notes] <String>] [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>]
  [[-company_id] <Int32>] [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>]
- [[-employee_num] <String>] [[-ldap_import] <Boolean>] [[-image] <String>] [-url] <String> [-apiKey] <String>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-employee_num] <String>] [[-ldap_import] <Boolean>] [[-image] <String>] [[-url] <String>]
+ [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,14 +49,15 @@ Accept wildcard characters: False
 ```
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+User's API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 18
 Default value: None
 Accept pipeline input: False
@@ -274,14 +275,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 17
 Default value: None
 Accept pipeline input: False

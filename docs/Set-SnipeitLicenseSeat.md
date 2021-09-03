@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Set license seat or checkout license seat
 
 ```
 Set-SnipeitLicenseSeat [-id] <Int32[]> [-seat_id] <Int32> [[-assigned_to] <Int32>] [[-asset_id] <Int32>]
- [[-note] <String>] [[-RequestType] <String>] [-url] <String> [-apiKey] <String> [-WhatIf] [-Confirm]
+ [[-note] <String>] [[-RequestType] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,14 +44,15 @@ Checkin licence seat id 1 of licence id 1
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+User's API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 8
 Default value: None
 Accept pipeline input: False
@@ -150,14 +151,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 7
 Default value: None
 Accept pipeline input: False

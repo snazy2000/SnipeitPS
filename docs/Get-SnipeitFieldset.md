@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -13,7 +13,7 @@ Returns a fieldset or list of Snipe-it Fieldsets
 ## SYNTAX
 
 ```
-Get-SnipeitFieldset [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonParameters>]
+Get-SnipeitFieldset [[-id] <Int32>] [[-url] <String>] [[-apiKey] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,25 +23,28 @@ Get-SnipeitFieldset [[-id] <Int32>] [-url] <String> [-apiKey] <String> [<CommonP
 
 ### EXAMPLE 1
 ```
-Get-SnipeitFieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeitFieldset
+Get all fieldsets
 ```
 
 ### EXAMPLE 2
 ```
-Get-SnipeitFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeitFieldset  | Where-Object {$_.name -eq "Windows" }
+Gets fieldset by name
 ```
 
 ## PARAMETERS
 
 ### -apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+Users API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 3
 Default value: None
 Accept pipeline input: False
@@ -64,14 +67,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False

@@ -19,9 +19,23 @@ Install-Module SnipeitPS
 # Check for updates occasionally:
 Update-Module SnipeitPS
 
-# To use each session:
+# import module to session:
 Import-Module SnipeitPS
-Set-SnipeitInfo -URL 'https://asset.example.com' -apiKey 'tokenKey'
+
+# Set connection
+Connect-SnipeitPS -URL 'https://asset.example.com' -apiKey 'tokenKey'
+
+# Or set connection with safely saved credentials, first save credentials
+$SnipeCred =Get-Credential -message "Use url as username and apikey as password"
+$SnipeCred | Export-CliXml snipecred.xml
+
+# ..then use your saved credentials like
+Connect-SnipeitPS -siteCred (Import-CliXml snipecred.xml)
+
+# OR use -secureApiKey that allow pass apiKey as SecureString
+# if you are usin Microsoft.PowerShell.SecretManagement or like
+Connect-SnipeitPS -URL 'https://asset.example.com' -secureApiKey 'tokenKey'
+
 ```
 
 ### Usage

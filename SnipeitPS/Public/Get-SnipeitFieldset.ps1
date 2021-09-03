@@ -6,16 +6,18 @@ Returns a fieldset or list of Snipe-it Fieldsets
 A id of specific fieldset
 
 .PARAMETER url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
 .PARAMETER apiKey
-Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
 .EXAMPLE
-Get-SnipeitFieldset -url "https://assets.example.com" -token "token..."
+Get-SnipeitFieldset
+Get all fieldsets
 
 .EXAMPLE
-Get-SnipeitFieldset -url "https://assets.example.com" -token "token..." | Where-Object {$_.name -eq "Windows" }
+Get-SnipeitFieldset  | Where-Object {$_.name -eq "Windows" }
+Gets fieldset by name
 
 #>
 
@@ -23,28 +25,45 @@ function Get-SnipeitFieldset() {
     Param(
         [int]$id,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
+    bagin {
+        Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
-    Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
+        if ($id) {
+            $api = "/api/v1/fieldsets/$id"
+        } else {
+            $api = "/api/v1/fieldsets"
+        }
 
-    if ($id) {
-        $apiurl = "$url/api/v1/fieldsets/$id"
-    } else {
-        $apiurl = "$url/api/v1/fieldsets"
+        $Parameters = @{
+            Api           = $api
+            Method        = 'Get'
+        }
+
+        if ($PSBoundParameters.ContainsKey('apiKey')) {
+            Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyApiKey -apiKey $apikey
+        }
+
+        if ($PSBoundParameters.ContainsKey('url')) {
+            Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+            Set-SnipeitPSLegacyUrl -url $url
+        }
     }
+    process {
+        $result = Invoke-SnipeitMethod @Parameters
 
-    $Parameters = @{
-        Uri           = $apiurl
-        Method        = 'Get'
-        Token         = $apiKey
+        $result
     }
-
-    $result = Invoke-SnipeitMethod @Parameters
-
-    $result
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
+        }
+    }
 }

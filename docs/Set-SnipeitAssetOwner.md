@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: SnipeitPS
+Module Name: snipeitps
 online version:
 schema: 2.0.0
 ---
@@ -14,8 +14,8 @@ Checkout asset
 
 ```
 Set-SnipeitAssetOwner [-id] <Int32[]> [-assigned_id] <Int32> [[-checkout_to_type] <String>] [[-name] <String>]
- [[-note] <String>] [[-expected_checkin] <DateTime>] [[-checkout_at] <DateTime>] [-url] <String>
- [-apiKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-note] <String>] [[-expected_checkin] <DateTime>] [[-checkout_at] <DateTime>] [[-url] <String>]
+ [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,14 +31,15 @@ Set-SnipeitAssetOwner -id 1 -assigned_id 1 -checkout_to_type user -note "testing
 ## PARAMETERS
 
 ### -apiKey
-User's API Key for Snipeit, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+User's API Key for Snipeit.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 9
 Default value: None
 Accept pipeline input: False
@@ -154,14 +155,15 @@ Accept wildcard characters: False
 ```
 
 ### -url
-URL of Snipeit system, can be set using Set-SnipeitInfo command
+Deprecated parameter, please use Connect-SnipeitPS instead.
+URL of Snipeit system.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 8
 Default value: None
 Accept pipeline input: False

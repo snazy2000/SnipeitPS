@@ -10,7 +10,9 @@ Collection of tools that makes interacting with Snipe-it api more pleasant.
 # EXAMPLES
 Prepare connection Snipe-It with:
 
-Set-SnipeitInfo -url https://your.site -apikey YourVeryLongApiKey....
+Connect-SnipeitPS -url https://your.site -apikey YourVeryLongApiKey....
+
+For secure ways to pass apikey to script, see Get-Help Connect-SnipeitPS -full
 
 To search assets use:
 

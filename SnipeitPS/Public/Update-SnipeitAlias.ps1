@@ -15,8 +15,7 @@ Replaces old command from file "your-script.ps1" and creates new script "new-scr
 After testing new file you can replace old file with new.
 
 #>
-function Update-SnipeitAlias()
-{
+function Update-SnipeitAlias() {
     [CmdletBinding(
         SupportsShouldProcess = $true,
         ConfirmImpact = "Low"
@@ -34,8 +33,8 @@ function Update-SnipeitAlias()
 
     }
     process {
-        If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
-            ForEach ($st in $String){
+        if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            ForEach ($st in $String) {
                 $result = $st
                 ForEach ($key in $SnipeitAliases.Keys ) {
                     #Write-Verbose "Replacing $key with $($SnipeitAliases[$key])"

@@ -33,10 +33,10 @@
     Http request type to send Snipe IT system. Defaults to Patch you could use Put if needed.
 
     .PARAMETER url
-    URL of Snipeit system, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. URL of Snipeit system.
 
     .PARAMETER apiKey
-    Users API Key for Snipeit, can be set using Set-SnipeitInfo command
+    Deprecated parameter, please use Connect-SnipeitPS instead. Users API Key for Snipeit.
 
     .EXAMPLE
     New-SnipeitModel -name "DL380" -manufacturer_id 2 -fieldset_id 2 -category_id 1
@@ -74,10 +74,10 @@ function Set-SnipeitModel() {
         [ValidateSet("Put","Patch")]
         [string]$RequestType = "Patch",
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$url,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [string]$apiKey
     )
 
@@ -90,17 +90,33 @@ function Set-SnipeitModel() {
     process {
         foreach ($model_id in $id) {
             $Parameters = @{
-                Uri    = "$url/api/v1/models/$model_id"
+                Api    = "/api/v1/models/$model_id"
                 Method = $RequestType
                 Body   = $Values
-                Token  = $apiKey
             }
 
-            If ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
+            if ($PSBoundParameters.ContainsKey('apiKey')) {
+                Write-Warning "-apiKey parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSLegacyApiKey -apiKey $apikey
+            }
+
+            if ($PSBoundParameters.ContainsKey('url')) {
+                Write-Warning "-url parameter is deprecated, please use Connect-SnipeitPS instead."
+                Set-SnipeitPSLegacyUrl -url $url
+            }
+
+            if ($PSCmdlet.ShouldProcess("ShouldProcess?")) {
                 $result = Invoke-SnipeitMethod @Parameters
             }
 
             $result
+        }
+    }
+
+    end {
+        # reset legacy sessions
+        if ($PSBoundParameters.ContainsKey('url') -or $PSBoundParameters.ContainsKey('apiKey')) {
+            Reset-SnipeitPSLegacyApi
         }
     }
 }
