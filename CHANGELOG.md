@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+# [v.1.10.x] - 2021-09-03
+
+## New secure ways to connect Snipe it
+
+### -secureApiKey allow pass apiKey as SecureString
+Connect-SnipeitPS -URL 'https://asset.example.com' -secureApiKey 'tokenKey'
+
+### Set connection with safely saved credentials, first save credentials
+$SnipeCred= Get-Credential -message "Use url as username and apikey as password"
+$SnipeCred | Export-CliXml snipecred.xml
+
+### ..then use your saved credentials like
+Connect-SnipeitPS -siteCred (Import-CliXml snipecred.xml)
+
+## Fix for content encoding in invoke-snipeitmethod
+Version 1.9 introduced bug that converted non ascii characters to ascii
+during request.
+
 # [v.1.9.x] - 2021-07-14
 
 ## Image uploads
