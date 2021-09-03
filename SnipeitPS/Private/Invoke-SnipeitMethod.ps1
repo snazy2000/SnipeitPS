@@ -79,7 +79,7 @@
         }
 
         if ($Body -and $splatParameters.Keys -notcontains 'Form') {
-            $splatParameters["Body"] = $Body | Convertto-Json
+            $splatParameters["Body"] =  [System.Text.Encoding]::UTF8.GetBytes(($Body | Convertto-Json))
         }
 
         $script:PSDefaultParameterValues = $global:PSDefaultParameterValues
