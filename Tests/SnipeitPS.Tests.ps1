@@ -59,6 +59,7 @@ Describe "SnipeitPS" {
 
         # There is a bug that prevents Test-ModuleManifest from updating correctly when the manifest file changes. See here:
         # https://connect.microsoft.com/PowerShell/feedback/details/1541659/test-modulemanifest-the-psmoduleinfo-is-not-updated
+        #>
 
         # As a temp workaround, we'll just read the manifest as a raw hashtable.
         # Credit to this workaround comes from here:
@@ -105,7 +106,7 @@ Describe "SnipeitPS" {
 
         It "Appveyor version matches manifest version" {
             $appveyorVersion -as [Version] | Should -Be ( $script:manifest.ModuleVersion -as [Version] )
-        }#>
+        }
     }
 
     # The CI changes I'm testng now will render this section obsolete,
