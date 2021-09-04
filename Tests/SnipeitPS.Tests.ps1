@@ -50,13 +50,13 @@ Describe "SnipeitPS" {
                 break
             }
         }
-
+        <#
         It "Includes a valid manifest file" {
             {
                 $script:manifest = Test-ModuleManifest -Path "$moduleRoot\SnipeitPS.psd1" -ErrorAction Stop -WarningAction SilentlyContinue
             } | Should -Not Throw
         }
-        <#
+
         # There is a bug that prevents Test-ModuleManifest from updating correctly when the manifest file changes. See here:
         # https://connect.microsoft.com/PowerShell/feedback/details/1541659/test-modulemanifest-the-psmoduleinfo-is-not-updated
 
