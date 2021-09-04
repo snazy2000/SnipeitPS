@@ -28,7 +28,7 @@ Describe "SnipeitPS" {
         # tests goes to Dave Wyatt, the genius behind Pester.  I've just adapted them
         # slightly to match SnipeitPS.
 
-        <#$script:manifest = $null
+        $script:manifest = $null
 
         foreach ($line in (Get-Content $changelogFile))
         {
@@ -56,7 +56,7 @@ Describe "SnipeitPS" {
                 $script:manifest = Test-ModuleManifest -Path "$moduleRoot\SnipeitPS.psd1" -ErrorAction Stop -WarningAction SilentlyContinue
             } | Should -Not Throw
         }
-
+        <#
         # There is a bug that prevents Test-ModuleManifest from updating correctly when the manifest file changes. See here:
         # https://connect.microsoft.com/PowerShell/feedback/details/1541659/test-modulemanifest-the-psmoduleinfo-is-not-updated
 
