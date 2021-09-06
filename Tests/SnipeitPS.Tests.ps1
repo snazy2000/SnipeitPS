@@ -64,6 +64,7 @@ Describe "SnipeitPS" {
         # As a temp workaround, we'll just read the manifest as a raw hashtable.
         # Credit to this workaround comes from here:
         # https://psescape.azurewebsites.net/pester-testing-your-module-manifest/
+        <#
         $script:manifest = Invoke-Expression (Get-Content "$moduleRoot\SnipeitPS.psd1" -Raw)
 
         It "Manifest file includes the correct root module" {
@@ -134,7 +135,7 @@ Describe "SnipeitPS" {
             }
         }
     }
-
+    #>
     Context "Style checking" {
 
         # This section is again from the mastermind, Dave Wyatt. Again, credit
