@@ -134,8 +134,9 @@ Describe "SnipeitPS" {
                 $exportedFunctions -contains $f | Should -Be $false
             }
         }
+        #>
     }
-    #>
+
     Context "Style checking" {
 
         # This section is again from the mastermind, Dave Wyatt. Again, credit
