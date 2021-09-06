@@ -1,4 +1,4 @@
-BeforeAll {
+BeforeEach {
     $script:SnipeitDev = 'https://develop.snipeitapp.com/'
     $script:SnipeitKey = 'UqddVx6SDb3HLw1Pmw1wGGYHA6w8wWQAiS9kg2xMcz5i75HOULaN3miqYvcPCvHpI2CBfuvdplI8QNm_XzFPmoQRu_5kR8knzla4'
     $script:SnipeitSecKey = ConvertTo-SecureString -Force -AsPlainText -String $SnipeitKey
