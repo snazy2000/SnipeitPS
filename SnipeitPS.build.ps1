@@ -132,7 +132,7 @@ task GenerateRelease CreateHelp, {
     }
 
     # Copy module
-    Copy-Item -Path "$BuildRoot\SnipeitPS\*" -Destination "$releasePath\SnipeitPS" -Recurse -Force
+    Copy-Item -Path "$BuildRoot\SnipeitPS\*" -Destination "$releasePath\SnipeitPS" -Recurse -Force -Exclude (Get-ChildItem . -Recurse | ? {$_.Name -like '*.Tests.ps1'} ).FullName
     # Copy additional files
     $additionalFiles = @(
         "$BuildRoot\CHANGELOG.md"
