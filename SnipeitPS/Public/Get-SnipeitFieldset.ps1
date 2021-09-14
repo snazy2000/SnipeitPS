@@ -31,7 +31,7 @@ function Get-SnipeitFieldset() {
         [parameter(mandatory = $false)]
         [string]$apiKey
     )
-    bagin {
+    begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         if ($id) {
