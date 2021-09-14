@@ -104,7 +104,7 @@ function Get-SnipeitLicense() {
         [parameter(mandatory = $false)]
         [string]$apiKey
     )
-    bagin {
+    begin {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
