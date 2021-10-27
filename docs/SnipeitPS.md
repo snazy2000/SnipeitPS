@@ -1,16 +1,16 @@
 ﻿---
-Module Name: snipeitps
+Module Name: SnipeitPS
 Module Guid: f86f4db4-1cb1-45c4-b7bf-6762531bfdeb
 Download Help Link: {{ Update Download Link }}
 Help Version: {{ Please enter version of help manually (X.X.X.X) format }}
 Locale: en-US
 ---
 
-# snipeitps Module
+# SnipeitPS Module
 ## Description
 {{ Fill in the Description }}
 
-## snipeitps Cmdlets
+## SnipeitPS Cmdlets
 ### [Connect-SnipeitPS](Connect-SnipeitPS.md)
 Sets authetication information
 
