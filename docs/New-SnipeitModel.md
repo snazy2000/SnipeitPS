@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: snipeitps
+Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Add a new Model to Snipe-it asset system
 
 ```
 New-SnipeitModel [-name] <String> [[-model_number] <String>] [-category_id] <Int32> [-manufacturer_id] <Int32>
- [[-eol] <Int32>] [-fieldset_id] <Int32> [[-image] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
+ [[-eol] <Int32>] [[-fieldset_id] <Int32>] [[-image] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Type: Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 6
 Default value: 0
 Accept pipeline input: False

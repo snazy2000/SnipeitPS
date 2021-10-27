@@ -1,6 +1,6 @@
 ﻿---
 external help file: SnipeitPS-help.xml
-Module Name: snipeitps
+Module Name: SnipeitPS
 online version:
 schema: 2.0.0
 ---
@@ -29,7 +29,7 @@ Connect-SnipeitPS -siteCred <PSCredential> [<CommonParameters>]
 
 ## DESCRIPTION
 Sets apikey and url to connect Snipe-It system.
-Based on Set-SnipeitInfo command, what is now just combatipility wrapper
+Based on Set-SnipeitInfo command, what is now just compatibility wrapper
 and calls Connect-SnipeitPS
 
 ## EXAMPLES
