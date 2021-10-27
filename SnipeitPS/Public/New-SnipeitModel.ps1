@@ -53,7 +53,7 @@ function New-SnipeitModel() {
 
         [int]$eol,
 
-        [parameter(mandatory = $true)]
+        [parameter(mandatory = $false)]
         [int]$fieldset_id,
 
         [ValidateScript({Test-Path $_})]
