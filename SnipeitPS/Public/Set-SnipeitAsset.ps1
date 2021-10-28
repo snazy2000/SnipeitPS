@@ -8,6 +8,9 @@
     .PARAMETER id
     ID of the Asset or array of IDs
 
+    .PARAMETER asset_tag
+    New tag for asset.
+
     .PARAMETER Name
     Asset name
 
@@ -91,6 +94,9 @@ function Set-SnipeitAsset() {
         [parameter(mandatory = $true,ValueFromPipelineByPropertyName)]
         [int[]]$id,
 
+        [parameter(Mandatory=$false)]
+        [string]
+        $asset_tag,
 
         [string]$name,
 
