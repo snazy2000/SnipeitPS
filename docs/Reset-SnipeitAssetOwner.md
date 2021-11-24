@@ -13,7 +13,7 @@ Checkin asset
 ## SYNTAX
 
 ```
-Reset-SnipeitAssetOwner [-id] <Int32> [[-status_id] <Int32>] [[-location_id] <Int32>] [[-notes] <String>]
+Reset-SnipeitAssetOwner [-id] <Int32> [[-status_id] <Int32>] [[-location_id] <Int32>] [[-note] <String>]
  [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -75,7 +75,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -notes
+### -note
 Notes about checkin
 
 ```yaml

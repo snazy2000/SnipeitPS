@@ -13,7 +13,7 @@
     .PARAMETER location_id
     Location id to change asset location to
 
-    .PARAMETER notes
+    .PARAMETER note
     Notes about checkin
 
     .PARAMETER url
@@ -37,7 +37,7 @@ function Reset-SnipeitAssetOwner() {
 
         [int]$location_id,
 
-        [string]$notes,
+        [string]$note,
 
         [parameter(mandatory = $false)]
         [string]$url,
@@ -49,7 +49,7 @@ function Reset-SnipeitAssetOwner() {
     Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
     $Values = @{
-        "notes" = $notes
+        "note" = $note
     }
 
     if ($PSBoundParameters.ContainsKey('location_id')) { $Values.Add("location_id", $location_id) }
