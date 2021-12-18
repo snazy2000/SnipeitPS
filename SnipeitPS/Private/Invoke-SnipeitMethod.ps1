@@ -144,6 +144,10 @@ function Invoke-SnipeitMethod {
                         # This could be handled nicely in an function such as:
                         # ResolveError $response -WriteError
                         Write-Error $($webResponse.messages | Out-String)
+                    } elseif ( $webResponse.StatusCode -eq 'Unauthorized') {
+                        Write-Verbose "[$($MyInvocation.MyCommand.Name)] An Unauthorized response was received"
+                        Write-Error "Cannot connect to Snipe It: Unauthorized."
+                        return $false
                     } else {
                         #update operations return payload
                         if ($webResponse.payload) {
