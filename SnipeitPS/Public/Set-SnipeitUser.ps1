@@ -114,7 +114,7 @@ function Set-SnipeitUser() {
 
         [bool]$activated,
 		
-		[bool]$two_factor_activiated,
+	[bool]$two_factor_activiated,
 
         [string]$notes,
 
