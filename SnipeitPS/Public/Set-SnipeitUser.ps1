@@ -113,6 +113,8 @@ function Set-SnipeitUser() {
         [string]$employee_num,
 
         [bool]$activated,
+		
+		[bool]$two_factor_activiated,
 
         [string]$notes,
 
