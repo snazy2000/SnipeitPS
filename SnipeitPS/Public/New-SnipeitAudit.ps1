@@ -29,6 +29,9 @@ function New-SnipeitAudit() {
         [int]$location_id,
 
         [parameter(mandatory = $false)]
+        [string]$nextAudit,
+
+        [parameter(mandatory = $false)]
         [string]$url,
 
         [parameter(mandatory = $false)]
@@ -44,6 +47,10 @@ function New-SnipeitAudit() {
 
         if ($PSBoundParameters.ContainsKey('tag')) {
             $Values += @{"asset_tag" = $tag}
+        }
+        
+        if ($PSBoundParameters.ContainsKey('nextAudit')) {
+            $Values += @{"next_audit_date" = $nextAudit}
         }
 
         $Parameters = @{
