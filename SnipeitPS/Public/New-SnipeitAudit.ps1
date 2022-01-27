@@ -8,6 +8,9 @@ Long description
 .PARAMETER Tag
 The asset tag of the asset you wish to audit
 
+.PARAMETER purchase_date
+Due date for the asset's next audit
+
 .PARAMETER Location_id
 ID of the location you want to associate with the audit
 
@@ -29,7 +32,7 @@ function New-SnipeitAudit() {
         [int]$location_id,
 
         [parameter(mandatory = $false)]
-        [string]$nextAudit,
+        [datetime]$nextAudit,
 
         [parameter(mandatory = $false)]
         [string]$url,
@@ -50,7 +53,7 @@ function New-SnipeitAudit() {
         }
         
         if ($PSBoundParameters.ContainsKey('nextAudit')) {
-            $Values += @{"next_audit_date" = $nextAudit}
+            $Values += @{"next_audit_date" = ($nextAudit).ToString("yyyy-MM-dd")}
         }
 
         $Parameters = @{
