@@ -13,8 +13,8 @@ Add a new Audit to Snipe-it asset system
 ## SYNTAX
 
 ```
-New-SnipeitAudit [-tag] <String> [[-location_id] <Int32>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-SnipeitAudit [-tag] <String> [[-location_id] <Int32>] [[-next_audit_date] <DateTime>] [[-url] <String>]
+ [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,6 +55,21 @@ Aliases:
 Required: False
 Position: 2
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -next_audit_date
+Due date for the asset's next audit
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -83,7 +98,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
