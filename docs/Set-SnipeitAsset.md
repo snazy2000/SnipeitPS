@@ -16,9 +16,9 @@ Update a specific Asset in the Snipe-it asset system
 Set-SnipeitAsset [-id] <Int32[]> [[-asset_tag] <String>] [[-name] <String>] [[-status_id] <Int32>]
  [[-model_id] <Int32>] [[-last_checkout] <DateTime>] [[-assigned_to] <Int32>] [[-company_id] <Int32>]
  [[-serial] <String>] [[-order_number] <String>] [[-warranty_months] <Int32>] [[-purchase_cost] <Double>]
- [[-purchase_date] <DateTime>] [[-requestable] <Boolean>] [[-archived] <Boolean>] [[-rtd_location_id] <Int32>]
- [[-notes] <String>] [[-RequestType] <String>] [[-image] <String>] [-image_delete] [[-url] <String>]
- [[-apiKey] <String>] [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-purchase_date] <DateTime>] [[-supplier_id] <Int32>] [[-requestable] <Boolean>] [[-archived] <Boolean>]
+ [[-rtd_location_id] <Int32>] [[-notes] <String>] [[-RequestType] <String>] [[-image] <String>] [-image_delete]
+ [[-url] <String>] [[-apiKey] <String>] [[-customfields] <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 21
+Position: 22
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -69,7 +69,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 15
+Position: 16
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,7 +129,7 @@ Parameter Sets: (All)
 Aliases: CustomValues
 
 Required: False
-Position: 22
+Position: 23
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,7 +159,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 19
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -234,7 +234,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 17
+Position: 18
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -294,7 +294,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 14
+Position: 15
 Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -310,7 +310,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 18
+Position: 19
 Default value: Patch
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -325,7 +325,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 16
+Position: 17
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -361,6 +361,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -supplier_id
+Supplier id of the Asset
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 14
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -url
 Deprecated parameter, please use Connect-SnipeitPS instead.
 URL of Snipeit system.
@@ -371,7 +386,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 20
+Position: 21
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
