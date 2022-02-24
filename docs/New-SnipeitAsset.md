@@ -298,7 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -supplier_id
-{{ Fill supplier_id Description }}
+Optional Supplier id of the Asset
 
 ```yaml
 Type: Int32
