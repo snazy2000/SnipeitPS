@@ -44,6 +44,9 @@
     .PARAMETER purchase_date
     Date of asset purchase
 
+    .PARAMETER supplier_id
+    Supplier id of the Asset
+
     .PARAMETER requestable
     Whether or not the asset can be requested by users with the permission to request assets
 
@@ -121,6 +124,9 @@ function Set-SnipeitAsset() {
         [double]$purchase_cost,
 
         [datetime]$purchase_date,
+
+        [parameter(mandatory = $false)]
+        [int]$supplier_id,
 
         [bool]$requestable,
 

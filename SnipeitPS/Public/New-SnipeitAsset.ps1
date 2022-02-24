@@ -39,6 +39,10 @@ Optional Purchase cost of the Asset
 .PARAMETER purchase_date
 Optional Purchase cost of the Asset
 
+.PARAMETER supplier_id
+Optional Supplier id of the Asset
+
+
 .PARAMETER rtd_location_id
 Optional Default location id for the asset
 
