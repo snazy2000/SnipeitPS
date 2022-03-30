@@ -16,8 +16,8 @@ Creates a new user
 Set-SnipeitUser [-id] <Int32[]> [[-first_name] <String>] [[-last_name] <String>] [[-username] <String>]
  [[-jobtitle] <String>] [[-email] <String>] [[-phone] <String>] [[-password] <String>] [[-company_id] <Int32>]
  [[-location_id] <Int32>] [[-department_id] <Int32>] [[-manager_id] <Int32>] [[-employee_num] <String>]
- [[-activated] <Boolean>] [[-notes] <String>] [[-image] <String>] [-image_delete] [[-RequestType] <String>]
- [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-activated] <Boolean>] [[-notes] <String>] [[-ldap_import] <Boolean>] [[-image] <String>] [-image_delete]
+ [[-RequestType] <String>] [[-url] <String>] [[-apiKey] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 19
+Position: 20
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -163,7 +163,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 16
+Position: 17
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -210,6 +210,21 @@ Aliases:
 Required: False
 Position: 3
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ldap_import
+Mark user as import from ldap
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 16
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -299,7 +314,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 17
+Position: 18
 Default value: Patch
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -315,7 +330,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 18
+Position: 19
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
