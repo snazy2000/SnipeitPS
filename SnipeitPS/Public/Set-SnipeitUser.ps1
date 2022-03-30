@@ -116,6 +116,8 @@ function Set-SnipeitUser() {
 
         [string]$notes,
 
+        [bool]$ldap_import,
+
         [ValidateScript({Test-Path $_})]
         [string]$image,
 
