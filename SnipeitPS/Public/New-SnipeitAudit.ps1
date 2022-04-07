@@ -51,7 +51,7 @@ function New-SnipeitAudit() {
         if ($PSBoundParameters.ContainsKey('tag')) {
             $Values += @{"asset_tag" = $tag}
         }
-        
+
         if ($PSBoundParameters.ContainsKey('next_audit_date')) {
             $Values += @{"next_audit_date" = ($next_audit_date).ToString("yyyy-MM-dd")}
         }
