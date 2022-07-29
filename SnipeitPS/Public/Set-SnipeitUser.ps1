@@ -47,6 +47,9 @@
     .PARAMETER manager_id
     ID number of manager
 
+    .PARAMETER groups
+    ID numbers of groups
+
     .PARAMETER employee_num
     Employeenumber
 
@@ -109,6 +112,8 @@ function Set-SnipeitUser() {
         [Nullable[System.Int32]]$department_id,
 
         [Nullable[System.Int32]]$manager_id,
+
+        [int[]]$groups,
 
         [string]$employee_num,
 
