@@ -44,6 +44,9 @@
     .PARAMETER manager_id
     ID number of manager
 
+    .PARAMETER groups
+    ID numbers of groups
+
     .PARAMETER employee_num
     Employeenumber
 
@@ -102,6 +105,8 @@ function New-SnipeitUser() {
         [int]$department_id,
 
         [int]$manager_id,
+
+        [int[]]$groups,
 
         [string]$employee_num,
 
