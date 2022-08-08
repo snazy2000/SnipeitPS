@@ -118,6 +118,58 @@ function Invoke-SnipeitMethod {
 
         Write-Debug "$($Body | ConvertTo-Json)"
 
+        #Check throttle limit
+        if ($SnipeitPSSession.throttleLimit -gt 0) {
+            Write-Verbose "Check for request throttling"
+            Write-debug "ThrottleMode: $($SnipeitPSSession.throttleMode)"
+            Write-debug "ThrottleLimit: $($SnipeitPSSession.throttleLimit)"
+            Write-debug "ThrottlePeriod: $($SnipeitPSSession.throttlePeriod)"
+            Write-debug "ThrottleThreshold: $($SnipeitPSSession.throttleThreshold)"
+            Write-debug "Current count: $($SnipeitPSSession.throttledRequests.count)"
+
+            #current request timestamps in period
+            $SnipeitPSSession.throttledRequests = ($SnipeitPSSession.throttledRequests).where({$_ -gt (get-date).AddMilliseconds( 0 - $SnipeitPSSession.throttlePeriod).ToFileTime()})
+
+            #make sure that we alway have list here
+            if($null -eq $SnipeitPSSession.throttledRequests) {
+                $SnipeitPSSession.throttledRequests = [System.Collections.ArrayList]::new()
+            }
+
+            $naptime = 0
+            switch ($SnipeitPSSession.throttleMode) {
+                "Burst" {
+                    if ($SnipeitPSSession.throttledRequests.count -ge $SnipeitPSSession.throttleLimit) {
+                        $naptime =  [Math]::Round(((get-date).ToFileTime() - ($SnipeitPSSession.throttledRequests[0]))/10000)
+                    }
+                }
+
+                "Constant" {
+                    $prevrequesttime =[Math]::Round(((get-date).ToFileTime() - ($SnipeitPSSession.throttledRequests[$SnipeitPSSession.throttledRequests.count - 1]))/10000)
+                    $naptime = [Math]::Round($SnipeitPSSession.throttlePeriod / $SnipeitPSSession.throttleLimit) - $prevrequesttime
+                }
+
+                "Adaptive" {
+                  $unThrottledRequests = $SnipeitPSSession.throttleLimit * ($SnipeitPSSession.throttleThreshold / 100)
+                  if($SnipeitPSSession.throttledRequests.count -ge $unThrottledRequests) {
+                     #calculate time left in throttlePeriod and devide it for remaining requests
+                     $remaining = $SnipeitPSSession.throttleLimit - $SnipeitPSSession.throttledRequests.count
+                     if ($remaining -lt 1) {
+                        $remaining = 1
+                     }
+                     $naptime =  [Math]::Round((((get-date).ToFileTime() - ($SnipeitPSSession.throttledRequests[0]))/ 10000) / $remaining)
+                  }
+                }
+            }
+
+            #Do we need a nap
+            if ($naptime -gt 0) {
+                Write-verbose "Throttling request for $naptime ms"
+                Start-Sleep -Milliseconds $naptime
+            }
+
+            $SnipeitPSSession.throttledRequests.Add((Get-Date).ToFileTime())
+        }
+
         # Invoke the API
         try {
             Write-Verbose "[$($MyInvocation.MyCommand.Name)] Invoking method $Method to URI $URi"
