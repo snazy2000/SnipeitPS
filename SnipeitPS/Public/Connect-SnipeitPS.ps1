@@ -20,6 +20,22 @@
     PSCredential where username shoul be snipe it url and password should be
     snipe it apikey.
 
+    .PARAMETER throttleLimit
+    Throttle request rate to nro of requests per throttlePeriod. Defaults to 0 that means no requests are not throttled.
+
+    .PARAMETER throttlePeriod
+    Throttle period time span in milliseconds defaults to 60 milliseconds.
+
+    .PARAMETER throttleThreshold
+    Threshold percentage of used request on period after request are throttled.
+
+    .PARAMETER throttleMode
+    RequestThrottling type. "Burst" allows all requests to be used in ThrottlePeriod without delays and then waits
+    until there's new requests avalable. With "Contant" mode there always delay between requests. Delay is calculated
+    by dividing throttlePeriod with throttleLimit. "Adaptive" mode allows throttleThreshold percentage of request to be
+    used with out delay, after threshold limit is reached next requests are delayded by dividing available requests
+    over throttlePeriod.
+
     .EXAMPLE
     Connect-SnipeitPS -Url $url -apiKey $myapikey
     Connect to  Snipe it  api.
@@ -61,7 +77,28 @@ function Connect-SnipeitPS {
         [SecureString]$secureApiKey,
 
         [Parameter(ParameterSetName='Connect with credential',Mandatory=$true)]
-        [PSCredential]$siteCred
+        [PSCredential]$siteCred,
+
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with credential',Mandatory=$false)]
+        [int]$throttleLimit,
+
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with credential',Mandatory=$false)]
+        [int]$throttlePeriod,
+
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with credential',Mandatory=$false)]
+        [int]$throttleThreshold,
+
+        [Parameter(ParameterSetName='Connect with url and apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with url and secure apikey',Mandatory=$false)]
+        [Parameter(ParameterSetName='Connect with credential',Mandatory=$false)]
+        [ValidateSet("Burst","Constant","Adaptive")]
+        [string]$throttleMode
     )
 
 
@@ -85,6 +122,21 @@ function Connect-SnipeitPS {
                 $SnipeitPSSession.url = ($siteCred.GetNetworkCredential().UserName).TrimEnd('/')
                 $SnipeitPSSession.apiKey = $siteCred.GetNetworkCredential().SecurePassword
             }
+        }
+        if($null -eq $throttleLimit) { $throttleLimit = 0}
+        $SnipeitPSSession.throttleLimit = $throttleLimit
+
+        if($throttleThreshold -lt 1) { $throttleThreshold = 90}
+        $SnipeitPSSession.throttleThreshold = $throttleThreshold
+
+        if('' -eq $throttleMode) { $throttleMode = "Burst"}
+        $SnipeitPSSession.throttleMode = $throttleMode
+
+        if ($SnipeitPSSession.throttleLimit -gt 0) {
+            if($null -eq $throttlePeriod) { $throttlePeriod = 60000}
+            $SnipeitPSSession.throttlePeriod = $throttlePeriod
+
+            $SnipeitPSSession.throttledRequests = [System.Collections.ArrayList]::new()
         }
 
         Write-Debug "Site-url $($SnipeitPSSession.url)"
