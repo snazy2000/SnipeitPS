@@ -8,6 +8,9 @@ A text string to search the consumables
 .PARAMETER id
 A id of specific consumable
 
+.PARAMETER name
+Optionally restrict consumable results to this name field
+
 .PARAMETER company_id
 Id number of company
 
@@ -63,6 +66,9 @@ function Get-SnipeitConsumable() {
         [parameter(ParameterSetName='Get with ID')]
         [int[]]$id,
 
+		[parameter(ParameterSetName='Search')]
+        [string]$name,
+		
         [parameter(ParameterSetName='Search')]
         [int]$category_id,
 

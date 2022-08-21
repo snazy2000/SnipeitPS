@@ -8,6 +8,9 @@
     .PARAMETER id
     A id of specific Manufactuter
 
+	.PARAMETER name
+	Optionally restrict Manufacturer results to this name field
+	
     .PARAMETER limit
     Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -41,6 +44,9 @@ function Get-SnipeitManufacturer() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+		[parameter(ParameterSetName='Search')]
+        [string]$name,
+		
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

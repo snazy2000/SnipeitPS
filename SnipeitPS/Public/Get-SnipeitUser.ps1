@@ -8,11 +8,56 @@ A text string to search the User data
 .PARAMETER id
 A id of specific User
 
+.PARAMETER accessory_id
+Get users a specific accessory id has been checked out to
+
 .PARAMETER username
-Search string for username field
+Optionally restrict User results to this username field
 
 .PARAMETER email
-Search string for email field
+Optionally restrict User results to this email field
+
+.PARAMETER employee_num
+Optionally restrict User results to this employee_num field
+
+.PARAMETER state
+Optionally restrict User results to this state field
+
+.PARAMETER country
+Optionally restrict User results to this country field
+
+.PARAMETER zip
+Optionally restrict User results to this zip field
+
+.PARAMETER company_id
+Optionally restrict User results to this company_id field
+
+.PARAMETER location_id
+Optionally restrict User results to this location_id field
+
+.PARAMETER department_id
+Optionally restrict User results to this department_id field
+
+.PARAMETER deleted
+Optionally restrict User results to deleted users only
+
+.PARAMETER ldap_import
+Optionally restrict User results to those with specified ldap_import value
+
+.PARAMETER remote
+Optionally restrict User results to those with specified remote worker value
+
+.PARAMETER assets_count
+Optionally restrict User results to those with the specified assets count
+
+.PARAMETER licenses_count
+Optionally restrict User results to those with the specified licenses count
+
+.PARAMETER accessories_count
+Optionally restrict User results to those with the specified accessories count
+
+.PARAMETER consumables_count
+Optionally restrict User results to those with the specified consumables count
 
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
@@ -75,7 +120,40 @@ function Get-SnipeitUser() {
 
         [parameter(ParameterSetName='Search')]
         [string]$email,
+		
+		[parameter(ParameterSetName='Search')]
+        [string]$employee_num,
 
+		[parameter(ParameterSetName='Search')]
+        [string]$state,
+		
+		[parameter(ParameterSetName='Search')]
+        [string]$zip,
+		
+		[parameter(ParameterSetName='Search')]
+        [string]$country,
+		
+		[parameter(ParameterSetName='Search')]
+		[Nullable[bool]]$deleted,
+		
+		[parameter(ParameterSetName='Search')]
+		[Nullable[bool]]$ldap_import,
+		
+		[parameter(ParameterSetName='Search')]
+		[Nullable[bool]]$remote,
+		
+		[parameter(ParameterSetName='Search')]
+		[int]$assets_count,
+		
+		[parameter(ParameterSetName='Search')]
+		[int]$licenses_count,
+		
+		[parameter(ParameterSetName='Search')]
+		[int]$accessories_count,
+		
+		[parameter(ParameterSetName='Search')]
+		[int]$consumables_count,
+		
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
