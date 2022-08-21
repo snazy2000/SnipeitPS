@@ -8,6 +8,9 @@ A text string to search the Status Labels data
 .PARAMETER id
 A id of specific Status Label
 
+.PARAMETER name
+Optionally restrict Status Label results to this name field
+	
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -40,6 +43,9 @@ function Get-SnipeitStatus() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+		[parameter(ParameterSetName='Search')]
+        [string]$name,
+		
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

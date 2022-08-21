@@ -8,6 +8,9 @@ A text string to search the Companies data
 .PARAMETER id
 A id of specific Company
 
+.PARAMETER name
+Optionally restrict company results to this company name.
+
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -41,6 +44,9 @@ function Get-SnipeitCompany() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+		[parameter(ParameterSetName='Search')]
+        [string]$name,
+		
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

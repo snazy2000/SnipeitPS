@@ -8,8 +8,23 @@ Gets a list of Snipe-it Accessories
 .PARAMETER search
 A text string to search the Accessory data
 
+.PARAMETER user_id
+Return Accessories checked out to user id
+
 .PARAMETER id
 A id of specific Accessory
+
+.PARAMETER company_id
+Optionally restrict Accessory results to this company_id field
+
+.PARAMETER category_id
+Optionally restrict Accessory results to this category_id field
+
+.PARAMETER manufacturer_id
+Optionally restrict Accessory results to this manufacturer_id field
+
+.PARAMETER supplier_id
+Optionally restrict Accessory results to this supplier_id field
 
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
