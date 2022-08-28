@@ -120,40 +120,40 @@ function Get-SnipeitUser() {
 
         [parameter(ParameterSetName='Search')]
         [string]$email,
-		
-		[parameter(ParameterSetName='Search')]
+        
+        [parameter(ParameterSetName='Search')]
         [string]$employee_num,
 
-		[parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Search')]
         [string]$state,
-		
-		[parameter(ParameterSetName='Search')]
+        
+        [parameter(ParameterSetName='Search')]
         [string]$zip,
-		
-		[parameter(ParameterSetName='Search')]
+        
+        [parameter(ParameterSetName='Search')]
         [string]$country,
-		
-		[parameter(ParameterSetName='Search')]
-		[Nullable[bool]]$deleted,
-		
-		[parameter(ParameterSetName='Search')]
-		[Nullable[bool]]$ldap_import,
-		
-		[parameter(ParameterSetName='Search')]
-		[Nullable[bool]]$remote,
-		
-		[parameter(ParameterSetName='Search')]
-		[int]$assets_count,
-		
-		[parameter(ParameterSetName='Search')]
-		[int]$licenses_count,
-		
-		[parameter(ParameterSetName='Search')]
-		[int]$accessories_count,
-		
-		[parameter(ParameterSetName='Search')]
-		[int]$consumables_count,
-		
+        
+        [parameter(ParameterSetName='Search')]
+        [Nullable[bool]]$deleted,
+        
+        [parameter(ParameterSetName='Search')]
+        [Nullable[bool]]$ldap_import,
+        
+        [parameter(ParameterSetName='Search')]
+        [Nullable[bool]]$remote,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$assets_count,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$licenses_count,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$accessories_count,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$consumables_count,
+        
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

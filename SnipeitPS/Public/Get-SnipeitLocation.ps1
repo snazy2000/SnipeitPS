@@ -58,24 +58,24 @@ function Get-SnipeitLocation() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
-		[parameter(ParameterSetName='Search')]
-		[string]$name,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$address,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$address2,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$city,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$zip,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$country,
-		
+        [parameter(ParameterSetName='Search')]
+        [string]$name,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address2,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$city,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$zip,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$country,
+        
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
