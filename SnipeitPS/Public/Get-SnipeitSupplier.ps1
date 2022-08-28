@@ -70,33 +70,33 @@ function Get-SnipeitSupplier() {
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
-		[parameter(ParameterSetName='Search')]
-		[string]$name,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$address,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$address2,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$city,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$zip,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$country,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$fax,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$email,
-		
-		[parameter(ParameterSetName='Search')]
-		[string]$notes,
-		
+        [parameter(ParameterSetName='Search')]
+        [string]$name,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address2,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$city,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$zip,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$country,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$fax,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$email,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$notes,
+        
         [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 

@@ -44,9 +44,9 @@ function Get-SnipeitCompany() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
-		[parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Search')]
         [string]$name,
-		
+        
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

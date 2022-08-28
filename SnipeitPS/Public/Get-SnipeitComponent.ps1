@@ -57,9 +57,9 @@ function Get-SnipeitComponent() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
-		[parameter(ParameterSetName='Search')]
+        [parameter(ParameterSetName='Search')]
         [string]$name,
-		
+        
         [parameter(ParameterSetName='Search')]
         [int]$category_id,
 
