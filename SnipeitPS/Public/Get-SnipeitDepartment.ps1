@@ -8,6 +8,18 @@ A text string to search the Departments data
 .PARAMETER id
 A id of specific Department
 
+.PARAMETER name
+Optionally restrict department results to this department name.
+
+.PARAMETER manager_id
+Optionally restrict department results to this manager ID.
+
+.PARAMETER company_id
+Optionally restrict department results to this company ID.
+
+.PARAMETER location_id
+Optionally restrict department results to this location ID.
+
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -43,6 +55,18 @@ function Get-SnipeitDepartment() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Search')]
+        [string]$name,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$manager_id,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$company_id,
+        
+        [parameter(ParameterSetName='Search')]
+        [int]$location_id,
+        
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

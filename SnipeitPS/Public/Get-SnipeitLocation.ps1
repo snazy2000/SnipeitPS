@@ -8,6 +8,24 @@ A text string to search the Locations data
 .PARAMETER id
 A id of specific Location
 
+.PARAMETER name
+Optionally restrict Location results to this Location name.
+
+.PARAMETER address
+Optionally restrict Location results to this Location address.
+
+.PARAMETER address2
+Optionally restrict Location results to this Location address2.
+
+.PARAMETER city
+Optionally restrict Location results to this Location city.
+
+.PARAMETER zip
+Optionally restrict Location results to this Location zip.
+
+.PARAMETER country
+Optionally restrict Location results to this Location country.
+
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -40,6 +58,24 @@ function Get-SnipeitLocation() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Search')]
+        [string]$name,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address2,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$city,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$zip,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$country,
+        
         [parameter(ParameterSetName='Search')]
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",

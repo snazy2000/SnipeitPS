@@ -20,12 +20,21 @@ Retrieve a list of assets that are due for auditing soon.
 .PARAMETER audit_overdue
 Retrieve a list of assets that are overdue for auditing.
 
+.PARAMETER user_id
+Retrieve a list of assets checked out to user id.
+
+.PARAMETER component_id
+Retrieve a list of assets assigned this component id.
+
+.PARAMETER name
+Optionally restrict asset results to this asset name
+
 .PARAMETER order_number
 Optionally restrict asset results to this order number
 
 .PARAMETER model_id
 Optionally restrict asset results to this asset model ID
-
+        
 .PARAMETER category_id
 Optionally restrict asset results to this category ID
 
@@ -38,11 +47,21 @@ Optionally restrict asset results to this company ID
 .PARAMETER location_id
 Optionally restrict asset results to this location ID
 
+.PARAMETER depreciation_id
+Optionally restrict asset results to this depreciation ID
+
+.PARAMETER requestable
+Optionally restrict asset results to those set as requestable 
+
 .PARAMETER status
 Optionally restrict asset results to one of these status types: RTD, Deployed, Undeployable, Deleted, Archived, Requestable
 
 .PARAMETER status_id
 Optionally restrict asset results to this status label ID
+
+.PARAMETER customfields
+Hastable of custom fields and extra fields for searching assets in Snipe-It.
+Use internal field names from Snipe-It. You can use Get-CustomField to get internal field names.
 
 .PARAMETER sort
 Specify the column name you wish to sort by
@@ -133,6 +152,9 @@ function Get-SnipeitAsset() {
         [int]$component_id,
 
         [parameter(ParameterSetName='Search')]
+        [string]$name,
+
+        [parameter(ParameterSetName='Search')]
         [string]$order_number,
 
         [parameter(ParameterSetName='Search')]
@@ -161,6 +183,9 @@ function Get-SnipeitAsset() {
 
         [parameter(ParameterSetName='Search')]
         [int]$status_id,
+
+        [parameter(ParameterSetName='Search')]
+        [hashtable]$customfields,
 
         [parameter(ParameterSetName='Search')]
         [parameter(ParameterSetName='Assets due auditing soon')]
@@ -210,6 +235,15 @@ function Get-SnipeitAsset() {
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $SearchParameter = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
+
+        # Add in custom fields.
+        if ($customfields.Count -gt 0) {
+            foreach ($pair in $customfields.GetEnumerator()) {
+                if (-Not $SearchParameter.ContainsKey($pair.Name)) {
+                    $SearchParameter.Add($pair.Name, $pair.Value)
+                }
+            }
+        }
 
         switch ($PsCmdlet.ParameterSetName) {
             'Search' { $api = "/api/v1/hardware" }
