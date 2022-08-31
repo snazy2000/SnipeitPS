@@ -8,6 +8,33 @@ A text string to search the Supliers data
 .PARAMETER id
 A id of specific Suplier
 
+.PARAMETER name
+Optionally restrict Supplier results to this Supplier name.
+
+.PARAMETER address
+Optionally restrict Supplier results to this Supplier address.
+
+.PARAMETER address2
+Optionally restrict Supplier results to this Supplier address2.
+
+.PARAMETER city
+Optionally restrict Supplier results to this Supplier city.
+
+.PARAMETER zip
+Optionally restrict Supplier results to this Supplier zip.
+
+.PARAMETER country
+Optionally restrict Supplier results to this Supplier country.
+
+.PARAMETER fax
+Optionally restrict Supplier results to this Supplier fax number.
+
+.PARAMETER email
+Optionally restrict Supplier results to this Supplier email address.
+
+.PARAMETER notes
+Optionally restrict Supplier results to this Supplier notes field.
+
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -43,6 +70,33 @@ function Get-SnipeitSupplier() {
         [ValidateSet("asc", "desc")]
         [string]$order = "desc",
 
+        [parameter(ParameterSetName='Search')]
+        [string]$name,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$address2,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$city,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$zip,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$country,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$fax,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$email,
+        
+        [parameter(ParameterSetName='Search')]
+        [string]$notes,
+        
         [parameter(ParameterSetName='Search')]
         [int]$limit = 50,
 

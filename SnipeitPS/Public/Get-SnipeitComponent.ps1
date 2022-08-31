@@ -8,6 +8,18 @@ A text string to search the Components data
 .PARAMETER id
 A id of specific Component
 
+.PARAMETER name
+Optionally restrict Component results to this name field
+
+.PARAMETER company_id
+Optionally restrict Component results to this company_id field
+
+.PARAMETER category_id
+Optionally restrict Component results to this category_id field
+
+.PARAMETER location_id
+Optionally restrict Component results to this location_id field
+
 .PARAMETER limit
 Specify the number of results you wish to return. Defaults to 50. Defines batch size for -all
 
@@ -45,6 +57,9 @@ function Get-SnipeitComponent() {
         [parameter(ParameterSetName='Get with ID')]
         [int]$id,
 
+        [parameter(ParameterSetName='Search')]
+        [string]$name,
+        
         [parameter(ParameterSetName='Search')]
         [int]$category_id,
 
