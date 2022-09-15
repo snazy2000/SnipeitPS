@@ -89,7 +89,6 @@ function New-SnipeitLicense() {
 
         [datetime]$expiration_date,
 
-        [ValidateLength(1, 120)]
         [mailaddress]$license_email,
 
         [ValidateLength(1, 100)]
