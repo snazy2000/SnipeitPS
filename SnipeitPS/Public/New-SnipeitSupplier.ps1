@@ -102,7 +102,7 @@ function New-SnipeitSupplier() {
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         $Parameters = @{
-            Api    = "/api/v1/suppilers"
+            Api    = "/api/v1/suppliers"
             Method = 'POST'
             Body   = $Values
         }
