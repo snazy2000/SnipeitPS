@@ -47,6 +47,9 @@
     .PARAMETER purchase_date
     Date of license purchase
 
+    .PARAMETER purchase_order
+    Purchase order number of license purchase
+
     .PARAMETER reassignable
     Is license reassignable?
 
@@ -107,6 +110,8 @@ function New-SnipeitLicense() {
         [float]$purchase_cost,
 
         [datetime]$purchase_date,
+
+        [string]$purchase_order,
 
         [bool]$reassignable,
 
