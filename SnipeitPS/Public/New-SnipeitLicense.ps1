@@ -144,6 +144,10 @@ function New-SnipeitLicense() {
             $Values['termination_date'] = $Values['termination_date'].ToString("yyyy-MM-dd")
         }
 
+        if ($Values['license_email']) {
+            $Values['license_email'] = $Values['license_email'].address
+        }
+
         $Parameters = @{
             Api    = "/api/v1/licenses"
             Method = 'POST'
