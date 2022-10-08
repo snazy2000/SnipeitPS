@@ -24,7 +24,7 @@ Checkout accessory to user
 
 ### EXAMPLE 1
 ```
-Set-SnipeitAccessoryOwner -id 1 -assigned_id 1  -note "testing check out to user"
+Set-SnipeitAccessoryOwner -id 1 -assigned_to 1  -note "testing check out to user"
 ```
 
 ## PARAMETERS
