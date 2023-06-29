@@ -123,12 +123,17 @@ function New-SnipeitUser() {
         [string]$apiKey
     )
     begin {
+
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
 
         if ($password ) {
                 $Values['password_confirmation'] = $password
+        }
+
+        if ($password.Length -lt 8) {
+            Throw "[$($MyInvocation.MyCommand.Name)] The password must be at least 8 characters."
         }
 
         $Parameters = @{
