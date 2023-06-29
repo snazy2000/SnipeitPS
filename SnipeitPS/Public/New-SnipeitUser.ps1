@@ -86,6 +86,7 @@ function New-SnipeitUser() {
         [parameter(mandatory = $true)]
         [string]$username,
 
+        [parameter(mandatory = $true)]
         [string]$password,
 
         [bool]$activated = $false,
