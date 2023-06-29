@@ -14,7 +14,7 @@
     .PARAMETER username
     Username for user
 
-    .PARAMETER active
+    .PARAMETER activated
     Can user log in to snipe-it?
 
     .PARAMETER password
@@ -63,7 +63,7 @@
     Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
 
     .EXAMPLE
-    New-Snipeituser -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+    New-Snipeituser -fist_name It -last_name Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
     Creates new a new user who can't login to system
 
     .NOTES
