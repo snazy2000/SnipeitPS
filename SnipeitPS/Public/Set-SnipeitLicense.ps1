@@ -50,6 +50,9 @@
     .PARAMETER purchase_date
     Date of license purchase
 
+    .PARAMETER purchase_order
+    Purchase order number of license purchase
+
     .PARAMETER reassignable
     Is license reassignable?
 
@@ -116,6 +119,8 @@ function Set-SnipeitLicense() {
 
         [datetime]$purchase_date,
 
+        [string]$purchase_order,
+
         [bool]$reassignable,
 
         [string]$serial,
@@ -151,6 +156,9 @@ function Set-SnipeitLicense() {
             $Values['termination_date'] = $Values['termination_date'].ToString("yyyy-MM-dd")
         }
 
+        if ($Values['license_email']) {
+            $Values['license_email'] = $Values['license_email'].address
+        }
     }
 
     process {

@@ -100,6 +100,7 @@ FunctionsToExport = @(
         'New-SnipeitComponent',
         'New-SnipeitConsumable',
         'New-SnipeitCustomField',
+        'New-SnipeitCustomFieldSet',
         'New-SnipeitDepartment',
         'New-SnipeitLicense',
         'New-SnipeitLocation',

@@ -14,11 +14,11 @@
     .PARAMETER username
     Username for user
 
-    .PARAMETER active
+    .PARAMETER activated
     Can user log in to snipe-it?
 
     .PARAMETER password
-    Password for user
+    Password for user. The password should at least be 8 characters long.
 
     .PARAMETER notes
     User Notes
@@ -63,7 +63,7 @@
     Deprecated parameter, please use Connect-SnipeitPS instead. User's API Key for Snipeit.
 
     .EXAMPLE
-    New-Snipeituser -fist_name It -lastname Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
+    New-Snipeituser -first_name It -last_name Snipe -username snipeit -activated $false -company_id 1 -location_id 1 -department_id 1
     Creates new a new user who can't login to system
 
     .NOTES
@@ -86,6 +86,8 @@ function New-SnipeitUser() {
         [parameter(mandatory = $true)]
         [string]$username,
 
+        [ValidateScript({$_.Length -ge 8}, ErrorMessage = "Password should be at least 8 characters.")]
+        [parameter(mandatory = $true)]
         [string]$password,
 
         [bool]$activated = $false,
@@ -122,6 +124,7 @@ function New-SnipeitUser() {
         [string]$apiKey
     )
     begin {
+
         Test-SnipeitAlias -invocationName $MyInvocation.InvocationName -commandName $MyInvocation.MyCommand.Name
 
         $Values = . Get-ParameterValue -Parameters $MyInvocation.MyCommand.Parameters -BoundParameters $PSBoundParameters
