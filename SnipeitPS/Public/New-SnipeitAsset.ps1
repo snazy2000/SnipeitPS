@@ -123,6 +123,9 @@ function New-SnipeitAsset() {
         [datetime]$purchase_date,
 
         [parameter(mandatory = $false)]
+        [datetime]$asset_eol_date,        
+
+        [parameter(mandatory = $false)]
         [int]$supplier_id,
 
         [parameter(mandatory = $false)]
@@ -156,6 +159,10 @@ function New-SnipeitAsset() {
         if ($values['purchase_date']) {
             $values['purchase_date'] = $values['purchase_date'].ToString("yyyy-MM-dd")
         }
+
+        if ($values['asset_eol_date']) {
+            $values['asset_eol_date'] = $values['asset_eol_date'].ToString("yyyy-MM-dd")
+        }        
 
         if ($customfields) {
             $Values += $customfields
