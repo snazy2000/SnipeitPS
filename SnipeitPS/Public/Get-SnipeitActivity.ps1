@@ -9,13 +9,13 @@ Gets a list of Snipe-it activity history
 A text string to search the Activity history
 
 .PARAMETER target_type
-Type of target. One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
+Type of target. One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','License','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
 
 .PARAMETER target_id
 Needed if target_type is specified
 
 .PARAMETER item_type
-Type of target. One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
+Type of target. One from following list 'Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','License','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User'
 
 .PARAMETER item_id
 Needed if target_type is specified
@@ -49,14 +49,14 @@ function Get-SnipeitActivity() {
         [string]$search,
 
         [Parameter(Mandatory=$false)]
-        [ValidateSet('Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User')]
+        [ValidateSet('Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','License','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User')]
         [string]$target_type,
 
         [Parameter(Mandatory=$false)]
         [int]$target_id,
 
         [Parameter(Mandatory=$false)]
-        [ValidateSet('Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','Licence','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User')]
+        [ValidateSet('Accessory','Asset','AssetMaintenance','AssetModel','Category','Company','Component','Consumable','CustomField','Depreciable','Depreciation','Group','License','LicenseSeat','Location','Manufacturer','Statuslabel','Supplier','User')]
         [string]$item_type,
 
         [Parameter(Mandatory=$false)]
